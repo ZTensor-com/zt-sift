@@ -1,0 +1,1130 @@
+[
+  {
+    "name": "stock_catalog_batch_1",
+    "text": "credit card: 3400 008813 60233;\ncredit: 6011 8319 8561 8216;\ncrypto: 3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ;\nwallet: 1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW;\niban code: BE76 1903 7069 1060;\niban: PL16 3420 0679 7013 1119 1779 3640;\nip address: 138.83.172.147;\nip: 210.119.40.132;\nmac address: 3F:3E:E6:48:B3:D3;\nmac: 83:88:26:F3:A7:E6;\nphone number: 02 34567890;\nphone: (506) 234-5678;\nmedical license: BW9657721;\nmedical: MK7987641;\nurl: https://mail.contoso.co.uk/profile/73115;\nurl: https://www.acme.org/orders/10955;\nus bank number: 5182049739;\ncheck: 489979881;\nus driver license: F5219976;\ndriver: Y539301374311;\nus itin: 992-97-9823;\nindividual: 910-94-5888;\nus mbi: 2DN1-P51-QC51;\nmedicare: 1T60-CJ2-FT94;\nus npi: 2584920781;\nnpi: 1394389138;\nus passport: 740920448;\nus: 484823694;\nus ssn: 354-29-7400;\nsocial: 559-21-6528;\naba routing number: 070831652;\naba: 087900550;\nuk driving licence: PLMAY603144WN9NZ;\ndriving licence: NKWLR654244YA9TE;\nuk nhs: 202 124 8828;\n",
+    "expected": [
+      {
+        "text": "3400 008813 60233",
+        "entities": [
+          "CREDIT_CARD"
+        ],
+        "start": 13,
+        "end": 30
+      },
+      {
+        "text": "6011 8319 8561 8216",
+        "entities": [
+          "CREDIT_CARD"
+        ],
+        "start": 40,
+        "end": 59
+      },
+      {
+        "text": "3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ",
+        "entities": [
+          "CRYPTO"
+        ],
+        "start": 69,
+        "end": 103
+      },
+      {
+        "text": "1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW",
+        "entities": [
+          "CRYPTO"
+        ],
+        "start": 113,
+        "end": 147
+      },
+      {
+        "text": "BE76 1903 7069 1060",
+        "entities": [
+          "IBAN_CODE"
+        ],
+        "start": 160,
+        "end": 179
+      },
+      {
+        "text": "PL16 3420 0679 7013 1119 1779 3640",
+        "entities": [
+          "IBAN_CODE"
+        ],
+        "start": 187,
+        "end": 221
+      },
+      {
+        "text": "138.83.172.147",
+        "entities": [
+          "IP_ADDRESS"
+        ],
+        "start": 235,
+        "end": 249
+      },
+      {
+        "text": "210.119.40.132",
+        "entities": [
+          "IP_ADDRESS"
+        ],
+        "start": 255,
+        "end": 269
+      },
+      {
+        "text": "3F:3E:E6:48:B3:D3",
+        "entities": [
+          "MAC_ADDRESS"
+        ],
+        "start": 284,
+        "end": 301
+      },
+      {
+        "text": "83:88:26:F3:A7:E6",
+        "entities": [
+          "MAC_ADDRESS"
+        ],
+        "start": 308,
+        "end": 325
+      },
+      {
+        "text": "02 34567890",
+        "entities": [
+          "PHONE_NUMBER"
+        ],
+        "start": 341,
+        "end": 352
+      },
+      {
+        "text": "(506) 234-5678",
+        "entities": [
+          "PHONE_NUMBER"
+        ],
+        "start": 361,
+        "end": 375
+      },
+      {
+        "text": "BW9657721",
+        "entities": [
+          "MEDICAL_LICENSE"
+        ],
+        "start": 394,
+        "end": 403
+      },
+      {
+        "text": "MK7987641",
+        "entities": [
+          "MEDICAL_LICENSE"
+        ],
+        "start": 414,
+        "end": 423
+      },
+      {
+        "text": "https://mail.contoso.co.uk/profile/73115",
+        "entities": [
+          "URL"
+        ],
+        "start": 430,
+        "end": 470
+      },
+      {
+        "text": "https://www.acme.org/orders/10955",
+        "entities": [
+          "URL"
+        ],
+        "start": 477,
+        "end": 510
+      },
+      {
+        "text": "5182049739",
+        "entities": [
+          "US_BANK_NUMBER"
+        ],
+        "start": 528,
+        "end": 538
+      },
+      {
+        "text": "489979881",
+        "entities": [
+          "US_BANK_NUMBER"
+        ],
+        "start": 547,
+        "end": 556
+      },
+      {
+        "text": "F5219976",
+        "entities": [
+          "US_DRIVER_LICENSE"
+        ],
+        "start": 577,
+        "end": 585
+      },
+      {
+        "text": "Y539301374311",
+        "entities": [
+          "US_DRIVER_LICENSE"
+        ],
+        "start": 595,
+        "end": 608
+      },
+      {
+        "text": "992-97-9823",
+        "entities": [
+          "US_ITIN"
+        ],
+        "start": 619,
+        "end": 630
+      },
+      {
+        "text": "910-94-5888",
+        "entities": [
+          "US_ITIN"
+        ],
+        "start": 644,
+        "end": 655
+      },
+      {
+        "text": "2DN1-P51-QC51",
+        "entities": [
+          "US_MBI"
+        ],
+        "start": 665,
+        "end": 678
+      },
+      {
+        "text": "1T60-CJ2-FT94",
+        "entities": [
+          "US_MBI"
+        ],
+        "start": 690,
+        "end": 703
+      },
+      {
+        "text": "2584920781",
+        "entities": [
+          "US_NPI"
+        ],
+        "start": 713,
+        "end": 723
+      },
+      {
+        "text": "1394389138",
+        "entities": [
+          "US_NPI"
+        ],
+        "start": 730,
+        "end": 740
+      },
+      {
+        "text": "740920448",
+        "entities": [
+          "US_PASSPORT"
+        ],
+        "start": 755,
+        "end": 764
+      },
+      {
+        "text": "484823694",
+        "entities": [
+          "US_PASSPORT"
+        ],
+        "start": 770,
+        "end": 779
+      },
+      {
+        "text": "354-29-7400",
+        "entities": [
+          "US_SSN"
+        ],
+        "start": 789,
+        "end": 800
+      },
+      {
+        "text": "559-21-6528",
+        "entities": [
+          "US_SSN"
+        ],
+        "start": 810,
+        "end": 821
+      },
+      {
+        "text": "070831652",
+        "entities": [
+          "ABA_ROUTING_NUMBER"
+        ],
+        "start": 843,
+        "end": 852
+      },
+      {
+        "text": "087900550",
+        "entities": [
+          "ABA_ROUTING_NUMBER"
+        ],
+        "start": 859,
+        "end": 868
+      },
+      {
+        "text": "PLMAY603144WN9NZ",
+        "entities": [
+          "UK_DRIVING_LICENCE"
+        ],
+        "start": 890,
+        "end": 906
+      },
+      {
+        "text": "NKWLR654244YA9TE",
+        "entities": [
+          "UK_DRIVING_LICENCE"
+        ],
+        "start": 925,
+        "end": 941
+      },
+      {
+        "text": "202 124 8828",
+        "entities": [
+          "UK_NHS"
+        ],
+        "start": 951,
+        "end": 963
+      }
+    ],
+    "category": "stock_catalog",
+    "query": {},
+    "status": 200,
+    "content_type": "text/plain"
+  },
+  {
+    "name": "stock_catalog_batch_2",
+    "text": "national health service: 426 006 9489;\nuk nino: CL 39 89 17 C;\nnational insurance: PW 81 36 99 D;\nuk passport: HI0675567;\npassport: BY2436882;\nuk postcode: NE1 4ST;\npostcode: BT1 5GS;\nuk vehicle registration: OX15 VHA;\nvehicle: UL21 CCS;\nes nif: 28048665G;\ndocumento nacional de identidad: 58128443Z;\nes nie: Y7704904X;\nnúmero de identificación de extranjero: Z3421324X;\nes passport: JIA074188;\npasaporte: WDN840837;\nit fiscal code: VGFRKN56L06B724Y;\ncodice fiscale: MBYMRK60B10Z640F;\nit driver license: WE2263337D;\npatente: SD0252330Y;\nit vat code: 39594730226;\npiva: 00431690098;\nit passport: IV4745023;\npassaporto: NR9457415;\nit identity card: CP03159TA;\ncarta: CH11366RL;\npl pesel: 69121678514;\nPESEL: 52011791365;\nsg nric fin: T3079980H;\nfin: F9828802M;\nsg uen: T59LL5615U;\nuen: 27458823E;\nau abn: 13 602 209 028;\naustralian business number: 53 875 484 341;\nau acn: 888 678 368;\naustralian company number: 734 906 828;\n",
+    "expected": [
+      {
+        "text": "426 006 9489",
+        "entities": [
+          "UK_NHS"
+        ],
+        "start": 25,
+        "end": 37
+      },
+      {
+        "text": "CL 39 89 17 C",
+        "entities": [
+          "UK_NINO"
+        ],
+        "start": 48,
+        "end": 61
+      },
+      {
+        "text": "PW 81 36 99 D",
+        "entities": [
+          "UK_NINO"
+        ],
+        "start": 83,
+        "end": 96
+      },
+      {
+        "text": "HI0675567",
+        "entities": [
+          "UK_PASSPORT"
+        ],
+        "start": 111,
+        "end": 120
+      },
+      {
+        "text": "BY2436882",
+        "entities": [
+          "UK_PASSPORT"
+        ],
+        "start": 132,
+        "end": 141
+      },
+      {
+        "text": "NE1 4ST",
+        "entities": [
+          "UK_POSTCODE"
+        ],
+        "start": 156,
+        "end": 163
+      },
+      {
+        "text": "BT1 5GS",
+        "entities": [
+          "UK_POSTCODE"
+        ],
+        "start": 175,
+        "end": 182
+      },
+      {
+        "text": "OX15 VHA",
+        "entities": [
+          "UK_VEHICLE_REGISTRATION"
+        ],
+        "start": 209,
+        "end": 217
+      },
+      {
+        "text": "UL21 CCS",
+        "entities": [
+          "UK_VEHICLE_REGISTRATION"
+        ],
+        "start": 228,
+        "end": 236
+      },
+      {
+        "text": "28048665G",
+        "entities": [
+          "ES_NIF"
+        ],
+        "start": 246,
+        "end": 255
+      },
+      {
+        "text": "58128443Z",
+        "entities": [
+          "ES_NIF"
+        ],
+        "start": 290,
+        "end": 299
+      },
+      {
+        "text": "Y7704904X",
+        "entities": [
+          "ES_NIE"
+        ],
+        "start": 309,
+        "end": 318
+      },
+      {
+        "text": "Z3421324X",
+        "entities": [
+          "ES_NIE"
+        ],
+        "start": 360,
+        "end": 369
+      },
+      {
+        "text": "JIA074188",
+        "entities": [
+          "ES_PASSPORT"
+        ],
+        "start": 384,
+        "end": 393
+      },
+      {
+        "text": "WDN840837",
+        "entities": [
+          "ES_PASSPORT"
+        ],
+        "start": 406,
+        "end": 415
+      },
+      {
+        "text": "VGFRKN56L06B724Y",
+        "entities": [
+          "IT_FISCAL_CODE"
+        ],
+        "start": 433,
+        "end": 449
+      },
+      {
+        "text": "MBYMRK60B10Z640F",
+        "entities": [
+          "IT_FISCAL_CODE"
+        ],
+        "start": 467,
+        "end": 483
+      },
+      {
+        "text": "WE2263337D",
+        "entities": [
+          "IT_DRIVER_LICENSE"
+        ],
+        "start": 504,
+        "end": 514
+      },
+      {
+        "text": "SD0252330Y",
+        "entities": [
+          "IT_DRIVER_LICENSE"
+        ],
+        "start": 525,
+        "end": 535
+      },
+      {
+        "text": "39594730226",
+        "entities": [
+          "IT_VAT_CODE"
+        ],
+        "start": 550,
+        "end": 561
+      },
+      {
+        "text": "00431690098",
+        "entities": [
+          "IT_VAT_CODE"
+        ],
+        "start": 569,
+        "end": 580
+      },
+      {
+        "text": "IV4745023",
+        "entities": [
+          "IT_PASSPORT"
+        ],
+        "start": 595,
+        "end": 604
+      },
+      {
+        "text": "NR9457415",
+        "entities": [
+          "IT_PASSPORT"
+        ],
+        "start": 618,
+        "end": 627
+      },
+      {
+        "text": "CP03159TA",
+        "entities": [
+          "IT_IDENTITY_CARD"
+        ],
+        "start": 647,
+        "end": 656
+      },
+      {
+        "text": "CH11366RL",
+        "entities": [
+          "IT_IDENTITY_CARD"
+        ],
+        "start": 665,
+        "end": 674
+      },
+      {
+        "text": "69121678514",
+        "entities": [
+          "PL_PESEL"
+        ],
+        "start": 686,
+        "end": 697
+      },
+      {
+        "text": "52011791365",
+        "entities": [
+          "PL_PESEL"
+        ],
+        "start": 706,
+        "end": 717
+      },
+      {
+        "text": "T3079980H",
+        "entities": [
+          "SG_NRIC_FIN"
+        ],
+        "start": 732,
+        "end": 741
+      },
+      {
+        "text": "F9828802M",
+        "entities": [
+          "SG_NRIC_FIN"
+        ],
+        "start": 748,
+        "end": 757
+      },
+      {
+        "text": "T59LL5615U",
+        "entities": [
+          "SG_UEN"
+        ],
+        "start": 767,
+        "end": 777
+      },
+      {
+        "text": "27458823E",
+        "entities": [
+          "SG_UEN"
+        ],
+        "start": 784,
+        "end": 793
+      },
+      {
+        "text": "13 602 209 028",
+        "entities": [
+          "AU_ABN"
+        ],
+        "start": 803,
+        "end": 817
+      },
+      {
+        "text": "53 875 484 341",
+        "entities": [
+          "AU_ABN"
+        ],
+        "start": 847,
+        "end": 861
+      },
+      {
+        "text": "888 678 368",
+        "entities": [
+          "AU_ACN"
+        ],
+        "start": 871,
+        "end": 882
+      },
+      {
+        "text": "734 906 828",
+        "entities": [
+          "AU_ACN"
+        ],
+        "start": 911,
+        "end": 922
+      }
+    ],
+    "category": "stock_catalog",
+    "query": {},
+    "status": 200,
+    "content_type": "text/plain"
+  },
+  {
+    "name": "stock_catalog_batch_3",
+    "text": "au tfn: 858 879 684;\ntax file number: 373 623 893;\nau medicare: 5092 96818 2;\nmedicare: 5879 48487 5;\nin pan: NBRHZ1436X;\npermanent account number: FOGPY1940X;\nin aadhaar: 8708 4415 3801;\naadhaar: 3632 8837 7571;\nin vehicle registration: TN58JY5912;\nRTO: AP04JF6909;\nin voter: GMD1016711;\nvoter: JUQ9747763;\nin passport: C9059311;\npassport: G2110338;\nin gstin: 12SVEPC0322O8ZE;\ngstin: 09HMMBG0108W9ZU;\nfi personal identity code: 190448-558V;\nhetu: 150192-113V;\nkr driver license: 21-31-156050-48;\n운전면허: 13-14-194983-28;\nkr frn: 640603-7079532;\n외국인등록번호: 810625-6126998;\nkr passport: R49316834;\nKorean passport: D53280229;\nkr brn: 626-07-68193;\n사업자등록번호: 554-35-76144;\nkr rrn: 980527-4551440;\nKorean RRN: 630406-1665436;\nth tnin: 6107558961988;\nThai National ID: 3514993216351;\nng nin: 35924905524;\nnin: 94019350143;\nng vehicle registration: LRI-453SY;\nplate number: QKB-408YU;\nph tin: 878-372-249-000;\n",
+    "expected": [
+      {
+        "text": "858 879 684",
+        "entities": [
+          "AU_TFN"
+        ],
+        "start": 8,
+        "end": 19
+      },
+      {
+        "text": "373 623 893",
+        "entities": [
+          "AU_TFN"
+        ],
+        "start": 38,
+        "end": 49
+      },
+      {
+        "text": "5092 96818 2",
+        "entities": [
+          "AU_MEDICARE"
+        ],
+        "start": 64,
+        "end": 76
+      },
+      {
+        "text": "5879 48487 5",
+        "entities": [
+          "AU_MEDICARE"
+        ],
+        "start": 88,
+        "end": 100
+      },
+      {
+        "text": "NBRHZ1436X",
+        "entities": [
+          "IN_PAN"
+        ],
+        "start": 110,
+        "end": 120
+      },
+      {
+        "text": "FOGPY1940X",
+        "entities": [
+          "IN_PAN"
+        ],
+        "start": 148,
+        "end": 158
+      },
+      {
+        "text": "8708 4415 3801",
+        "entities": [
+          "IN_AADHAAR"
+        ],
+        "start": 172,
+        "end": 186
+      },
+      {
+        "text": "3632 8837 7571",
+        "entities": [
+          "IN_AADHAAR"
+        ],
+        "start": 197,
+        "end": 211
+      },
+      {
+        "text": "TN58JY5912",
+        "entities": [
+          "IN_VEHICLE_REGISTRATION"
+        ],
+        "start": 238,
+        "end": 248
+      },
+      {
+        "text": "AP04JF6909",
+        "entities": [
+          "IN_VEHICLE_REGISTRATION"
+        ],
+        "start": 255,
+        "end": 265
+      },
+      {
+        "text": "GMD1016711",
+        "entities": [
+          "IN_VOTER"
+        ],
+        "start": 277,
+        "end": 287
+      },
+      {
+        "text": "JUQ9747763",
+        "entities": [
+          "IN_VOTER"
+        ],
+        "start": 296,
+        "end": 306
+      },
+      {
+        "text": "C9059311",
+        "entities": [
+          "IN_PASSPORT"
+        ],
+        "start": 321,
+        "end": 329
+      },
+      {
+        "text": "G2110338",
+        "entities": [
+          "IN_PASSPORT"
+        ],
+        "start": 341,
+        "end": 349
+      },
+      {
+        "text": "12SVEPC0322O8ZE",
+        "entities": [
+          "IN_GSTIN"
+        ],
+        "start": 361,
+        "end": 376
+      },
+      {
+        "text": "09HMMBG0108W9ZU",
+        "entities": [
+          "IN_GSTIN"
+        ],
+        "start": 385,
+        "end": 400
+      },
+      {
+        "text": "190448-558V",
+        "entities": [
+          "FI_PERSONAL_IDENTITY_CODE"
+        ],
+        "start": 429,
+        "end": 440
+      },
+      {
+        "text": "150192-113V",
+        "entities": [
+          "FI_PERSONAL_IDENTITY_CODE"
+        ],
+        "start": 448,
+        "end": 459
+      },
+      {
+        "text": "21-31-156050-48",
+        "entities": [
+          "KR_DRIVER_LICENSE"
+        ],
+        "start": 480,
+        "end": 495
+      },
+      {
+        "text": "13-14-194983-28",
+        "entities": [
+          "KR_DRIVER_LICENSE"
+        ],
+        "start": 503,
+        "end": 518
+      },
+      {
+        "text": "640603-7079532",
+        "entities": [
+          "KR_FRN"
+        ],
+        "start": 528,
+        "end": 542
+      },
+      {
+        "text": "810625-6126998",
+        "entities": [
+          "KR_FRN"
+        ],
+        "start": 553,
+        "end": 567
+      },
+      {
+        "text": "R49316834",
+        "entities": [
+          "KR_PASSPORT"
+        ],
+        "start": 582,
+        "end": 591
+      },
+      {
+        "text": "D53280229",
+        "entities": [
+          "KR_PASSPORT"
+        ],
+        "start": 610,
+        "end": 619
+      },
+      {
+        "text": "626-07-68193",
+        "entities": [
+          "KR_BRN"
+        ],
+        "start": 629,
+        "end": 641
+      },
+      {
+        "text": "554-35-76144",
+        "entities": [
+          "KR_BRN"
+        ],
+        "start": 652,
+        "end": 664
+      },
+      {
+        "text": "980527-4551440",
+        "entities": [
+          "KR_RRN"
+        ],
+        "start": 674,
+        "end": 688
+      },
+      {
+        "text": "630406-1665436",
+        "entities": [
+          "KR_RRN"
+        ],
+        "start": 702,
+        "end": 716
+      },
+      {
+        "text": "6107558961988",
+        "entities": [
+          "TH_TNIN"
+        ],
+        "start": 727,
+        "end": 740
+      },
+      {
+        "text": "3514993216351",
+        "entities": [
+          "TH_TNIN"
+        ],
+        "start": 760,
+        "end": 773
+      },
+      {
+        "text": "35924905524",
+        "entities": [
+          "NG_NIN"
+        ],
+        "start": 783,
+        "end": 794
+      },
+      {
+        "text": "94019350143",
+        "entities": [
+          "NG_NIN"
+        ],
+        "start": 801,
+        "end": 812
+      },
+      {
+        "text": "LRI-453SY",
+        "entities": [
+          "NG_VEHICLE_REGISTRATION"
+        ],
+        "start": 839,
+        "end": 848
+      },
+      {
+        "text": "QKB-408YU",
+        "entities": [
+          "NG_VEHICLE_REGISTRATION"
+        ],
+        "start": 864,
+        "end": 873
+      },
+      {
+        "text": "878-372-249-000",
+        "entities": [
+          "PH_TIN"
+        ],
+        "start": 883,
+        "end": 898
+      }
+    ],
+    "category": "stock_catalog",
+    "query": {},
+    "status": 200,
+    "content_type": "text/plain"
+  },
+  {
+    "name": "stock_catalog_batch_4",
+    "text": "tin: 534-081-580-000;\nca sin: 432 811 388;\nsin: 132 480 211;\nse organisationsnummer: 557759-2024;\norganisationsnummer: 558059-9826;\nse personnummer: 820624-2532;\npersonnummer: 900611-3881;\nza id number: 5411217398183;\nid: 6907113695084;\ntr national id: 87853158904;\ntc kimlik: 24392906320;\ntr license plate: 56 BZL 156;\nplaka: 73 GYY 508;\nde tax id: 99398671053;\nsteueridentifikationsnummer: 27386981049;\nde tax number: 66/636/39378;\nsteuernummer: 87/065/38976;\nde passport: J46K76D27;\nreisepass: J86J65Q68;\nde id card: T59V09F48;\npersonalausweis: P26P67H28;\nde social security: 61150476Z952;\nrentenversicherungsnummer: 43130874Q287;\nde health insurance: U509099780;\nkrankenversicherungsnummer: D352832869;\nde kfz: B-BD 2699;\nkennzeichen: F-DC 9788;\nde handelsregister: HRA 70330;\nhandelsregister: HRB 61368;\nde plz: 23766;\nplz: 90634;\n",
+    "expected": [
+      {
+        "text": "534-081-580-000",
+        "entities": [
+          "PH_TIN"
+        ],
+        "start": 5,
+        "end": 20
+      },
+      {
+        "text": "432 811 388",
+        "entities": [
+          "CA_SIN"
+        ],
+        "start": 30,
+        "end": 41
+      },
+      {
+        "text": "132 480 211",
+        "entities": [
+          "CA_SIN"
+        ],
+        "start": 48,
+        "end": 59
+      },
+      {
+        "text": "557759-2024",
+        "entities": [
+          "SE_ORGANISATIONSNUMMER"
+        ],
+        "start": 85,
+        "end": 96
+      },
+      {
+        "text": "558059-9826",
+        "entities": [
+          "SE_ORGANISATIONSNUMMER"
+        ],
+        "start": 119,
+        "end": 130
+      },
+      {
+        "text": "820624-2532",
+        "entities": [
+          "SE_PERSONNUMMER"
+        ],
+        "start": 149,
+        "end": 160
+      },
+      {
+        "text": "900611-3881",
+        "entities": [
+          "SE_PERSONNUMMER"
+        ],
+        "start": 176,
+        "end": 187
+      },
+      {
+        "text": "5411217398183",
+        "entities": [
+          "ZA_ID_NUMBER"
+        ],
+        "start": 203,
+        "end": 216
+      },
+      {
+        "text": "6907113695084",
+        "entities": [
+          "ZA_ID_NUMBER"
+        ],
+        "start": 222,
+        "end": 235
+      },
+      {
+        "text": "87853158904",
+        "entities": [
+          "TR_NATIONAL_ID"
+        ],
+        "start": 253,
+        "end": 264
+      },
+      {
+        "text": "24392906320",
+        "entities": [
+          "TR_NATIONAL_ID"
+        ],
+        "start": 277,
+        "end": 288
+      },
+      {
+        "text": "56 BZL 156",
+        "entities": [
+          "TR_LICENSE_PLATE"
+        ],
+        "start": 308,
+        "end": 318
+      },
+      {
+        "text": "73 GYY 508",
+        "entities": [
+          "TR_LICENSE_PLATE"
+        ],
+        "start": 327,
+        "end": 337
+      },
+      {
+        "text": "99398671053",
+        "entities": [
+          "DE_TAX_ID"
+        ],
+        "start": 350,
+        "end": 361
+      },
+      {
+        "text": "27386981049",
+        "entities": [
+          "DE_TAX_ID"
+        ],
+        "start": 392,
+        "end": 403
+      },
+      {
+        "text": "66/636/39378",
+        "entities": [
+          "DE_TAX_NUMBER"
+        ],
+        "start": 420,
+        "end": 432
+      },
+      {
+        "text": "87/065/38976",
+        "entities": [
+          "DE_TAX_NUMBER"
+        ],
+        "start": 448,
+        "end": 460
+      },
+      {
+        "text": "J46K76D27",
+        "entities": [
+          "DE_PASSPORT"
+        ],
+        "start": 475,
+        "end": 484
+      },
+      {
+        "text": "J86J65Q68",
+        "entities": [
+          "DE_PASSPORT"
+        ],
+        "start": 497,
+        "end": 506
+      },
+      {
+        "text": "T59V09F48",
+        "entities": [
+          "DE_ID_CARD"
+        ],
+        "start": 520,
+        "end": 529
+      },
+      {
+        "text": "P26P67H28",
+        "entities": [
+          "DE_ID_CARD"
+        ],
+        "start": 548,
+        "end": 557
+      },
+      {
+        "text": "61150476Z952",
+        "entities": [
+          "DE_SOCIAL_SECURITY"
+        ],
+        "start": 579,
+        "end": 591
+      },
+      {
+        "text": "43130874Q287",
+        "entities": [
+          "DE_SOCIAL_SECURITY"
+        ],
+        "start": 620,
+        "end": 632
+      },
+      {
+        "text": "U509099780",
+        "entities": [
+          "DE_HEALTH_INSURANCE"
+        ],
+        "start": 655,
+        "end": 665
+      },
+      {
+        "text": "D352832869",
+        "entities": [
+          "DE_HEALTH_INSURANCE"
+        ],
+        "start": 695,
+        "end": 705
+      },
+      {
+        "text": "B-BD 2699",
+        "entities": [
+          "DE_KFZ"
+        ],
+        "start": 715,
+        "end": 724
+      },
+      {
+        "text": "F-DC 9788",
+        "entities": [
+          "DE_KFZ"
+        ],
+        "start": 739,
+        "end": 748
+      },
+      {
+        "text": "HRA 70330",
+        "entities": [
+          "DE_HANDELSREGISTER"
+        ],
+        "start": 770,
+        "end": 779
+      },
+      {
+        "text": "HRB 61368",
+        "entities": [
+          "DE_HANDELSREGISTER"
+        ],
+        "start": 798,
+        "end": 807
+      },
+      {
+        "text": "23766",
+        "entities": [
+          "DE_PLZ"
+        ],
+        "start": 817,
+        "end": 822
+      },
+      {
+        "text": "90634",
+        "entities": [
+          "DE_PLZ"
+        ],
+        "start": 829,
+        "end": 834
+      }
+    ],
+    "category": "stock_catalog",
+    "query": {},
+    "status": 200,
+    "content_type": "text/plain"
+  }
+]

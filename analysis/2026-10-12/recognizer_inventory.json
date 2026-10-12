@@ -1,0 +1,2016 @@
+[
+  {
+    "name": "CreditCardRecognizer",
+    "entities": [
+      "CREDIT_CARD"
+    ],
+    "context": [
+      "credit",
+      "card",
+      "visa",
+      "mastercard",
+      "cc",
+      "amex",
+      "discover",
+      "jcb",
+      "diners",
+      "maestro",
+      "instapayment"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsBankRecognizer",
+    "entities": [
+      "US_BANK_NUMBER"
+    ],
+    "context": [
+      "check",
+      "account",
+      "account#",
+      "acct",
+      "bank",
+      "save",
+      "debit"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsLicenseRecognizer",
+    "entities": [
+      "US_DRIVER_LICENSE"
+    ],
+    "context": [
+      "driver",
+      "license",
+      "permit",
+      "lic",
+      "identification",
+      "dls",
+      "cdls",
+      "lic#",
+      "driving"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsItinRecognizer",
+    "entities": [
+      "US_ITIN"
+    ],
+    "context": [
+      "individual",
+      "taxpayer",
+      "itin",
+      "tax",
+      "payer",
+      "taxid",
+      "tin"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsPassportRecognizer",
+    "entities": [
+      "US_PASSPORT"
+    ],
+    "context": [
+      "us",
+      "united",
+      "states",
+      "passport",
+      "passport#",
+      "travel",
+      "document"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsSsnRecognizer",
+    "entities": [
+      "US_SSN"
+    ],
+    "context": [
+      "social",
+      "security",
+      "ssn",
+      "ssns",
+      "ssid"
+    ],
+    "regions": null
+  },
+  {
+    "name": "NhsRecognizer",
+    "entities": [
+      "UK_NHS"
+    ],
+    "context": [
+      "national health service",
+      "nhs",
+      "health services authority",
+      "health authority"
+    ],
+    "regions": null
+  },
+  {
+    "name": "CryptoRecognizer",
+    "entities": [
+      "CRYPTO"
+    ],
+    "context": [
+      "wallet",
+      "btc",
+      "bitcoin",
+      "crypto"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DateRecognizer",
+    "entities": [
+      "DATE_TIME"
+    ],
+    "context": [
+      "date",
+      "birthday"
+    ],
+    "regions": null
+  },
+  {
+    "name": "IbanRecognizer",
+    "entities": [
+      "IBAN_CODE"
+    ],
+    "context": [
+      "iban",
+      "bank",
+      "transaction"
+    ],
+    "regions": null
+  },
+  {
+    "name": "IpRecognizer",
+    "entities": [
+      "IP_ADDRESS"
+    ],
+    "context": [
+      "ip",
+      "ipv4",
+      "ipv6"
+    ],
+    "regions": null
+  },
+  {
+    "name": "MedicalLicenseRecognizer",
+    "entities": [
+      "MEDICAL_LICENSE"
+    ],
+    "context": [
+      "medical",
+      "certificate",
+      "DEA"
+    ],
+    "regions": null
+  },
+  {
+    "name": "MacAddressRecognizer",
+    "entities": [
+      "MAC_ADDRESS"
+    ],
+    "context": [
+      "mac",
+      "mac address",
+      "hardware address",
+      "physical address",
+      "ethernet"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UrlRecognizer",
+    "entities": [
+      "URL"
+    ],
+    "context": [
+      "url",
+      "website",
+      "link"
+    ],
+    "regions": null
+  },
+  {
+    "name": "SpacyRecognizer",
+    "entities": [
+      "EMAIL",
+      "ORGANIZATION",
+      "PERSON",
+      "DATE_TIME",
+      "PHONE_NUMBER",
+      "AGE",
+      "LOCATION",
+      "NRP",
+      "ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "EmailRecognizer",
+    "entities": [
+      "EMAIL_ADDRESS"
+    ],
+    "context": [
+      "email"
+    ],
+    "regions": null
+  },
+  {
+    "name": "PhoneRecognizer",
+    "entities": [
+      "PHONE_NUMBER"
+    ],
+    "context": [
+      "phone",
+      "number",
+      "telephone",
+      "cell",
+      "cellphone",
+      "mobile",
+      "call"
+    ],
+    "regions": [
+      "AC",
+      "AD",
+      "AE",
+      "AF",
+      "AG",
+      "AI",
+      "AL",
+      "AM",
+      "AO",
+      "AR",
+      "AS",
+      "AT",
+      "AU",
+      "AW",
+      "AX",
+      "AZ",
+      "BA",
+      "BB",
+      "BD",
+      "BE",
+      "BF",
+      "BG",
+      "BH",
+      "BI",
+      "BJ",
+      "BL",
+      "BM",
+      "BN",
+      "BO",
+      "BQ",
+      "BR",
+      "BS",
+      "BT",
+      "BW",
+      "BY",
+      "BZ",
+      "CA",
+      "CC",
+      "CD",
+      "CF",
+      "CG",
+      "CH",
+      "CI",
+      "CK",
+      "CL",
+      "CM",
+      "CN",
+      "CO",
+      "CR",
+      "CU",
+      "CV",
+      "CW",
+      "CX",
+      "CY",
+      "CZ",
+      "DE",
+      "DJ",
+      "DK",
+      "DM",
+      "DO",
+      "DZ",
+      "EC",
+      "EE",
+      "EG",
+      "EH",
+      "ER",
+      "ES",
+      "ET",
+      "FI",
+      "FJ",
+      "FK",
+      "FM",
+      "FO",
+      "FR",
+      "GA",
+      "GB",
+      "GD",
+      "GE",
+      "GF",
+      "GG",
+      "GH",
+      "GI",
+      "GL",
+      "GM",
+      "GN",
+      "GP",
+      "GQ",
+      "GR",
+      "GT",
+      "GU",
+      "GW",
+      "GY",
+      "HK",
+      "HN",
+      "HR",
+      "HT",
+      "HU",
+      "ID",
+      "IE",
+      "IL",
+      "IM",
+      "IN",
+      "IO",
+      "IQ",
+      "IR",
+      "IS",
+      "IT",
+      "JE",
+      "JM",
+      "JO",
+      "JP",
+      "KE",
+      "KG",
+      "KH",
+      "KI",
+      "KM",
+      "KN",
+      "KP",
+      "KR",
+      "KW",
+      "KY",
+      "KZ",
+      "LA",
+      "LB",
+      "LC",
+      "LI",
+      "LK",
+      "LR",
+      "LS",
+      "LT",
+      "LU",
+      "LV",
+      "LY",
+      "MA",
+      "MC",
+      "MD",
+      "ME",
+      "MF",
+      "MG",
+      "MH",
+      "MK",
+      "ML",
+      "MM",
+      "MN",
+      "MO",
+      "MP",
+      "MQ",
+      "MR",
+      "MS",
+      "MT",
+      "MU",
+      "MV",
+      "MW",
+      "MX",
+      "MY",
+      "MZ",
+      "NA",
+      "NC",
+      "NE",
+      "NF",
+      "NG",
+      "NI",
+      "NL",
+      "NO",
+      "NP",
+      "NR",
+      "NU",
+      "NZ",
+      "OM",
+      "PA",
+      "PE",
+      "PF",
+      "PG",
+      "PH",
+      "PK",
+      "PL",
+      "PM",
+      "PR",
+      "PS",
+      "PT",
+      "PW",
+      "PY",
+      "QA",
+      "RE",
+      "RO",
+      "RS",
+      "RU",
+      "RW",
+      "SA",
+      "SB",
+      "SC",
+      "SD",
+      "SE",
+      "SG",
+      "SH",
+      "SI",
+      "SJ",
+      "SK",
+      "SL",
+      "SM",
+      "SN",
+      "SO",
+      "SR",
+      "SS",
+      "ST",
+      "SV",
+      "SX",
+      "SY",
+      "SZ",
+      "TA",
+      "TC",
+      "TD",
+      "TG",
+      "TH",
+      "TJ",
+      "TK",
+      "TL",
+      "TM",
+      "TN",
+      "TO",
+      "TR",
+      "TT",
+      "TV",
+      "TW",
+      "TZ",
+      "UA",
+      "UG",
+      "US",
+      "UY",
+      "UZ",
+      "VA",
+      "VC",
+      "VE",
+      "VG",
+      "VI",
+      "VN",
+      "VU",
+      "WF",
+      "WS",
+      "XK",
+      "YE",
+      "YT",
+      "ZA",
+      "ZM",
+      "ZW"
+    ]
+  },
+  {
+    "name": "AbaRoutingRecognizer",
+    "entities": [
+      "ABA_ROUTING_NUMBER"
+    ],
+    "context": [
+      "aba",
+      "routing",
+      "abarouting",
+      "association",
+      "bankrouting"
+    ],
+    "regions": null
+  },
+  {
+    "name": "AuAbnRecognizer",
+    "entities": [
+      "AU_ABN"
+    ],
+    "context": [
+      "australian business number",
+      "abn"
+    ],
+    "regions": null
+  },
+  {
+    "name": "AuAcnRecognizer",
+    "entities": [
+      "AU_ACN"
+    ],
+    "context": [
+      "australian company number",
+      "acn"
+    ],
+    "regions": null
+  },
+  {
+    "name": "AuMedicareRecognizer",
+    "entities": [
+      "AU_MEDICARE"
+    ],
+    "context": [
+      "medicare"
+    ],
+    "regions": null
+  },
+  {
+    "name": "AuTfnRecognizer",
+    "entities": [
+      "AU_TFN"
+    ],
+    "context": [
+      "tax file number",
+      "tfn"
+    ],
+    "regions": null
+  },
+  {
+    "name": "CaSinRecognizer",
+    "entities": [
+      "CA_SIN"
+    ],
+    "context": [
+      "sin",
+      "sin number",
+      "social insurance",
+      "social insurance number",
+      "canada",
+      "nas",
+      "num\u00e9ro nas",
+      "num\u00e9ro d'assurance sociale",
+      "assurance sociale"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeBsnrRecognizer",
+    "entities": [
+      "DE_BSNR"
+    ],
+    "context": [
+      "betriebsst\u00e4ttennummer",
+      "betriebsst\u00e4tten-nummer",
+      "bsnr",
+      "betriebsst\u00e4tte",
+      "praxisnummer",
+      "arztpraxis",
+      "praxis",
+      "kassen\u00e4rztliche vereinigung",
+      "kv-nummer",
+      "kv nummer",
+      "praxisadresse",
+      "praxisstandort",
+      "nebenbetriebsst\u00e4tte",
+      "hauptbetriebsst\u00e4tte",
+      "behandlungsort",
+      "vertragsarztpraxis"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeFuehrerscheinRecognizer",
+    "entities": [
+      "DE_FUEHRERSCHEIN"
+    ],
+    "context": [
+      "f\u00fchrerscheinnummer",
+      "f\u00fchrerschein",
+      "fahrerlaubnis",
+      "fahrerlaubnisnummer",
+      "fahrerlaubnisklasse",
+      "f\u00fchrerscheininhaber",
+      "fev",
+      "kba",
+      "kraftfahrt-bundesamt",
+      "driving licence",
+      "driving license",
+      "driver's license",
+      "licence number",
+      "license number",
+      "dokument nr",
+      "dokument-nr",
+      "feld 5"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeHandelsregisterRecognizer",
+    "entities": [
+      "DE_HANDELSREGISTER"
+    ],
+    "context": [
+      "handelsregister",
+      "handelsregisternummer",
+      "amtsgericht",
+      "registergericht",
+      "hra",
+      "hrb",
+      "hr-nummer",
+      "registerauszug",
+      "handelsregistereintrag",
+      "firma",
+      "gesellschaft",
+      "gmbh",
+      "ag",
+      "ug",
+      "kg",
+      "ohg",
+      "einzelkaufmann",
+      "einzelkauffrau",
+      "handelsregisterblattnummer"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeHealthInsuranceRecognizer",
+    "entities": [
+      "DE_HEALTH_INSURANCE"
+    ],
+    "context": [
+      "krankenversicherungsnummer",
+      "krankenversichertennummer",
+      "versichertennummer",
+      "kvnr",
+      "krankenkasse",
+      "krankenversicherung",
+      "gesundheitskarte",
+      "egk",
+      "elektronische gesundheitskarte",
+      "gkv",
+      "gesetzliche krankenversicherung",
+      "krankenversicherungsausweis",
+      "versichertenausweis",
+      "versichertenkarte",
+      "aok",
+      "tkk",
+      "barmer",
+      "dak"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeIdCardRecognizer",
+    "entities": [
+      "DE_ID_CARD"
+    ],
+    "context": [
+      "personalausweis",
+      "ausweis",
+      "personalausweisnummer",
+      "ausweisnummer",
+      "ausweisdokument",
+      "dokumentennummer",
+      "seriennummer",
+      "npa",
+      "neuer personalausweis",
+      "personalausweisgesetz",
+      "pauwsg",
+      "bundespersonalausweis",
+      "identity card",
+      "national id"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeKfzRecognizer",
+    "entities": [
+      "DE_KFZ"
+    ],
+    "context": [
+      "kennzeichen",
+      "kfz-kennzeichen",
+      "kraftfahrzeugkennzeichen",
+      "nummernschild",
+      "fahrzeugkennzeichen",
+      "zulassung",
+      "kfz",
+      "fahrzeug",
+      "auto",
+      "pkw",
+      "lkw",
+      "fahrzeugschein",
+      "fahrzeugbrief",
+      "zulassungsbescheinigung",
+      "amtliches kennzeichen"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeLanrRecognizer",
+    "entities": [
+      "DE_LANR"
+    ],
+    "context": [
+      "arztnummer",
+      "lanr",
+      "lebenslange arztnummer",
+      "arzt-nr",
+      "arzt nr",
+      "arzt-nummer",
+      "vertragsarzt",
+      "kassenarzt",
+      "niedergelassener arzt",
+      "kbv",
+      "kassen\u00e4rztliche vereinigung",
+      "kv-nummer",
+      "rezept",
+      "verschreibung",
+      "behandelnder arzt",
+      "hausarzt",
+      "facharzt"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DePassportRecognizer",
+    "entities": [
+      "DE_PASSPORT"
+    ],
+    "context": [
+      "reisepass",
+      "pass",
+      "passnummer",
+      "reisepassnummer",
+      "passport",
+      "passport number",
+      "pass-nr",
+      "dokumentennummer",
+      "bundesrepublik deutschland",
+      "ausweisdokument",
+      "mrz"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DePlzRecognizer",
+    "entities": [
+      "DE_PLZ"
+    ],
+    "context": [
+      "plz",
+      "postleitzahl",
+      "postanschrift",
+      "adresse",
+      "wohnort",
+      "ort",
+      "wohnanschrift",
+      "lieferadresse",
+      "rechnungsadresse",
+      "stra\u00dfe",
+      "strasse",
+      "hausnummer",
+      "postfach",
+      "bundesland",
+      "gemeinde",
+      "stadt",
+      "dorf"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeSocialSecurityRecognizer",
+    "entities": [
+      "DE_SOCIAL_SECURITY"
+    ],
+    "context": [
+      "rentenversicherungsnummer",
+      "sozialversicherungsnummer",
+      "versicherungsnummer",
+      "rvnr",
+      "svnr",
+      "sv-nummer",
+      "rente",
+      "rentenversicherung",
+      "deutsche rentenversicherung",
+      "drv",
+      "sozialversicherung",
+      "sozialversicherungsausweis",
+      "rentenausweis"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeTaxIdRecognizer",
+    "entities": [
+      "DE_TAX_ID"
+    ],
+    "context": [
+      "steueridentifikationsnummer",
+      "steuer-id",
+      "steuerid",
+      "steuerliche identifikationsnummer",
+      "steuerliche identifikation",
+      "pers\u00f6nliche identifikationsnummer",
+      "steuer identifikation",
+      "idnr",
+      "steuer-idnr",
+      "steuernummer",
+      "bzst"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeTaxNumberRecognizer",
+    "entities": [
+      "DE_TAX_NUMBER"
+    ],
+    "context": [
+      "steuernummer",
+      "steuer-nr",
+      "steuer nr",
+      "st.-nr",
+      "st-nr",
+      "finanzamt",
+      "umsatzsteuer",
+      "einkommensteuer",
+      "k\u00f6rperschaftsteuer",
+      "gewerbesteuer",
+      "steuerveranlagung",
+      "steuerbescheid"
+    ],
+    "regions": null
+  },
+  {
+    "name": "DeVatIdRecognizer",
+    "entities": [
+      "DE_VAT_ID"
+    ],
+    "context": [
+      "umsatzsteuer-identifikationsnummer",
+      "umsatzsteueridentifikationsnummer",
+      "ust-idnr",
+      "ust-id",
+      "ustidnr",
+      "umsatzsteuer-id",
+      "mehrwertsteuer",
+      "vat",
+      "vat-id",
+      "vat id",
+      "steueridentifikation",
+      "bzst",
+      "bundeszentralamt f\u00fcr steuern",
+      "finanzamt",
+      "invoice",
+      "rechnung"
+    ],
+    "regions": null
+  },
+  {
+    "name": "EsNieRecognizer",
+    "entities": [
+      "ES_NIE"
+    ],
+    "context": [
+      "n\u00famero de identificaci\u00f3n de extranjero",
+      "NIE"
+    ],
+    "regions": null
+  },
+  {
+    "name": "EsNifRecognizer",
+    "entities": [
+      "ES_NIF"
+    ],
+    "context": [
+      "documento nacional de identidad",
+      "DNI",
+      "NIF",
+      "identificaci\u00f3n"
+    ],
+    "regions": null
+  },
+  {
+    "name": "EsPassportRecognizer",
+    "entities": [
+      "ES_PASSPORT"
+    ],
+    "context": [
+      "pasaporte",
+      "passport",
+      "n\u00famero de pasaporte",
+      "passport number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "FiPersonalIdentityCodeRecognizer",
+    "entities": [
+      "FI_PERSONAL_IDENTITY_CODE"
+    ],
+    "context": [
+      "hetu",
+      "henkil\u00f6tunnus",
+      "personbeteckningen",
+      "personal identity code"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InAadhaarRecognizer",
+    "entities": [
+      "IN_AADHAAR"
+    ],
+    "context": [
+      "aadhaar",
+      "uidai"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InGstinRecognizer",
+    "entities": [
+      "IN_GSTIN"
+    ],
+    "context": [
+      "gstin",
+      "gst",
+      "goods and services tax",
+      "tax identification",
+      "gst number",
+      "gst registration"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InPanRecognizer",
+    "entities": [
+      "IN_PAN"
+    ],
+    "context": [
+      "permanent account number",
+      "pan"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InPassportRecognizer",
+    "entities": [
+      "IN_PASSPORT"
+    ],
+    "context": [
+      "passport",
+      "indian passport",
+      "passport number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InVehicleRegistrationRecognizer",
+    "entities": [
+      "IN_VEHICLE_REGISTRATION"
+    ],
+    "context": [
+      "RTO",
+      "vehicle",
+      "plate",
+      "registration"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InVoterRecognizer",
+    "entities": [
+      "IN_VOTER"
+    ],
+    "context": [
+      "voter",
+      "epic",
+      "elector photo identity card"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ItDriverLicenseRecognizer",
+    "entities": [
+      "IT_DRIVER_LICENSE"
+    ],
+    "context": [
+      "patente",
+      "patente di guida",
+      "licenza",
+      "licenza di guida"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ItFiscalCodeRecognizer",
+    "entities": [
+      "IT_FISCAL_CODE"
+    ],
+    "context": [
+      "codice fiscale",
+      "cf"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ItIdentityCardRecognizer",
+    "entities": [
+      "IT_IDENTITY_CARD"
+    ],
+    "context": [
+      "carta",
+      "identit\u00e0",
+      "elettronica",
+      "cie",
+      "documento",
+      "riconoscimento",
+      "espatrio"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ItPassportRecognizer",
+    "entities": [
+      "IT_PASSPORT"
+    ],
+    "context": [
+      "passaporto",
+      "elettronico",
+      "italiano",
+      "viaggio",
+      "viaggiare",
+      "estero",
+      "documento",
+      "dogana"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ItVatCodeRecognizer",
+    "entities": [
+      "IT_VAT_CODE"
+    ],
+    "context": [
+      "piva",
+      "partita iva",
+      "pi"
+    ],
+    "regions": null
+  },
+  {
+    "name": "KrBrnRecognizer",
+    "entities": [
+      "KR_BRN"
+    ],
+    "context": [
+      "\uc0ac\uc5c5\uc790\ub4f1\ub85d\ubc88\ud638",
+      "\uc0ac\uc5c5\uc790\ubc88\ud638",
+      "\uc0ac\uc5c5\uc790",
+      "BRN",
+      "Business Registration Number",
+      "Korean BRN",
+      "business number",
+      "tax registration number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "KrDriverLicenseRecognizer",
+    "entities": [
+      "KR_DRIVER_LICENSE"
+    ],
+    "context": [
+      "\uc6b4\uc804\uba74\ud5c8",
+      "\uc6b4\uc804\uba74\ud5c8\ubc88\ud638",
+      "\uba74\ud5c8\ubc88\ud638",
+      "Korean driver license",
+      "Korean driver's license"
+    ],
+    "regions": null
+  },
+  {
+    "name": "KrFrnRecognizer",
+    "entities": [
+      "KR_FRN"
+    ],
+    "context": [
+      "\uc678\uad6d\uc778\ub4f1\ub85d\ubc88\ud638",
+      "Korean FRN",
+      "FRN",
+      "Foreigner Registration Number",
+      "Korean Foreigner Registration Number",
+      "\uc678\uad6d\uc778\ubc88\ud638"
+    ],
+    "regions": null
+  },
+  {
+    "name": "KrPassportRecognizer",
+    "entities": [
+      "KR_PASSPORT"
+    ],
+    "context": [
+      "Korean passport",
+      "Korean passport number",
+      "\ub300\ud55c\ubbfc\uad6d \uc5ec\uad8c",
+      "\uc5ec\uad8c",
+      "passport",
+      "passport number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "KrRrnRecognizer",
+    "entities": [
+      "KR_RRN"
+    ],
+    "context": [
+      "Korean RRN",
+      "Korean Resident Registration Number",
+      "Resident Registration Number",
+      "RRN",
+      "rrn",
+      "rrn#"
+    ],
+    "regions": null
+  },
+  {
+    "name": "NgNinRecognizer",
+    "entities": [
+      "NG_NIN"
+    ],
+    "context": [
+      "nin",
+      "national identification number",
+      "national identity number",
+      "nimc",
+      "national identity",
+      "nigeria id",
+      "nigerian identification"
+    ],
+    "regions": null
+  },
+  {
+    "name": "NgVehicleRegistrationRecognizer",
+    "entities": [
+      "NG_VEHICLE_REGISTRATION"
+    ],
+    "context": [
+      "plate number",
+      "vehicle registration",
+      "license plate",
+      "number plate",
+      "plate",
+      "vehicle",
+      "registration"
+    ],
+    "regions": null
+  },
+  {
+    "name": "PhTinRecognizer",
+    "entities": [
+      "PH_TIN"
+    ],
+    "context": [
+      "tin",
+      "taxpayer identification number",
+      "bir",
+      "taxpayer id",
+      "tax id",
+      "rdo",
+      "revenue district office"
+    ],
+    "regions": null
+  },
+  {
+    "name": "PhUmidRecognizer",
+    "entities": [
+      "PH_UMID"
+    ],
+    "context": [
+      "umid",
+      "unified multi-purpose id",
+      "crn",
+      "common reference number",
+      "sss",
+      "gsis",
+      "philhealth",
+      "pag-ibig",
+      "umid number",
+      "umid card",
+      "unified multipurpose id"
+    ],
+    "regions": null
+  },
+  {
+    "name": "PlPeselRecognizer",
+    "entities": [
+      "PL_PESEL"
+    ],
+    "context": [
+      "PESEL"
+    ],
+    "regions": null
+  },
+  {
+    "name": "SeOrganisationsnummerRecognizer",
+    "entities": [
+      "SE_ORGANISATIONSNUMMER"
+    ],
+    "context": [
+      "organisationsnummer",
+      "orgnr",
+      "org nr",
+      "f\u00f6retagsnummer"
+    ],
+    "regions": null
+  },
+  {
+    "name": "SePersonnummerRecognizer",
+    "entities": [
+      "SE_PERSONNUMMER"
+    ],
+    "context": [
+      "personnummer",
+      "svenskt personnummer",
+      "svensk id",
+      "ssn",
+      "personal identity number",
+      "samordningsnummer"
+    ],
+    "regions": null
+  },
+  {
+    "name": "SgFinRecognizer",
+    "entities": [
+      "SG_NRIC_FIN"
+    ],
+    "context": [
+      "fin",
+      "fin#",
+      "nric",
+      "nric#"
+    ],
+    "regions": null
+  },
+  {
+    "name": "SgUenRecognizer",
+    "entities": [
+      "SG_UEN"
+    ],
+    "context": [
+      "uen",
+      "unique entity number",
+      "business registration",
+      "ACRA"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ThTninRecognizer",
+    "entities": [
+      "TH_TNIN"
+    ],
+    "context": [
+      "Thai National ID",
+      "Thai ID Number",
+      "TNIN",
+      "\u0e40\u0e25\u0e02\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e15\u0e31\u0e27\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19",
+      "\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19",
+      "\u0e23\u0e2b\u0e31\u0e2a\u0e1b\u0e0a\u0e0a"
+    ],
+    "regions": null
+  },
+  {
+    "name": "TrLicensePlateRecognizer",
+    "entities": [
+      "TR_LICENSE_PLATE"
+    ],
+    "context": [
+      "plaka",
+      "ara\u00e7 plakas\u0131",
+      "plaka numaras\u0131",
+      "kay\u0131t plakas\u0131",
+      "tr plaka",
+      "license plate",
+      "number plate",
+      "plate",
+      "ta\u015f\u0131t plakas\u0131",
+      "kay\u0131t"
+    ],
+    "regions": null
+  },
+  {
+    "name": "TrNationalIdRecognizer",
+    "entities": [
+      "TR_NATIONAL_ID"
+    ],
+    "context": [
+      "tc kimlik",
+      "kimlik no",
+      "kimlik numaras\u0131",
+      "tckn",
+      "tc no",
+      "n\u00fcfus c\u00fczdan\u0131",
+      "national id",
+      "turkish id",
+      "t\u00fcrk kimlik"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UkDrivingLicenceRecognizer",
+    "entities": [
+      "UK_DRIVING_LICENCE"
+    ],
+    "context": [
+      "driving licence",
+      "driving license",
+      "driver's licence",
+      "driver's license",
+      "dvla",
+      "dl number",
+      "licence number",
+      "license number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UkNinoRecognizer",
+    "entities": [
+      "UK_NINO"
+    ],
+    "context": [
+      "national insurance",
+      "ni number",
+      "nino"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UkPassportRecognizer",
+    "entities": [
+      "UK_PASSPORT"
+    ],
+    "context": [
+      "passport",
+      "passport number",
+      "travel document",
+      "uk passport",
+      "british passport",
+      "her majesty",
+      "his majesty",
+      "hm passport",
+      "hmpo"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UkPostcodeRecognizer",
+    "entities": [
+      "UK_POSTCODE"
+    ],
+    "context": [
+      "postcode",
+      "post code",
+      "postal code",
+      "zip",
+      "address",
+      "delivery",
+      "mailing",
+      "shipping",
+      "correspondence"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UkVehicleRegistrationRecognizer",
+    "entities": [
+      "UK_VEHICLE_REGISTRATION"
+    ],
+    "context": [
+      "vehicle",
+      "registration",
+      "number plate",
+      "licence plate",
+      "license plate",
+      "reg",
+      "vrn",
+      "dvla",
+      "v5c",
+      "logbook",
+      "mot",
+      "car",
+      "insured vehicle"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsMbiRecognizer",
+    "entities": [
+      "US_MBI"
+    ],
+    "context": [
+      "medicare",
+      "mbi",
+      "beneficiary",
+      "cms",
+      "medicaid",
+      "hic",
+      "hicn"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsNpiRecognizer",
+    "entities": [
+      "US_NPI"
+    ],
+    "context": [
+      "npi",
+      "national provider",
+      "provider",
+      "npi number",
+      "provider id",
+      "provider identifier",
+      "taxonomy"
+    ],
+    "regions": null
+  },
+  {
+    "name": "ZaIdNumberRecognizer",
+    "entities": [
+      "ZA_ID_NUMBER"
+    ],
+    "context": [
+      "id",
+      "identity",
+      "identity number",
+      "id number",
+      "south african id",
+      "rsa id",
+      "smart id",
+      "national id"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsStreetAddressRecognizer",
+    "entities": [
+      "ADDRESS"
+    ],
+    "context": [
+      "address",
+      "lives",
+      "living",
+      "resides",
+      "residence",
+      "located",
+      "location",
+      "mailing",
+      "billing",
+      "shipping",
+      "ship",
+      "deliver",
+      "street",
+      "home",
+      "office",
+      "moved"
+    ],
+    "regions": null
+  },
+  {
+    "name": "InternationalAddressRecognizer",
+    "entities": [
+      "ADDRESS"
+    ],
+    "context": [
+      "address",
+      "lives",
+      "living",
+      "resides",
+      "residence",
+      "located",
+      "location",
+      "mailing",
+      "billing",
+      "shipping",
+      "ship",
+      "deliver",
+      "street",
+      "home",
+      "office",
+      "moved"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsZipCodeRecognizer",
+    "entities": [
+      "US_ZIP_CODE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "KnownApiKeyFormatsRecognizer",
+    "entities": [
+      "API_KEY"
+    ],
+    "context": [
+      "key",
+      "token",
+      "secret",
+      "api"
+    ],
+    "regions": null
+  },
+  {
+    "name": "JwtRecognizer",
+    "entities": [
+      "AUTH_TOKEN"
+    ],
+    "context": [
+      "token",
+      "bearer",
+      "authorization",
+      "jwt"
+    ],
+    "regions": null
+  },
+  {
+    "name": "PrivateKeyRecognizer",
+    "entities": [
+      "PRIVATE_KEY"
+    ],
+    "context": null,
+    "regions": null
+  },
+  {
+    "name": "LabeledApiKeyRecognizer",
+    "entities": [
+      "API_KEY"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledPasswordRecognizer",
+    "entities": [
+      "PASSWORD"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsernameRecognizer",
+    "entities": [
+      "USERNAME"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "BareUserLabelRecognizer",
+    "entities": [
+      "USERNAME"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "SocialHandleRecognizer",
+    "entities": [
+      "SOCIAL_HANDLE"
+    ],
+    "context": [
+      "twitter",
+      "instagram",
+      "handle",
+      "follow",
+      "social"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledCardCvvRecognizer",
+    "entities": [
+      "CARD_CVV"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledCardExpiryRecognizer",
+    "entities": [
+      "CARD_EXPIRY"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsPassportRecognizer",
+    "entities": [
+      "US_PASSPORT"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsBankNumberRecognizer",
+    "entities": [
+      "US_BANK_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsEinRecognizer",
+    "entities": [
+      "US_EIN"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "EinShapeRecognizer",
+    "entities": [
+      "US_EIN"
+    ],
+    "context": [
+      "ein",
+      "employer",
+      "tax",
+      "irs",
+      "federal"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UsPhoneFormatRecognizer",
+    "entities": [
+      "PHONE_NUMBER"
+    ],
+    "context": [
+      "phone",
+      "call",
+      "tel",
+      "mobile",
+      "cell",
+      "fax",
+      "contact",
+      "reach"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledDateOfBirthRecognizer",
+    "entities": [
+      "DATE_OF_BIRTH"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledAgeRecognizer",
+    "entities": [
+      "AGE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "YearsOldRecognizer",
+    "entities": [
+      "AGE"
+    ],
+    "context": null,
+    "regions": null
+  },
+  {
+    "name": "LabeledSalaryRecognizer",
+    "entities": [
+      "SALARY"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledGenderRecognizer",
+    "entities": [
+      "GENDER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledEthnicityRecognizer",
+    "entities": [
+      "ETHNICITY"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledEmployeeIdRecognizer",
+    "entities": [
+      "EMPLOYEE_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledStudentIdRecognizer",
+    "entities": [
+      "STUDENT_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "VinRecognizer",
+    "entities": [
+      "VIN"
+    ],
+    "context": [
+      "vin",
+      "vehicle",
+      "chassis",
+      "car"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledVinRecognizer",
+    "entities": [
+      "VIN"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "ImeiRecognizer",
+    "entities": [
+      "IMEI"
+    ],
+    "context": [
+      "imei",
+      "device",
+      "phone",
+      "handset"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledImeiRecognizer",
+    "entities": [
+      "IMEI"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "GpsRecognizer",
+    "entities": [
+      "GPS_COORDINATES"
+    ],
+    "context": [
+      "coordinates",
+      "gps",
+      "lat",
+      "lon",
+      "latitude",
+      "longitude",
+      "location",
+      "geo"
+    ],
+    "regions": null
+  },
+  {
+    "name": "UuidRecognizer",
+    "entities": [
+      "UUID"
+    ],
+    "context": [
+      "uuid",
+      "guid",
+      "device",
+      "id",
+      "session"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledSwiftRecognizer",
+    "entities": [
+      "SWIFT_BIC"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledMedicalRecordNumberRecognizer",
+    "entities": [
+      "MEDICAL_RECORD_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledInsuranceIdRecognizer",
+    "entities": [
+      "INSURANCE_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledAccountIdRecognizer",
+    "entities": [
+      "ACCOUNT_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledLicensePlateRecognizer",
+    "entities": [
+      "LICENSE_PLATE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledSerialNumberRecognizer",
+    "entities": [
+      "SERIAL_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledBiometricIdRecognizer",
+    "entities": [
+      "BIOMETRIC_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledSessionIdRecognizer",
+    "entities": [
+      "SESSION_ID"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledPassportNumberRecognizer",
+    "entities": [
+      "PASSPORT_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledNationalIdNumberRecognizer",
+    "entities": [
+      "NATIONAL_ID_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledDriverLicenseNumberRecognizer",
+    "entities": [
+      "DRIVER_LICENSE_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledProfessionalLicenseRecognizer",
+    "entities": [
+      "PROFESSIONAL_LICENSE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledTaxIdNumberRecognizer",
+    "entities": [
+      "TAX_ID_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledUsAlienNumberRecognizer",
+    "entities": [
+      "US_ALIEN_NUMBER"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "AlienNumberShapeRecognizer",
+    "entities": [
+      "US_ALIEN_NUMBER"
+    ],
+    "context": [
+      "alien",
+      "uscis",
+      "immigration",
+      "green card",
+      "a-number"
+    ],
+    "regions": null
+  },
+  {
+    "name": "EthereumAddressRecognizer",
+    "entities": [
+      "CRYPTO"
+    ],
+    "context": [
+      "ethereum",
+      "eth",
+      "wallet",
+      "address",
+      "crypto"
+    ],
+    "regions": null
+  },
+  {
+    "name": "LabeledCreditScoreRecognizer",
+    "entities": [
+      "CREDIT_SCORE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledMaritalStatusRecognizer",
+    "entities": [
+      "MARITAL_STATUS"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledSexualOrientationRecognizer",
+    "entities": [
+      "SEXUAL_ORIENTATION"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledReligionRecognizer",
+    "entities": [
+      "RELIGION"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledPoliticalAffiliationRecognizer",
+    "entities": [
+      "POLITICAL_AFFILIATION"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledDateOfDeathRecognizer",
+    "entities": [
+      "DATE_OF_DEATH"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledAdmissionDateRecognizer",
+    "entities": [
+      "ADMISSION_DATE"
+    ],
+    "context": [],
+    "regions": null
+  },
+  {
+    "name": "LabeledDischargeDateRecognizer",
+    "entities": [
+      "DISCHARGE_DATE"
+    ],
+    "context": [],
+    "regions": null
+  }
+]

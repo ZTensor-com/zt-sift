@@ -1,0 +1,3325 @@
+{
+  "mode": "remote",
+  "init_ms": null,
+  "results": [
+    {
+      "name": "user_sample",
+      "category": "sample",
+      "bytes": 1520,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 109.683,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "user_sample_raw",
+      "category": "sample_raw",
+      "bytes": 1520,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 100.125,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_AGE",
+      "category": "canonical",
+      "bytes": 7,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 98.627,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_GENDER",
+      "category": "canonical",
+      "bytes": 14,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 100.296,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_ETHNICITY",
+      "category": "canonical",
+      "bytes": 19,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 125.048,
+      "body": {
+        "count": 1,
+        "counts": {
+          "ETHNICITY": 1
+        },
+        "detections": [
+          {
+            "text": "Hispanic",
+            "entity": "ETHNICITY",
+            "start": 11,
+            "end": 19,
+            "score": 0.75
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_MARITAL_STATUS",
+      "category": "canonical",
+      "bytes": 23,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 120.222,
+      "body": {
+        "count": 1,
+        "counts": {
+          "MARITAL_STATUS": 1
+        },
+        "detections": [
+          {
+            "text": "married",
+            "entity": "MARITAL_STATUS",
+            "start": 16,
+            "end": 23,
+            "score": 0.7
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_SEXUAL_ORIENTATION",
+      "category": "canonical",
+      "bytes": 28,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 102.528,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_RELIGION",
+      "category": "canonical",
+      "bytes": 18,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 128.942,
+      "body": {
+        "count": 1,
+        "counts": {
+          "RELIGION": 1
+        },
+        "detections": [
+          {
+            "text": "Catholic",
+            "entity": "RELIGION",
+            "start": 10,
+            "end": 18,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_POLITICAL_AFFILIATION",
+      "category": "canonical",
+      "bytes": 31,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 123.233,
+      "body": {
+        "count": 1,
+        "counts": {
+          "POLITICAL_AFFILIATION": 1
+        },
+        "detections": [
+          {
+            "text": "Democrat",
+            "entity": "POLITICAL_AFFILIATION",
+            "start": 23,
+            "end": 31,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_CREDIT_SCORE",
+      "category": "canonical",
+      "bytes": 17,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 105.478,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_DATE_OF_BIRTH",
+      "category": "canonical",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 170.342,
+      "body": {
+        "count": 1,
+        "counts": {
+          "DATE_OF_BIRTH": 1
+        },
+        "detections": [
+          {
+            "text": "1989-03-14",
+            "entity": "DATE_OF_BIRTH",
+            "start": 5,
+            "end": 15,
+            "score": 0.9
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_ADDRESS",
+      "category": "canonical",
+      "bytes": 53,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 150.77,
+      "body": {
+        "count": 1,
+        "counts": {
+          "ADDRESS": 1
+        },
+        "detections": [
+          {
+            "text": "742 Evergreen Terrace, Springfield, IL 62704",
+            "entity": "ADDRESS",
+            "start": 9,
+            "end": 53,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_US_ZIP_CODE",
+      "category": "canonical",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 304.351,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_ZIP_CODE": 1
+        },
+        "detections": [
+          {
+            "text": "62704-1234",
+            "entity": "US_ZIP_CODE",
+            "start": 5,
+            "end": 15,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_PHONE_NUMBER",
+      "category": "canonical",
+      "bytes": 19,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 218.67,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PHONE_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "(201) 555-0123",
+            "entity": "PHONE_NUMBER",
+            "start": 5,
+            "end": 19,
+            "score": 0.6
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_SALARY",
+      "category": "canonical",
+      "bytes": 15,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 99.262,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_US_EIN",
+      "category": "canonical",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 167.227,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_EIN": 1
+        },
+        "detections": [
+          {
+            "text": "12-3456789",
+            "entity": "US_EIN",
+            "start": 5,
+            "end": 15,
+            "score": 0.9
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_EMPLOYEE_ID",
+      "category": "canonical",
+      "bytes": 23,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 135.382,
+      "body": {
+        "count": 1,
+        "counts": {
+          "EMPLOYEE_ID": 1
+        },
+        "detections": [
+          {
+            "text": "EMP-016973",
+            "entity": "EMPLOYEE_ID",
+            "start": 13,
+            "end": 23,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_STUDENT_ID",
+      "category": "canonical",
+      "bytes": 21,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 94.66,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_ACCOUNT_ID",
+      "category": "canonical",
+      "bytes": 24,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 171.893,
+      "body": {
+        "count": 1,
+        "counts": {
+          "ACCOUNT_ID": 1
+        },
+        "detections": [
+          {
+            "text": "CUST-884213",
+            "entity": "ACCOUNT_ID",
+            "start": 13,
+            "end": 24,
+            "score": 0.75
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_US_PASSPORT",
+      "category": "canonical",
+      "bytes": 22,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 98.763,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_PASSPORT_NUMBER",
+      "category": "canonical",
+      "bytes": 18,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 125.282,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PASSPORT_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "K1234567",
+            "entity": "PASSPORT_NUMBER",
+            "start": 10,
+            "end": 18,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_DRIVER_LICENSE_NUMBER",
+      "category": "canonical",
+      "bytes": 24,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 125.312,
+      "body": {
+        "count": 1,
+        "counts": {
+          "DRIVER_LICENSE_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "L8227257",
+            "entity": "DRIVER_LICENSE_NUMBER",
+            "start": 16,
+            "end": 24,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_NATIONAL_ID_NUMBER",
+      "category": "canonical",
+      "bytes": 21,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 97.474,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_TAX_ID_NUMBER",
+      "category": "canonical",
+      "bytes": 23,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 167.392,
+      "body": {
+        "count": 1,
+        "counts": {
+          "TAX_ID_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "98-7654321",
+            "entity": "TAX_ID_NUMBER",
+            "start": 13,
+            "end": 23,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_US_ALIEN_NUMBER",
+      "category": "canonical",
+      "bytes": 37,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 122.683,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_ALIEN_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "A123456789",
+            "entity": "US_ALIEN_NUMBER",
+            "start": 27,
+            "end": 37,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_PROFESSIONAL_LICENSE",
+      "category": "canonical",
+      "bytes": 26,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 141.62,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PROFESSIONAL_LICENSE": 1
+        },
+        "detections": [
+          {
+            "text": "RN-445566",
+            "entity": "PROFESSIONAL_LICENSE",
+            "start": 17,
+            "end": 26,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_US_BANK_NUMBER",
+      "category": "canonical",
+      "bytes": 24,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 161.786,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_BANK_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "3982583440",
+            "entity": "US_BANK_NUMBER",
+            "start": 14,
+            "end": 24,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_CARD_CVV",
+      "category": "canonical",
+      "bytes": 8,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 124.365,
+      "body": {
+        "count": 1,
+        "counts": {
+          "CARD_CVV": 1
+        },
+        "detections": [
+          {
+            "text": "737",
+            "entity": "CARD_CVV",
+            "start": 5,
+            "end": 8,
+            "score": 0.88
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_CARD_EXPIRY",
+      "category": "canonical",
+      "bytes": 13,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 97.624,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_SWIFT_BIC",
+      "category": "canonical",
+      "bytes": 18,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 131.039,
+      "body": {
+        "count": 1,
+        "counts": {
+          "SWIFT_BIC": 1
+        },
+        "detections": [
+          {
+            "text": "DEUTDEFF500",
+            "entity": "SWIFT_BIC",
+            "start": 7,
+            "end": 18,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_CRYPTO",
+      "category": "canonical",
+      "bytes": 59,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 131.613,
+      "body": {
+        "count": 1,
+        "counts": {
+          "CRYPTO": 1
+        },
+        "detections": [
+          {
+            "text": "0x52908400098527886E0F7030069857D2E4169EE7",
+            "entity": "CRYPTO",
+            "start": 17,
+            "end": 59,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_MEDICAL_RECORD_NUMBER",
+      "category": "canonical",
+      "bytes": 13,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 137.314,
+      "body": {
+        "count": 1,
+        "counts": {
+          "MEDICAL_RECORD_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "00482913",
+            "entity": "MEDICAL_RECORD_NUMBER",
+            "start": 5,
+            "end": 13,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_INSURANCE_ID",
+      "category": "canonical",
+      "bytes": 30,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 121.911,
+      "body": {
+        "count": 1,
+        "counts": {
+          "INSURANCE_ID": 1
+        },
+        "detections": [
+          {
+            "text": "ZXC123456789",
+            "entity": "INSURANCE_ID",
+            "start": 18,
+            "end": 30,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_ADMISSION_DATE",
+      "category": "canonical",
+      "bytes": 25,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 134.214,
+      "body": {
+        "count": 1,
+        "counts": {
+          "ADMISSION_DATE": 1
+        },
+        "detections": [
+          {
+            "text": "March 2, 2024",
+            "entity": "ADMISSION_DATE",
+            "start": 12,
+            "end": 25,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_DISCHARGE_DATE",
+      "category": "canonical",
+      "bytes": 26,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 119.978,
+      "body": {
+        "count": 1,
+        "counts": {
+          "DISCHARGE_DATE": 1
+        },
+        "detections": [
+          {
+            "text": "03/09/2024",
+            "entity": "DISCHARGE_DATE",
+            "start": 16,
+            "end": 26,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_DATE_OF_DEATH",
+      "category": "canonical",
+      "bytes": 18,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 101.127,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_USERNAME",
+      "category": "canonical",
+      "bytes": 19,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 119.251,
+      "body": {
+        "count": 1,
+        "counts": {
+          "USERNAME": 1
+        },
+        "detections": [
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 10,
+            "end": 19,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_PASSWORD",
+      "category": "canonical",
+      "bytes": 24,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 100.233,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_SOCIAL_HANDLE",
+      "category": "canonical",
+      "bytes": 17,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 121.435,
+      "body": {
+        "count": 1,
+        "counts": {
+          "SOCIAL_HANDLE": 1
+        },
+        "detections": [
+          {
+            "text": "@sarah_j89",
+            "entity": "SOCIAL_HANDLE",
+            "start": 7,
+            "end": 17,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_API_KEY",
+      "category": "canonical",
+      "bytes": 29,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 118.473,
+      "body": {
+        "count": 1,
+        "counts": {
+          "API_KEY": 1
+        },
+        "detections": [
+          {
+            "text": "AKIAIOSFODNN7EXAMPLE",
+            "entity": "API_KEY",
+            "start": 9,
+            "end": 29,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_AUTH_TOKEN",
+      "category": "canonical",
+      "bytes": 85,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 132.816,
+      "body": {
+        "count": 1,
+        "counts": {
+          "AUTH_TOKEN": 1
+        },
+        "detections": [
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "AUTH_TOKEN",
+            "start": 7,
+            "end": 85,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_SESSION_ID",
+      "category": "canonical",
+      "bytes": 44,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.887,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_BIOMETRIC_ID",
+      "category": "canonical",
+      "bytes": 50,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.515,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "canonical_PRIVATE_KEY",
+      "category": "canonical",
+      "bytes": 31,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 137.207,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PRIVATE_KEY": 1
+        },
+        "detections": [
+          {
+            "text": "-----BEGIN RSA PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 0,
+            "end": 31,
+            "score": 0.99
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_VIN",
+      "category": "canonical",
+      "bytes": 22,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 142.125,
+      "body": {
+        "count": 1,
+        "counts": {
+          "VIN": 1
+        },
+        "detections": [
+          {
+            "text": "1HGCM82633A004352",
+            "entity": "VIN",
+            "start": 5,
+            "end": 22,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_LICENSE_PLATE",
+      "category": "canonical",
+      "bytes": 22,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 143.907,
+      "body": {
+        "count": 1,
+        "counts": {
+          "LICENSE_PLATE": 1
+        },
+        "detections": [
+          {
+            "text": "7ABC123",
+            "entity": "LICENSE_PLATE",
+            "start": 15,
+            "end": 22,
+            "score": 0.8
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_IMEI",
+      "category": "canonical",
+      "bytes": 21,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 151.829,
+      "body": {
+        "count": 1,
+        "counts": {
+          "IMEI": 1
+        },
+        "detections": [
+          {
+            "text": "490154203237518",
+            "entity": "IMEI",
+            "start": 6,
+            "end": 21,
+            "score": 0.88
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_SERIAL_NUMBER",
+      "category": "canonical",
+      "bytes": 25,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 140.008,
+      "body": {
+        "count": 1,
+        "counts": {
+          "SERIAL_NUMBER": 1
+        },
+        "detections": [
+          {
+            "text": "SN48210937",
+            "entity": "SERIAL_NUMBER",
+            "start": 15,
+            "end": 25,
+            "score": 0.75
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_UUID",
+      "category": "canonical",
+      "bytes": 43,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 149.743,
+      "body": {
+        "count": 1,
+        "counts": {
+          "UUID": 1
+        },
+        "detections": [
+          {
+            "text": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+            "entity": "UUID",
+            "start": 7,
+            "end": 43,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "canonical_GPS_COORDINATES",
+      "category": "canonical",
+      "bytes": 31,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 216.115,
+      "body": {
+        "count": 1,
+        "counts": {
+          "GPS_COORDINATES": 1
+        },
+        "detections": [
+          {
+            "text": "40.71278, -74.00594",
+            "entity": "GPS_COORDINATES",
+            "start": 12,
+            "end": 31,
+            "score": 0.7
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "lower_address",
+      "category": "variant",
+      "bytes": 53,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 170.386,
+      "body": {
+        "count": 1,
+        "counts": {
+          "LOCATION": 1
+        },
+        "detections": [
+          {
+            "text": "springfield",
+            "entity": "LOCATION",
+            "start": 32,
+            "end": 43,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "springfield",
+            "entity": "LOCATION",
+            "start": 32,
+            "end": 43,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "742 evergreen terrace, springfield, il 62704",
+            "entities": [
+              "ADDRESS"
+            ],
+            "start": 9,
+            "end": 53,
+            "overlapping": [
+              {
+                "text": "springfield",
+                "entity": "LOCATION",
+                "start": 32,
+                "end": 43,
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "upper_address",
+      "category": "variant",
+      "bytes": 53,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 112.276,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "india_address",
+      "category": "variant",
+      "bytes": 57,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 158.606,
+      "body": {
+        "count": 3,
+        "counts": {
+          "ADDRESS": 1,
+          "DATE_TIME": 1,
+          "LOCATION": 1
+        },
+        "detections": [
+          {
+            "text": "12 MG Road, Bengaluru",
+            "entity": "ADDRESS",
+            "start": 18,
+            "end": 39,
+            "score": 0.95
+          },
+          {
+            "text": "Karnataka",
+            "entity": "LOCATION",
+            "start": 41,
+            "end": 50,
+            "score": 0.85
+          },
+          {
+            "text": "560001",
+            "entity": "DATE_TIME",
+            "start": 51,
+            "end": 57,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "12 MG Road, Bengaluru",
+            "entity": "ADDRESS",
+            "start": 18,
+            "end": 39,
+            "score": 0.95
+          },
+          {
+            "text": "Karnataka",
+            "entity": "LOCATION",
+            "start": 41,
+            "end": 50,
+            "score": 0.85
+          },
+          {
+            "text": "560001",
+            "entity": "DATE_TIME",
+            "start": 51,
+            "end": 57,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "Flat 4B, 12 MG Road, Bengaluru, Karnataka 560001",
+            "entities": [
+              "ADDRESS"
+            ],
+            "start": 9,
+            "end": 57,
+            "overlapping": [
+              {
+                "text": "12 MG Road, Bengaluru",
+                "entity": "ADDRESS",
+                "start": 18,
+                "end": 39,
+                "score": 0.95
+              },
+              {
+                "text": "Karnataka",
+                "entity": "LOCATION",
+                "start": 41,
+                "end": 50,
+                "score": 0.85
+              },
+              {
+                "text": "560001",
+                "entity": "DATE_TIME",
+                "start": 51,
+                "end": 57,
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "lower_name",
+      "category": "variant",
+      "bytes": 38,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 138.074,
+      "body": {
+        "count": 2,
+        "counts": {
+          "DATE_TIME": 1,
+          "PERSON": 1
+        },
+        "detections": [
+          {
+            "text": "sarah johnson",
+            "entity": "PERSON",
+            "start": 15,
+            "end": 28,
+            "score": 0.85
+          },
+          {
+            "text": "tomorrow",
+            "entity": "DATE_TIME",
+            "start": 29,
+            "end": 37,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "tomorrow",
+            "entity": "DATE_TIME",
+            "start": 29,
+            "end": 37,
+            "score": 0.85
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "hindi_name",
+      "category": "variant",
+      "bytes": 36,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 134.305,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "आरव शर्मा",
+            "entities": [
+              "PERSON"
+            ],
+            "start": 5,
+            "end": 14,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "short_password",
+      "category": "variant",
+      "bytes": 13,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 118.329,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "dictionary_password",
+      "category": "variant",
+      "bytes": 16,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 139.392,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "secret",
+            "entities": [
+              "PASSWORD"
+            ],
+            "start": 10,
+            "end": 16,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "quoted_passphrase",
+      "category": "variant",
+      "bytes": 40,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.117,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "punctuation_password",
+      "category": "variant",
+      "bytes": 19,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.13,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "escaped_password",
+      "category": "variant",
+      "bytes": 30,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.664,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "short_username",
+      "category": "variant",
+      "bytes": 12,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 141.974,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PERSON": 1
+        },
+        "detections": [
+          {
+            "text": "jo",
+            "entity": "PERSON",
+            "start": 10,
+            "end": 12,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "jo",
+            "entity": "PERSON",
+            "start": 10,
+            "end": 12,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "jo",
+            "entities": [
+              "USERNAME"
+            ],
+            "start": 10,
+            "end": 12,
+            "overlapping": [
+              {
+                "text": "jo",
+                "entity": "PERSON",
+                "start": 10,
+                "end": 12,
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "hyphenated_social",
+      "category": "variant",
+      "bytes": 17,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 142.352,
+      "body": {
+        "count": 1,
+        "counts": {
+          "SOCIAL_HANDLE": 1
+        },
+        "detections": [
+          {
+            "text": "@sarah",
+            "entity": "SOCIAL_HANDLE",
+            "start": 7,
+            "end": 13,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "@sarah",
+            "entity": "SOCIAL_HANDLE",
+            "start": 7,
+            "end": 13,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "@sarah-j89",
+            "entities": [
+              "SOCIAL_HANDLE"
+            ],
+            "start": 7,
+            "end": 17,
+            "overlapping": [
+              {
+                "text": "@sarah",
+                "entity": "SOCIAL_HANDLE",
+                "start": 7,
+                "end": 13,
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "plain_salary",
+      "category": "variant",
+      "bytes": 13,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 150.37,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "85000",
+            "entities": [
+              "SALARY"
+            ],
+            "start": 8,
+            "end": 13,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "indian_salary",
+      "category": "variant",
+      "bytes": 20,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 115.021,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "spaced_bank",
+      "category": "variant",
+      "bytes": 28,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 117.989,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "hyphen_student",
+      "category": "variant",
+      "bytes": 22,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.212,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "alphanumeric_employee",
+      "category": "variant",
+      "bytes": 22,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 126.231,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "json_camel_birth",
+      "category": "variant",
+      "bytes": 28,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.373,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "json_camel_medical",
+      "category": "variant",
+      "bytes": 38,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.132,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "polite_label",
+      "category": "variant",
+      "bytes": 35,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 151.664,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PASSWORD": 1
+        },
+        "detections": [
+          {
+            "text": "actually",
+            "entity": "PASSWORD",
+            "start": 12,
+            "end": 20,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "actually",
+            "entity": "PASSWORD",
+            "start": 12,
+            "end": 20,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "Sup3rS3cret!42",
+            "entities": [
+              "PASSWORD"
+            ],
+            "start": 21,
+            "end": 35,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "incomplete_dob",
+      "category": "variant",
+      "bytes": 13,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 145.681,
+      "body": {
+        "count": 1,
+        "counts": {
+          "DATE_TIME": 1
+        },
+        "detections": [
+          {
+            "text": "March 14",
+            "entity": "DATE_TIME",
+            "start": 5,
+            "end": 13,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "March 14",
+            "entity": "DATE_TIME",
+            "start": 5,
+            "end": 13,
+            "score": 0.85
+          }
+        ],
+        "misses": [
+          {
+            "text": "March 14",
+            "entities": [
+              "DATE_OF_BIRTH"
+            ],
+            "start": 5,
+            "end": 13,
+            "overlapping": [
+              {
+                "text": "March 14",
+                "entity": "DATE_TIME",
+                "start": 5,
+                "end": 13,
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "uuid_v7",
+      "category": "variant",
+      "bytes": 43,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 117.971,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "integer_gps",
+      "category": "variant",
+      "bytes": 24,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 150.274,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "40, -74",
+            "entities": [
+              "GPS_COORDINATES"
+            ],
+            "start": 17,
+            "end": 24,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "antimeridian_gps",
+      "category": "variant",
+      "bytes": 32,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 115.632,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "two_decimal_gps",
+      "category": "variant",
+      "bytes": 26,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 177.754,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "40.71, -74.00",
+            "entities": [
+              "GPS_COORDINATES"
+            ],
+            "start": 13,
+            "end": 26,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "full_private_key",
+      "category": "variant",
+      "bytes": 66,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 138.639,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PRIVATE_KEY": 1
+        },
+        "detections": [
+          {
+            "text": "-----BEGIN PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 0,
+            "end": 27,
+            "score": 0.99
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "-----BEGIN PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 0,
+            "end": 27,
+            "score": 0.99
+          }
+        ],
+        "misses": [
+          {
+            "text": "-----BEGIN PRIVATE KEY-----\nQUJDREVGRw==\n-----END PRIVATE KEY-----",
+            "entities": [
+              "PRIVATE_KEY"
+            ],
+            "start": 0,
+            "end": 66,
+            "overlapping": [
+              {
+                "text": "-----BEGIN PRIVATE KEY-----",
+                "entity": "PRIVATE_KEY",
+                "start": 0,
+                "end": 27,
+                "score": 0.99
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "long_api_key",
+      "category": "variant",
+      "bytes": 249,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 119.037,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "long_session",
+      "category": "variant",
+      "bytes": 152,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 137.715,
+      "body": {
+        "count": 1,
+        "counts": {
+          "SESSION_ID": 1
+        },
+        "detections": [
+          {
+            "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "entity": "SESSION_ID",
+            "start": 12,
+            "end": 140,
+            "score": 0.75
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "entity": "SESSION_ID",
+            "start": 12,
+            "end": 140,
+            "score": 0.75
+          }
+        ],
+        "misses": [
+          {
+            "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "entities": [
+              "SESSION_ID"
+            ],
+            "start": 12,
+            "end": 152,
+            "overlapping": [
+              {
+                "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "entity": "SESSION_ID",
+                "start": 12,
+                "end": 140,
+                "score": 0.75
+              }
+            ]
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "duplicate_emails",
+      "category": "variant",
+      "bytes": 37,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 141.41,
+      "body": {
+        "count": 2,
+        "counts": {
+          "EMAIL_ADDRESS": 2
+        },
+        "detections": [
+          {
+            "text": "jane@example.com",
+            "entity": "EMAIL_ADDRESS",
+            "start": 0,
+            "end": 16,
+            "score": 1.0
+          },
+          {
+            "text": "jane@example.com",
+            "entity": "EMAIL_ADDRESS",
+            "start": 21,
+            "end": 37,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 2,
+        "exact_hits": 2,
+        "typed_overlap_hits": 2,
+        "any_overlap_hits": 2,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "emoji_offsets",
+      "category": "variant",
+      "bytes": 30,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 138.696,
+      "body": {
+        "count": 2,
+        "counts": {
+          "EMAIL_ADDRESS": 1,
+          "ORGANIZATION": 1
+        },
+        "detections": [
+          {
+            "text": "😀 Contact",
+            "entity": "ORGANIZATION",
+            "start": 0,
+            "end": 9,
+            "score": 0.85
+          },
+          {
+            "text": "jane@example.com",
+            "entity": "EMAIL_ADDRESS",
+            "start": 10,
+            "end": 26,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [
+          {
+            "text": "😀 Contact",
+            "entity": "ORGANIZATION",
+            "start": 0,
+            "end": 9,
+            "score": 0.85
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "ordinary_prose",
+      "category": "negative",
+      "bytes": 96,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 159.29,
+      "body": {
+        "count": 1,
+        "counts": {
+          "TR_LICENSE_PLATE": 1
+        },
+        "detections": [
+          {
+            "text": "12 of 40",
+            "entity": "TR_LICENSE_PLATE",
+            "start": 87,
+            "end": 95,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "12 of 40",
+            "entity": "TR_LICENSE_PLATE",
+            "start": 87,
+            "end": 95,
+            "score": 1.0
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "filler_label",
+      "category": "negative",
+      "bytes": 21,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 136.91,
+      "body": {
+        "count": 1,
+        "counts": {
+          "PASSWORD": 1
+        },
+        "detections": [
+          {
+            "text": "unavailable",
+            "entity": "PASSWORD",
+            "start": 10,
+            "end": 21,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "unavailable",
+            "entity": "PASSWORD",
+            "start": 10,
+            "end": 21,
+            "score": 0.85
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_vin",
+      "category": "negative",
+      "bytes": 22,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 142.399,
+      "body": {
+        "count": 1,
+        "counts": {
+          "VIN": 1
+        },
+        "detections": [
+          {
+            "text": "1HGCM82633A004353",
+            "entity": "VIN",
+            "start": 5,
+            "end": 22,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "1HGCM82633A004353",
+            "entity": "VIN",
+            "start": 5,
+            "end": 22,
+            "score": 0.85
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_imei",
+      "category": "negative",
+      "bytes": 21,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 151.078,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_date",
+      "category": "negative",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 205.307,
+      "body": {
+        "count": 1,
+        "counts": {
+          "DATE_OF_BIRTH": 1
+        },
+        "detections": [
+          {
+            "text": "99/99/9999",
+            "entity": "DATE_OF_BIRTH",
+            "start": 5,
+            "end": 15,
+            "score": 0.9
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "99/99/9999",
+            "entity": "DATE_OF_BIRTH",
+            "start": 5,
+            "end": 15,
+            "score": 0.9
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_leap_date",
+      "category": "negative",
+      "bytes": 22,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 115.524,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_expiry",
+      "category": "negative",
+      "bytes": 13,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 117.23,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_cvv",
+      "category": "negative",
+      "bytes": 7,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.039,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_credit_score",
+      "category": "negative",
+      "bytes": 17,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.309,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "out_of_range_age",
+      "category": "negative",
+      "bytes": 8,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 152.597,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_years_old",
+      "category": "negative",
+      "bytes": 13,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 115.403,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "out_of_range_gps",
+      "category": "negative",
+      "bytes": 31,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 227.122,
+      "body": {
+        "count": 1,
+        "counts": {
+          "GPS_COORDINATES": 1
+        },
+        "detections": [
+          {
+            "text": "90.12345, 74.12345",
+            "entity": "GPS_COORDINATES",
+            "start": 13,
+            "end": 31,
+            "score": 0.7
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "90.12345, 74.12345",
+            "entity": "GPS_COORDINATES",
+            "start": 13,
+            "end": 31,
+            "score": 0.7
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "numeric_pair",
+      "category": "negative",
+      "bytes": 22,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 188.143,
+      "body": {
+        "count": 1,
+        "counts": {
+          "GPS_COORDINATES": 1
+        },
+        "detections": [
+          {
+            "text": "12.345, 67.890",
+            "entity": "GPS_COORDINATES",
+            "start": 8,
+            "end": 22,
+            "score": 0.7
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "12.345, 67.890",
+            "entity": "GPS_COORDINATES",
+            "start": 8,
+            "end": 22,
+            "score": 0.7
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "non_pii_ids",
+      "category": "negative",
+      "bytes": 80,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 121.165,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "label_substrings",
+      "category": "negative",
+      "bytes": 86,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 117.002,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_card",
+      "category": "negative",
+      "bytes": 25,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.642,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_ssn",
+      "category": "negative",
+      "bytes": 16,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 123.361,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "invalid_ip",
+      "category": "negative",
+      "bytes": 19,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 174.687,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "invalid_postal",
+      "category": "negative",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 170.269,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_ZIP_CODE": 1
+        },
+        "detections": [
+          {
+            "text": "62704",
+            "entity": "US_ZIP_CODE",
+            "start": 5,
+            "end": 10,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 0,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [
+          {
+            "text": "62704",
+            "entity": "US_ZIP_CODE",
+            "start": 5,
+            "end": 10,
+            "score": 0.85
+          }
+        ],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "real_short_organizations",
+      "category": "variant",
+      "bytes": 41,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.122,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "newborn_age",
+      "category": "variant",
+      "bytes": 6,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 143.201,
+      "body": {
+        "count": 0,
+        "counts": {},
+        "detections": []
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 0,
+        "typed_overlap_hits": 0,
+        "any_overlap_hits": 0,
+        "unmatched": [],
+        "misses": [
+          {
+            "text": "0",
+            "entities": [
+              "AGE"
+            ],
+            "start": 5,
+            "end": 6,
+            "overlapping": []
+          }
+        ],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "negated_password",
+      "category": "variant",
+      "bytes": 33,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.061,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "negated_username",
+      "category": "variant",
+      "bytes": 30,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 136.945,
+      "body": {
+        "count": 1,
+        "counts": {
+          "USERNAME": 1
+        },
+        "detections": [
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 21,
+            "end": 30,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_email",
+      "category": "stock",
+      "bytes": 23,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.621,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "stock_card",
+      "category": "stock",
+      "bytes": 25,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 175.896,
+      "body": {
+        "count": 1,
+        "counts": {
+          "CREDIT_CARD": 1
+        },
+        "detections": [
+          {
+            "text": "4111 1111 1111 1111",
+            "entity": "CREDIT_CARD",
+            "start": 6,
+            "end": 25,
+            "score": 1.0
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_ssn",
+      "category": "stock",
+      "bytes": 16,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 181.914,
+      "body": {
+        "count": 1,
+        "counts": {
+          "US_SSN": 1
+        },
+        "detections": [
+          {
+            "text": "219-09-9999",
+            "entity": "US_SSN",
+            "start": 5,
+            "end": 16,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_iban",
+      "category": "stock",
+      "bytes": 33,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.272,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "stock_ipv4",
+      "category": "stock",
+      "bytes": 23,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 191.856,
+      "body": {
+        "count": 1,
+        "counts": {
+          "IP_ADDRESS": 1
+        },
+        "detections": [
+          {
+            "text": "192.168.1.1",
+            "entity": "IP_ADDRESS",
+            "start": 12,
+            "end": 23,
+            "score": 0.95
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_ipv6",
+      "category": "stock",
+      "bytes": 23,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 113.406,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "stock_mac",
+      "category": "stock",
+      "bytes": 30,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 116.183,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "stock_url",
+      "category": "stock",
+      "bytes": 32,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 141.12,
+      "body": {
+        "count": 1,
+        "counts": {
+          "URL": 1
+        },
+        "detections": [
+          {
+            "text": "https://example.com/profile",
+            "entity": "URL",
+            "start": 5,
+            "end": 32,
+            "score": 0.95
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_in_pan",
+      "category": "stock",
+      "bytes": 15,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 136.627,
+      "body": {
+        "count": 1,
+        "counts": {
+          "IN_PAN": 1
+        },
+        "detections": [
+          {
+            "text": "ABCPE1234F",
+            "entity": "IN_PAN",
+            "start": 5,
+            "end": 15,
+            "score": 0.85
+          }
+        ]
+      },
+      "score": {
+        "expected": 1,
+        "exact_hits": 1,
+        "typed_overlap_hits": 1,
+        "any_overlap_hits": 1,
+        "unmatched": [],
+        "misses": [],
+        "invalid_offsets": []
+      }
+    },
+    {
+      "name": "stock_uk_nino",
+      "category": "stock",
+      "bytes": 33,
+      "status": 429,
+      "expected_status": 200,
+      "ms": 114.527,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "request_empty",
+      "category": "request",
+      "bytes": 0,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 169.361,
+      "body": {
+        "error": "No message provided"
+      }
+    },
+    {
+      "name": "request_whitespace",
+      "category": "request",
+      "bytes": 3,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 136.226,
+      "body": {
+        "error": "No message provided"
+      }
+    },
+    {
+      "name": "request_json_null",
+      "category": "request",
+      "bytes": 4,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 127.633,
+      "body": {
+        "error": "Body must be UTF-8 text or JSON of the form {\"text\": \"<message>\"}"
+      }
+    },
+    {
+      "name": "request_json_list",
+      "category": "request",
+      "bytes": 2,
+      "status": 429,
+      "expected_status": 400,
+      "ms": 120.536,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "request_json_number",
+      "category": "request",
+      "bytes": 2,
+      "status": 429,
+      "expected_status": 400,
+      "ms": 111.309,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "request_json_bad",
+      "category": "request",
+      "bytes": 1,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 142.197,
+      "body": {
+        "error": "Body must be UTF-8 text or JSON of the form {\"text\": \"<message>\"}"
+      }
+    },
+    {
+      "name": "request_json_nonstring",
+      "category": "request",
+      "bytes": 11,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 129.249,
+      "body": {
+        "error": "JSON body must be {\"text\": \"<message>\"}"
+      }
+    },
+    {
+      "name": "request_json_valid",
+      "category": "request",
+      "bytes": 27,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 144.079,
+      "body": {
+        "count": 1,
+        "counts": {
+          "EMAIL_ADDRESS": 1
+        },
+        "detections": [
+          {
+            "text": "jane@example.com",
+            "entity": "EMAIL_ADDRESS",
+            "start": 0,
+            "end": 16,
+            "score": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_threshold_nan",
+      "category": "request",
+      "bytes": 5,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 133.328,
+      "body": {
+        "error": "threshold must be between 0 and 1"
+      }
+    },
+    {
+      "name": "request_threshold_high",
+      "category": "request",
+      "bytes": 5,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 129.188,
+      "body": {
+        "error": "threshold must be between 0 and 1"
+      }
+    },
+    {
+      "name": "request_unknown_entities",
+      "category": "request",
+      "bytes": 5,
+      "status": 400,
+      "expected_status": 400,
+      "ms": 134.874,
+      "body": {
+        "error": "Unknown entities: BOGUS"
+      }
+    },
+    {
+      "name": "request_empty_entities",
+      "category": "request",
+      "bytes": 16,
+      "status": 200,
+      "expected_status": 200,
+      "ms": 134.164,
+      "body": {
+        "count": 1,
+        "counts": {
+          "EMAIL_ADDRESS": 1
+        },
+        "detections": [
+          {
+            "text": "jane@example.com",
+            "entity": "EMAIL_ADDRESS",
+            "start": 0,
+            "end": 16,
+            "score": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_bad_collapse",
+      "category": "request",
+      "bytes": 5,
+      "status": 429,
+      "expected_status": 400,
+      "ms": 506.117,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "request_over_limit",
+      "category": "request",
+      "bytes": 20001,
+      "status": 429,
+      "expected_status": 413,
+      "ms": 149.073,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    },
+    {
+      "name": "request_byte_limit_unicode",
+      "category": "request",
+      "bytes": 20004,
+      "status": 429,
+      "expected_status": 413,
+      "ms": 153.996,
+      "body": {
+        "message": "Too Many Requests"
+      }
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "short",
+      "bytes": 22,
+      "runs_ms": [
+        139.916,
+        135.133,
+        113.084,
+        116.066,
+        135.867
+      ],
+      "median_ms": 135.133,
+      "max_ms": 139.916,
+      "statuses": [
+        200,
+        200,
+        429,
+        429,
+        200
+      ],
+      "count": 2
+    },
+    {
+      "name": "user_sample",
+      "bytes": 1520,
+      "runs_ms": [
+        107.841,
+        789.091,
+        808.2,
+        774.783,
+        757.294
+      ],
+      "median_ms": 774.783,
+      "max_ms": 808.2,
+      "statuses": [
+        429,
+        200,
+        200,
+        200,
+        200
+      ],
+      "count": 50
+    },
+    {
+      "name": "20k_benign",
+      "bytes": 20000,
+      "runs_ms": [
+        150.904,
+        155.676,
+        149.448,
+        152.155,
+        154.069
+      ],
+      "median_ms": 152.155,
+      "max_ms": 155.676,
+      "statuses": [
+        429,
+        429,
+        429,
+        429,
+        429
+      ],
+      "count": null
+    },
+    {
+      "name": "20k_dense",
+      "bytes": 18240,
+      "runs_ms": [
+        150.651,
+        6311.688,
+        149.377,
+        6267.732,
+        148.726
+      ],
+      "median_ms": 150.651,
+      "max_ms": 6311.688,
+      "statuses": [
+        429,
+        200,
+        429,
+        200,
+        429
+      ],
+      "count": null
+    },
+    {
+      "name": "20k_numeric",
+      "bytes": 20000,
+      "runs_ms": [
+        8527.386,
+        8448.249,
+        8451.789,
+        8515.787,
+        8419.192
+      ],
+      "median_ms": 8451.789,
+      "max_ms": 8527.386,
+      "statuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "count": 0
+    },
+    {
+      "name": "email_only",
+      "bytes": 1520,
+      "runs_ms": [
+        113.728,
+        113.453,
+        112.267,
+        113.04,
+        173.778
+      ],
+      "median_ms": 113.453,
+      "max_ms": 173.778,
+      "statuses": [
+        429,
+        429,
+        429,
+        429,
+        200
+      ],
+      "count": 0
+    },
+    {
+      "name": "no_collapse",
+      "bytes": 1520,
+      "runs_ms": [
+        746.484,
+        114.246,
+        743.253,
+        110.082,
+        776.306
+      ],
+      "median_ms": 743.253,
+      "max_ms": 776.306,
+      "statuses": [
+        200,
+        429,
+        200,
+        429,
+        200
+      ],
+      "count": 81
+    }
+  ],
+  "note": "Five sequential timings per workload; not a load test or controlled cold-start measurement."
+}

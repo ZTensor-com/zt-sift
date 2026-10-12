@@ -1,0 +1,203 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: PII detection API on AWS Lambda (container image with Presidio, spaCy en_core_web_lg and custom recognizers), fronted by API Gateway with an API key
+Parameters:
+  ImageUri:
+    Type: String
+    Description: Existing ECR image URI including immutable tag
+    AllowedPattern: '.+\.dkr\.ecr\..+\.amazonaws\.com/.+:.+'
+  StageName:
+    Type: String
+    Default: dev
+    AllowedPattern: '[a-zA-Z0-9_-]+'
+  MemorySize:
+    Type: Number
+    Default: 3008
+    MinValue: 1024
+    MaxValue: 10240
+    Description: MiB. New AWS accounts are capped at 3008 until a limit increase; CPU share grows with memory
+  TimeoutSeconds:
+    Type: Number
+    Default: 60
+    MinValue: 10
+    MaxValue: 900
+    Description: Function timeout. A cold start loads the models inside the first request, so it must exceed that time
+  ProvisionedConcurrency:
+    Type: Number
+    Default: 0
+    MinValue: 0
+    Description: Warm instances kept loaded (billed continuously). 0 means every idle period ends in a slow cold start
+  ThrottleRate:
+    Type: Number
+    Default: 2
+    Description: Requests per second allowed through the API key
+  ThrottleBurst:
+    Type: Number
+    Default: 4
+  DailyQuota:
+    Type: Number
+    Default: 50000
+  AlarmEmail:
+    Type: String
+    Default: ''
+    Description: Optional address notified on function errors or API server errors
+Conditions:
+  HasAlarmEmail: !Not [!Equals [!Ref AlarmEmail, '']]
+  UsesProvisionedConcurrency: !Not [!Equals [!Ref ProvisionedConcurrency, 0]]
+Resources:
+  FunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: lambda.amazonaws.com}
+            Action: sts:AssumeRole
+      ManagedPolicyArns: [!Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole']
+  DetectFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      PackageType: Image
+      Code: {ImageUri: !Ref ImageUri}
+      Role: !GetAtt FunctionRole.Arn
+      Architectures: [x86_64]
+      MemorySize: !Ref MemorySize
+      Timeout: !Ref TimeoutSeconds
+      Environment:
+        Variables:
+          MAX_BYTES: '20000'
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${DetectFunction}'
+      RetentionInDays: 7
+  # Published versions are frozen snapshots of the function's code and settings. Changing the description
+  # replaces this resource, which publishes a new version, so list everything that should trigger one.
+  FunctionVersion:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref DetectFunction
+      Description: !Sub '${ImageUri} memory=${MemorySize} timeout=${TimeoutSeconds}'
+  FunctionAlias:
+    Type: AWS::Lambda::Alias
+    Properties:
+      FunctionName: !Ref DetectFunction
+      FunctionVersion: !GetAtt FunctionVersion.Version
+      Name: live
+      ProvisionedConcurrencyConfig: !If
+        - UsesProvisionedConcurrency
+        - {ProvisionedConcurrentExecutions: !Ref ProvisionedConcurrency}
+        - !Ref AWS::NoValue
+  RestAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: !Sub '${AWS::StackName}-api'
+      EndpointConfiguration: {Types: [REGIONAL]}
+      ApiKeySourceType: HEADER
+  DetectResource:
+    Type: AWS::ApiGateway::Resource
+    Properties: {RestApiId: !Ref RestAPI, ParentId: !GetAtt RestAPI.RootResourceId, PathPart: detect}
+  DetectMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref RestAPI
+      ResourceId: !Ref DetectResource
+      HttpMethod: POST
+      AuthorizationType: NONE
+      ApiKeyRequired: true
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${FunctionAlias}/invocations'
+  InvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref FunctionAlias
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${RestAPI}/*/POST/detect'
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn: DetectMethod
+    Properties: {RestApiId: !Ref RestAPI}
+  Stage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      RestApiId: !Ref RestAPI
+      DeploymentId: !Ref ApiDeployment
+      StageName: !Ref StageName
+      MethodSettings:
+        - ResourcePath: '/*'
+          HttpMethod: '*'
+          ThrottlingRateLimit: !Ref ThrottleRate
+          ThrottlingBurstLimit: !Ref ThrottleBurst
+          DataTraceEnabled: false
+          LoggingLevel: 'OFF'
+          MetricsEnabled: true
+  APIKey:
+    Type: AWS::ApiGateway::ApiKey
+    Properties:
+      Enabled: true
+      Description: !Sub 'Client key for ${AWS::StackName}; retrieve explicitly, never log'
+  UsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    DependsOn: Stage
+    Properties:
+      ApiStages: [{ApiId: !Ref RestAPI, Stage: !Ref StageName}]
+      Throttle: {RateLimit: !Ref ThrottleRate, BurstLimit: !Ref ThrottleBurst}
+      Quota: {Limit: !Ref DailyQuota, Period: DAY}
+  UsagePlanKey:
+    Type: AWS::ApiGateway::UsagePlanKey
+    Properties:
+      KeyId: !Ref APIKey
+      KeyType: API_KEY
+      UsagePlanId: !Ref UsagePlan
+  AlarmTopic:
+    Type: AWS::SNS::Topic
+    Condition: HasAlarmEmail
+    Properties:
+      Subscription: [{Protocol: email, Endpoint: !Ref AlarmEmail}]
+  FunctionErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: The detection function raised errors
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions: [{Name: FunctionName, Value: !Ref DetectFunction}]
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: !If [HasAlarmEmail, [!Ref AlarmTopic], !Ref 'AWS::NoValue']
+  ServerErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: The API returned server errors (including timeouts during cold starts)
+      Namespace: AWS/ApiGateway
+      MetricName: 5XXError
+      Dimensions:
+        - {Name: ApiName, Value: !Sub '${AWS::StackName}-api'}
+        - {Name: Stage, Value: !Ref StageName}
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: !If [HasAlarmEmail, [!Ref AlarmTopic], !Ref 'AWS::NoValue']
+Outputs:
+  Endpoint:
+    Value: !Sub 'https://${RestAPI}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${StageName}/detect'
+  APIKeyId:
+    Description: API key identifier, not its secret value
+    Value: !Ref APIKey
+  RestApiId:
+    Value: !Ref RestAPI
+  StageNameOut:
+    Value: !Ref StageName
+  FunctionName:
+    Value: !Ref DetectFunction
+  LogGroupName:
+    Value: !Ref LogGroup

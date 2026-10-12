@@ -1,0 +1,6624 @@
+{
+  "records": [
+    {
+      "entity": "CREDIT_CARD",
+      "text": "credit card: 3400 008813 60233",
+      "value": "3400 008813 60233",
+      "start": 13,
+      "end": 30,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "3400 008813 60233",
+          "entity": "CREDIT_CARD",
+          "start": 13,
+          "end": 30,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "3400",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 17,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "3400 008813 60233",
+          "entity": "CREDIT_CARD",
+          "start": 13,
+          "end": 30,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        },
+        {
+          "text": "008813",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 18,
+          "end": 24,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "60233",
+          "entity": "DATE_TIME",
+          "start": 25,
+          "end": 30,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "60233",
+          "entity": "DE_PLZ",
+          "start": 25,
+          "end": 30,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "60233",
+          "entity": "PHONE_NUMBER",
+          "start": 25,
+          "end": 30,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "CREDIT_CARD",
+      "text": "credit: 6011 8319 8561 8216",
+      "value": "6011 8319 8561 8216",
+      "start": 8,
+      "end": 27,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "6011 8319 8561 8216",
+          "entity": "CREDIT_CARD",
+          "start": 8,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "6011",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 12,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "6011 8319 8561",
+          "entity": "IN_AADHAAR",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "InAadhaarRecognizer"
+        },
+        {
+          "text": "6011 8319 8561 8216",
+          "entity": "CREDIT_CARD",
+          "start": 8,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        },
+        {
+          "text": "8319",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 17,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "8561 8216",
+          "entity": "PHONE_NUMBER",
+          "start": 18,
+          "end": 27,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "CRYPTO",
+      "text": "crypto: 3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ",
+      "value": "3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ",
+      "start": 8,
+      "end": 42,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ",
+          "entity": "CRYPTO",
+          "start": 8,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "CryptoRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "3EdJt7eCsSoonRWjBau35orZ42Q1osXXqQ",
+          "entity": "CRYPTO",
+          "start": 8,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "CryptoRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "CRYPTO",
+      "text": "wallet: 1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW",
+      "value": "1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW",
+      "start": 8,
+      "end": 42,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW",
+          "entity": "CRYPTO",
+          "start": 8,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "CryptoRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "1EgZHBDepPzHzsAiPsk39i5egp4HH9nLgW",
+          "entity": "CRYPTO",
+          "start": 8,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "CryptoRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IBAN_CODE",
+      "text": "iban code: BE76 1903 7069 1060",
+      "value": "BE76 1903 7069 1060",
+      "start": 11,
+      "end": 30,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "BE76 1903 7069 1060",
+          "entity": "IBAN_CODE",
+          "start": 11,
+          "end": 30,
+          "score": 1.0,
+          "recognizer": "IbanRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "iban",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 4,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "BE76 1903 7069 1060",
+          "entity": "IBAN_CODE",
+          "start": 11,
+          "end": 30,
+          "score": 1.0,
+          "recognizer": "IbanRecognizer"
+        },
+        {
+          "text": "BE76 1903 7069 1060",
+          "entity": "ORGANIZATION",
+          "start": 11,
+          "end": 30,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "7069",
+          "entity": "PHONE_NUMBER",
+          "start": 21,
+          "end": 25,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IBAN_CODE",
+      "text": "iban: PL16 3420 0679 7013 1119 1779 3640",
+      "value": "PL16 3420 0679 7013 1119 1779 3640",
+      "start": 6,
+      "end": 40,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "PL16 3420 0679 7013 1119 1779 3640",
+          "entity": "IBAN_CODE",
+          "start": 6,
+          "end": 40,
+          "score": 1.0,
+          "recognizer": "IbanRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "iban",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 4,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "PL16 3420 0679 7013 1119 1779 3640",
+          "entity": "IBAN_CODE",
+          "start": 6,
+          "end": 40,
+          "score": 1.0,
+          "recognizer": "IbanRecognizer"
+        },
+        {
+          "text": "3420",
+          "entity": "PHONE_NUMBER",
+          "start": 11,
+          "end": 15,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "0679",
+          "entity": "DATE_TIME",
+          "start": 16,
+          "end": 20,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "7013",
+          "entity": "PHONE_NUMBER",
+          "start": 21,
+          "end": 25,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "1119 1779 3640",
+          "entity": "DATE_TIME",
+          "start": 26,
+          "end": 40,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "3640",
+          "entity": "PHONE_NUMBER",
+          "start": 36,
+          "end": 40,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IP_ADDRESS",
+      "text": "ip address: 138.83.172.147",
+      "value": "138.83.172.147",
+      "start": 12,
+      "end": 26,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "138.83.172.147",
+          "entity": "IP_ADDRESS",
+          "start": 12,
+          "end": 26,
+          "score": 0.95,
+          "recognizer": "IpRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "138.83.172.147",
+          "entity": "IP_ADDRESS",
+          "start": 12,
+          "end": 26,
+          "score": 0.95,
+          "recognizer": "IpRecognizer"
+        },
+        {
+          "text": "138.83.172.147",
+          "entity": "PHONE_NUMBER",
+          "start": 12,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IP_ADDRESS",
+      "text": "ip: 210.119.40.132",
+      "value": "210.119.40.132",
+      "start": 4,
+      "end": 18,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "210.119.40.132",
+          "entity": "IP_ADDRESS",
+          "start": 4,
+          "end": 18,
+          "score": 0.95,
+          "recognizer": "IpRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "210.119.40.132",
+          "entity": "IP_ADDRESS",
+          "start": 4,
+          "end": 18,
+          "score": 0.95,
+          "recognizer": "IpRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "MAC_ADDRESS",
+      "text": "mac address: 3F:3E:E6:48:B3:D3",
+      "value": "3F:3E:E6:48:B3:D3",
+      "start": 13,
+      "end": 30,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "3F:3E:E6:48:B3:D3",
+          "entity": "MAC_ADDRESS",
+          "start": 13,
+          "end": 30,
+          "score": 0.95,
+          "recognizer": "MacAddressRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "3F:3E:E6:48:B3:D3",
+          "entity": "MAC_ADDRESS",
+          "start": 13,
+          "end": 30,
+          "score": 0.95,
+          "recognizer": "MacAddressRecognizer"
+        },
+        {
+          "text": "E6",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 19,
+          "end": 21,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "B3",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 25,
+          "end": 27,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "D3",
+          "entity": "ORGANIZATION",
+          "start": 28,
+          "end": 30,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "D3",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 28,
+          "end": 30,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "MAC_ADDRESS",
+      "text": "mac: 83:88:26:F3:A7:E6",
+      "value": "83:88:26:F3:A7:E6",
+      "start": 5,
+      "end": 22,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "83:88:26:F3:A7:E6",
+          "entity": "MAC_ADDRESS",
+          "start": 5,
+          "end": 22,
+          "score": 0.95,
+          "recognizer": "MacAddressRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "83:88:26:F3:A7:E6",
+          "entity": "MAC_ADDRESS",
+          "start": 5,
+          "end": 22,
+          "score": 0.95,
+          "recognizer": "MacAddressRecognizer"
+        },
+        {
+          "text": "F3",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 14,
+          "end": 16,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "A7",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 17,
+          "end": 19,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "E6",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 20,
+          "end": 22,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PHONE_NUMBER",
+      "text": "phone number: 02 34567890",
+      "value": "02 34567890",
+      "start": 14,
+      "end": 25,
+      "exact_score": 0.75,
+      "collapsed": [
+        {
+          "text": "02 34567890",
+          "entity": "PHONE_NUMBER",
+          "start": 14,
+          "end": 25,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "02 34567890",
+          "entity": "PHONE_NUMBER",
+          "start": 14,
+          "end": 25,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "34567890",
+          "entity": "US_BANK_NUMBER",
+          "start": 17,
+          "end": 25,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "34567890",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 17,
+          "end": 25,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PHONE_NUMBER",
+      "text": "phone: (506) 234-5678",
+      "value": "(506) 234-5678",
+      "start": 7,
+      "end": 21,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "(506) 234-5678",
+          "entity": "PHONE_NUMBER",
+          "start": 7,
+          "end": 21,
+          "score": 0.95,
+          "recognizer": "UsPhoneFormatRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "(506) 234-5678",
+          "entity": "PHONE_NUMBER",
+          "start": 7,
+          "end": 21,
+          "score": 0.95,
+          "recognizer": "UsPhoneFormatRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "MEDICAL_LICENSE",
+      "text": "medical license: BW9657721",
+      "value": "BW9657721",
+      "start": 17,
+      "end": 26,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "BW9657721",
+          "entity": "PROFESSIONAL_LICENSE",
+          "start": 17,
+          "end": 26,
+          "score": 0.8,
+          "recognizer": "LabeledProfessionalLicenseRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "BW9657721",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 17,
+          "end": 26,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "IT_PASSPORT",
+          "start": 17,
+          "end": 26,
+          "score": 0.01,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "MEDICAL_LICENSE",
+          "start": 17,
+          "end": 26,
+          "score": 1.0,
+          "recognizer": "MedicalLicenseRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "PERSON",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "PROFESSIONAL_LICENSE",
+          "start": 17,
+          "end": 26,
+          "score": 0.8,
+          "recognizer": "LabeledProfessionalLicenseRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "UK_PASSPORT",
+          "start": 17,
+          "end": 26,
+          "score": 0.1,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "BW9657721",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 17,
+          "end": 26,
+          "score": 0.65,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "MEDICAL_LICENSE",
+      "text": "medical: MK7987641",
+      "value": "MK7987641",
+      "start": 9,
+      "end": 18,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "MK7987641",
+          "entity": "MEDICAL_LICENSE",
+          "start": 9,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "MedicalLicenseRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "MK7987641",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 9,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "MK7987641",
+          "entity": "IT_PASSPORT",
+          "start": 9,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "MK7987641",
+          "entity": "MEDICAL_LICENSE",
+          "start": 9,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "MedicalLicenseRecognizer"
+        },
+        {
+          "text": "MK7987641",
+          "entity": "UK_PASSPORT",
+          "start": 9,
+          "end": 18,
+          "score": 0.1,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "MK7987641",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 9,
+          "end": 18,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "URL",
+      "text": "url: https://mail.contoso.co.uk/profile/73115",
+      "value": "https://mail.contoso.co.uk/profile/73115",
+      "start": 5,
+      "end": 45,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "https://mail.contoso.co.uk/profile/73115",
+          "entity": "URL",
+          "start": 5,
+          "end": 45,
+          "score": 0.95,
+          "recognizer": "UrlRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "https://mail.contoso.co.uk/profile/73115",
+          "entity": "URL",
+          "start": 5,
+          "end": 45,
+          "score": 0.95,
+          "recognizer": "UrlRecognizer"
+        },
+        {
+          "text": "73115",
+          "entity": "DE_PLZ",
+          "start": 40,
+          "end": 45,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "73115",
+          "entity": "PHONE_NUMBER",
+          "start": 40,
+          "end": 45,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "URL",
+      "text": "url: https://www.acme.org/orders/10955",
+      "value": "https://www.acme.org/orders/10955",
+      "start": 5,
+      "end": 38,
+      "exact_score": 0.95,
+      "collapsed": [
+        {
+          "text": "https://www.acme.org/orders/10955",
+          "entity": "URL",
+          "start": 5,
+          "end": 38,
+          "score": 0.95,
+          "recognizer": "UrlRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "https://www.acme.org/orders/10955",
+          "entity": "URL",
+          "start": 5,
+          "end": 38,
+          "score": 0.95,
+          "recognizer": "UrlRecognizer"
+        },
+        {
+          "text": "10955",
+          "entity": "DE_PLZ",
+          "start": 33,
+          "end": 38,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "10955",
+          "entity": "PHONE_NUMBER",
+          "start": 33,
+          "end": 38,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_BANK_NUMBER",
+      "text": "us bank number: 5182049739",
+      "value": "5182049739",
+      "start": 16,
+      "end": 26,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "us bank",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5182049739",
+          "entity": "PHONE_NUMBER",
+          "start": 16,
+          "end": 26,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "us bank",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5182049739",
+          "entity": "PHONE_NUMBER",
+          "start": 16,
+          "end": 26,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "5182049739",
+          "entity": "US_BANK_NUMBER",
+          "start": 16,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "5182049739",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 16,
+          "end": 26,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_BANK_NUMBER",
+      "text": "check: 489979881",
+      "value": "489979881",
+      "start": 7,
+      "end": 16,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "489979881",
+          "entity": "AU_TFN",
+          "start": 7,
+          "end": 16,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "489979881",
+          "entity": "AU_TFN",
+          "start": 7,
+          "end": 16,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "DE_BSNR",
+          "start": 7,
+          "end": 16,
+          "score": 0.2,
+          "recognizer": "DeBsnrRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "PHONE_NUMBER",
+          "start": 7,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "US_BANK_NUMBER",
+          "start": 7,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 7,
+          "end": 16,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "US_PASSPORT",
+          "start": 7,
+          "end": 16,
+          "score": 0.05,
+          "recognizer": "UsPassportRecognizer"
+        },
+        {
+          "text": "489979881",
+          "entity": "US_SSN",
+          "start": 7,
+          "end": 16,
+          "score": 0.05,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_DRIVER_LICENSE",
+      "text": "us driver license: F5219976",
+      "value": "F5219976",
+      "start": 19,
+      "end": 27,
+      "exact_score": 0.65,
+      "collapsed": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "F5219976",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "F5219976",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        },
+        {
+          "text": "F5219976",
+          "entity": "IN_PASSPORT",
+          "start": 19,
+          "end": 27,
+          "score": 0.1,
+          "recognizer": "InPassportRecognizer"
+        },
+        {
+          "text": "F5219976",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 19,
+          "end": 27,
+          "score": 0.65,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_DRIVER_LICENSE",
+      "text": "driver: Y539301374311",
+      "value": "Y539301374311",
+      "start": 8,
+      "end": 21,
+      "exact_score": 0.65,
+      "collapsed": [
+        {
+          "text": "Y539301374311",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 21,
+          "score": 0.65,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "Y539301374311",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 21,
+          "score": 0.65,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_ITIN",
+      "text": "us itin: 992-97-9823",
+      "value": "992-97-9823",
+      "start": 9,
+      "end": 20,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "itin",
+          "entity": "PERSON",
+          "start": 3,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "992-97-9823",
+          "entity": "US_ITIN",
+          "start": 9,
+          "end": 20,
+          "score": 0.85,
+          "recognizer": "UsItinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "itin",
+          "entity": "PERSON",
+          "start": 3,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "992-97-9823",
+          "entity": "PHONE_NUMBER",
+          "start": 9,
+          "end": 20,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "992-97-9823",
+          "entity": "US_ITIN",
+          "start": 9,
+          "end": 20,
+          "score": 0.85,
+          "recognizer": "UsItinRecognizer"
+        },
+        {
+          "text": "992-97-9823",
+          "entity": "US_SSN",
+          "start": 9,
+          "end": 20,
+          "score": 0.5,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_ITIN",
+      "text": "individual: 910-94-5888",
+      "value": "910-94-5888",
+      "start": 12,
+      "end": 23,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "910-94-5888",
+          "entity": "US_ITIN",
+          "start": 12,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "UsItinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "individual",
+          "entity": "IN_PAN",
+          "start": 0,
+          "end": 10,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "910-94-5888",
+          "entity": "PHONE_NUMBER",
+          "start": 12,
+          "end": 23,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "910-94-5888",
+          "entity": "US_ITIN",
+          "start": 12,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "UsItinRecognizer"
+        },
+        {
+          "text": "910-94-5888",
+          "entity": "US_SSN",
+          "start": 12,
+          "end": 23,
+          "score": 0.5,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_MBI",
+      "text": "us mbi: 2DN1-P51-QC51",
+      "value": "2DN1-P51-QC51",
+      "start": 8,
+      "end": 21,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "2DN1-P51-QC51",
+          "entity": "US_MBI",
+          "start": 8,
+          "end": 21,
+          "score": 0.85,
+          "recognizer": "UsMbiRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "2DN1-P51-QC51",
+          "entity": "US_MBI",
+          "start": 8,
+          "end": 21,
+          "score": 0.85,
+          "recognizer": "UsMbiRecognizer"
+        },
+        {
+          "text": "P51",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 16,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_MBI",
+      "text": "medicare: 1T60-CJ2-FT94",
+      "value": "1T60-CJ2-FT94",
+      "start": 10,
+      "end": 23,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 8,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "1T60-CJ2-FT94",
+          "entity": "US_MBI",
+          "start": 10,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "UsMbiRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 8,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "1T60-CJ2-FT94",
+          "entity": "US_MBI",
+          "start": 10,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "UsMbiRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_NPI",
+      "text": "us npi: 2584920781",
+      "value": "2584920781",
+      "start": 8,
+      "end": 18,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "npi",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "2584920781",
+          "entity": "US_NPI",
+          "start": 8,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "UsNpiRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "npi",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "2584920781",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 18,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "2584920781",
+          "entity": "US_BANK_NUMBER",
+          "start": 8,
+          "end": 18,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "2584920781",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "2584920781",
+          "entity": "US_NPI",
+          "start": 8,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "UsNpiRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_NPI",
+      "text": "npi: 1394389138",
+      "value": "1394389138",
+      "start": 5,
+      "end": 15,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "npi",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "1394389138",
+          "entity": "US_NPI",
+          "start": 5,
+          "end": 15,
+          "score": 1.0,
+          "recognizer": "UsNpiRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "npi",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "1394389138",
+          "entity": "PHONE_NUMBER",
+          "start": 5,
+          "end": 15,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "1394389138",
+          "entity": "US_BANK_NUMBER",
+          "start": 5,
+          "end": 15,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "1394389138",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 5,
+          "end": 15,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "1394389138",
+          "entity": "US_NPI",
+          "start": 5,
+          "end": 15,
+          "score": 1.0,
+          "recognizer": "UsNpiRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_PASSPORT",
+      "text": "us passport: 740920448",
+      "value": "740920448",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "US_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "us",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "DE_BSNR",
+          "start": 13,
+          "end": 22,
+          "score": 0.2,
+          "recognizer": "DeBsnrRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "US_BANK_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "US_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        },
+        {
+          "text": "740920448",
+          "entity": "US_SSN",
+          "start": 13,
+          "end": 22,
+          "score": 0.05,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_PASSPORT",
+      "text": "us: 484823694",
+      "value": "484823694",
+      "start": 4,
+      "end": 13,
+      "exact_score": 0.05,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "484823694",
+          "entity": "DE_BSNR",
+          "start": 4,
+          "end": 13,
+          "score": 0.2,
+          "recognizer": "DeBsnrRecognizer"
+        },
+        {
+          "text": "484823694",
+          "entity": "PHONE_NUMBER",
+          "start": 4,
+          "end": 13,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "484823694",
+          "entity": "US_BANK_NUMBER",
+          "start": 4,
+          "end": 13,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "484823694",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 4,
+          "end": 13,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "484823694",
+          "entity": "US_PASSPORT",
+          "start": 4,
+          "end": 13,
+          "score": 0.05,
+          "recognizer": "UsPassportRecognizer"
+        },
+        {
+          "text": "484823694",
+          "entity": "US_SSN",
+          "start": 4,
+          "end": 13,
+          "score": 0.05,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_SSN",
+      "text": "us ssn: 354-29-7400",
+      "value": "354-29-7400",
+      "start": 8,
+      "end": 19,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "354-29-7400",
+          "entity": "US_SSN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "354-29-7400",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "354-29-7400",
+          "entity": "US_SSN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "US_SSN",
+      "text": "social: 559-21-6528",
+      "value": "559-21-6528",
+      "start": 8,
+      "end": 19,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "559-21-6528",
+          "entity": "US_SSN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "559-21-6528",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "559-21-6528",
+          "entity": "US_SSN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ABA_ROUTING_NUMBER",
+      "text": "aba routing number: 070831652",
+      "value": "070831652",
+      "start": 20,
+      "end": 29,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "aba",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "ABA_ROUTING_NUMBER",
+          "start": 20,
+          "end": 29,
+          "score": 1.0,
+          "recognizer": "AbaRoutingRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "aba",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "ABA_ROUTING_NUMBER",
+          "start": 20,
+          "end": 29,
+          "score": 1.0,
+          "recognizer": "AbaRoutingRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "DE_BSNR",
+          "start": 20,
+          "end": 29,
+          "score": 0.2,
+          "recognizer": "DeBsnrRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "PHONE_NUMBER",
+          "start": 20,
+          "end": 29,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "US_BANK_NUMBER",
+          "start": 20,
+          "end": 29,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 20,
+          "end": 29,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "US_PASSPORT",
+          "start": 20,
+          "end": 29,
+          "score": 0.05,
+          "recognizer": "UsPassportRecognizer"
+        },
+        {
+          "text": "070831652",
+          "entity": "US_SSN",
+          "start": 20,
+          "end": 29,
+          "score": 0.05,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ABA_ROUTING_NUMBER",
+      "text": "aba: 087900550",
+      "value": "087900550",
+      "start": 5,
+      "end": 14,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "aba",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "ABA_ROUTING_NUMBER",
+          "start": 5,
+          "end": 14,
+          "score": 1.0,
+          "recognizer": "AbaRoutingRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "aba",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "ABA_ROUTING_NUMBER",
+          "start": 5,
+          "end": 14,
+          "score": 1.0,
+          "recognizer": "AbaRoutingRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "DE_BSNR",
+          "start": 5,
+          "end": 14,
+          "score": 0.2,
+          "recognizer": "DeBsnrRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "PHONE_NUMBER",
+          "start": 5,
+          "end": 14,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "US_BANK_NUMBER",
+          "start": 5,
+          "end": 14,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 5,
+          "end": 14,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "US_PASSPORT",
+          "start": 5,
+          "end": 14,
+          "score": 0.05,
+          "recognizer": "UsPassportRecognizer"
+        },
+        {
+          "text": "087900550",
+          "entity": "US_SSN",
+          "start": 5,
+          "end": 14,
+          "score": 0.05,
+          "recognizer": "UsSsnRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_DRIVING_LICENCE",
+      "text": "uk driving licence: PLMAY603144WN9NZ",
+      "value": "PLMAY603144WN9NZ",
+      "start": 20,
+      "end": 36,
+      "exact_score": 0.5,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "PLMAY603144WN9NZ",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 20,
+          "end": 36,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "PLMAY603144WN9NZ",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 20,
+          "end": 36,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        },
+        {
+          "text": "PLMAY603144WN9NZ",
+          "entity": "UK_DRIVING_LICENCE",
+          "start": 20,
+          "end": 36,
+          "score": 0.5,
+          "recognizer": "UkDrivingLicenceRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_DRIVING_LICENCE",
+      "text": "driving licence: NKWLR654244YA9TE",
+      "value": "NKWLR654244YA9TE",
+      "start": 17,
+      "end": 33,
+      "exact_score": 0.5,
+      "collapsed": [
+        {
+          "text": "NKWLR654244YA9TE",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 17,
+          "end": 33,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "NKWLR654244YA9TE",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 17,
+          "end": 33,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        },
+        {
+          "text": "NKWLR654244YA9TE",
+          "entity": "UK_DRIVING_LICENCE",
+          "start": 17,
+          "end": 33,
+          "score": 0.5,
+          "recognizer": "UkDrivingLicenceRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_NHS",
+      "text": "uk nhs: 202 124 8828",
+      "value": "202 124 8828",
+      "start": 8,
+      "end": 20,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "nhs",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "202 124 8828",
+          "entity": "UK_NHS",
+          "start": 8,
+          "end": 20,
+          "score": 1.0,
+          "recognizer": "NhsRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "nhs",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "202 124 8828",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 20,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "202 124 8828",
+          "entity": "UK_NHS",
+          "start": 8,
+          "end": 20,
+          "score": 1.0,
+          "recognizer": "NhsRecognizer"
+        },
+        {
+          "text": "8828",
+          "entity": "DATE_TIME",
+          "start": 16,
+          "end": 20,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_NHS",
+      "text": "national health service: 426 006 9489",
+      "value": "426 006 9489",
+      "start": 25,
+      "end": 37,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "national health service",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "426 006 9489",
+          "entity": "UK_NHS",
+          "start": 25,
+          "end": 37,
+          "score": 1.0,
+          "recognizer": "NhsRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "national health service",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "426 006 9489",
+          "entity": "PHONE_NUMBER",
+          "start": 25,
+          "end": 37,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "426 006 9489",
+          "entity": "UK_NHS",
+          "start": 25,
+          "end": 37,
+          "score": 1.0,
+          "recognizer": "NhsRecognizer"
+        },
+        {
+          "text": "006 9489",
+          "entity": "DATE_TIME",
+          "start": 29,
+          "end": 37,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_NINO",
+      "text": "uk nino: CL 39 89 17 C",
+      "value": "CL 39 89 17 C",
+      "start": 9,
+      "end": 22,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "CL 39 89 17 C",
+          "entity": "UK_NINO",
+          "start": 9,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "UkNinoRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "CL 39 89 17 C",
+          "entity": "UK_NINO",
+          "start": 9,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "UkNinoRecognizer"
+        },
+        {
+          "text": "39 89 17",
+          "entity": "PHONE_NUMBER",
+          "start": 12,
+          "end": 20,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_NINO",
+      "text": "national insurance: PW 81 36 99 D",
+      "value": "PW 81 36 99 D",
+      "start": 20,
+      "end": 33,
+      "exact_score": 0.5,
+      "collapsed": [
+        {
+          "text": "PW 81 36 99 D",
+          "entity": "UK_NINO",
+          "start": 20,
+          "end": 33,
+          "score": 0.5,
+          "recognizer": "UkNinoRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "PW",
+          "entity": "LOCATION",
+          "start": 20,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "PW 81 36 99 D",
+          "entity": "UK_NINO",
+          "start": 20,
+          "end": 33,
+          "score": 0.5,
+          "recognizer": "UkNinoRecognizer"
+        },
+        {
+          "text": "81 36 99",
+          "entity": "PHONE_NUMBER",
+          "start": 23,
+          "end": 31,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_PASSPORT",
+      "text": "uk passport: HI0675567",
+      "value": "HI0675567",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.45,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 13,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "IT_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "UK_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.45,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "HI0675567",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 22,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_PASSPORT",
+      "text": "passport: BY2436882",
+      "value": "BY2436882",
+      "start": 10,
+      "end": 19,
+      "exact_score": 0.45,
+      "collapsed": [
+        {
+          "text": "BY2436882",
+          "entity": "PASSPORT_NUMBER",
+          "start": 10,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "BY2436882",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 10,
+          "end": 19,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "BY2436882",
+          "entity": "IT_PASSPORT",
+          "start": 10,
+          "end": 19,
+          "score": 0.01,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "BY2436882",
+          "entity": "PASSPORT_NUMBER",
+          "start": 10,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "BY2436882",
+          "entity": "UK_PASSPORT",
+          "start": 10,
+          "end": 19,
+          "score": 0.45,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "BY2436882",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 10,
+          "end": 19,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_POSTCODE",
+      "text": "uk postcode: NE1 4ST",
+      "value": "NE1 4ST",
+      "start": 13,
+      "end": 20,
+      "exact_score": 0.45,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "NE1 4ST",
+          "entity": "UK_POSTCODE",
+          "start": 13,
+          "end": 20,
+          "score": 0.45,
+          "recognizer": "UkPostcodeRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_POSTCODE",
+      "text": "postcode: BT1 5GS",
+      "value": "BT1 5GS",
+      "start": 10,
+      "end": 17,
+      "exact_score": 0.45,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "BT1 5GS",
+          "entity": "UK_POSTCODE",
+          "start": 10,
+          "end": 17,
+          "score": 0.45,
+          "recognizer": "UkPostcodeRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_VEHICLE_REGISTRATION",
+      "text": "uk vehicle registration: OX15 VHA",
+      "value": "OX15 VHA",
+      "start": 25,
+      "end": 33,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "OX15 VHA",
+          "entity": "UK_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 33,
+          "score": 1.0,
+          "recognizer": "UkVehicleRegistrationRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uk",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "OX15 VHA",
+          "entity": "UK_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 33,
+          "score": 1.0,
+          "recognizer": "UkVehicleRegistrationRecognizer"
+        },
+        {
+          "text": "VHA",
+          "entity": "ORGANIZATION",
+          "start": 30,
+          "end": 33,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "UK_VEHICLE_REGISTRATION",
+      "text": "vehicle: UL21 CCS",
+      "value": "UL21 CCS",
+      "start": 9,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "UL21 CCS",
+          "entity": "UK_VEHICLE_REGISTRATION",
+          "start": 9,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "UkVehicleRegistrationRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "UL21 CCS",
+          "entity": "UK_VEHICLE_REGISTRATION",
+          "start": 9,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "UkVehicleRegistrationRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_NIF",
+      "text": "es nif: 28048665G",
+      "value": "28048665G",
+      "start": 8,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "28048665G",
+          "entity": "ES_NIF",
+          "start": 8,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "EsNifRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "28048665G",
+          "entity": "ES_NIF",
+          "start": 8,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "EsNifRecognizer"
+        },
+        {
+          "text": "28048665G",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 17,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_NIF",
+      "text": "documento nacional de identidad: 58128443Z",
+      "value": "58128443Z",
+      "start": 33,
+      "end": 42,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "documento nacional de identidad",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 31,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "58128443Z",
+          "entity": "ES_NIF",
+          "start": 33,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "EsNifRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "documento nacional de identidad",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 31,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "58128443Z",
+          "entity": "ES_NIF",
+          "start": 33,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "EsNifRecognizer"
+        },
+        {
+          "text": "58128443Z",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 33,
+          "end": 42,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_NIE",
+      "text": "es nie: Y7704904X",
+      "value": "Y7704904X",
+      "start": 8,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "Y7704904X",
+          "entity": "ES_NIE",
+          "start": 8,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "EsNieRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "Y7704904X",
+          "entity": "ES_NIE",
+          "start": 8,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "EsNieRecognizer"
+        },
+        {
+          "text": "Y7704904X",
+          "entity": "SG_NRIC_FIN",
+          "start": 8,
+          "end": 17,
+          "score": 0.3,
+          "recognizer": "SgFinRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_NIE",
+      "text": "número de identificación de extranjero: Z3421324X",
+      "value": "Z3421324X",
+      "start": 40,
+      "end": 49,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "número de identificación de extranjero",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 38,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "Z3421324X",
+          "entity": "ES_NIE",
+          "start": 40,
+          "end": 49,
+          "score": 1.0,
+          "recognizer": "EsNieRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "número de identificación de extranjero",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 38,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "extranjero",
+          "entity": "IN_PAN",
+          "start": 28,
+          "end": 38,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "Z3421324X",
+          "entity": "ES_NIE",
+          "start": 40,
+          "end": 49,
+          "score": 1.0,
+          "recognizer": "EsNieRecognizer"
+        },
+        {
+          "text": "Z3421324X",
+          "entity": "SG_NRIC_FIN",
+          "start": 40,
+          "end": 49,
+          "score": 0.3,
+          "recognizer": "SgFinRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_PASSPORT",
+      "text": "es passport: JIA074188",
+      "value": "JIA074188",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "JIA074188",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "JIA074188",
+          "entity": "ES_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "EsPassportRecognizer"
+        },
+        {
+          "text": "JIA074188",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ES_PASSPORT",
+      "text": "pasaporte: WDN840837",
+      "value": "WDN840837",
+      "start": 11,
+      "end": 20,
+      "exact_score": 0.4,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "WDN840837",
+          "entity": "ES_PASSPORT",
+          "start": 11,
+          "end": 20,
+          "score": 0.4,
+          "recognizer": "EsPassportRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_FISCAL_CODE",
+      "text": "it fiscal code: VGFRKN56L06B724Y",
+      "value": "VGFRKN56L06B724Y",
+      "start": 16,
+      "end": 32,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "VGFRKN56L06B724Y",
+          "entity": "IT_FISCAL_CODE",
+          "start": 16,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "ItFiscalCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "VGFRKN56L06B724Y",
+          "entity": "IT_FISCAL_CODE",
+          "start": 16,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "ItFiscalCodeRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_FISCAL_CODE",
+      "text": "codice fiscale: MBYMRK60B10Z640F",
+      "value": "MBYMRK60B10Z640F",
+      "start": 16,
+      "end": 32,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "codice fiscale:",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "MBYMRK60B10Z640F",
+          "entity": "IT_FISCAL_CODE",
+          "start": 16,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "ItFiscalCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "codice fiscale:",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "MBYMRK60B10Z640F",
+          "entity": "IT_FISCAL_CODE",
+          "start": 16,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "ItFiscalCodeRecognizer"
+        },
+        {
+          "text": "MBYMRK60B10Z640F",
+          "entity": "ORGANIZATION",
+          "start": 16,
+          "end": 32,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_DRIVER_LICENSE",
+      "text": "it driver license: WE2263337D",
+      "value": "WE2263337D",
+      "start": 19,
+      "end": 29,
+      "exact_score": 0.2,
+      "collapsed": [
+        {
+          "text": "WE2263337D",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 29,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "WE2263337D",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 29,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        },
+        {
+          "text": "WE2263337D",
+          "entity": "IN_PAN",
+          "start": 19,
+          "end": 29,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "WE2263337D",
+          "entity": "IT_DRIVER_LICENSE",
+          "start": 19,
+          "end": 29,
+          "score": 0.2,
+          "recognizer": "ItDriverLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_DRIVER_LICENSE",
+      "text": "patente: SD0252330Y",
+      "value": "SD0252330Y",
+      "start": 9,
+      "end": 19,
+      "exact_score": 0.55,
+      "collapsed": [
+        {
+          "text": "SD0252330Y",
+          "entity": "IT_DRIVER_LICENSE",
+          "start": 9,
+          "end": 19,
+          "score": 0.55,
+          "recognizer": "ItDriverLicenseRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "SD0252330Y",
+          "entity": "IN_PAN",
+          "start": 9,
+          "end": 19,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "SD0252330Y",
+          "entity": "IT_DRIVER_LICENSE",
+          "start": 9,
+          "end": 19,
+          "score": 0.55,
+          "recognizer": "ItDriverLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_VAT_CODE",
+      "text": "it vat code: 39594730226",
+      "value": "39594730226",
+      "start": 13,
+      "end": 24,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "39594730226",
+          "entity": "IT_VAT_CODE",
+          "start": 13,
+          "end": 24,
+          "score": 1.0,
+          "recognizer": "ItVatCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "39594730226",
+          "entity": "IT_VAT_CODE",
+          "start": 13,
+          "end": 24,
+          "score": 1.0,
+          "recognizer": "ItVatCodeRecognizer"
+        },
+        {
+          "text": "39594730226",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 24,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "39594730226",
+          "entity": "US_BANK_NUMBER",
+          "start": 13,
+          "end": 24,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "39594730226",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 24,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_VAT_CODE",
+      "text": "piva: 00431690098",
+      "value": "00431690098",
+      "start": 6,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "00431690098",
+          "entity": "IT_VAT_CODE",
+          "start": 6,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "ItVatCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "00431690098",
+          "entity": "DATE_TIME",
+          "start": 6,
+          "end": 17,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "00431690098",
+          "entity": "IT_VAT_CODE",
+          "start": 6,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "ItVatCodeRecognizer"
+        },
+        {
+          "text": "00431690098",
+          "entity": "PHONE_NUMBER",
+          "start": 6,
+          "end": 17,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "00431690098",
+          "entity": "US_BANK_NUMBER",
+          "start": 6,
+          "end": 17,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "00431690098",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 6,
+          "end": 17,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_PASSPORT",
+      "text": "it passport: IV4745023",
+      "value": "IV4745023",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.01,
+      "collapsed": [
+        {
+          "text": "IV4745023",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "IV4745023",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 13,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "IV4745023",
+          "entity": "IT_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "IV4745023",
+          "entity": "ORGANIZATION",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "IV4745023",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "IV4745023",
+          "entity": "UK_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.45,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "IV4745023",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 22,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_PASSPORT",
+      "text": "passaporto: NR9457415",
+      "value": "NR9457415",
+      "start": 12,
+      "end": 21,
+      "exact_score": 0.4,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "passaporto",
+          "entity": "IN_PAN",
+          "start": 0,
+          "end": 10,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "NR9457415",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 12,
+          "end": 21,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "NR9457415",
+          "entity": "IT_PASSPORT",
+          "start": 12,
+          "end": 21,
+          "score": 0.4,
+          "recognizer": "ItPassportRecognizer"
+        },
+        {
+          "text": "NR9457415",
+          "entity": "UK_PASSPORT",
+          "start": 12,
+          "end": 21,
+          "score": 0.1,
+          "recognizer": "UkPassportRecognizer"
+        },
+        {
+          "text": "NR9457415",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 12,
+          "end": 21,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_IDENTITY_CARD",
+      "text": "it identity card: CP03159TA",
+      "value": "CP03159TA",
+      "start": 18,
+      "end": 27,
+      "exact_score": 0.01,
+      "collapsed": [
+        {
+          "text": "CP03159TA",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 18,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "CP03159TA",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 18,
+          "end": 27,
+          "score": 0.01,
+          "recognizer": "ItIdentityCardRecognizer"
+        },
+        {
+          "text": "CP03159TA",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 18,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IT_IDENTITY_CARD",
+      "text": "carta: CH11366RL",
+      "value": "CH11366RL",
+      "start": 7,
+      "end": 16,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "carta",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "carta",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "CH11366RL",
+          "entity": "IT_IDENTITY_CARD",
+          "start": 7,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "ItIdentityCardRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PL_PESEL",
+      "text": "pl pesel: 69121678514",
+      "value": "69121678514",
+      "start": 10,
+      "end": 21,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "69121678514",
+          "entity": "DE_TAX_ID",
+          "start": 10,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "69121678514",
+          "entity": "DE_TAX_ID",
+          "start": 10,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        },
+        {
+          "text": "69121678514",
+          "entity": "PL_PESEL",
+          "start": 10,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "PlPeselRecognizer"
+        },
+        {
+          "text": "69121678514",
+          "entity": "US_BANK_NUMBER",
+          "start": 10,
+          "end": 21,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "69121678514",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 10,
+          "end": 21,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PL_PESEL",
+      "text": "PESEL: 52011791365",
+      "value": "52011791365",
+      "start": 7,
+      "end": 18,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "52011791365",
+          "entity": "NG_NIN",
+          "start": 7,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "NgNinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "52011791365",
+          "entity": "NG_NIN",
+          "start": 7,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "NgNinRecognizer"
+        },
+        {
+          "text": "52011791365",
+          "entity": "PHONE_NUMBER",
+          "start": 7,
+          "end": 18,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "52011791365",
+          "entity": "PL_PESEL",
+          "start": 7,
+          "end": 18,
+          "score": 1.0,
+          "recognizer": "PlPeselRecognizer"
+        },
+        {
+          "text": "52011791365",
+          "entity": "US_BANK_NUMBER",
+          "start": 7,
+          "end": 18,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "52011791365",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 7,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SG_NRIC_FIN",
+      "text": "sg nric fin: T3079980H",
+      "value": "T3079980H",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "sg nric",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "T3079980H",
+          "entity": "SG_NRIC_FIN",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SgFinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "sg nric",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "T3079980H",
+          "entity": "SG_NRIC_FIN",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SgFinRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SG_NRIC_FIN",
+      "text": "fin: F9828802M",
+      "value": "F9828802M",
+      "start": 5,
+      "end": 14,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "F9828802M",
+          "entity": "SG_NRIC_FIN",
+          "start": 5,
+          "end": 14,
+          "score": 0.85,
+          "recognizer": "SgFinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "F9828802M",
+          "entity": "SG_NRIC_FIN",
+          "start": 5,
+          "end": 14,
+          "score": 0.85,
+          "recognizer": "SgFinRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SG_UEN",
+      "text": "sg uen: T59LL5615U",
+      "value": "T59LL5615U",
+      "start": 8,
+      "end": 18,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "sg uen:",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "sg uen:",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "T59LL5615U",
+          "entity": "IN_PAN",
+          "start": 8,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SG_UEN",
+      "text": "uen: 27458823E",
+      "value": "27458823E",
+      "start": 5,
+      "end": 14,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "uen",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "uen",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "27458823E",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 5,
+          "end": 14,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_ABN",
+      "text": "au abn: 13 602 209 028",
+      "value": "13 602 209 028",
+      "start": 8,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "abn",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "13 602 209 028",
+          "entity": "AU_ABN",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "AuAbnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "abn",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "13 602 209 028",
+          "entity": "AU_ABN",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "AuAbnRecognizer"
+        },
+        {
+          "text": "13 602 209 028",
+          "entity": "IT_VAT_CODE",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "ItVatCodeRecognizer"
+        },
+        {
+          "text": "13 602 209 028",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_ABN",
+      "text": "australian business number: 53 875 484 341",
+      "value": "53 875 484 341",
+      "start": 28,
+      "end": 42,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "australian",
+          "entity": "NRP",
+          "start": 0,
+          "end": 10,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "53 875 484 341",
+          "entity": "AU_ABN",
+          "start": 28,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "AuAbnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "australian",
+          "entity": "NRP",
+          "start": 0,
+          "end": 10,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "53 875 484 341",
+          "entity": "AU_ABN",
+          "start": 28,
+          "end": 42,
+          "score": 1.0,
+          "recognizer": "AuAbnRecognizer"
+        },
+        {
+          "text": "53 875 484 341",
+          "entity": "PHONE_NUMBER",
+          "start": 28,
+          "end": 42,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_ACN",
+      "text": "au acn: 888 678 368",
+      "value": "888 678 368",
+      "start": 8,
+      "end": 19,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "888 678 368",
+          "entity": "AU_ACN",
+          "start": 8,
+          "end": 19,
+          "score": 1.0,
+          "recognizer": "AuAcnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "888 678 368",
+          "entity": "AU_ACN",
+          "start": 8,
+          "end": 19,
+          "score": 1.0,
+          "recognizer": "AuAcnRecognizer"
+        },
+        {
+          "text": "888 678 368",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_ACN",
+      "text": "australian company number: 734 906 828",
+      "value": "734 906 828",
+      "start": 27,
+      "end": 38,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "australian",
+          "entity": "NRP",
+          "start": 0,
+          "end": 10,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "734 906 828",
+          "entity": "AU_ACN",
+          "start": 27,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "AuAcnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "australian",
+          "entity": "NRP",
+          "start": 0,
+          "end": 10,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "734 906 828",
+          "entity": "AU_ACN",
+          "start": 27,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "AuAcnRecognizer"
+        },
+        {
+          "text": "734 906 828",
+          "entity": "PHONE_NUMBER",
+          "start": 27,
+          "end": 38,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_TFN",
+      "text": "au tfn: 858 879 684",
+      "value": "858 879 684",
+      "start": 8,
+      "end": 19,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "858 879 684",
+          "entity": "AU_TFN",
+          "start": 8,
+          "end": 19,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "858 879 684",
+          "entity": "AU_TFN",
+          "start": 8,
+          "end": 19,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        },
+        {
+          "text": "858 879 684",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_TFN",
+      "text": "tax file number: 373 623 893",
+      "value": "373 623 893",
+      "start": 17,
+      "end": 28,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "373 623 893",
+          "entity": "AU_TFN",
+          "start": 17,
+          "end": 28,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "373 623 893",
+          "entity": "AU_TFN",
+          "start": 17,
+          "end": 28,
+          "score": 1.0,
+          "recognizer": "AuTfnRecognizer"
+        },
+        {
+          "text": "373 623 893",
+          "entity": "PHONE_NUMBER",
+          "start": 17,
+          "end": 28,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_MEDICARE",
+      "text": "au medicare: 5092 96818 2",
+      "value": "5092 96818 2",
+      "start": 13,
+      "end": 25,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 11,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5092 96818 2",
+          "entity": "AU_MEDICARE",
+          "start": 13,
+          "end": 25,
+          "score": 1.0,
+          "recognizer": "AuMedicareRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 3,
+          "end": 11,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5092 96818 2",
+          "entity": "AU_MEDICARE",
+          "start": 13,
+          "end": 25,
+          "score": 1.0,
+          "recognizer": "AuMedicareRecognizer"
+        },
+        {
+          "text": "5092 96818 2",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 25,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "96818",
+          "entity": "DE_PLZ",
+          "start": 18,
+          "end": 23,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "AU_MEDICARE",
+      "text": "medicare: 5879 48487 5",
+      "value": "5879 48487 5",
+      "start": 10,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 8,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5879 48487 5",
+          "entity": "AU_MEDICARE",
+          "start": 10,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "AuMedicareRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "medicare",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 8,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "5879 48487 5",
+          "entity": "AU_MEDICARE",
+          "start": 10,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "AuMedicareRecognizer"
+        },
+        {
+          "text": "5879 48487 5",
+          "entity": "PHONE_NUMBER",
+          "start": 10,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "48487",
+          "entity": "DE_PLZ",
+          "start": 15,
+          "end": 20,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "48487 5",
+          "entity": "DATE_TIME",
+          "start": 15,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_PAN",
+      "text": "in pan: NBRHZ1436X",
+      "value": "NBRHZ1436X",
+      "start": 8,
+      "end": 18,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "NBRHZ1436X",
+          "entity": "IN_PAN",
+          "start": 8,
+          "end": 18,
+          "score": 0.85,
+          "recognizer": "InPanRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "NBRHZ1436X",
+          "entity": "IN_PAN",
+          "start": 8,
+          "end": 18,
+          "score": 0.85,
+          "recognizer": "InPanRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_PAN",
+      "text": "permanent account number: FOGPY1940X",
+      "value": "FOGPY1940X",
+      "start": 26,
+      "end": 36,
+      "exact_score": 0.5,
+      "collapsed": [
+        {
+          "text": "FOGPY1940X",
+          "entity": "IN_PAN",
+          "start": 26,
+          "end": 36,
+          "score": 0.5,
+          "recognizer": "InPanRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "FOGPY1940X",
+          "entity": "IN_PAN",
+          "start": 26,
+          "end": 36,
+          "score": 0.5,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "FOGPY1940X",
+          "entity": "ORGANIZATION",
+          "start": 26,
+          "end": 36,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_AADHAAR",
+      "text": "in aadhaar: 8708 4415 3801",
+      "value": "8708 4415 3801",
+      "start": 12,
+      "end": 26,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "8708 4415 3801",
+          "entity": "IN_AADHAAR",
+          "start": 12,
+          "end": 26,
+          "score": 1.0,
+          "recognizer": "InAadhaarRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "8708",
+          "entity": "PHONE_NUMBER",
+          "start": 12,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "8708 4415 3801",
+          "entity": "IN_AADHAAR",
+          "start": 12,
+          "end": 26,
+          "score": 1.0,
+          "recognizer": "InAadhaarRecognizer"
+        },
+        {
+          "text": "4415 3801",
+          "entity": "DATE_TIME",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "4415 3801",
+          "entity": "PHONE_NUMBER",
+          "start": 17,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_AADHAAR",
+      "text": "aadhaar: 3632 8837 7571",
+      "value": "3632 8837 7571",
+      "start": 9,
+      "end": 23,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "3632 8837 7571",
+          "entity": "IN_AADHAAR",
+          "start": 9,
+          "end": 23,
+          "score": 1.0,
+          "recognizer": "InAadhaarRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "3632 8837 7571",
+          "entity": "IN_AADHAAR",
+          "start": 9,
+          "end": 23,
+          "score": 1.0,
+          "recognizer": "InAadhaarRecognizer"
+        },
+        {
+          "text": "3632 8837 7571",
+          "entity": "PHONE_NUMBER",
+          "start": 9,
+          "end": 23,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_VEHICLE_REGISTRATION",
+      "text": "in vehicle registration: TN58JY5912",
+      "value": "TN58JY5912",
+      "start": 25,
+      "end": 35,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "TN58JY5912",
+          "entity": "IN_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 35,
+          "score": 1.0,
+          "recognizer": "InVehicleRegistrationRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "TN58JY5912",
+          "entity": "IN_PAN",
+          "start": 25,
+          "end": 35,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "TN58JY5912",
+          "entity": "IN_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 35,
+          "score": 1.0,
+          "recognizer": "InVehicleRegistrationRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_VEHICLE_REGISTRATION",
+      "text": "RTO: AP04JF6909",
+      "value": "AP04JF6909",
+      "start": 5,
+      "end": 15,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "AP04JF6909",
+          "entity": "IN_VEHICLE_REGISTRATION",
+          "start": 5,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "InVehicleRegistrationRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "RTO",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "AP04JF6909",
+          "entity": "IN_PAN",
+          "start": 5,
+          "end": 15,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "AP04JF6909",
+          "entity": "IN_VEHICLE_REGISTRATION",
+          "start": 5,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "InVehicleRegistrationRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_VOTER",
+      "text": "in voter: GMD1016711",
+      "value": "GMD1016711",
+      "start": 10,
+      "end": 20,
+      "exact_score": 0.75,
+      "collapsed": [
+        {
+          "text": "GMD1016711",
+          "entity": "IN_VOTER",
+          "start": 10,
+          "end": 20,
+          "score": 0.75,
+          "recognizer": "InVoterRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "GMD1016711",
+          "entity": "IN_PAN",
+          "start": 10,
+          "end": 20,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "GMD1016711",
+          "entity": "IN_VOTER",
+          "start": 10,
+          "end": 20,
+          "score": 0.75,
+          "recognizer": "InVoterRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_VOTER",
+      "text": "voter: JUQ9747763",
+      "value": "JUQ9747763",
+      "start": 7,
+      "end": 17,
+      "exact_score": 0.65,
+      "collapsed": [
+        {
+          "text": "JUQ9747763",
+          "entity": "IN_VOTER",
+          "start": 7,
+          "end": 17,
+          "score": 0.65,
+          "recognizer": "InVoterRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "JUQ9747763",
+          "entity": "IN_PAN",
+          "start": 7,
+          "end": 17,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "JUQ9747763",
+          "entity": "IN_VOTER",
+          "start": 7,
+          "end": 17,
+          "score": 0.65,
+          "recognizer": "InVoterRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_PASSPORT",
+      "text": "in passport: C9059311",
+      "value": "C9059311",
+      "start": 13,
+      "end": 21,
+      "exact_score": 0.45,
+      "collapsed": [
+        {
+          "text": "C9059311",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 21,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "C9059311",
+          "entity": "IN_PASSPORT",
+          "start": 13,
+          "end": 21,
+          "score": 0.45,
+          "recognizer": "InPassportRecognizer"
+        },
+        {
+          "text": "C9059311",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 21,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "C9059311",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 21,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_PASSPORT",
+      "text": "passport: G2110338",
+      "value": "G2110338",
+      "start": 10,
+      "end": 18,
+      "exact_score": 0.45,
+      "collapsed": [
+        {
+          "text": "G2110338",
+          "entity": "PASSPORT_NUMBER",
+          "start": 10,
+          "end": 18,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "G2110338",
+          "entity": "IN_PASSPORT",
+          "start": 10,
+          "end": 18,
+          "score": 0.45,
+          "recognizer": "InPassportRecognizer"
+        },
+        {
+          "text": "G2110338",
+          "entity": "PASSPORT_NUMBER",
+          "start": 10,
+          "end": 18,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "G2110338",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 10,
+          "end": 18,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_GSTIN",
+      "text": "in gstin: 12SVEPC0322O8ZE",
+      "value": "12SVEPC0322O8ZE",
+      "start": 10,
+      "end": 25,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "12SVEPC0322O8ZE",
+          "entity": "TAX_ID_NUMBER",
+          "start": 10,
+          "end": 25,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "12SVEPC0322O8ZE",
+          "entity": "IN_GSTIN",
+          "start": 10,
+          "end": 25,
+          "score": 1.0,
+          "recognizer": "InGstinRecognizer"
+        },
+        {
+          "text": "12SVEPC0322O8ZE",
+          "entity": "TAX_ID_NUMBER",
+          "start": 10,
+          "end": 25,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "IN_GSTIN",
+      "text": "gstin: 09HMMBG0108W9ZU",
+      "value": "09HMMBG0108W9ZU",
+      "start": 7,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "gstin",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "09HMMBG0108W9ZU",
+          "entity": "TAX_ID_NUMBER",
+          "start": 7,
+          "end": 22,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "gstin",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "09HMMBG0108W9ZU",
+          "entity": "IN_GSTIN",
+          "start": 7,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "InGstinRecognizer"
+        },
+        {
+          "text": "09HMMBG0108W9ZU",
+          "entity": "TAX_ID_NUMBER",
+          "start": 7,
+          "end": 22,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "FI_PERSONAL_IDENTITY_CODE",
+      "text": "fi personal identity code: 190448-558V",
+      "value": "190448-558V",
+      "start": 27,
+      "end": 38,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "190448-558V",
+          "entity": "FI_PERSONAL_IDENTITY_CODE",
+          "start": 27,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "FiPersonalIdentityCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "190448",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 27,
+          "end": 33,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "190448-558V",
+          "entity": "FI_PERSONAL_IDENTITY_CODE",
+          "start": 27,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "FiPersonalIdentityCodeRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "FI_PERSONAL_IDENTITY_CODE",
+      "text": "hetu: 150192-113V",
+      "value": "150192-113V",
+      "start": 6,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "150192-113V",
+          "entity": "FI_PERSONAL_IDENTITY_CODE",
+          "start": 6,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "FiPersonalIdentityCodeRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "150192",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 6,
+          "end": 12,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "150192-113V",
+          "entity": "FI_PERSONAL_IDENTITY_CODE",
+          "start": 6,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "FiPersonalIdentityCodeRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_DRIVER_LICENSE",
+      "text": "kr driver license: 21-31-156050-48",
+      "value": "21-31-156050-48",
+      "start": 19,
+      "end": 34,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "kr",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "21-31-156050-48",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 34,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "kr",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "21-31-156050-48",
+          "entity": "DRIVER_LICENSE_NUMBER",
+          "start": 19,
+          "end": 34,
+          "score": 0.8,
+          "recognizer": "LabeledDriverLicenseNumberRecognizer"
+        },
+        {
+          "text": "21-31-156050-48",
+          "entity": "KR_DRIVER_LICENSE",
+          "start": 19,
+          "end": 34,
+          "score": 1.0,
+          "recognizer": "KrDriverLicenseRecognizer"
+        },
+        {
+          "text": "156050",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 25,
+          "end": 31,
+          "score": 0.4,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_DRIVER_LICENSE",
+      "text": "운전면허: 13-14-194983-28",
+      "value": "13-14-194983-28",
+      "start": 6,
+      "end": 21,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "13-14-194983-28",
+          "entity": "KR_DRIVER_LICENSE",
+          "start": 6,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "KrDriverLicenseRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "13-14-194983-28",
+          "entity": "KR_DRIVER_LICENSE",
+          "start": 6,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "KrDriverLicenseRecognizer"
+        },
+        {
+          "text": "194983",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 12,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_FRN",
+      "text": "kr frn: 640603-7079532",
+      "value": "640603-7079532",
+      "start": 8,
+      "end": 22,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "kr frn",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "640603-7079532",
+          "entity": "KR_FRN",
+          "start": 8,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "KrFrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "kr frn",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "640603",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 14,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "640603-7079532",
+          "entity": "KR_FRN",
+          "start": 8,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "KrFrnRecognizer"
+        },
+        {
+          "text": "7079532",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 15,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_FRN",
+      "text": "외국인등록번호: 810625-6126998",
+      "value": "810625-6126998",
+      "start": 9,
+      "end": 23,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "810625-6126998",
+          "entity": "KR_FRN",
+          "start": 9,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "KrFrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "810625",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 9,
+          "end": 15,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "810625-6126998",
+          "entity": "DATE_TIME",
+          "start": 9,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "810625-6126998",
+          "entity": "KR_FRN",
+          "start": 9,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "KrFrnRecognizer"
+        },
+        {
+          "text": "810625-6126998",
+          "entity": "PHONE_NUMBER",
+          "start": 9,
+          "end": 23,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "6126998",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 16,
+          "end": 23,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_PASSPORT",
+      "text": "kr passport: R49316834",
+      "value": "R49316834",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "kr",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "R49316834",
+          "entity": "US_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "kr",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 2,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "R49316834",
+          "entity": "KR_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "KrPassportRecognizer"
+        },
+        {
+          "text": "R49316834",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "R49316834",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 13,
+          "end": 22,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "R49316834",
+          "entity": "US_PASSPORT",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_PASSPORT",
+      "text": "Korean passport: D53280229",
+      "value": "D53280229",
+      "start": 17,
+      "end": 26,
+      "exact_score": 0.4,
+      "collapsed": [
+        {
+          "text": "Korean",
+          "entity": "NRP",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "US_PASSPORT",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "Korean",
+          "entity": "NRP",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "KR_PASSPORT",
+          "start": 17,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "KrPassportRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "ORGANIZATION",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "PASSPORT_NUMBER",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 17,
+          "end": 26,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "D53280229",
+          "entity": "US_PASSPORT",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "LabeledUsPassportRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_BRN",
+      "text": "kr brn: 626-07-68193",
+      "value": "626-07-68193",
+      "start": 8,
+      "end": 20,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "626-07-68193",
+          "entity": "KR_BRN",
+          "start": 8,
+          "end": 20,
+          "score": 1.0,
+          "recognizer": "KrBrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "626-07-68193",
+          "entity": "KR_BRN",
+          "start": 8,
+          "end": 20,
+          "score": 1.0,
+          "recognizer": "KrBrnRecognizer"
+        },
+        {
+          "text": "626-07-68193",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 20,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "68193",
+          "entity": "DE_PLZ",
+          "start": 15,
+          "end": 20,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_BRN",
+      "text": "사업자등록번호: 554-35-76144",
+      "value": "554-35-76144",
+      "start": 9,
+      "end": 21,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "554-35-76144",
+          "entity": "KR_BRN",
+          "start": 9,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "KrBrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "554-35-76144",
+          "entity": "KR_BRN",
+          "start": 9,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "KrBrnRecognizer"
+        },
+        {
+          "text": "554-35-76144",
+          "entity": "PHONE_NUMBER",
+          "start": 9,
+          "end": 21,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "76144",
+          "entity": "DE_PLZ",
+          "start": 16,
+          "end": 21,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_RRN",
+      "text": "kr rrn: 980527-4551440",
+      "value": "980527-4551440",
+      "start": 8,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "980527-4551440",
+          "entity": "KR_RRN",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "KrRrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "980527",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 14,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "980527-4551440",
+          "entity": "KR_RRN",
+          "start": 8,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "KrRrnRecognizer"
+        },
+        {
+          "text": "4551440",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 15,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "KR_RRN",
+      "text": "Korean RRN: 630406-1665436",
+      "value": "630406-1665436",
+      "start": 12,
+      "end": 26,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "Korean",
+          "entity": "NRP",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "630406-1665436",
+          "entity": "KR_RRN",
+          "start": 12,
+          "end": 26,
+          "score": 1.0,
+          "recognizer": "KrRrnRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "Korean",
+          "entity": "NRP",
+          "start": 0,
+          "end": 6,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "630406",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 12,
+          "end": 18,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "630406-1665436",
+          "entity": "KR_RRN",
+          "start": 12,
+          "end": 26,
+          "score": 1.0,
+          "recognizer": "KrRrnRecognizer"
+        },
+        {
+          "text": "1665436",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 19,
+          "end": 26,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TH_TNIN",
+      "text": "th tnin: 6107558961988",
+      "value": "6107558961988",
+      "start": 9,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "6107558961988",
+          "entity": "TH_TNIN",
+          "start": 9,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "ThTninRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "6107558961988",
+          "entity": "TH_TNIN",
+          "start": 9,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "ThTninRecognizer"
+        },
+        {
+          "text": "6107558961988",
+          "entity": "US_BANK_NUMBER",
+          "start": 9,
+          "end": 22,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "6107558961988",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 9,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TH_TNIN",
+      "text": "Thai National ID: 3514993216351",
+      "value": "3514993216351",
+      "start": 18,
+      "end": 31,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "Thai National",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 13,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "3514993216351",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 18,
+          "end": 31,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "Thai National",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 13,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "3514993216351",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 18,
+          "end": 31,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        },
+        {
+          "text": "3514993216351",
+          "entity": "TH_TNIN",
+          "start": 18,
+          "end": 31,
+          "score": 1.0,
+          "recognizer": "ThTninRecognizer"
+        },
+        {
+          "text": "3514993216351",
+          "entity": "US_BANK_NUMBER",
+          "start": 18,
+          "end": 31,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "3514993216351",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 18,
+          "end": 31,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "NG_NIN",
+      "text": "ng nin: 35924905524",
+      "value": "35924905524",
+      "start": 8,
+      "end": 19,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "ng nin:",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "ng nin:",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 7,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "35924905524",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "35924905524",
+          "entity": "US_BANK_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "35924905524",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 8,
+          "end": 19,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "NG_NIN",
+      "text": "nin: 94019350143",
+      "value": "94019350143",
+      "start": 5,
+      "end": 16,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "nin",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "nin",
+          "entity": "ORGANIZATION",
+          "start": 0,
+          "end": 3,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "94019350143",
+          "entity": "PHONE_NUMBER",
+          "start": 5,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "94019350143",
+          "entity": "US_BANK_NUMBER",
+          "start": 5,
+          "end": 16,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "94019350143",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 5,
+          "end": 16,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "NG_VEHICLE_REGISTRATION",
+      "text": "ng vehicle registration: LRI-453SY",
+      "value": "LRI-453SY",
+      "start": 25,
+      "end": 34,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "LRI-453SY",
+          "entity": "NG_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 34,
+          "score": 0.85,
+          "recognizer": "NgVehicleRegistrationRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "LRI-453SY",
+          "entity": "NG_VEHICLE_REGISTRATION",
+          "start": 25,
+          "end": 34,
+          "score": 0.85,
+          "recognizer": "NgVehicleRegistrationRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "NG_VEHICLE_REGISTRATION",
+      "text": "plate number: QKB-408YU",
+      "value": "QKB-408YU",
+      "start": 14,
+      "end": 23,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "QKB-408YU",
+          "entity": "LICENSE_PLATE",
+          "start": 14,
+          "end": 23,
+          "score": 0.8,
+          "recognizer": "LabeledLicensePlateRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "QKB-408YU",
+          "entity": "LICENSE_PLATE",
+          "start": 14,
+          "end": 23,
+          "score": 0.8,
+          "recognizer": "LabeledLicensePlateRecognizer"
+        },
+        {
+          "text": "QKB-408YU",
+          "entity": "NG_VEHICLE_REGISTRATION",
+          "start": 14,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "NgVehicleRegistrationRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PH_TIN",
+      "text": "ph tin: 878-372-249-000",
+      "value": "878-372-249-000",
+      "start": 8,
+      "end": 23,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "878-372-249-000",
+          "entity": "TAX_ID_NUMBER",
+          "start": 8,
+          "end": 23,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "878-372-249-000",
+          "entity": "TAX_ID_NUMBER",
+          "start": 8,
+          "end": 23,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "PH_TIN",
+      "text": "tin: 534-081-580-000",
+      "value": "534-081-580-000",
+      "start": 5,
+      "end": 20,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "534-081-580-000",
+          "entity": "TAX_ID_NUMBER",
+          "start": 5,
+          "end": 20,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "534-081-580-000",
+          "entity": "TAX_ID_NUMBER",
+          "start": 5,
+          "end": 20,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "CA_SIN",
+      "text": "ca sin: 432 811 388",
+      "value": "432 811 388",
+      "start": 8,
+      "end": 19,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "432 811 388",
+          "entity": "CA_SIN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "CaSinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "432 811 388",
+          "entity": "CA_SIN",
+          "start": 8,
+          "end": 19,
+          "score": 0.85,
+          "recognizer": "CaSinRecognizer"
+        },
+        {
+          "text": "432 811 388",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 19,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "CA_SIN",
+      "text": "sin: 132 480 211",
+      "value": "132 480 211",
+      "start": 5,
+      "end": 16,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "132 480 211",
+          "entity": "CA_SIN",
+          "start": 5,
+          "end": 16,
+          "score": 0.85,
+          "recognizer": "CaSinRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "132 480 211",
+          "entity": "CA_SIN",
+          "start": 5,
+          "end": 16,
+          "score": 0.85,
+          "recognizer": "CaSinRecognizer"
+        },
+        {
+          "text": "132 480 211",
+          "entity": "PHONE_NUMBER",
+          "start": 5,
+          "end": 16,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SE_ORGANISATIONSNUMMER",
+      "text": "se organisationsnummer: 557759-2024",
+      "value": "557759-2024",
+      "start": 24,
+      "end": 35,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "557759-2024",
+          "entity": "SE_ORGANISATIONSNUMMER",
+          "start": 24,
+          "end": 35,
+          "score": 1.0,
+          "recognizer": "SeOrganisationsnummerRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "557759",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 24,
+          "end": 30,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "557759-2024",
+          "entity": "DATE_TIME",
+          "start": 24,
+          "end": 35,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "557759-2024",
+          "entity": "PHONE_NUMBER",
+          "start": 24,
+          "end": 35,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "557759-2024",
+          "entity": "SE_ORGANISATIONSNUMMER",
+          "start": 24,
+          "end": 35,
+          "score": 1.0,
+          "recognizer": "SeOrganisationsnummerRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SE_ORGANISATIONSNUMMER",
+      "text": "organisationsnummer: 558059-9826",
+      "value": "558059-9826",
+      "start": 21,
+      "end": 32,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "558059-9826",
+          "entity": "SE_ORGANISATIONSNUMMER",
+          "start": 21,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "SeOrganisationsnummerRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "558059",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 21,
+          "end": 27,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "558059-9826",
+          "entity": "DATE_TIME",
+          "start": 21,
+          "end": 32,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "558059-9826",
+          "entity": "PHONE_NUMBER",
+          "start": 21,
+          "end": 32,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "558059-9826",
+          "entity": "SE_ORGANISATIONSNUMMER",
+          "start": 21,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "SeOrganisationsnummerRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SE_PERSONNUMMER",
+      "text": "se personnummer: 820624-2532",
+      "value": "820624-2532",
+      "start": 17,
+      "end": 28,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "se personnummer",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "820624-2532",
+          "entity": "SE_PERSONNUMMER",
+          "start": 17,
+          "end": 28,
+          "score": 1.0,
+          "recognizer": "SePersonnummerRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "se personnummer",
+          "entity": "PERSON",
+          "start": 0,
+          "end": 15,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "820624",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 17,
+          "end": 23,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "820624-2532",
+          "entity": "PHONE_NUMBER",
+          "start": 17,
+          "end": 28,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "820624-2532",
+          "entity": "SE_PERSONNUMMER",
+          "start": 17,
+          "end": 28,
+          "score": 1.0,
+          "recognizer": "SePersonnummerRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "SE_PERSONNUMMER",
+      "text": "personnummer: 900611-3881",
+      "value": "900611-3881",
+      "start": 14,
+      "end": 25,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "900611-3881",
+          "entity": "SE_PERSONNUMMER",
+          "start": 14,
+          "end": 25,
+          "score": 1.0,
+          "recognizer": "SePersonnummerRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "900611",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 14,
+          "end": 20,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "900611-3881",
+          "entity": "PHONE_NUMBER",
+          "start": 14,
+          "end": 25,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "900611-3881",
+          "entity": "SE_PERSONNUMMER",
+          "start": 14,
+          "end": 25,
+          "score": 1.0,
+          "recognizer": "SePersonnummerRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ZA_ID_NUMBER",
+      "text": "za id number: 5411217398183",
+      "value": "5411217398183",
+      "start": 14,
+      "end": 27,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "5411217398183",
+          "entity": "CREDIT_CARD",
+          "start": 14,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "5411217398183",
+          "entity": "CREDIT_CARD",
+          "start": 14,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        },
+        {
+          "text": "5411217398183",
+          "entity": "KR_FRN",
+          "start": 14,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "KrFrnRecognizer"
+        },
+        {
+          "text": "5411217398183",
+          "entity": "US_BANK_NUMBER",
+          "start": 14,
+          "end": 27,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "5411217398183",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 14,
+          "end": 27,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "5411217398183",
+          "entity": "ZA_ID_NUMBER",
+          "start": 14,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "ZaIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "ZA_ID_NUMBER",
+      "text": "id: 6907113695084",
+      "value": "6907113695084",
+      "start": 4,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "6907113695084",
+          "entity": "CREDIT_CARD",
+          "start": 4,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "6907113695084",
+          "entity": "CREDIT_CARD",
+          "start": 4,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "CreditCardRecognizer"
+        },
+        {
+          "text": "6907113695084",
+          "entity": "KR_RRN",
+          "start": 4,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "KrRrnRecognizer"
+        },
+        {
+          "text": "6907113695084",
+          "entity": "US_BANK_NUMBER",
+          "start": 4,
+          "end": 17,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "6907113695084",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 4,
+          "end": 17,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        },
+        {
+          "text": "6907113695084",
+          "entity": "ZA_ID_NUMBER",
+          "start": 4,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "ZaIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TR_NATIONAL_ID",
+      "text": "tr national id: 87853158904",
+      "value": "87853158904",
+      "start": 16,
+      "end": 27,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "87853158904",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 16,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "87853158904",
+          "entity": "DE_TAX_ID",
+          "start": 16,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        },
+        {
+          "text": "87853158904",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 16,
+          "end": 27,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        },
+        {
+          "text": "87853158904",
+          "entity": "PHONE_NUMBER",
+          "start": 16,
+          "end": 27,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "87853158904",
+          "entity": "TR_NATIONAL_ID",
+          "start": 16,
+          "end": 27,
+          "score": 1.0,
+          "recognizer": "TrNationalIdRecognizer"
+        },
+        {
+          "text": "87853158904",
+          "entity": "US_BANK_NUMBER",
+          "start": 16,
+          "end": 27,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "87853158904",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 16,
+          "end": 27,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TR_NATIONAL_ID",
+      "text": "tc kimlik: 24392906320",
+      "value": "24392906320",
+      "start": 11,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "24392906320",
+          "entity": "TR_NATIONAL_ID",
+          "start": 11,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "TrNationalIdRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "2439290632",
+          "entity": "SE_ORGANISATIONSNUMMER",
+          "start": 11,
+          "end": 21,
+          "score": 1.0,
+          "recognizer": "SeOrganisationsnummerRecognizer"
+        },
+        {
+          "text": "24392906320",
+          "entity": "PHONE_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "24392906320",
+          "entity": "TR_NATIONAL_ID",
+          "start": 11,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "TrNationalIdRecognizer"
+        },
+        {
+          "text": "24392906320",
+          "entity": "US_BANK_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "24392906320",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 11,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TR_LICENSE_PLATE",
+      "text": "tr license plate: 56 BZL 156",
+      "value": "56 BZL 156",
+      "start": 18,
+      "end": 28,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "56 BZL",
+          "entity": "LICENSE_PLATE",
+          "start": 18,
+          "end": 24,
+          "score": 0.8,
+          "recognizer": "LabeledLicensePlateRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "56 BZL",
+          "entity": "LICENSE_PLATE",
+          "start": 18,
+          "end": 24,
+          "score": 0.8,
+          "recognizer": "LabeledLicensePlateRecognizer"
+        },
+        {
+          "text": "56 BZL 156",
+          "entity": "TR_LICENSE_PLATE",
+          "start": 18,
+          "end": 28,
+          "score": 1.0,
+          "recognizer": "TrLicensePlateRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "TR_LICENSE_PLATE",
+      "text": "plaka: 73 GYY 508",
+      "value": "73 GYY 508",
+      "start": 7,
+      "end": 17,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "plaka",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "73 GYY 508",
+          "entity": "TR_LICENSE_PLATE",
+          "start": 7,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "TrLicensePlateRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "plaka",
+          "entity": "LOCATION",
+          "start": 0,
+          "end": 5,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "73 GYY 508",
+          "entity": "TR_LICENSE_PLATE",
+          "start": 7,
+          "end": 17,
+          "score": 1.0,
+          "recognizer": "TrLicensePlateRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_TAX_ID",
+      "text": "de tax id: 99398671053",
+      "value": "99398671053",
+      "start": 11,
+      "end": 22,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "99398671053",
+          "entity": "TAX_ID_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "99398671053",
+          "entity": "DE_TAX_ID",
+          "start": 11,
+          "end": 22,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        },
+        {
+          "text": "99398671053",
+          "entity": "PHONE_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "99398671053",
+          "entity": "TAX_ID_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.8,
+          "recognizer": "LabeledTaxIdNumberRecognizer"
+        },
+        {
+          "text": "99398671053",
+          "entity": "US_BANK_NUMBER",
+          "start": 11,
+          "end": 22,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "99398671053",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 11,
+          "end": 22,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_TAX_ID",
+      "text": "steueridentifikationsnummer: 27386981049",
+      "value": "27386981049",
+      "start": 29,
+      "end": 40,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "27386981049",
+          "entity": "DE_TAX_ID",
+          "start": 29,
+          "end": 40,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "27386981049",
+          "entity": "DE_TAX_ID",
+          "start": 29,
+          "end": 40,
+          "score": 1.0,
+          "recognizer": "DeTaxIdRecognizer"
+        },
+        {
+          "text": "27386981049",
+          "entity": "PHONE_NUMBER",
+          "start": 29,
+          "end": 40,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "27386981049",
+          "entity": "US_BANK_NUMBER",
+          "start": 29,
+          "end": 40,
+          "score": 0.05,
+          "recognizer": "UsBankRecognizer"
+        },
+        {
+          "text": "27386981049",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 29,
+          "end": 40,
+          "score": 0.01,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_TAX_NUMBER",
+      "text": "de tax number: 66/636/39378",
+      "value": "66/636/39378",
+      "start": 15,
+      "end": 27,
+      "exact_score": 0.2,
+      "collapsed": [
+        {
+          "text": "66/636/39378",
+          "entity": "PHONE_NUMBER",
+          "start": 15,
+          "end": 27,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "66/636/39378",
+          "entity": "DE_TAX_NUMBER",
+          "start": 15,
+          "end": 27,
+          "score": 0.2,
+          "recognizer": "DeTaxNumberRecognizer"
+        },
+        {
+          "text": "66/636/39378",
+          "entity": "PHONE_NUMBER",
+          "start": 15,
+          "end": 27,
+          "score": 0.75,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "39378",
+          "entity": "DE_PLZ",
+          "start": 22,
+          "end": 27,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_TAX_NUMBER",
+      "text": "steuernummer: 87/065/38976",
+      "value": "87/065/38976",
+      "start": 14,
+      "end": 26,
+      "exact_score": 0.55,
+      "collapsed": [
+        {
+          "text": "87/065/38976",
+          "entity": "DE_TAX_NUMBER",
+          "start": 14,
+          "end": 26,
+          "score": 0.55,
+          "recognizer": "DeTaxNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "87/065/38976",
+          "entity": "DE_TAX_NUMBER",
+          "start": 14,
+          "end": 26,
+          "score": 0.55,
+          "recognizer": "DeTaxNumberRecognizer"
+        },
+        {
+          "text": "87/065/38976",
+          "entity": "PHONE_NUMBER",
+          "start": 14,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        },
+        {
+          "text": "38976",
+          "entity": "DE_PLZ",
+          "start": 21,
+          "end": 26,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_PASSPORT",
+      "text": "de passport: J46K76D27",
+      "value": "J46K76D27",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "J46K76D27",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "J46K76D27",
+          "entity": "PASSPORT_NUMBER",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "LabeledPassportNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_PASSPORT",
+      "text": "reisepass: J86J65Q68",
+      "value": "J86J65Q68",
+      "start": 11,
+      "end": 20,
+      "exact_score": 0,
+      "collapsed": [],
+      "raw": []
+    },
+    {
+      "entity": "DE_ID_CARD",
+      "text": "de id card: T59V09F48",
+      "value": "T59V09F48",
+      "start": 12,
+      "end": 21,
+      "exact_score": 0,
+      "collapsed": [
+        {
+          "text": "T59V09F48",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 12,
+          "end": 21,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "T59V09F48",
+          "entity": "NATIONAL_ID_NUMBER",
+          "start": 12,
+          "end": 21,
+          "score": 0.8,
+          "recognizer": "LabeledNationalIdNumberRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_ID_CARD",
+      "text": "personalausweis: P26P67H28",
+      "value": "P26P67H28",
+      "start": 17,
+      "end": 26,
+      "exact_score": 0,
+      "collapsed": [],
+      "raw": []
+    },
+    {
+      "entity": "DE_SOCIAL_SECURITY",
+      "text": "de social security: 61150476Z952",
+      "value": "61150476Z952",
+      "start": 20,
+      "end": 32,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "61150476Z952",
+          "entity": "DE_SOCIAL_SECURITY",
+          "start": 20,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "DeSocialSecurityRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "61150476Z952",
+          "entity": "DE_SOCIAL_SECURITY",
+          "start": 20,
+          "end": 32,
+          "score": 1.0,
+          "recognizer": "DeSocialSecurityRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_SOCIAL_SECURITY",
+      "text": "rentenversicherungsnummer: 43130874Q287",
+      "value": "43130874Q287",
+      "start": 27,
+      "end": 39,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "43130874Q287",
+          "entity": "DE_SOCIAL_SECURITY",
+          "start": 27,
+          "end": 39,
+          "score": 1.0,
+          "recognizer": "DeSocialSecurityRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "43130874Q287",
+          "entity": "DE_SOCIAL_SECURITY",
+          "start": 27,
+          "end": 39,
+          "score": 1.0,
+          "recognizer": "DeSocialSecurityRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_HEALTH_INSURANCE",
+      "text": "de health insurance: U509099780",
+      "value": "U509099780",
+      "start": 21,
+      "end": 31,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "U509099780",
+          "entity": "DE_HEALTH_INSURANCE",
+          "start": 21,
+          "end": 31,
+          "score": 1.0,
+          "recognizer": "DeHealthInsuranceRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "U509099780",
+          "entity": "DE_HEALTH_INSURANCE",
+          "start": 21,
+          "end": 31,
+          "score": 1.0,
+          "recognizer": "DeHealthInsuranceRecognizer"
+        },
+        {
+          "text": "U509099780",
+          "entity": "IN_PAN",
+          "start": 21,
+          "end": 31,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "U509099780",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 21,
+          "end": 31,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_HEALTH_INSURANCE",
+      "text": "krankenversicherungsnummer: D352832869",
+      "value": "D352832869",
+      "start": 28,
+      "end": 38,
+      "exact_score": 1.0,
+      "collapsed": [
+        {
+          "text": "D352832869",
+          "entity": "DE_HEALTH_INSURANCE",
+          "start": 28,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "DeHealthInsuranceRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "D352832869",
+          "entity": "DE_HEALTH_INSURANCE",
+          "start": 28,
+          "end": 38,
+          "score": 1.0,
+          "recognizer": "DeHealthInsuranceRecognizer"
+        },
+        {
+          "text": "D352832869",
+          "entity": "IN_PAN",
+          "start": 28,
+          "end": 38,
+          "score": 0.01,
+          "recognizer": "InPanRecognizer"
+        },
+        {
+          "text": "D352832869",
+          "entity": "US_DRIVER_LICENSE",
+          "start": 28,
+          "end": 38,
+          "score": 0.3,
+          "recognizer": "UsLicenseRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_KFZ",
+      "text": "de kfz: B-BD 2699",
+      "value": "B-BD 2699",
+      "start": 8,
+      "end": 17,
+      "exact_score": 0.65,
+      "collapsed": [
+        {
+          "text": "B-BD 2699",
+          "entity": "DE_KFZ",
+          "start": 8,
+          "end": 17,
+          "score": 0.65,
+          "recognizer": "DeKfzRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "B-BD 2699",
+          "entity": "DE_KFZ",
+          "start": 8,
+          "end": 17,
+          "score": 0.65,
+          "recognizer": "DeKfzRecognizer"
+        },
+        {
+          "text": "B-BD 2699",
+          "entity": "ORGANIZATION",
+          "start": 8,
+          "end": 17,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "2699",
+          "entity": "PHONE_NUMBER",
+          "start": 13,
+          "end": 17,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_KFZ",
+      "text": "kennzeichen: F-DC 9788",
+      "value": "F-DC 9788",
+      "start": 13,
+      "end": 22,
+      "exact_score": 0.65,
+      "collapsed": [
+        {
+          "text": "F-DC 9788",
+          "entity": "DE_KFZ",
+          "start": 13,
+          "end": 22,
+          "score": 0.65,
+          "recognizer": "DeKfzRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "F-DC 9788",
+          "entity": "DE_KFZ",
+          "start": 13,
+          "end": 22,
+          "score": 0.65,
+          "recognizer": "DeKfzRecognizer"
+        },
+        {
+          "text": "F-DC 9788",
+          "entity": "ORGANIZATION",
+          "start": 13,
+          "end": 22,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "9788",
+          "entity": "PHONE_NUMBER",
+          "start": 18,
+          "end": 22,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_HANDELSREGISTER",
+      "text": "de handelsregister: HRA 70330",
+      "value": "HRA 70330",
+      "start": 20,
+      "end": 29,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "HRA 70330",
+          "entity": "DE_HANDELSREGISTER",
+          "start": 20,
+          "end": 29,
+          "score": 0.85,
+          "recognizer": "DeHandelsregisterRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "HRA",
+          "entity": "ORGANIZATION",
+          "start": 20,
+          "end": 23,
+          "score": 0.85,
+          "recognizer": "SpacyRecognizer"
+        },
+        {
+          "text": "HRA 70330",
+          "entity": "DE_HANDELSREGISTER",
+          "start": 20,
+          "end": 29,
+          "score": 0.85,
+          "recognizer": "DeHandelsregisterRecognizer"
+        },
+        {
+          "text": "70330",
+          "entity": "DE_PLZ",
+          "start": 24,
+          "end": 29,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "70330",
+          "entity": "PHONE_NUMBER",
+          "start": 24,
+          "end": 29,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_HANDELSREGISTER",
+      "text": "handelsregister: HRB 61368",
+      "value": "HRB 61368",
+      "start": 17,
+      "end": 26,
+      "exact_score": 0.85,
+      "collapsed": [
+        {
+          "text": "HRB 61368",
+          "entity": "DE_HANDELSREGISTER",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "DeHandelsregisterRecognizer"
+        }
+      ],
+      "raw": [
+        {
+          "text": "HRB 61368",
+          "entity": "DE_HANDELSREGISTER",
+          "start": 17,
+          "end": 26,
+          "score": 0.85,
+          "recognizer": "DeHandelsregisterRecognizer"
+        },
+        {
+          "text": "61368",
+          "entity": "DE_PLZ",
+          "start": 21,
+          "end": 26,
+          "score": 0.05,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "61368",
+          "entity": "PHONE_NUMBER",
+          "start": 21,
+          "end": 26,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_PLZ",
+      "text": "de plz: 23766",
+      "value": "23766",
+      "start": 8,
+      "end": 13,
+      "exact_score": 0.4,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "23766",
+          "entity": "DE_PLZ",
+          "start": 8,
+          "end": 13,
+          "score": 0.4,
+          "recognizer": "DePlzRecognizer"
+        },
+        {
+          "text": "23766",
+          "entity": "PHONE_NUMBER",
+          "start": 8,
+          "end": 13,
+          "score": 0.4,
+          "recognizer": "PhoneRecognizer"
+        }
+      ]
+    },
+    {
+      "entity": "DE_PLZ",
+      "text": "plz: 90634",
+      "value": "90634",
+      "start": 5,
+      "end": 10,
+      "exact_score": 0.4,
+      "collapsed": [],
+      "raw": [
+        {
+          "text": "90634",
+          "entity": "DE_PLZ",
+          "start": 5,
+          "end": 10,
+          "score": 0.4,
+          "recognizer": "DePlzRecognizer"
+        }
+      ]
+    }
+  ],
+  "registry_entities": [
+    "ABA_ROUTING_NUMBER",
+    "ACCOUNT_ID",
+    "ADDRESS",
+    "ADMISSION_DATE",
+    "AGE",
+    "API_KEY",
+    "AUTH_TOKEN",
+    "AU_ABN",
+    "AU_ACN",
+    "AU_MEDICARE",
+    "AU_TFN",
+    "BIOMETRIC_ID",
+    "CARD_CVV",
+    "CARD_EXPIRY",
+    "CA_SIN",
+    "CREDIT_CARD",
+    "CREDIT_SCORE",
+    "CRYPTO",
+    "DATE_OF_BIRTH",
+    "DATE_OF_DEATH",
+    "DATE_TIME",
+    "DE_BSNR",
+    "DE_FUEHRERSCHEIN",
+    "DE_HANDELSREGISTER",
+    "DE_HEALTH_INSURANCE",
+    "DE_ID_CARD",
+    "DE_KFZ",
+    "DE_LANR",
+    "DE_PASSPORT",
+    "DE_PLZ",
+    "DE_SOCIAL_SECURITY",
+    "DE_TAX_ID",
+    "DE_TAX_NUMBER",
+    "DE_VAT_ID",
+    "DISCHARGE_DATE",
+    "DRIVER_LICENSE_NUMBER",
+    "EMAIL",
+    "EMAIL_ADDRESS",
+    "EMPLOYEE_ID",
+    "ES_NIE",
+    "ES_NIF",
+    "ES_PASSPORT",
+    "ETHNICITY",
+    "FI_PERSONAL_IDENTITY_CODE",
+    "GENDER",
+    "GPS_COORDINATES",
+    "IBAN_CODE",
+    "ID",
+    "IMEI",
+    "INSURANCE_ID",
+    "IN_AADHAAR",
+    "IN_GSTIN",
+    "IN_PAN",
+    "IN_PASSPORT",
+    "IN_VEHICLE_REGISTRATION",
+    "IN_VOTER",
+    "IP_ADDRESS",
+    "IT_DRIVER_LICENSE",
+    "IT_FISCAL_CODE",
+    "IT_IDENTITY_CARD",
+    "IT_PASSPORT",
+    "IT_VAT_CODE",
+    "KR_BRN",
+    "KR_DRIVER_LICENSE",
+    "KR_FRN",
+    "KR_PASSPORT",
+    "KR_RRN",
+    "LICENSE_PLATE",
+    "LOCATION",
+    "MAC_ADDRESS",
+    "MARITAL_STATUS",
+    "MEDICAL_LICENSE",
+    "MEDICAL_RECORD_NUMBER",
+    "NATIONAL_ID_NUMBER",
+    "NG_NIN",
+    "NG_VEHICLE_REGISTRATION",
+    "NRP",
+    "ORGANIZATION",
+    "PASSPORT_NUMBER",
+    "PASSWORD",
+    "PERSON",
+    "PHONE_NUMBER",
+    "PH_TIN",
+    "PH_UMID",
+    "PL_PESEL",
+    "POLITICAL_AFFILIATION",
+    "PRIVATE_KEY",
+    "PROFESSIONAL_LICENSE",
+    "RELIGION",
+    "SALARY",
+    "SERIAL_NUMBER",
+    "SESSION_ID",
+    "SEXUAL_ORIENTATION",
+    "SE_ORGANISATIONSNUMMER",
+    "SE_PERSONNUMMER",
+    "SG_NRIC_FIN",
+    "SG_UEN",
+    "SOCIAL_HANDLE",
+    "STUDENT_ID",
+    "SWIFT_BIC",
+    "TAX_ID_NUMBER",
+    "TH_TNIN",
+    "TR_LICENSE_PLATE",
+    "TR_NATIONAL_ID",
+    "UK_DRIVING_LICENCE",
+    "UK_NHS",
+    "UK_NINO",
+    "UK_PASSPORT",
+    "UK_POSTCODE",
+    "UK_VEHICLE_REGISTRATION",
+    "URL",
+    "USERNAME",
+    "US_ALIEN_NUMBER",
+    "US_BANK_NUMBER",
+    "US_DRIVER_LICENSE",
+    "US_EIN",
+    "US_ITIN",
+    "US_MBI",
+    "US_NPI",
+    "US_PASSPORT",
+    "US_SSN",
+    "US_ZIP_CODE",
+    "UUID",
+    "VIN",
+    "ZA_ID_NUMBER"
+  ],
+  "generator_entities": [
+    "ABA_ROUTING_NUMBER",
+    "AU_ABN",
+    "AU_ACN",
+    "AU_MEDICARE",
+    "AU_TFN",
+    "CA_SIN",
+    "CREDIT_CARD",
+    "CRYPTO",
+    "DE_HANDELSREGISTER",
+    "DE_HEALTH_INSURANCE",
+    "DE_ID_CARD",
+    "DE_KFZ",
+    "DE_PASSPORT",
+    "DE_PLZ",
+    "DE_SOCIAL_SECURITY",
+    "DE_TAX_ID",
+    "DE_TAX_NUMBER",
+    "ES_NIE",
+    "ES_NIF",
+    "ES_PASSPORT",
+    "FI_PERSONAL_IDENTITY_CODE",
+    "IBAN_CODE",
+    "IN_AADHAAR",
+    "IN_GSTIN",
+    "IN_PAN",
+    "IN_PASSPORT",
+    "IN_VEHICLE_REGISTRATION",
+    "IN_VOTER",
+    "IP_ADDRESS",
+    "IT_DRIVER_LICENSE",
+    "IT_FISCAL_CODE",
+    "IT_IDENTITY_CARD",
+    "IT_PASSPORT",
+    "IT_VAT_CODE",
+    "KR_BRN",
+    "KR_DRIVER_LICENSE",
+    "KR_FRN",
+    "KR_PASSPORT",
+    "KR_RRN",
+    "MAC_ADDRESS",
+    "MEDICAL_LICENSE",
+    "NG_NIN",
+    "NG_VEHICLE_REGISTRATION",
+    "PHONE_NUMBER",
+    "PH_TIN",
+    "PL_PESEL",
+    "SE_ORGANISATIONSNUMMER",
+    "SE_PERSONNUMMER",
+    "SG_NRIC_FIN",
+    "SG_UEN",
+    "TH_TNIN",
+    "TR_LICENSE_PLATE",
+    "TR_NATIONAL_ID",
+    "UK_DRIVING_LICENCE",
+    "UK_NHS",
+    "UK_NINO",
+    "UK_PASSPORT",
+    "UK_POSTCODE",
+    "UK_VEHICLE_REGISTRATION",
+    "URL",
+    "US_BANK_NUMBER",
+    "US_DRIVER_LICENSE",
+    "US_ITIN",
+    "US_MBI",
+    "US_NPI",
+    "US_PASSPORT",
+    "US_SSN",
+    "ZA_ID_NUMBER"
+  ],
+  "note": "Not externally validated; formats from project generators; no filtering based on detection score."
+}

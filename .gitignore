@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.py[cod]
+wheels/
+.env
+.DS_Store

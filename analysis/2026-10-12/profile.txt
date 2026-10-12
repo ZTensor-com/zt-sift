@@ -1,0 +1,43 @@
+         3250325 function calls (3195542 primitive calls) in 0.708 seconds
+
+   Ordered by: cumulative time
+   List reduced from 439 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.708    0.708 pii_detector/detector.py:127(detect)
+        1    0.000    0.000    0.708    0.708 .venv/lib/python3.14/site-packages/presidio_analyzer/analyzer_engine.py:169(analyze)
+        1    0.000    0.000    0.631    0.631 .venv/lib/python3.14/site-packages/presidio_analyzer/predefined_recognizers/generic/phone_recognizer.py:54(analyze)
+      438    0.000    0.000    0.629    0.001 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:723(__iter__)
+      631    0.000    0.000    0.628    0.001 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:701(has_next)
+      438    0.018    0.000    0.628    0.001 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:503(_find)
+    24010    0.011    0.000    0.582    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:567(_extract_match)
+    25800    0.025    0.000    0.533    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:626(_parse_and_verify)
+     8725    0.002    0.000    0.247    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:209(_verify)
+     8725    0.003    0.000    0.208    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2103(is_valid_number)
+    41571    0.006    0.000    0.201    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py:287(compile)
+    41621    0.013    0.000    0.195    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py:330(_compile)
+     9361    0.025    0.000    0.183    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2882(parse)
+     1484    0.002    0.000    0.173    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_compiler.py:757(compile)
+    10262    0.003    0.000    0.157    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2053(_number_type_helper)
+     8725    0.006    0.000    0.157    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2124(is_valid_number_for_region)
+    18681    0.004    0.000    0.154    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2089(_is_number_matching_desc)
+     7077    0.003    0.000    0.154    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:3382(_match_national_number)
+    23339    0.015    0.000    0.103    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:595(_extract_inner_match)
+     1484    0.002    0.000    0.092    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_parser.py:963(parse)
+4153/1484    0.009    0.000    0.089    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_parser.py:452(_parse_sub)
+10375/2346    0.034    0.000    0.085    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_parser.py:512(_parse)
+     1484    0.001    0.000    0.078    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_compiler.py:590(_code)
+   302417    0.060    0.000    0.060    0.000 {method 'search' of 're.Pattern' objects}
+12719/1484    0.024    0.000    0.059    0.000 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/_compiler.py:39(_compile)
+     8923    0.006    0.000    0.056    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2600(_maybe_extract_country_code)
+    17443    0.005    0.000    0.051    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:705(_normalize)
+     8725    0.003    0.000    0.049    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2160(region_code_for_number)
+     8923    0.006    0.000    0.046    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2722(_maybe_strip_i18n_prefix_and_normalize)
+    35542    0.013    0.000    0.045    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:545(_is_latin_letter)
+     1766    0.009    0.000    0.045    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:2185(_region_code_for_number_from_list)
+    18201    0.021    0.000    0.042    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumberutil.py:733(normalize_digits_only)
+      341    0.000    0.000    0.036    0.000 .venv/lib/python3.14/site-packages/phonenumbers/phonenumbermatcher.py:413(_is_national_prefix_present_if_required)
+       88    0.000    0.000    0.035    0.000 .venv/lib/python3.14/site-packages/presidio_analyzer/pattern_recognizer.py:97(analyze)
+       88    0.005    0.000    0.035    0.000 .venv/lib/python3.14/site-packages/presidio_analyzer/pattern_recognizer.py:193(__analyze_patterns)
+
+

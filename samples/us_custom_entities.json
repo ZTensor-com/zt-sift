@@ -1,0 +1,39 @@
+{
+  "employee": {
+    "name": "Sarah Johnson",
+    "age": 34,
+    "gender": "female",
+    "ethnicity": "Hispanic",
+    "date_of_birth": "03/14/1989",
+    "employee_id": "EMP-016973",
+    "student_id": "S87749056",
+    "salary": "$85,000",
+    "home_address": "742 Evergreen Terrace, Springfield, IL 62704",
+    "mailing_address": "P.O. Box 4521, Austin, TX 78701",
+    "uk_office": "221B Baker Street, London NW1 6XE",
+    "phone": "(201) 555-0123",
+    "zip_code": "62704-1234"
+  },
+  "credentials": {
+    "username": "sarah_j89",
+    "password": "Sup3rS3cret!42",
+    "social_handle": "@sarah_j89",
+    "api_key": "AKIAIOSFODNN7EXAMPLE",
+    "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+    "private_key_header": "-----BEGIN RSA PRIVATE KEY-----"
+  },
+  "payment": {
+    "cvv": "737",
+    "expiry": "08/28",
+    "passport_number": "075977035",
+    "bank_account_number": "3982583440",
+    "ein": "12-3456789",
+    "swift": "DEUTDEFF500"
+  },
+  "device": {
+    "vin": "1HGCM82633A004352",
+    "imei": "490154203237518",
+    "device_id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+    "geolocation": "40.71278, -74.00594"
+  }
+}

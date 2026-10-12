@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""Presidio + spaCy en_core_web_lg only (no GLiNER): see what Presidio detects on its own.
+
+By default every pattern recognizer in the installed Presidio is switched on (72 entity types plus a few
+extras): Presidio's default English registry covers only 23 of them, and the country-specific ones
+(UK, Spain, Italy, Germany, India, Korea and so on) are disabled or registered for other languages. Pass
+--english-registry to get Presidio's stock behaviour instead. Not included: the 8 MEDICAL_* entities, which
+need Presidio's transformers extra and a downloaded model. On top of that come the project's own recognizers from pii_detector/recognizers.py (ADDRESS, PASSWORD, USERNAME,
+API_KEY, CARD_CVV, US_EIN and about 20 more; pass --no-custom to leave them out). Two small changes keep it offline and broad:
+email validation uses tldextract's bundled suffix list, and phone detection covers every region
+libphonenumber knows. Context words of non-English recognizers stay in their own language, so those
+entities can score lower in English text.
+
+    python -m pii_detector "Call Sarah on (415) 555-0132"       # text as an argument
+    python -m pii_detector --file samples/sample_us.txt         # a file
+    echo "..." | python -m pii_detector --json                  # stdin, JSON output
+    python -m pii_detector --list-entities                      # everything Presidio can detect
+"""
+import argparse
+import json
+import sys
+import time
+from collections import Counter
+
+SPACY_MODEL = "en_core_web_lg"
+
+
+# Recognizers that need extra packages, a model download or an external service; they are not pattern rules.
+SKIP_CLASSES = ("Azure", "Stanza", "Transformers", "GLiNER", "HuggingFace", "LangExtract", "MedicalNER", "Spacy")
+
+
+def load_analyzer(everything=True, custom=True):
+    from presidio_analyzer import AnalyzerEngine
+    from presidio_analyzer.nlp_engine import NlpEngineProvider
+    provider = NlpEngineProvider(nlp_configuration={
+        "nlp_engine_name": "spacy", "models": [{"lang_code": "en", "model_name": SPACY_MODEL}]})
+    analyzer = AnalyzerEngine(nlp_engine=provider.create_engine(), supported_languages=["en"])
+    use_bundled_suffix_list(analyzer)
+    if everything:
+        enable_all_pattern_recognizers(analyzer)
+    if custom:
+        from .recognizers import add_custom_recognizers
+        add_custom_recognizers(analyzer)
+    return analyzer
+
+
+def enable_all_pattern_recognizers(analyzer):
+    """Register every predefined pattern recognizer for English, and widen phone detection to all regions."""
+    import inspect
+    import phonenumbers
+    import presidio_analyzer.predefined_recognizers as predefined
+    from presidio_analyzer import EntityRecognizer
+    from presidio_analyzer.predefined_recognizers import PhoneRecognizer
+    registry = analyzer.registry
+    for original in [r for r in registry.recognizers if isinstance(r, PhoneRecognizer)]:
+        registry.remove_recognizer(original.name, language=original.supported_language)
+    registry.add_recognizer(PhoneRecognizer(supported_regions=sorted(phonenumbers.SUPPORTED_REGIONS), supported_language="en"))
+    present = {entity for recognizer in registry.recognizers for entity in recognizer.supported_entities}
+    for name, cls in sorted(inspect.getmembers(predefined, inspect.isclass)):
+        if not issubclass(cls, EntityRecognizer) or not name.endswith("Recognizer") or any(k in name for k in SKIP_CLASSES):
+            continue
+        try:
+            recognizer = cls(supported_language="en")
+        except Exception:
+            continue
+        if recognizer.supported_entities[0] not in present:
+            registry.add_recognizer(recognizer)
+            present.update(recognizer.supported_entities)
+
+
+def use_bundled_suffix_list(analyzer):
+    """Presidio's email check downloads the public-suffix list; use the copy bundled with tldextract."""
+    from presidio_analyzer.predefined_recognizers import EmailRecognizer
+    from tldextract import TLDExtract
+    extractor = TLDExtract(suffix_list_urls=(), cache_dir=None, fallback_to_snapshot=True)
+
+    class OfflineEmailRecognizer(EmailRecognizer):
+        def validate_result(self, pattern_text):
+            return extractor(pattern_text).fqdn != ""
+
+    for original in list(analyzer.registry.recognizers):
+        if isinstance(original, EmailRecognizer):
+            analyzer.registry.remove_recognizer(original.name, language=original.supported_language)
+            analyzer.registry.add_recognizer(OfflineEmailRecognizer(
+                patterns=original.patterns, context=original.context, supported_language=original.supported_language,
+                supported_entity=original.supported_entities[0], name=original.name))
+
+
+CHUNK_CHARS = 100_000   # spaCy refuses inputs over 1,000,000 characters; analyse big inputs in pieces
+
+
+# spaCy tags every capitalised acronym or product name as ORGANIZATION; these words are never organizations worth reporting.
+NOT_ORGANIZATIONS = {"ethereum", "bitcoin", "litecoin", "solana", "ripple", "dogecoin", "swift", "iban", "ssn", "cvv", "pin", "otp", "ein", "itin"}
+
+
+def spacy_noise(item):
+    """True for spaCy-only results that are almost certainly wrong: acronyms, crypto names, JSON/snake_case keys."""
+    text = item["text"].strip()
+    if "_" in text:
+        return True
+    if item["entity"] == "ORGANIZATION":
+        return (text.isupper() and len(text) <= 6) or any(c.isdigit() for c in text) or text.lower() in NOT_ORGANIZATIONS
+    return False
+
+
+def collapse_overlaps(found, custom_names=()):
+    """Keep one result per overlapping group.
+
+    Ranking: the project's own recognizers beat Presidio's built-in rules, which beat spaCy's name/place/date tagging
+    (spaCy gives every tag a flat 0.85, so it used to win ties against precise rules). Within a tier the higher score,
+    then the longer span, then a US_-prefixed entity (the more specific name), then the entity name wins, so the outcome never depends on recognizer registration order.
+    spaCy-only results that look like noise are dropped first.
+    """
+    def tier(item):
+        if item["recognizer"] == "SpacyRecognizer":
+            return 0
+        return 2 if item["recognizer"] in custom_names else 1
+
+    kept = []
+    candidates = [item for item in found if not (tier(item) == 0 and spacy_noise(item))]
+    for item in sorted(candidates, key=lambda d: (-tier(d), -d["score"], -(d["end"] - d["start"]), not d["entity"].startswith("US_"), d["entity"], d["start"])):
+        if not any(item["start"] < k["end"] and item["end"] > k["start"] for k in kept):
+            kept.append(item)
+    return kept
+
+
+def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
+    """Return Presidio's detections as dicts sorted by position. collapse keeps one result per overlapping group (see collapse_overlaps).
+
+    Inputs longer than CHUNK_CHARS are analysed in pieces cut at whitespace; an entity that straddles a cut
+    can be missed, which is why the pieces are large.
+    """
+    found = []
+    start = 0
+    while start < len(text):
+        end = min(start + CHUNK_CHARS, len(text))
+        if end < len(text):
+            cut = max(text.rfind(" ", start, end), text.rfind("\n", start, end))
+            end = cut + 1 if cut > start else end
+        piece = text[start:end]
+        for r in analyzer.analyze(text=piece, language="en", entities=entities or None, score_threshold=threshold):
+            found.append({"text": piece[r.start:r.end], "entity": r.entity_type, "start": start + r.start,
+                          "end": start + r.end, "score": round(float(r.score), 3),
+                          "recognizer": (r.recognition_metadata or {}).get("recognizer_name", "")})
+        start = end
+    if collapse:
+        found = collapse_overlaps(found, getattr(analyzer, "custom_recognizer_names", ()))
+    return sorted(found, key=lambda d: (d["start"], d["end"], d["entity"]))
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument("text", nargs="?", help="text to analyse; default: stdin")
+    source.add_argument("--file", help="UTF-8 file to analyse")
+    source.add_argument("--list-entities", action="store_true", help="print every entity Presidio can detect and exit")
+    parser.add_argument("--threshold", type=float, default=0.5, help="minimum score, 0-1 (default 0.5; try 0 to see everything)")
+    parser.add_argument("--entities", help="comma-separated entity types to look for (default: all)")
+    parser.add_argument("--collapse", action="store_true", help="keep only the best-scoring result where results overlap")
+    parser.add_argument("--english-registry", action="store_true", help="Presidio's stock English registry only (23 entity types)")
+    parser.add_argument("--no-custom", action="store_true", help="leave out the project's own recognizers (pii_detector/recognizers.py)")
+    parser.add_argument("--json", action="store_true", help="print JSON instead of a table")
+    args = parser.parse_args()
+    if not 0 <= args.threshold <= 1:
+        parser.error("--threshold must be between 0 and 1")
+
+    started = time.time()
+    analyzer = load_analyzer(everything=not args.english_registry, custom=not args.no_custom)
+    load_seconds = time.time() - started
+    if args.list_entities:
+        by_recognizer = {}
+        for recognizer in analyzer.registry.get_recognizers(language="en", all_fields=True):
+            for entity in recognizer.supported_entities:
+                by_recognizer.setdefault(entity, set()).add(recognizer.name)
+        scope = "Presidio's stock English registry" if args.english_registry else "the registry with every pattern recognizer enabled"
+        scope += "" if args.no_custom else " plus the custom recognizers"
+        print(f"{len(by_recognizer)} entity types in {scope}:\n")
+        for entity in sorted(by_recognizer):
+            print(f"  {entity:28} {', '.join(sorted(by_recognizer[entity]))}")
+        return 0
+
+    if args.file:
+        with open(args.file, encoding="utf-8") as handle:
+            text = handle.read()
+    else:
+        text = args.text if args.text is not None else sys.stdin.read()
+    if not text.strip():
+        parser.error("no text provided")
+    wanted = [e.strip() for e in args.entities.split(",") if e.strip()] if args.entities else None
+
+    detect(analyzer, "warm-up", args.threshold)   # first call has one-off costs; keep them out of the timing
+    started = time.time()
+    found = detect(analyzer, text, args.threshold, wanted, args.collapse)
+    seconds = time.time() - started
+
+    if args.json:
+        print(json.dumps({"detections": found, "seconds": round(seconds, 3)}, indent=2, ensure_ascii=False))
+        return 0
+    if not found:
+        print("No detections.")
+    else:
+        print(f"{'start':>5} {'end':>5}  {'entity':26} {'score':>5}  {'recognizer':28} text")
+        for d in found:
+            print(f"{d['start']:5} {d['end']:5}  {d['entity']:26} {d['score']:5.2f}  {d['recognizer']:28} {d['text']!r}")
+        counts = Counter(d["entity"] for d in found)
+        print("\n" + ", ".join(f"{entity} x{n}" for entity, n in counts.most_common()))
+    print(f"\n{len(found)} detections in {seconds * 1000:.0f} ms ({len(text)} chars; model load {load_seconds:.1f} s, threshold {args.threshold})")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

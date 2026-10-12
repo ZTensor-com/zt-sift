@@ -1,0 +1,2646 @@
+[
+  {
+    "name": "all_regions",
+    "phone_regions": 245,
+    "timings": [
+      {
+        "name": "user_sample",
+        "median_ms": 261.92,
+        "runs_ms": [
+          309.7024170001532,
+          261.9197919993894,
+          261.23837500017544
+        ],
+        "count": 50
+      },
+      {
+        "name": "20k_dense",
+        "median_ms": 2271.138,
+        "runs_ms": [
+          2294.0309999994497,
+          2271.13833400108,
+          2261.0149579995777
+        ],
+        "count": 600
+      },
+      {
+        "name": "20k_numeric",
+        "median_ms": 3754.27,
+        "runs_ms": [
+          3773.2191249997413,
+          3754.2695829997683,
+          3750.321832998452
+        ],
+        "count": 0
+      }
+    ],
+    "output_differences": [],
+    "international_phones": [
+      {
+        "text": "Phone: +91 98765 43210",
+        "detections": [
+          {
+            "text": "+91 98765 43210",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 22,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +44 20 7946 0018",
+        "detections": [
+          {
+            "text": "+44 20 7946 0018",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 23,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +49 30 901820",
+        "detections": [
+          {
+            "text": "+49 30 901820",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 20,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +33 1 42 68 53 00",
+        "detections": [
+          {
+            "text": "+33 1 42 68 53 00",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 24,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: 030 901820",
+        "detections": [
+          {
+            "text": "030 901820",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 17,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "US_IN_GB_CA",
+    "phone_regions": 4,
+    "timings": [
+      {
+        "name": "user_sample",
+        "median_ms": 70.207,
+        "runs_ms": [
+          73.13020800029335,
+          70.20729199939524,
+          70.06508399899758
+        ],
+        "count": 50
+      },
+      {
+        "name": "20k_dense",
+        "median_ms": 636.173,
+        "runs_ms": [
+          635.1574170003005,
+          636.173457998666,
+          638.622333000967
+        ],
+        "count": 600
+      },
+      {
+        "name": "20k_numeric",
+        "median_ms": 360.572,
+        "runs_ms": [
+          362.03774999921734,
+          359.4322499993723,
+          360.571750001327
+        ],
+        "count": 0
+      }
+    ],
+    "output_differences": [
+      {
+        "case": "user_sample_raw",
+        "before": [
+          {
+            "text": "Sarah Johnson",
+            "entity": "PERSON",
+            "start": 0,
+            "end": 13,
+            "score": 0.85
+          },
+          {
+            "text": "34",
+            "entity": "AGE",
+            "start": 20,
+            "end": 22,
+            "score": 0.6
+          },
+          {
+            "text": "female",
+            "entity": "GENDER",
+            "start": 32,
+            "end": 38,
+            "score": 0.7
+          },
+          {
+            "text": "Hispanic",
+            "entity": "ETHNICITY",
+            "start": 51,
+            "end": 59,
+            "score": 0.75
+          },
+          {
+            "text": "Hispanic",
+            "entity": "NRP",
+            "start": 51,
+            "end": 59,
+            "score": 0.85
+          },
+          {
+            "text": "married",
+            "entity": "MARITAL_STATUS",
+            "start": 77,
+            "end": 84,
+            "score": 0.7
+          },
+          {
+            "text": "bisexual",
+            "entity": "SEXUAL_ORIENTATION",
+            "start": 106,
+            "end": 114,
+            "score": 0.8
+          },
+          {
+            "text": "Catholic",
+            "entity": "NRP",
+            "start": 126,
+            "end": 134,
+            "score": 0.85
+          },
+          {
+            "text": "Catholic",
+            "entity": "RELIGION",
+            "start": 126,
+            "end": 134,
+            "score": 0.8
+          },
+          {
+            "text": "Democrat",
+            "entity": "NRP",
+            "start": 159,
+            "end": 167,
+            "score": 0.85
+          },
+          {
+            "text": "Democrat",
+            "entity": "POLITICAL_AFFILIATION",
+            "start": 159,
+            "end": 167,
+            "score": 0.8
+          },
+          {
+            "text": "742",
+            "entity": "CREDIT_SCORE",
+            "start": 183,
+            "end": 186,
+            "score": 0.75
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_OF_BIRTH",
+            "start": 197,
+            "end": 211,
+            "score": 0.9
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_TIME",
+            "start": 197,
+            "end": 211,
+            "score": 0.85
+          },
+          {
+            "text": "742 Evergreen Terrace, Springfield, IL 62704",
+            "entity": "ADDRESS",
+            "start": 226,
+            "end": 270,
+            "score": 0.9
+          },
+          {
+            "text": "Evergreen Terrace",
+            "entity": "ORGANIZATION",
+            "start": 230,
+            "end": 247,
+            "score": 0.85
+          },
+          {
+            "text": "Springfield",
+            "entity": "LOCATION",
+            "start": 249,
+            "end": 260,
+            "score": 0.85
+          },
+          {
+            "text": "IL 62704",
+            "entity": "ORGANIZATION",
+            "start": 262,
+            "end": 270,
+            "score": 0.85
+          },
+          {
+            "text": "62704-1234",
+            "entity": "DATE_TIME",
+            "start": 281,
+            "end": 291,
+            "score": 0.85
+          },
+          {
+            "text": "62704-1234",
+            "entity": "US_ZIP_CODE",
+            "start": 281,
+            "end": 291,
+            "score": 0.85
+          },
+          {
+            "text": "PO Box 4521, Austin, TX 78701",
+            "entity": "ADDRESS",
+            "start": 307,
+            "end": 336,
+            "score": 0.8
+          },
+          {
+            "text": "Austin",
+            "entity": "LOCATION",
+            "start": 320,
+            "end": 326,
+            "score": 0.85
+          },
+          {
+            "text": "TX 78701",
+            "entity": "LOCATION",
+            "start": 328,
+            "end": 336,
+            "score": 0.85
+          },
+          {
+            "text": "(201) 555-0123",
+            "entity": "PHONE_NUMBER",
+            "start": 343,
+            "end": 357,
+            "score": 0.6
+          },
+          {
+            "text": "212-555-0187",
+            "entity": "PHONE_NUMBER",
+            "start": 361,
+            "end": 373,
+            "score": 0.6
+          },
+          {
+            "text": "$85,000",
+            "entity": "SALARY",
+            "start": 383,
+            "end": 390,
+            "score": 0.7
+          },
+          {
+            "text": "EIN 12-3456789",
+            "entity": "ORGANIZATION",
+            "start": 401,
+            "end": 415,
+            "score": 0.85
+          },
+          {
+            "text": "12-3456789",
+            "entity": "US_EIN",
+            "start": 405,
+            "end": 415,
+            "score": 0.9
+          },
+          {
+            "text": "EMP-016973",
+            "entity": "EMPLOYEE_ID",
+            "start": 429,
+            "end": 439,
+            "score": 0.8
+          },
+          {
+            "text": "S87749056",
+            "entity": "STUDENT_ID",
+            "start": 452,
+            "end": 461,
+            "score": 0.8
+          },
+          {
+            "text": "CUST-884213",
+            "entity": "ACCOUNT_ID",
+            "start": 475,
+            "end": 486,
+            "score": 0.75
+          },
+          {
+            "text": "075977035",
+            "entity": "PASSPORT_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.85
+          },
+          {
+            "text": "075977035",
+            "entity": "PHONE_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.75
+          },
+          {
+            "text": "075977035",
+            "entity": "US_PASSPORT",
+            "start": 504,
+            "end": 513,
+            "score": 0.85
+          },
+          {
+            "text": "L8227257",
+            "entity": "DRIVER_LICENSE_NUMBER",
+            "start": 537,
+            "end": 545,
+            "score": 0.8
+          },
+          {
+            "text": "L8227257",
+            "entity": "US_DRIVER_LICENSE",
+            "start": 537,
+            "end": 545,
+            "score": 0.65
+          },
+          {
+            "text": "98765432",
+            "entity": "NATIONAL_ID_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.8
+          },
+          {
+            "text": "98765432",
+            "entity": "PHONE_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.75
+          },
+          {
+            "text": "98-7654321",
+            "entity": "PHONE_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.75
+          },
+          {
+            "text": "98-7654321",
+            "entity": "TAX_ID_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.8
+          },
+          {
+            "text": "98-7654321",
+            "entity": "US_EIN",
+            "start": 584,
+            "end": 594,
+            "score": 0.65
+          },
+          {
+            "text": "A123456789",
+            "entity": "US_ALIEN_NUMBER",
+            "start": 622,
+            "end": 632,
+            "score": 0.85
+          },
+          {
+            "text": "RN-445566",
+            "entity": "PROFESSIONAL_LICENSE",
+            "start": 657,
+            "end": 666,
+            "score": 0.8
+          },
+          {
+            "text": "445566",
+            "entity": "PHONE_NUMBER",
+            "start": 660,
+            "end": 666,
+            "score": 0.75
+          },
+          {
+            "text": "3982583440",
+            "entity": "PHONE_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.75
+          },
+          {
+            "text": "3982583440",
+            "entity": "US_BANK_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.8
+          },
+          {
+            "text": "CVV 737",
+            "entity": "ORGANIZATION",
+            "start": 700,
+            "end": 707,
+            "score": 0.85
+          },
+          {
+            "text": "737",
+            "entity": "CARD_CVV",
+            "start": 704,
+            "end": 707,
+            "score": 0.88
+          },
+          {
+            "text": "08/28",
+            "entity": "CARD_EXPIRY",
+            "start": 716,
+            "end": 721,
+            "score": 0.88
+          },
+          {
+            "text": "DEUTDEFF500",
+            "entity": "SWIFT_BIC",
+            "start": 734,
+            "end": 745,
+            "score": 0.85
+          },
+          {
+            "text": "Ethereum",
+            "entity": "ORGANIZATION",
+            "start": 747,
+            "end": 755,
+            "score": 0.85
+          },
+          {
+            "text": "0x52908400098527886E0F7030069857D2E4169EE7",
+            "entity": "CRYPTO",
+            "start": 763,
+            "end": 805,
+            "score": 1.0
+          },
+          {
+            "text": "MRN",
+            "entity": "ORGANIZATION",
+            "start": 829,
+            "end": 832,
+            "score": 0.85
+          },
+          {
+            "text": "00482913",
+            "entity": "MEDICAL_RECORD_NUMBER",
+            "start": 833,
+            "end": 841,
+            "score": 0.85
+          },
+          {
+            "text": "ZXC123456789",
+            "entity": "INSURANCE_ID",
+            "start": 867,
+            "end": 879,
+            "score": 0.8
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "ADMISSION_DATE",
+            "start": 893,
+            "end": 906,
+            "score": 0.85
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "DATE_TIME",
+            "start": 893,
+            "end": 906,
+            "score": 0.85
+          },
+          {
+            "text": "2024",
+            "entity": "PHONE_NUMBER",
+            "start": 902,
+            "end": 906,
+            "score": 0.75
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DATE_TIME",
+            "start": 924,
+            "end": 934,
+            "score": 0.95
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DISCHARGE_DATE",
+            "start": 924,
+            "end": 934,
+            "score": 0.85
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_OF_DEATH",
+            "start": 955,
+            "end": 965,
+            "score": 0.85
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_TIME",
+            "start": 955,
+            "end": 965,
+            "score": 0.95
+          },
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 977,
+            "end": 986,
+            "score": 0.85
+          },
+          {
+            "text": "Sup3rS3cret!42",
+            "entity": "PASSWORD",
+            "start": 1000,
+            "end": 1014,
+            "score": 0.85
+          },
+          {
+            "text": "@sarah_j89",
+            "entity": "SOCIAL_HANDLE",
+            "start": 1023,
+            "end": 1033,
+            "score": 0.85
+          },
+          {
+            "text": "API",
+            "entity": "ORGANIZATION",
+            "start": 1035,
+            "end": 1038,
+            "score": 0.85
+          },
+          {
+            "text": "AKIAIOSFODNN7EXAMPLE",
+            "entity": "API_KEY",
+            "start": 1043,
+            "end": 1063,
+            "score": 1.0
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "API_KEY",
+            "start": 1072,
+            "end": 1150,
+            "score": 0.8
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "AUTH_TOKEN",
+            "start": 1072,
+            "end": 1150,
+            "score": 1.0
+          },
+          {
+            "text": "3f2a9c1e7b4d8a6f0c2e5b1d9a7f4c3e",
+            "entity": "SESSION_ID",
+            "start": 1163,
+            "end": 1195,
+            "score": 0.75
+          },
+          {
+            "text": "9f86d081884c7d659a2feaa0c55ad015",
+            "entity": "BIOMETRIC_ID",
+            "start": 1214,
+            "end": 1246,
+            "score": 0.8
+          },
+          {
+            "text": "-----BEGIN RSA PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 1274,
+            "end": 1305,
+            "score": 0.99
+          },
+          {
+            "text": "1HGCM82633A004352",
+            "entity": "VIN",
+            "start": 1322,
+            "end": 1339,
+            "score": 1.0
+          },
+          {
+            "text": "7ABC123",
+            "entity": "LICENSE_PLATE",
+            "start": 1359,
+            "end": 1366,
+            "score": 0.8
+          },
+          {
+            "text": "IMEI",
+            "entity": "ORGANIZATION",
+            "start": 1374,
+            "end": 1378,
+            "score": 0.85
+          },
+          {
+            "text": "490154203237518",
+            "entity": "CREDIT_CARD",
+            "start": 1379,
+            "end": 1394,
+            "score": 1.0
+          },
+          {
+            "text": "490154203237518",
+            "entity": "DATE_TIME",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.85
+          },
+          {
+            "text": "490154203237518",
+            "entity": "IMEI",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.88
+          },
+          {
+            "text": "SN48210937",
+            "entity": "SERIAL_NUMBER",
+            "start": 1417,
+            "end": 1427,
+            "score": 0.75
+          },
+          {
+            "text": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+            "entity": "UUID",
+            "start": 1436,
+            "end": 1472,
+            "score": 1.0
+          },
+          {
+            "text": "40.71278, -74.00594",
+            "entity": "GPS_COORDINATES",
+            "start": 1499,
+            "end": 1518,
+            "score": 0.7
+          }
+        ],
+        "after": [
+          {
+            "text": "Sarah Johnson",
+            "entity": "PERSON",
+            "start": 0,
+            "end": 13,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "34",
+            "entity": "AGE",
+            "start": 20,
+            "end": 22,
+            "score": 0.6,
+            "recognizer": "LabeledAgeRecognizer"
+          },
+          {
+            "text": "female",
+            "entity": "GENDER",
+            "start": 32,
+            "end": 38,
+            "score": 0.7,
+            "recognizer": "LabeledGenderRecognizer"
+          },
+          {
+            "text": "Hispanic",
+            "entity": "ETHNICITY",
+            "start": 51,
+            "end": 59,
+            "score": 0.75,
+            "recognizer": "LabeledEthnicityRecognizer"
+          },
+          {
+            "text": "Hispanic",
+            "entity": "NRP",
+            "start": 51,
+            "end": 59,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "married",
+            "entity": "MARITAL_STATUS",
+            "start": 77,
+            "end": 84,
+            "score": 0.7,
+            "recognizer": "LabeledMaritalStatusRecognizer"
+          },
+          {
+            "text": "bisexual",
+            "entity": "SEXUAL_ORIENTATION",
+            "start": 106,
+            "end": 114,
+            "score": 0.8,
+            "recognizer": "LabeledSexualOrientationRecognizer"
+          },
+          {
+            "text": "Catholic",
+            "entity": "NRP",
+            "start": 126,
+            "end": 134,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Catholic",
+            "entity": "RELIGION",
+            "start": 126,
+            "end": 134,
+            "score": 0.8,
+            "recognizer": "LabeledReligionRecognizer"
+          },
+          {
+            "text": "Democrat",
+            "entity": "NRP",
+            "start": 159,
+            "end": 167,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Democrat",
+            "entity": "POLITICAL_AFFILIATION",
+            "start": 159,
+            "end": 167,
+            "score": 0.8,
+            "recognizer": "LabeledPoliticalAffiliationRecognizer"
+          },
+          {
+            "text": "742",
+            "entity": "CREDIT_SCORE",
+            "start": 183,
+            "end": 186,
+            "score": 0.75,
+            "recognizer": "LabeledCreditScoreRecognizer"
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_OF_BIRTH",
+            "start": 197,
+            "end": 211,
+            "score": 0.9,
+            "recognizer": "LabeledDateOfBirthRecognizer"
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_TIME",
+            "start": 197,
+            "end": 211,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "742 Evergreen Terrace, Springfield, IL 62704",
+            "entity": "ADDRESS",
+            "start": 226,
+            "end": 270,
+            "score": 0.9,
+            "recognizer": "UsStreetAddressRecognizer"
+          },
+          {
+            "text": "Evergreen Terrace",
+            "entity": "ORGANIZATION",
+            "start": 230,
+            "end": 247,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Springfield",
+            "entity": "LOCATION",
+            "start": 249,
+            "end": 260,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "IL 62704",
+            "entity": "ORGANIZATION",
+            "start": 262,
+            "end": 270,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "62704-1234",
+            "entity": "DATE_TIME",
+            "start": 281,
+            "end": 291,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "62704-1234",
+            "entity": "US_ZIP_CODE",
+            "start": 281,
+            "end": 291,
+            "score": 0.85,
+            "recognizer": "LabeledUsZipCodeRecognizer"
+          },
+          {
+            "text": "PO Box 4521, Austin, TX 78701",
+            "entity": "ADDRESS",
+            "start": 307,
+            "end": 336,
+            "score": 0.8,
+            "recognizer": "UsStreetAddressRecognizer"
+          },
+          {
+            "text": "Austin",
+            "entity": "LOCATION",
+            "start": 320,
+            "end": 326,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "TX 78701",
+            "entity": "LOCATION",
+            "start": 328,
+            "end": 336,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "(201) 555-0123",
+            "entity": "PHONE_NUMBER",
+            "start": 343,
+            "end": 357,
+            "score": 0.6,
+            "recognizer": "UsPhoneFormatRecognizer"
+          },
+          {
+            "text": "212-555-0187",
+            "entity": "PHONE_NUMBER",
+            "start": 361,
+            "end": 373,
+            "score": 0.6,
+            "recognizer": "UsPhoneFormatRecognizer"
+          },
+          {
+            "text": "$85,000",
+            "entity": "SALARY",
+            "start": 383,
+            "end": 390,
+            "score": 0.7,
+            "recognizer": "LabeledSalaryRecognizer"
+          },
+          {
+            "text": "EIN 12-3456789",
+            "entity": "ORGANIZATION",
+            "start": 401,
+            "end": 415,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "12-3456789",
+            "entity": "US_EIN",
+            "start": 405,
+            "end": 415,
+            "score": 0.9,
+            "recognizer": "LabeledUsEinRecognizer"
+          },
+          {
+            "text": "EMP-016973",
+            "entity": "EMPLOYEE_ID",
+            "start": 429,
+            "end": 439,
+            "score": 0.8,
+            "recognizer": "LabeledEmployeeIdRecognizer"
+          },
+          {
+            "text": "S87749056",
+            "entity": "STUDENT_ID",
+            "start": 452,
+            "end": 461,
+            "score": 0.8,
+            "recognizer": "LabeledStudentIdRecognizer"
+          },
+          {
+            "text": "CUST-884213",
+            "entity": "ACCOUNT_ID",
+            "start": 475,
+            "end": 486,
+            "score": 0.75,
+            "recognizer": "LabeledAccountIdRecognizer"
+          },
+          {
+            "text": "075977035",
+            "entity": "PASSPORT_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.85,
+            "recognizer": "LabeledPassportNumberRecognizer"
+          },
+          {
+            "text": "075977035",
+            "entity": "US_PASSPORT",
+            "start": 504,
+            "end": 513,
+            "score": 0.85,
+            "recognizer": "LabeledUsPassportRecognizer"
+          },
+          {
+            "text": "L8227257",
+            "entity": "DRIVER_LICENSE_NUMBER",
+            "start": 537,
+            "end": 545,
+            "score": 0.8,
+            "recognizer": "LabeledDriverLicenseNumberRecognizer"
+          },
+          {
+            "text": "L8227257",
+            "entity": "US_DRIVER_LICENSE",
+            "start": 537,
+            "end": 545,
+            "score": 0.65,
+            "recognizer": "UsLicenseRecognizer"
+          },
+          {
+            "text": "98765432",
+            "entity": "NATIONAL_ID_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.8,
+            "recognizer": "LabeledNationalIdNumberRecognizer"
+          },
+          {
+            "text": "98-7654321",
+            "entity": "TAX_ID_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.8,
+            "recognizer": "LabeledTaxIdNumberRecognizer"
+          },
+          {
+            "text": "98-7654321",
+            "entity": "US_EIN",
+            "start": 584,
+            "end": 594,
+            "score": 0.65,
+            "recognizer": "EinShapeRecognizer"
+          },
+          {
+            "text": "A123456789",
+            "entity": "US_ALIEN_NUMBER",
+            "start": 622,
+            "end": 632,
+            "score": 0.85,
+            "recognizer": "LabeledUsAlienNumberRecognizer"
+          },
+          {
+            "text": "RN-445566",
+            "entity": "PROFESSIONAL_LICENSE",
+            "start": 657,
+            "end": 666,
+            "score": 0.8,
+            "recognizer": "LabeledProfessionalLicenseRecognizer"
+          },
+          {
+            "text": "3982583440",
+            "entity": "US_BANK_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.8,
+            "recognizer": "LabeledUsBankNumberRecognizer"
+          },
+          {
+            "text": "CVV 737",
+            "entity": "ORGANIZATION",
+            "start": 700,
+            "end": 707,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "737",
+            "entity": "CARD_CVV",
+            "start": 704,
+            "end": 707,
+            "score": 0.88,
+            "recognizer": "LabeledCardCvvRecognizer"
+          },
+          {
+            "text": "08/28",
+            "entity": "CARD_EXPIRY",
+            "start": 716,
+            "end": 721,
+            "score": 0.88,
+            "recognizer": "LabeledCardExpiryRecognizer"
+          },
+          {
+            "text": "DEUTDEFF500",
+            "entity": "SWIFT_BIC",
+            "start": 734,
+            "end": 745,
+            "score": 0.85,
+            "recognizer": "LabeledSwiftRecognizer"
+          },
+          {
+            "text": "Ethereum",
+            "entity": "ORGANIZATION",
+            "start": 747,
+            "end": 755,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "0x52908400098527886E0F7030069857D2E4169EE7",
+            "entity": "CRYPTO",
+            "start": 763,
+            "end": 805,
+            "score": 1.0,
+            "recognizer": "EthereumAddressRecognizer"
+          },
+          {
+            "text": "MRN",
+            "entity": "ORGANIZATION",
+            "start": 829,
+            "end": 832,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "00482913",
+            "entity": "MEDICAL_RECORD_NUMBER",
+            "start": 833,
+            "end": 841,
+            "score": 0.85,
+            "recognizer": "LabeledMedicalRecordNumberRecognizer"
+          },
+          {
+            "text": "ZXC123456789",
+            "entity": "INSURANCE_ID",
+            "start": 867,
+            "end": 879,
+            "score": 0.8,
+            "recognizer": "LabeledInsuranceIdRecognizer"
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "ADMISSION_DATE",
+            "start": 893,
+            "end": 906,
+            "score": 0.85,
+            "recognizer": "LabeledAdmissionDateRecognizer"
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "DATE_TIME",
+            "start": 893,
+            "end": 906,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DATE_TIME",
+            "start": 924,
+            "end": 934,
+            "score": 0.95,
+            "recognizer": "DateRecognizer"
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DISCHARGE_DATE",
+            "start": 924,
+            "end": 934,
+            "score": 0.85,
+            "recognizer": "LabeledDischargeDateRecognizer"
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_OF_DEATH",
+            "start": 955,
+            "end": 965,
+            "score": 0.85,
+            "recognizer": "LabeledDateOfDeathRecognizer"
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_TIME",
+            "start": 955,
+            "end": 965,
+            "score": 0.95,
+            "recognizer": "DateRecognizer"
+          },
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 977,
+            "end": 986,
+            "score": 0.85,
+            "recognizer": "LabeledUsernameRecognizer"
+          },
+          {
+            "text": "Sup3rS3cret!42",
+            "entity": "PASSWORD",
+            "start": 1000,
+            "end": 1014,
+            "score": 0.85,
+            "recognizer": "LabeledPasswordRecognizer"
+          },
+          {
+            "text": "@sarah_j89",
+            "entity": "SOCIAL_HANDLE",
+            "start": 1023,
+            "end": 1033,
+            "score": 0.85,
+            "recognizer": "SocialHandleRecognizer"
+          },
+          {
+            "text": "API",
+            "entity": "ORGANIZATION",
+            "start": 1035,
+            "end": 1038,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "AKIAIOSFODNN7EXAMPLE",
+            "entity": "API_KEY",
+            "start": 1043,
+            "end": 1063,
+            "score": 1.0,
+            "recognizer": "KnownApiKeyFormatsRecognizer"
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "API_KEY",
+            "start": 1072,
+            "end": 1150,
+            "score": 0.8,
+            "recognizer": "LabeledApiKeyRecognizer"
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "AUTH_TOKEN",
+            "start": 1072,
+            "end": 1150,
+            "score": 1.0,
+            "recognizer": "JwtRecognizer"
+          },
+          {
+            "text": "3f2a9c1e7b4d8a6f0c2e5b1d9a7f4c3e",
+            "entity": "SESSION_ID",
+            "start": 1163,
+            "end": 1195,
+            "score": 0.75,
+            "recognizer": "LabeledSessionIdRecognizer"
+          },
+          {
+            "text": "9f86d081884c7d659a2feaa0c55ad015",
+            "entity": "BIOMETRIC_ID",
+            "start": 1214,
+            "end": 1246,
+            "score": 0.8,
+            "recognizer": "LabeledBiometricIdRecognizer"
+          },
+          {
+            "text": "-----BEGIN RSA PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 1274,
+            "end": 1305,
+            "score": 0.99,
+            "recognizer": "PrivateKeyRecognizer"
+          },
+          {
+            "text": "1HGCM82633A004352",
+            "entity": "VIN",
+            "start": 1322,
+            "end": 1339,
+            "score": 1.0,
+            "recognizer": "VinRecognizer"
+          },
+          {
+            "text": "7ABC123",
+            "entity": "LICENSE_PLATE",
+            "start": 1359,
+            "end": 1366,
+            "score": 0.8,
+            "recognizer": "LabeledLicensePlateRecognizer"
+          },
+          {
+            "text": "IMEI",
+            "entity": "ORGANIZATION",
+            "start": 1374,
+            "end": 1378,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "CREDIT_CARD",
+            "start": 1379,
+            "end": 1394,
+            "score": 1.0,
+            "recognizer": "CreditCardRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "DATE_TIME",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "IMEI",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.88,
+            "recognizer": "LabeledImeiRecognizer"
+          },
+          {
+            "text": "SN48210937",
+            "entity": "SERIAL_NUMBER",
+            "start": 1417,
+            "end": 1427,
+            "score": 0.75,
+            "recognizer": "LabeledSerialNumberRecognizer"
+          },
+          {
+            "text": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+            "entity": "UUID",
+            "start": 1436,
+            "end": 1472,
+            "score": 1.0,
+            "recognizer": "UuidRecognizer"
+          },
+          {
+            "text": "40.71278, -74.00594",
+            "entity": "GPS_COORDINATES",
+            "start": 1499,
+            "end": 1518,
+            "score": 0.7,
+            "recognizer": "GpsRecognizer"
+          }
+        ]
+      }
+    ],
+    "international_phones": [
+      {
+        "text": "Phone: +91 98765 43210",
+        "detections": [
+          {
+            "text": "+91 98765 43210",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 22,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +44 20 7946 0018",
+        "detections": [
+          {
+            "text": "+44 20 7946 0018",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 23,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +49 30 901820",
+        "detections": [
+          {
+            "text": "+49 30 901820",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 20,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +33 1 42 68 53 00",
+        "detections": [
+          {
+            "text": "+33 1 42 68 53 00",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 24,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: 030 901820",
+        "detections": []
+      }
+    ]
+  },
+  {
+    "name": "US_IN_GB_CA_without_parser",
+    "phone_regions": 4,
+    "timings": [
+      {
+        "name": "user_sample",
+        "median_ms": 65.064,
+        "runs_ms": [
+          65.06383300074958,
+          65.66791700061003,
+          65.00362499900803
+        ],
+        "count": 50
+      },
+      {
+        "name": "20k_dense",
+        "median_ms": 576.837,
+        "runs_ms": [
+          576.8367919990851,
+          603.8509999998496,
+          575.2997909985424
+        ],
+        "count": 600
+      },
+      {
+        "name": "20k_numeric",
+        "median_ms": 343.734,
+        "runs_ms": [
+          343.06649999962247,
+          343.73445799974434,
+          344.58258300037414
+        ],
+        "count": 0
+      }
+    ],
+    "output_differences": [
+      {
+        "case": "user_sample_raw",
+        "before": [
+          {
+            "text": "Sarah Johnson",
+            "entity": "PERSON",
+            "start": 0,
+            "end": 13,
+            "score": 0.85
+          },
+          {
+            "text": "34",
+            "entity": "AGE",
+            "start": 20,
+            "end": 22,
+            "score": 0.6
+          },
+          {
+            "text": "female",
+            "entity": "GENDER",
+            "start": 32,
+            "end": 38,
+            "score": 0.7
+          },
+          {
+            "text": "Hispanic",
+            "entity": "ETHNICITY",
+            "start": 51,
+            "end": 59,
+            "score": 0.75
+          },
+          {
+            "text": "Hispanic",
+            "entity": "NRP",
+            "start": 51,
+            "end": 59,
+            "score": 0.85
+          },
+          {
+            "text": "married",
+            "entity": "MARITAL_STATUS",
+            "start": 77,
+            "end": 84,
+            "score": 0.7
+          },
+          {
+            "text": "bisexual",
+            "entity": "SEXUAL_ORIENTATION",
+            "start": 106,
+            "end": 114,
+            "score": 0.8
+          },
+          {
+            "text": "Catholic",
+            "entity": "NRP",
+            "start": 126,
+            "end": 134,
+            "score": 0.85
+          },
+          {
+            "text": "Catholic",
+            "entity": "RELIGION",
+            "start": 126,
+            "end": 134,
+            "score": 0.8
+          },
+          {
+            "text": "Democrat",
+            "entity": "NRP",
+            "start": 159,
+            "end": 167,
+            "score": 0.85
+          },
+          {
+            "text": "Democrat",
+            "entity": "POLITICAL_AFFILIATION",
+            "start": 159,
+            "end": 167,
+            "score": 0.8
+          },
+          {
+            "text": "742",
+            "entity": "CREDIT_SCORE",
+            "start": 183,
+            "end": 186,
+            "score": 0.75
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_OF_BIRTH",
+            "start": 197,
+            "end": 211,
+            "score": 0.9
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_TIME",
+            "start": 197,
+            "end": 211,
+            "score": 0.85
+          },
+          {
+            "text": "742 Evergreen Terrace, Springfield, IL 62704",
+            "entity": "ADDRESS",
+            "start": 226,
+            "end": 270,
+            "score": 0.9
+          },
+          {
+            "text": "Evergreen Terrace",
+            "entity": "ORGANIZATION",
+            "start": 230,
+            "end": 247,
+            "score": 0.85
+          },
+          {
+            "text": "Springfield",
+            "entity": "LOCATION",
+            "start": 249,
+            "end": 260,
+            "score": 0.85
+          },
+          {
+            "text": "IL 62704",
+            "entity": "ORGANIZATION",
+            "start": 262,
+            "end": 270,
+            "score": 0.85
+          },
+          {
+            "text": "62704-1234",
+            "entity": "DATE_TIME",
+            "start": 281,
+            "end": 291,
+            "score": 0.85
+          },
+          {
+            "text": "62704-1234",
+            "entity": "US_ZIP_CODE",
+            "start": 281,
+            "end": 291,
+            "score": 0.85
+          },
+          {
+            "text": "PO Box 4521, Austin, TX 78701",
+            "entity": "ADDRESS",
+            "start": 307,
+            "end": 336,
+            "score": 0.8
+          },
+          {
+            "text": "Austin",
+            "entity": "LOCATION",
+            "start": 320,
+            "end": 326,
+            "score": 0.85
+          },
+          {
+            "text": "TX 78701",
+            "entity": "LOCATION",
+            "start": 328,
+            "end": 336,
+            "score": 0.85
+          },
+          {
+            "text": "(201) 555-0123",
+            "entity": "PHONE_NUMBER",
+            "start": 343,
+            "end": 357,
+            "score": 0.6
+          },
+          {
+            "text": "212-555-0187",
+            "entity": "PHONE_NUMBER",
+            "start": 361,
+            "end": 373,
+            "score": 0.6
+          },
+          {
+            "text": "$85,000",
+            "entity": "SALARY",
+            "start": 383,
+            "end": 390,
+            "score": 0.7
+          },
+          {
+            "text": "EIN 12-3456789",
+            "entity": "ORGANIZATION",
+            "start": 401,
+            "end": 415,
+            "score": 0.85
+          },
+          {
+            "text": "12-3456789",
+            "entity": "US_EIN",
+            "start": 405,
+            "end": 415,
+            "score": 0.9
+          },
+          {
+            "text": "EMP-016973",
+            "entity": "EMPLOYEE_ID",
+            "start": 429,
+            "end": 439,
+            "score": 0.8
+          },
+          {
+            "text": "S87749056",
+            "entity": "STUDENT_ID",
+            "start": 452,
+            "end": 461,
+            "score": 0.8
+          },
+          {
+            "text": "CUST-884213",
+            "entity": "ACCOUNT_ID",
+            "start": 475,
+            "end": 486,
+            "score": 0.75
+          },
+          {
+            "text": "075977035",
+            "entity": "PASSPORT_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.85
+          },
+          {
+            "text": "075977035",
+            "entity": "PHONE_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.75
+          },
+          {
+            "text": "075977035",
+            "entity": "US_PASSPORT",
+            "start": 504,
+            "end": 513,
+            "score": 0.85
+          },
+          {
+            "text": "L8227257",
+            "entity": "DRIVER_LICENSE_NUMBER",
+            "start": 537,
+            "end": 545,
+            "score": 0.8
+          },
+          {
+            "text": "L8227257",
+            "entity": "US_DRIVER_LICENSE",
+            "start": 537,
+            "end": 545,
+            "score": 0.65
+          },
+          {
+            "text": "98765432",
+            "entity": "NATIONAL_ID_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.8
+          },
+          {
+            "text": "98765432",
+            "entity": "PHONE_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.75
+          },
+          {
+            "text": "98-7654321",
+            "entity": "PHONE_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.75
+          },
+          {
+            "text": "98-7654321",
+            "entity": "TAX_ID_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.8
+          },
+          {
+            "text": "98-7654321",
+            "entity": "US_EIN",
+            "start": 584,
+            "end": 594,
+            "score": 0.65
+          },
+          {
+            "text": "A123456789",
+            "entity": "US_ALIEN_NUMBER",
+            "start": 622,
+            "end": 632,
+            "score": 0.85
+          },
+          {
+            "text": "RN-445566",
+            "entity": "PROFESSIONAL_LICENSE",
+            "start": 657,
+            "end": 666,
+            "score": 0.8
+          },
+          {
+            "text": "445566",
+            "entity": "PHONE_NUMBER",
+            "start": 660,
+            "end": 666,
+            "score": 0.75
+          },
+          {
+            "text": "3982583440",
+            "entity": "PHONE_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.75
+          },
+          {
+            "text": "3982583440",
+            "entity": "US_BANK_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.8
+          },
+          {
+            "text": "CVV 737",
+            "entity": "ORGANIZATION",
+            "start": 700,
+            "end": 707,
+            "score": 0.85
+          },
+          {
+            "text": "737",
+            "entity": "CARD_CVV",
+            "start": 704,
+            "end": 707,
+            "score": 0.88
+          },
+          {
+            "text": "08/28",
+            "entity": "CARD_EXPIRY",
+            "start": 716,
+            "end": 721,
+            "score": 0.88
+          },
+          {
+            "text": "DEUTDEFF500",
+            "entity": "SWIFT_BIC",
+            "start": 734,
+            "end": 745,
+            "score": 0.85
+          },
+          {
+            "text": "Ethereum",
+            "entity": "ORGANIZATION",
+            "start": 747,
+            "end": 755,
+            "score": 0.85
+          },
+          {
+            "text": "0x52908400098527886E0F7030069857D2E4169EE7",
+            "entity": "CRYPTO",
+            "start": 763,
+            "end": 805,
+            "score": 1.0
+          },
+          {
+            "text": "MRN",
+            "entity": "ORGANIZATION",
+            "start": 829,
+            "end": 832,
+            "score": 0.85
+          },
+          {
+            "text": "00482913",
+            "entity": "MEDICAL_RECORD_NUMBER",
+            "start": 833,
+            "end": 841,
+            "score": 0.85
+          },
+          {
+            "text": "ZXC123456789",
+            "entity": "INSURANCE_ID",
+            "start": 867,
+            "end": 879,
+            "score": 0.8
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "ADMISSION_DATE",
+            "start": 893,
+            "end": 906,
+            "score": 0.85
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "DATE_TIME",
+            "start": 893,
+            "end": 906,
+            "score": 0.85
+          },
+          {
+            "text": "2024",
+            "entity": "PHONE_NUMBER",
+            "start": 902,
+            "end": 906,
+            "score": 0.75
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DATE_TIME",
+            "start": 924,
+            "end": 934,
+            "score": 0.95
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DISCHARGE_DATE",
+            "start": 924,
+            "end": 934,
+            "score": 0.85
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_OF_DEATH",
+            "start": 955,
+            "end": 965,
+            "score": 0.85
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_TIME",
+            "start": 955,
+            "end": 965,
+            "score": 0.95
+          },
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 977,
+            "end": 986,
+            "score": 0.85
+          },
+          {
+            "text": "Sup3rS3cret!42",
+            "entity": "PASSWORD",
+            "start": 1000,
+            "end": 1014,
+            "score": 0.85
+          },
+          {
+            "text": "@sarah_j89",
+            "entity": "SOCIAL_HANDLE",
+            "start": 1023,
+            "end": 1033,
+            "score": 0.85
+          },
+          {
+            "text": "API",
+            "entity": "ORGANIZATION",
+            "start": 1035,
+            "end": 1038,
+            "score": 0.85
+          },
+          {
+            "text": "AKIAIOSFODNN7EXAMPLE",
+            "entity": "API_KEY",
+            "start": 1043,
+            "end": 1063,
+            "score": 1.0
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "API_KEY",
+            "start": 1072,
+            "end": 1150,
+            "score": 0.8
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "AUTH_TOKEN",
+            "start": 1072,
+            "end": 1150,
+            "score": 1.0
+          },
+          {
+            "text": "3f2a9c1e7b4d8a6f0c2e5b1d9a7f4c3e",
+            "entity": "SESSION_ID",
+            "start": 1163,
+            "end": 1195,
+            "score": 0.75
+          },
+          {
+            "text": "9f86d081884c7d659a2feaa0c55ad015",
+            "entity": "BIOMETRIC_ID",
+            "start": 1214,
+            "end": 1246,
+            "score": 0.8
+          },
+          {
+            "text": "-----BEGIN RSA PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 1274,
+            "end": 1305,
+            "score": 0.99
+          },
+          {
+            "text": "1HGCM82633A004352",
+            "entity": "VIN",
+            "start": 1322,
+            "end": 1339,
+            "score": 1.0
+          },
+          {
+            "text": "7ABC123",
+            "entity": "LICENSE_PLATE",
+            "start": 1359,
+            "end": 1366,
+            "score": 0.8
+          },
+          {
+            "text": "IMEI",
+            "entity": "ORGANIZATION",
+            "start": 1374,
+            "end": 1378,
+            "score": 0.85
+          },
+          {
+            "text": "490154203237518",
+            "entity": "CREDIT_CARD",
+            "start": 1379,
+            "end": 1394,
+            "score": 1.0
+          },
+          {
+            "text": "490154203237518",
+            "entity": "DATE_TIME",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.85
+          },
+          {
+            "text": "490154203237518",
+            "entity": "IMEI",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.88
+          },
+          {
+            "text": "SN48210937",
+            "entity": "SERIAL_NUMBER",
+            "start": 1417,
+            "end": 1427,
+            "score": 0.75
+          },
+          {
+            "text": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+            "entity": "UUID",
+            "start": 1436,
+            "end": 1472,
+            "score": 1.0
+          },
+          {
+            "text": "40.71278, -74.00594",
+            "entity": "GPS_COORDINATES",
+            "start": 1499,
+            "end": 1518,
+            "score": 0.7
+          }
+        ],
+        "after": [
+          {
+            "text": "Sarah Johnson",
+            "entity": "PERSON",
+            "start": 0,
+            "end": 13,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "34",
+            "entity": "AGE",
+            "start": 20,
+            "end": 22,
+            "score": 0.6,
+            "recognizer": "LabeledAgeRecognizer"
+          },
+          {
+            "text": "female",
+            "entity": "GENDER",
+            "start": 32,
+            "end": 38,
+            "score": 0.7,
+            "recognizer": "LabeledGenderRecognizer"
+          },
+          {
+            "text": "Hispanic",
+            "entity": "ETHNICITY",
+            "start": 51,
+            "end": 59,
+            "score": 0.75,
+            "recognizer": "LabeledEthnicityRecognizer"
+          },
+          {
+            "text": "Hispanic",
+            "entity": "NRP",
+            "start": 51,
+            "end": 59,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "married",
+            "entity": "MARITAL_STATUS",
+            "start": 77,
+            "end": 84,
+            "score": 0.7,
+            "recognizer": "LabeledMaritalStatusRecognizer"
+          },
+          {
+            "text": "bisexual",
+            "entity": "SEXUAL_ORIENTATION",
+            "start": 106,
+            "end": 114,
+            "score": 0.8,
+            "recognizer": "LabeledSexualOrientationRecognizer"
+          },
+          {
+            "text": "Catholic",
+            "entity": "NRP",
+            "start": 126,
+            "end": 134,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Catholic",
+            "entity": "RELIGION",
+            "start": 126,
+            "end": 134,
+            "score": 0.8,
+            "recognizer": "LabeledReligionRecognizer"
+          },
+          {
+            "text": "Democrat",
+            "entity": "NRP",
+            "start": 159,
+            "end": 167,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Democrat",
+            "entity": "POLITICAL_AFFILIATION",
+            "start": 159,
+            "end": 167,
+            "score": 0.8,
+            "recognizer": "LabeledPoliticalAffiliationRecognizer"
+          },
+          {
+            "text": "742",
+            "entity": "CREDIT_SCORE",
+            "start": 183,
+            "end": 186,
+            "score": 0.75,
+            "recognizer": "LabeledCreditScoreRecognizer"
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_OF_BIRTH",
+            "start": 197,
+            "end": 211,
+            "score": 0.9,
+            "recognizer": "LabeledDateOfBirthRecognizer"
+          },
+          {
+            "text": "March 14, 1989",
+            "entity": "DATE_TIME",
+            "start": 197,
+            "end": 211,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "742 Evergreen Terrace, Springfield, IL 62704",
+            "entity": "ADDRESS",
+            "start": 226,
+            "end": 270,
+            "score": 0.9,
+            "recognizer": "UsStreetAddressRecognizer"
+          },
+          {
+            "text": "Evergreen Terrace",
+            "entity": "ORGANIZATION",
+            "start": 230,
+            "end": 247,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "Springfield",
+            "entity": "LOCATION",
+            "start": 249,
+            "end": 260,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "IL 62704",
+            "entity": "ORGANIZATION",
+            "start": 262,
+            "end": 270,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "62704-1234",
+            "entity": "DATE_TIME",
+            "start": 281,
+            "end": 291,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "62704-1234",
+            "entity": "US_ZIP_CODE",
+            "start": 281,
+            "end": 291,
+            "score": 0.85,
+            "recognizer": "LabeledUsZipCodeRecognizer"
+          },
+          {
+            "text": "PO Box 4521, Austin, TX 78701",
+            "entity": "ADDRESS",
+            "start": 307,
+            "end": 336,
+            "score": 0.8,
+            "recognizer": "UsStreetAddressRecognizer"
+          },
+          {
+            "text": "Austin",
+            "entity": "LOCATION",
+            "start": 320,
+            "end": 326,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "TX 78701",
+            "entity": "LOCATION",
+            "start": 328,
+            "end": 336,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "(201) 555-0123",
+            "entity": "PHONE_NUMBER",
+            "start": 343,
+            "end": 357,
+            "score": 0.6,
+            "recognizer": "UsPhoneFormatRecognizer"
+          },
+          {
+            "text": "212-555-0187",
+            "entity": "PHONE_NUMBER",
+            "start": 361,
+            "end": 373,
+            "score": 0.6,
+            "recognizer": "UsPhoneFormatRecognizer"
+          },
+          {
+            "text": "$85,000",
+            "entity": "SALARY",
+            "start": 383,
+            "end": 390,
+            "score": 0.7,
+            "recognizer": "LabeledSalaryRecognizer"
+          },
+          {
+            "text": "EIN 12-3456789",
+            "entity": "ORGANIZATION",
+            "start": 401,
+            "end": 415,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "12-3456789",
+            "entity": "US_EIN",
+            "start": 405,
+            "end": 415,
+            "score": 0.9,
+            "recognizer": "LabeledUsEinRecognizer"
+          },
+          {
+            "text": "EMP-016973",
+            "entity": "EMPLOYEE_ID",
+            "start": 429,
+            "end": 439,
+            "score": 0.8,
+            "recognizer": "LabeledEmployeeIdRecognizer"
+          },
+          {
+            "text": "S87749056",
+            "entity": "STUDENT_ID",
+            "start": 452,
+            "end": 461,
+            "score": 0.8,
+            "recognizer": "LabeledStudentIdRecognizer"
+          },
+          {
+            "text": "CUST-884213",
+            "entity": "ACCOUNT_ID",
+            "start": 475,
+            "end": 486,
+            "score": 0.75,
+            "recognizer": "LabeledAccountIdRecognizer"
+          },
+          {
+            "text": "075977035",
+            "entity": "PASSPORT_NUMBER",
+            "start": 504,
+            "end": 513,
+            "score": 0.85,
+            "recognizer": "LabeledPassportNumberRecognizer"
+          },
+          {
+            "text": "075977035",
+            "entity": "US_PASSPORT",
+            "start": 504,
+            "end": 513,
+            "score": 0.85,
+            "recognizer": "LabeledUsPassportRecognizer"
+          },
+          {
+            "text": "L8227257",
+            "entity": "DRIVER_LICENSE_NUMBER",
+            "start": 537,
+            "end": 545,
+            "score": 0.8,
+            "recognizer": "LabeledDriverLicenseNumberRecognizer"
+          },
+          {
+            "text": "L8227257",
+            "entity": "US_DRIVER_LICENSE",
+            "start": 537,
+            "end": 545,
+            "score": 0.65,
+            "recognizer": "UsLicenseRecognizer"
+          },
+          {
+            "text": "98765432",
+            "entity": "NATIONAL_ID_NUMBER",
+            "start": 562,
+            "end": 570,
+            "score": 0.8,
+            "recognizer": "LabeledNationalIdNumberRecognizer"
+          },
+          {
+            "text": "98-7654321",
+            "entity": "TAX_ID_NUMBER",
+            "start": 584,
+            "end": 594,
+            "score": 0.8,
+            "recognizer": "LabeledTaxIdNumberRecognizer"
+          },
+          {
+            "text": "98-7654321",
+            "entity": "US_EIN",
+            "start": 584,
+            "end": 594,
+            "score": 0.65,
+            "recognizer": "EinShapeRecognizer"
+          },
+          {
+            "text": "A123456789",
+            "entity": "US_ALIEN_NUMBER",
+            "start": 622,
+            "end": 632,
+            "score": 0.85,
+            "recognizer": "LabeledUsAlienNumberRecognizer"
+          },
+          {
+            "text": "RN-445566",
+            "entity": "PROFESSIONAL_LICENSE",
+            "start": 657,
+            "end": 666,
+            "score": 0.8,
+            "recognizer": "LabeledProfessionalLicenseRecognizer"
+          },
+          {
+            "text": "3982583440",
+            "entity": "US_BANK_NUMBER",
+            "start": 688,
+            "end": 698,
+            "score": 0.8,
+            "recognizer": "LabeledUsBankNumberRecognizer"
+          },
+          {
+            "text": "CVV 737",
+            "entity": "ORGANIZATION",
+            "start": 700,
+            "end": 707,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "737",
+            "entity": "CARD_CVV",
+            "start": 704,
+            "end": 707,
+            "score": 0.88,
+            "recognizer": "LabeledCardCvvRecognizer"
+          },
+          {
+            "text": "08/28",
+            "entity": "CARD_EXPIRY",
+            "start": 716,
+            "end": 721,
+            "score": 0.88,
+            "recognizer": "LabeledCardExpiryRecognizer"
+          },
+          {
+            "text": "DEUTDEFF500",
+            "entity": "SWIFT_BIC",
+            "start": 734,
+            "end": 745,
+            "score": 0.85,
+            "recognizer": "LabeledSwiftRecognizer"
+          },
+          {
+            "text": "Ethereum",
+            "entity": "ORGANIZATION",
+            "start": 747,
+            "end": 755,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "0x52908400098527886E0F7030069857D2E4169EE7",
+            "entity": "CRYPTO",
+            "start": 763,
+            "end": 805,
+            "score": 1.0,
+            "recognizer": "EthereumAddressRecognizer"
+          },
+          {
+            "text": "MRN",
+            "entity": "ORGANIZATION",
+            "start": 829,
+            "end": 832,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "00482913",
+            "entity": "MEDICAL_RECORD_NUMBER",
+            "start": 833,
+            "end": 841,
+            "score": 0.85,
+            "recognizer": "LabeledMedicalRecordNumberRecognizer"
+          },
+          {
+            "text": "ZXC123456789",
+            "entity": "INSURANCE_ID",
+            "start": 867,
+            "end": 879,
+            "score": 0.8,
+            "recognizer": "LabeledInsuranceIdRecognizer"
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "ADMISSION_DATE",
+            "start": 893,
+            "end": 906,
+            "score": 0.85,
+            "recognizer": "LabeledAdmissionDateRecognizer"
+          },
+          {
+            "text": "March 2, 2024",
+            "entity": "DATE_TIME",
+            "start": 893,
+            "end": 906,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DATE_TIME",
+            "start": 924,
+            "end": 934,
+            "score": 0.95,
+            "recognizer": "DateRecognizer"
+          },
+          {
+            "text": "03/09/2024",
+            "entity": "DISCHARGE_DATE",
+            "start": 924,
+            "end": 934,
+            "score": 0.85,
+            "recognizer": "LabeledDischargeDateRecognizer"
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_OF_DEATH",
+            "start": 955,
+            "end": 965,
+            "score": 0.85,
+            "recognizer": "LabeledDateOfDeathRecognizer"
+          },
+          {
+            "text": "11/02/2023",
+            "entity": "DATE_TIME",
+            "start": 955,
+            "end": 965,
+            "score": 0.95,
+            "recognizer": "DateRecognizer"
+          },
+          {
+            "text": "sarah_j89",
+            "entity": "USERNAME",
+            "start": 977,
+            "end": 986,
+            "score": 0.85,
+            "recognizer": "LabeledUsernameRecognizer"
+          },
+          {
+            "text": "Sup3rS3cret!42",
+            "entity": "PASSWORD",
+            "start": 1000,
+            "end": 1014,
+            "score": 0.85,
+            "recognizer": "LabeledPasswordRecognizer"
+          },
+          {
+            "text": "@sarah_j89",
+            "entity": "SOCIAL_HANDLE",
+            "start": 1023,
+            "end": 1033,
+            "score": 0.85,
+            "recognizer": "SocialHandleRecognizer"
+          },
+          {
+            "text": "API",
+            "entity": "ORGANIZATION",
+            "start": 1035,
+            "end": 1038,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "AKIAIOSFODNN7EXAMPLE",
+            "entity": "API_KEY",
+            "start": 1043,
+            "end": 1063,
+            "score": 1.0,
+            "recognizer": "KnownApiKeyFormatsRecognizer"
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "API_KEY",
+            "start": 1072,
+            "end": 1150,
+            "score": 0.8,
+            "recognizer": "LabeledApiKeyRecognizer"
+          },
+          {
+            "text": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r",
+            "entity": "AUTH_TOKEN",
+            "start": 1072,
+            "end": 1150,
+            "score": 1.0,
+            "recognizer": "JwtRecognizer"
+          },
+          {
+            "text": "3f2a9c1e7b4d8a6f0c2e5b1d9a7f4c3e",
+            "entity": "SESSION_ID",
+            "start": 1163,
+            "end": 1195,
+            "score": 0.75,
+            "recognizer": "LabeledSessionIdRecognizer"
+          },
+          {
+            "text": "9f86d081884c7d659a2feaa0c55ad015",
+            "entity": "BIOMETRIC_ID",
+            "start": 1214,
+            "end": 1246,
+            "score": 0.8,
+            "recognizer": "LabeledBiometricIdRecognizer"
+          },
+          {
+            "text": "-----BEGIN RSA PRIVATE KEY-----",
+            "entity": "PRIVATE_KEY",
+            "start": 1274,
+            "end": 1305,
+            "score": 0.99,
+            "recognizer": "PrivateKeyRecognizer"
+          },
+          {
+            "text": "1HGCM82633A004352",
+            "entity": "VIN",
+            "start": 1322,
+            "end": 1339,
+            "score": 1.0,
+            "recognizer": "VinRecognizer"
+          },
+          {
+            "text": "7ABC123",
+            "entity": "LICENSE_PLATE",
+            "start": 1359,
+            "end": 1366,
+            "score": 0.8,
+            "recognizer": "LabeledLicensePlateRecognizer"
+          },
+          {
+            "text": "IMEI",
+            "entity": "ORGANIZATION",
+            "start": 1374,
+            "end": 1378,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "CREDIT_CARD",
+            "start": 1379,
+            "end": 1394,
+            "score": 1.0,
+            "recognizer": "CreditCardRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "DATE_TIME",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.85,
+            "recognizer": "SpacyRecognizer"
+          },
+          {
+            "text": "490154203237518",
+            "entity": "IMEI",
+            "start": 1379,
+            "end": 1394,
+            "score": 0.88,
+            "recognizer": "LabeledImeiRecognizer"
+          },
+          {
+            "text": "SN48210937",
+            "entity": "SERIAL_NUMBER",
+            "start": 1417,
+            "end": 1427,
+            "score": 0.75,
+            "recognizer": "LabeledSerialNumberRecognizer"
+          },
+          {
+            "text": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+            "entity": "UUID",
+            "start": 1436,
+            "end": 1472,
+            "score": 1.0,
+            "recognizer": "UuidRecognizer"
+          },
+          {
+            "text": "40.71278, -74.00594",
+            "entity": "GPS_COORDINATES",
+            "start": 1499,
+            "end": 1518,
+            "score": 0.7,
+            "recognizer": "GpsRecognizer"
+          }
+        ]
+      }
+    ],
+    "international_phones": [
+      {
+        "text": "Phone: +91 98765 43210",
+        "detections": [
+          {
+            "text": "+91 98765 43210",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 22,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +44 20 7946 0018",
+        "detections": [
+          {
+            "text": "+44 20 7946 0018",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 23,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +49 30 901820",
+        "detections": [
+          {
+            "text": "+49 30 901820",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 20,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: +33 1 42 68 53 00",
+        "detections": [
+          {
+            "text": "+33 1 42 68 53 00",
+            "entity": "PHONE_NUMBER",
+            "start": 7,
+            "end": 24,
+            "score": 0.75,
+            "recognizer": "PhoneRecognizer"
+          }
+        ]
+      },
+      {
+        "text": "Phone: 030 901820",
+        "detections": []
+      }
+    ]
+  }
+]
