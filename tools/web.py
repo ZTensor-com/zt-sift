@@ -79,18 +79,23 @@ async function run() {
   } catch (e) { $('status').className = 'err'; $('status').textContent = e.message; }
 }
 function render(text, data) {
-  // Highlight non-overlapping spans, best score first; every result still appears in the table.
-  const placed = [];
-  for (const d of [...data.detections].sort((a, b) => b.score - a.score || (b.end - b.start) - (a.end - a.start)))
-    if (!placed.some(p => d.start < p.end && d.end > p.start)) placed.push(d);
-  placed.sort((a, b) => a.start - b.start);
+  // Highlight the union; the table preserves the individual classifications.
+  const chars = Array.from(text), placed = [];
+  for (const d of [...data.detections].sort((a, b) => a.start - b.start || b.end - a.end)) {
+    const last = placed[placed.length - 1];
+    if (last && d.start < last.end) {
+      last.end = Math.max(last.end, d.end);
+      if (!last.entity.split(' / ').includes(d.entity)) last.entity += ' / ' + d.entity;
+      last.score = Math.max(last.score, d.score);
+    } else placed.push({...d});
+  }
   let html = '', at = 0;
   for (const d of placed) {
-    html += esc(text.slice(at, d.start)) + `<mark style="background:${colour(d.entity)}" title="${esc(d.entity)} ${d.score}">` +
-            esc(text.slice(d.start, d.end)) + `<sup>${esc(d.entity)}</sup></mark>`;
+    html += esc(chars.slice(at, d.start).join('')) + `<mark style="background:${colour(d.entity)}" title="${esc(d.entity)} ${d.score}">` +
+            esc(chars.slice(d.start, d.end).join('')) + `<sup>${esc(d.entity)}</sup></mark>`;
     at = d.end;
   }
-  $('marked').innerHTML = html + esc(text.slice(at));
+  $('marked').innerHTML = html + esc(chars.slice(at).join(''));
   $('rows').innerHTML = data.detections.map(d => `<tr><td><mark style="background:${colour(d.entity)}">${esc(d.entity)}</mark></td>` +
     `<td><code>${esc(d.text)}</code></td><td class="num">${d.start}</td><td class="num">${d.end}</td>` +
     `<td class="num">${d.score.toFixed(2)}</td><td>${esc(d.recognizer)}</td></tr>`).join('') ||

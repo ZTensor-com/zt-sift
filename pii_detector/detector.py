@@ -7,8 +7,8 @@ extras): Presidio's default English registry covers only 23 of them, and the cou
 --english-registry to get Presidio's stock behaviour instead. Not included: the 8 MEDICAL_* entities, which
 need Presidio's transformers extra and a downloaded model. On top of that come the project's own recognizers from pii_detector/recognizers.py (ADDRESS, PASSWORD, USERNAME,
 API_KEY, CARD_CVV, US_EIN and about 20 more; pass --no-custom to leave them out). Two small changes keep it offline and broad:
-email validation uses tldextract's bundled suffix list, and phone detection covers every region
-libphonenumber knows. Context words of non-English recognizers stay in their own language, so those
+email validation uses tldextract's bundled suffix list, and phone detection uses configured regions
+(US by default; international +country-code numbers remain supported). Context words of non-English recognizers stay in their own language, so those
 entities can score lower in English text.
 
     python -m pii_detector "Call Sarah on (415) 555-0132"       # text as an argument
@@ -18,6 +18,8 @@ entities can score lower in English text.
 """
 import argparse
 import json
+import os
+import re
 import sys
 import time
 from collections import Counter
@@ -29,13 +31,18 @@ SPACY_MODEL = "en_core_web_lg"
 SKIP_CLASSES = ("Azure", "Stanza", "Transformers", "GLiNER", "HuggingFace", "LangExtract", "MedicalNER", "Spacy")
 
 
-def load_analyzer(everything=True, custom=True):
+def load_analyzer(everything=True, custom=True, phone_regions=None):
     from presidio_analyzer import AnalyzerEngine
     from presidio_analyzer.nlp_engine import NlpEngineProvider
     provider = NlpEngineProvider(nlp_configuration={
         "nlp_engine_name": "spacy", "models": [{"lang_code": "en", "model_name": SPACY_MODEL}]})
     analyzer = AnalyzerEngine(nlp_engine=provider.create_engine(), supported_languages=["en"])
+    # Lemmatization/context enhancement still uses tagger and lemmatizer.
+    nlp = analyzer.nlp_engine.nlp["en"]
+    if "parser" in nlp.pipe_names:
+        nlp.disable_pipe("parser")
     use_bundled_suffix_list(analyzer)
+    configure_phone_regions(analyzer, phone_regions)
     if everything:
         enable_all_pattern_recognizers(analyzer)
     if custom:
@@ -44,17 +51,28 @@ def load_analyzer(everything=True, custom=True):
     return analyzer
 
 
-def enable_all_pattern_recognizers(analyzer):
-    """Register every predefined pattern recognizer for English, and widen phone detection to all regions."""
-    import inspect
+def configure_phone_regions(analyzer, regions=None):
+    """US national format by default; +country-code numbers still work worldwide."""
     import phonenumbers
+    from presidio_analyzer.predefined_recognizers import PhoneRecognizer
+    if regions is None:
+        regions = os.environ.get("PII_PHONE_REGIONS", "US").split(",")
+    regions = sorted({r.strip().upper() for r in regions if r.strip()})
+    if not regions or set(regions) - phonenumbers.SUPPORTED_REGIONS:
+        raise ValueError("PII_PHONE_REGIONS must contain valid comma-separated region codes")
+    for original in list(analyzer.registry.recognizers):
+        if isinstance(original, PhoneRecognizer):
+            analyzer.registry.remove_recognizer(original.name, language=original.supported_language)
+    analyzer.registry.add_recognizer(PhoneRecognizer(supported_regions=regions, supported_language="en", context=["phone", "call", "telephone", "mobile", "cell", "fax", "tel", "contact"]))
+
+
+def enable_all_pattern_recognizers(analyzer):
+    """Register every predefined pattern recognizer for English."""
+    import inspect
     import presidio_analyzer.predefined_recognizers as predefined
     from presidio_analyzer import EntityRecognizer
     from presidio_analyzer.predefined_recognizers import PhoneRecognizer
     registry = analyzer.registry
-    for original in [r for r in registry.recognizers if isinstance(r, PhoneRecognizer)]:
-        registry.remove_recognizer(original.name, language=original.supported_language)
-    registry.add_recognizer(PhoneRecognizer(supported_regions=sorted(phonenumbers.SUPPORTED_REGIONS), supported_language="en"))
     present = {entity for recognizer in registry.recognizers for entity in recognizer.supported_entities}
     for name, cls in sorted(inspect.getmembers(predefined, inspect.isclass)):
         if not issubclass(cls, EntityRecognizer) or not name.endswith("Recognizer") or any(k in name for k in SKIP_CLASSES):
@@ -89,8 +107,8 @@ def use_bundled_suffix_list(analyzer):
 CHUNK_CHARS = 100_000   # spaCy refuses inputs over 1,000,000 characters; analyse big inputs in pieces
 
 
-# spaCy tags every capitalised acronym or product name as ORGANIZATION; these words are never organizations worth reporting.
-NOT_ORGANIZATIONS = {"ethereum", "bitcoin", "litecoin", "solana", "ripple", "dogecoin", "swift", "iban", "ssn", "cvv", "pin", "otp", "ein", "itin"}
+# Narrow PII field labels and crypto terms that otherwise become spurious NER entities.
+NOT_ORGANIZATIONS = {"ethereum", "bitcoin", "litecoin", "solana", "ripple", "dogecoin", "swift", "iban", "ssn", "cvv", "pin", "otp", "ein", "itin", "mrn", "api", "a1b2"}
 
 
 def spacy_noise(item):
@@ -99,12 +117,14 @@ def spacy_noise(item):
     if "_" in text:
         return True
     if item["entity"] == "ORGANIZATION":
-        return (text.isupper() and len(text) <= 6) or any(c.isdigit() for c in text) or text.lower() in NOT_ORGANIZATIONS
+        return text.lower() in NOT_ORGANIZATIONS
+    if item["entity"] == "NRP":
+        return text.lower() in NOT_ORGANIZATIONS
     return False
 
 
 def collapse_overlaps(found, custom_names=()):
-    """Keep one result per overlapping group.
+    """Prefer a typed result for equal/contained spans, retaining extensions for complete coverage.
 
     Ranking: the project's own recognizers beat Presidio's built-in rules, which beat spaCy's name/place/date tagging
     (spaCy gives every tag a flat 0.85, so it used to win ties against precise rules). Within a tier the higher score,
@@ -119,16 +139,25 @@ def collapse_overlaps(found, custom_names=()):
     kept = []
     candidates = [item for item in found if not (tier(item) == 0 and spacy_noise(item))]
     for item in sorted(candidates, key=lambda d: (-tier(d), -d["score"], -(d["end"] - d["start"]), not d["entity"].startswith("US_"), d["entity"], d["start"])):
-        if not any(item["start"] < k["end"] and item["end"] > k["start"] for k in kept):
+        overlapping = [k for k in kept if item["start"] < k["end"] and item["end"] > k["start"]]
+        if not overlapping:
+            kept.append(item)
+        elif any(item["start"] < k["start"] or item["end"] > k["end"] for k in overlapping):
+            # Coverage takes precedence over tier for strict containment. Partial
+            # overlaps retain both results so masking can union their intervals.
+            contained = [k for k in overlapping if item["start"] <= k["start"] and item["end"] >= k["end"]]
+            if len(contained) == len(overlapping) and (tier(item) > 0 or all(tier(item) >= tier(k) for k in contained)):
+                for k in contained:
+                    kept.remove(k)
             kept.append(item)
     return kept
 
 
 def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
-    """Return Presidio's detections as dicts sorted by position. collapse keeps one result per overlapping group (see collapse_overlaps).
+    """Return Presidio's detections as dicts sorted by position. collapse removes redundant spans while preserving extending coverage (see collapse_overlaps).
 
-    Inputs longer than CHUNK_CHARS are analysed in pieces cut at whitespace; an entity that straddles a cut
-    can be missed, which is why the pieces are large.
+    Inputs longer than CHUNK_CHARS use overlapping pieces (512 characters of context).
+    Entities longer than that overlap can still straddle a cut; API requests are limited to 20 KB.
     """
     found = []
     start = 0
@@ -142,7 +171,33 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
             found.append({"text": piece[r.start:r.end], "entity": r.entity_type, "start": start + r.start,
                           "end": start + r.end, "score": round(float(r.score), 3),
                           "recognizer": (r.recognition_metadata or {}).get("recognizer_name", "")})
-        start = end
+        if end == len(text):
+            break
+        start = max(start + 1, end - min(512, CHUNK_CHARS // 4))
+    unique = {(d["start"], d["end"], d["entity"], d["recognizer"]): d for d in found}
+    found = list(unique.values())
+    cleaned = []
+    for item in found:
+        if item["entity"] == "EMAIL_ADDRESS":
+            assignment = re.match(r"(?i)(?:email|emailaddress|email_address|mail)=", item["text"])
+            if assignment:
+                item["start"] += assignment.end()
+                item["text"] = text[item["start"]:item["end"]]
+        if item["entity"] == "TR_LICENSE_PLATE":
+            surrounding = text[max(0, item["start"] - 32):min(len(text), item["end"] + 32)]
+            if not re.search(r"(?i)\b(?:plate|plaka|vehicle|registration|car)\b", surrounding):
+                continue
+        if item["recognizer"] == "SpacyRecognizer":
+            if spacy_noise(item):
+                continue
+            context = text[max(0, item["start"] - 48):item["start"]]
+            sensitive_date = re.search(r"(?i)birth|born|dob|admi|discharg|died|death", context)
+            if item["entity"] == "DATE_TIME" and not sensitive_date and re.fullmatch(r"(?i)(?:yesterday|today|tomorrow|(?:last |next )?(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|\d+ (?:minutes?|hours?)|end of day)", item["text"]):
+                continue
+            if item["entity"] == "PERSON" and item["text"].lower() in {"reach", "call", "contact", "email"}:
+                continue
+        cleaned.append(item)
+    found = cleaned
     if collapse:
         found = collapse_overlaps(found, getattr(analyzer, "custom_recognizer_names", ()))
     return sorted(found, key=lambda d: (d["start"], d["end"], d["entity"]))
@@ -156,7 +211,7 @@ def main():
     source.add_argument("--list-entities", action="store_true", help="print every entity Presidio can detect and exit")
     parser.add_argument("--threshold", type=float, default=0.5, help="minimum score, 0-1 (default 0.5; try 0 to see everything)")
     parser.add_argument("--entities", help="comma-separated entity types to look for (default: all)")
-    parser.add_argument("--collapse", action="store_true", help="keep only the best-scoring result where results overlap")
+    parser.add_argument("--collapse", action="store_true", help="remove redundant candidates while preserving extending sensitive spans")
     parser.add_argument("--english-registry", action="store_true", help="Presidio's stock English registry only (23 entity types)")
     parser.add_argument("--no-custom", action="store_true", help="leave out the project's own recognizers (pii_detector/recognizers.py)")
     parser.add_argument("--json", action="store_true", help="print JSON instead of a table")

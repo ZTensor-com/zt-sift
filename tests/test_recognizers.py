@@ -21,7 +21,7 @@ def found(text, entity, minimum=0.0):
     for recognizer in RECOGNIZERS:
         if entity in recognizer.supported_entities:
             out += [text[r.start:r.end] for r in recognizer.analyze(text, [entity], None) if r.score >= minimum]
-    return out
+    return list(dict.fromkeys(out))
 
 
 class AddressTests(unittest.TestCase):
@@ -121,7 +121,7 @@ class ShapeTests(unittest.TestCase):
     def test_checksummed_identifiers(self):
         self.assertTrue(C.vin_ok("1HGCM82633A004352"))
         self.assertFalse(C.vin_ok("1HGCM82633A004353"))
-        self.assertEqual(found("VIN 1HGCM82633A004352", "VIN"), ["1HGCM82633A004352", "1HGCM82633A004352"])
+        self.assertEqual(found("VIN 1HGCM82633A004352", "VIN"), ["1HGCM82633A004352"])
         self.assertEqual(found("1HGCM82633A004353", "VIN"), [])
         self.assertTrue(C.luhn_ok("490154203237518"))
         self.assertEqual(found("IMEI 490154203237518", "IMEI", 0.8), ["490154203237518"])

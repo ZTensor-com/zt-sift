@@ -26,7 +26,7 @@ US_STATE_NAMES = ("Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connectic
                   "Washington|West Virginia|Wisconsin|Wyoming|District of Columbia")
 CA_PROVINCES = "AB|BC|MB|NB|NL|NS|NT|NU|ON|PE|QC|SK|YT"
 STREET_SUFFIX = ("Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Way|Terrace|Ter|Place|Pl|Circle|Cir|Parkway|Pkwy|Highway|Hwy|Square|Sq|"
-                 "Trail|Trl|Alley|Plaza|Plz|Crescent|Cres|Close|Mews|Row|Loop|Pike|Run|Path|Walk|Gardens|Grove|Hill|Park")
+                 "Trail|Trl|Alley|Plaza|Plz|Crescent|Cres|Close|Mews|Row|Loop|Pike|Run|Path|Walk|Gardens|Grove|Hill|Park|Cross")
 DIRECTION = "N|S|E|W|NE|NW|SE|SW|North|South|East|West"
 NAME_WORD = r"[A-Z0-9][A-Za-z0-9.'’\-]*"
 # 742 Evergreen Terrace / 1600 Pennsylvania Avenue NW / 221B Baker Street / 5 N Main St Apt 4B
@@ -48,7 +48,7 @@ def _pattern(name, regex, score):
 
 # Words that follow a label without being its value ("password reset", "user is logged in").
 FILLER = (r"(?!(?:username|user|userid|password|passwd|pwd|passcode|passphrase|login|handle|screen|token|secret|key|apikey|"
-          r"is|was|are|were|the|a|an|and|or|to|of|for|in|on|at|by|from|that|this|these|those|with|without|has|have|had|will|would|can|could|should|must|may|not|no|"
+          r"strength|compromised|unavailable|is|was|are|were|the|a|an|and|or|to|of|for|in|on|at|by|from|that|this|these|those|with|without|has|have|had|will|would|can|could|should|must|may|not|no|"
           r"name|id|account|logged|login|log|reset|policy|manager|required|expired|expires|expiry|valid|invalid|incorrect|correct|changed|change|set|used|using|was|been|being|here|there|"
           r"your|my|our|their|his|her|its|new|old|current|please|when|where|which|who|what|how|why|if|then|than|as|so|but|also|only|just|none|null|nil|n/a|na|unknown)\b)")
 
@@ -60,7 +60,7 @@ class LabeledValueRecognizer(LocalRecognizer):
     separators ('": "', ':', '='), and "is". Only the value is reported. FILLER words are rejected so that
     "password reset" or "user is logged in" do not match.
     """
-    SEPARATOR = (r"""(?:[\s_\-]*(?:number|no\.?|num\.?|#|id|code|hash))?\s*["'`]?\s*[:=]?\s*["'`]?\s*(?:(?:is|was|are|=)\s+)?["'`]?""")
+    SEPARATOR = (r"""(?:[\s_\-]*(?:number|no\.?|num\.?|#|id|code|hash))?\s*["'`]?\s*[:=]?\s*["'`]?\s*(?:(?:is|was|are|=)\s+)?(?:actually\s+)?["'`]?""")
 
     def __init__(self, entity, labels, value, score, name=None, validate=None, context=None, guard_filler=False):
         self.entity = entity
@@ -68,6 +68,11 @@ class LabeledValueRecognizer(LocalRecognizer):
         self.validate = validate
         ordered = sorted(labels, key=len, reverse=True)
         label = "|".join(re.escape(item).replace(r"\ ", r"[\s_\-]+") for item in ordered)
+        # Concatenated/camelCase labels are keys only when followed by an
+        # assignment. Preserve the required word boundaries in ordinary prose.
+        joined = [re.escape(item.replace(" ", "")) for item in ordered if " " in item]
+        if joined:
+            label += "|(?:" + "|".join(joined) + r""")(?=[\s"']*[:=])"""
         guard = FILLER if guard_filler else ""
         self.regex = re.compile(rf"(?<![A-Za-z0-9])(?:{label})(?![A-Za-z]){self.SEPARATOR}{guard}(?P<value>{value})", re.IGNORECASE)
         super().__init__(supported_entities=[entity], name=name or f"Labeled{entity.title().replace('_', '')}Recognizer",
@@ -82,6 +87,8 @@ class LabeledValueRecognizer(LocalRecognizer):
         results = []
         for match in self.regex.finditer(text):
             value = match.group("value")
+            if self.entity in {"API_KEY", "SESSION_ID"} and len(value) < 16 and not re.search(r"[:=]", text[match.start():match.start("value")]):
+                continue
             if self.validate and not self.validate(value):
                 continue
             results.append(RecognizerResult(
@@ -133,6 +140,112 @@ def vin_ok(value):
     return value[8].upper() == check
 
 
+
+def international_phone_ok(value):
+    import phonenumbers
+    try:
+        return phonenumbers.is_valid_number(phonenumbers.parse(value, None))
+    except phonenumbers.NumberParseException:
+        return False
+
+
+def coordinates_ok(value):
+    latitude, longitude = map(float, value.split(","))
+    return abs(latitude) <= 90 and abs(longitude) <= 180
+
+
+class CredentialRecognizer(LocalRecognizer):
+    """Quoted values keep their source escapes; prose passphrases require a quote or field separator."""
+    def __init__(self):
+        super().__init__(supported_entities=["PASSWORD", "USERNAME"], name="CredentialRecognizer", supported_language="en")
+        self.password = re.compile(r"(?<![A-Za-z0-9])(?:password|passwd|pwd|passcode|passphrase|pass[ _-]?phrase)\b[\"']?\s*(?:[:=]\s*|(?:is|was)\s+)?(?:actually\s+)?(?P<value>\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|[^\s\"',;]+)", re.I)
+        self.login = re.compile(r"\blogin\s*[:=]\s*(?P<user>[\w.@-]+)\s*/\s*(?P<value>[^\s,;]+)", re.I)
+        self.user = re.compile(r"\buser\s*=\s*(?P<value>[\w.@-]+)", re.I)
+
+    def load(self):
+        pass
+
+    def analyze(self, text, entities, nlp_artifacts=None):
+        out = []
+        for regex, entity in ((self.password, "PASSWORD"), (self.login, "PASSWORD"), (self.user, "USERNAME")):
+            if entity not in entities:
+                continue
+            for m in regex.finditer(text):
+                value = m.group("value")
+                prefix = text[m.start():m.start("value")]
+                explicit = bool(re.search(r"[:=]", prefix)) or value[:1] in ('"', "'")
+                candidate = value[1:-1] if value[:1] in ('"', "'") else value
+                if value.startswith('"'):
+                    import json
+                    try:
+                        candidate = json.loads(value)
+                    except ValueError:
+                        pass
+                if candidate.lower() in {"null", "unknown", "n/a", "none", "unavailable", "nil"}:
+                    continue
+                if not explicit and re.match(FILLER, value, re.I) is None:
+                    continue
+                if entity == "PASSWORD" and not explicit and (len(value) < 4 or not re.search(r"[A-Za-z0-9]", value) or (not re.search(r"\b(?:is|was)\s+(?:actually\s+)?$", prefix, re.I) and not re.search(r"[\d_!@#$%^&*+?/-]", value))):
+                    continue
+                a, b = m.span("value")
+                if value[:1] in ('"', "'"):
+                    a += 1; b -= 1
+                if b > a:
+                    out.append(RecognizerResult(entity, a, b, .9))
+        return out
+
+
+class StructuredFieldRecognizer(LocalRecognizer):
+    """Lex JSON fields without re-encoding values, preserving offsets and escapes.
+
+    Keys may be camelCase, snake_case, nested, or escaped. Only recognized fields
+    receive label-based confidence; literals are never normalized.
+    """
+    FIELDS = {
+        "userpassword": "PASSWORD", "password": "PASSWORD", "passwd": "PASSWORD", "pwd": "PASSWORD", "passphrase": "PASSWORD",
+        "username": "USERNAME", "user": "USERNAME", "login": "USERNAME",
+        "apikey": "API_KEY", "secret": "API_KEY", "token": "API_KEY", "accesstoken": "API_KEY",
+        "session": "SESSION_ID", "sessionid": "SESSION_ID", "sid": "SESSION_ID",
+        "customerid": "ACCOUNT_ID", "customernumber": "ACCOUNT_ID", "accountid": "ACCOUNT_ID",
+        "accountnumber": "US_BANK_NUMBER", "bankaccountnumber": "US_BANK_NUMBER",
+        "employeeid": "EMPLOYEE_ID", "studentid": "STUDENT_ID",
+        "address": "ADDRESS", "streetnumber": "ADDRESS", "streetname": "ADDRESS", "apartmentnumber": "ADDRESS",
+        "dateofbirth": "DATE_OF_BIRTH", "birthdate": "DATE_OF_BIRTH", "dob": "DATE_OF_BIRTH",
+        "medicalrecordnumber": "MEDICAL_RECORD_NUMBER", "mrn": "MEDICAL_RECORD_NUMBER", "insurancepolicynumber": "INSURANCE_ID",
+        "serialnumber": "SERIAL_NUMBER", "nationalidnumber": "NATIONAL_ID_NUMBER", "driverlicensenumber": "DRIVER_LICENSE_NUMBER",
+        "phone": "PHONE_NUMBER", "phonenumber": "PHONE_NUMBER", "mobile": "PHONE_NUMBER", "cell": "PHONE_NUMBER", "tel": "PHONE_NUMBER", "fax": "PHONE_NUMBER",
+    }
+    FIELD = re.compile(r'(?P<key>"(?:\\.|[^"\\])*")\s*:\s*(?P<value>"(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?)(?=\s*[,}\]])')
+
+    def __init__(self):
+        super().__init__(supported_entities=sorted(set(self.FIELDS.values())), name="StructuredFieldRecognizer", supported_language="en")
+
+    def load(self):
+        pass
+
+    def analyze(self, text, entities, nlp_artifacts=None):
+        import json
+        out = []
+        for m in self.FIELD.finditer(text):
+            try:
+                key = re.sub(r"[^a-z0-9]", "", json.loads(m.group("key")).lower())
+                value = json.loads(m.group("value"))
+            except (ValueError, TypeError):
+                continue
+            entity = self.FIELDS.get(key)
+            if entity not in entities:
+                continue
+            raw = m.group("value")
+            if value is None or str(value).lower() in {"", "null", "unknown", "n/a", "none", "unavailable", "nil"}:
+                continue
+            if entity == "PHONE_NUMBER" and not (7 <= len(re.sub(r"\D", "", str(value))) <= 15 and re.fullmatch(r"\+?[\d ().-]+", str(value))):
+                continue
+            a, b = m.span("value")
+            if raw.startswith('"'):
+                a += 1; b -= 1
+            out.append(RecognizerResult(entity, a, b, .9))
+        return out
+
 # ---------------------------------------------------------------------------- the recognizers
 def build_recognizers():
     recs = []
@@ -140,7 +253,7 @@ def build_recognizers():
     # ADDRESS ------------------------------------------------------------------------------------
     address_context = ["address", "lives", "living", "resides", "residence", "located", "location", "mailing", "billing", "shipping", "ship", "deliver", "street", "home", "office", "moved"]
     recs.append(CasePatternRecognizer(supported_entity="ADDRESS", name="UsStreetAddressRecognizer", supported_language="en", context=address_context, patterns=[
-        _pattern("street + city + state + zip", rf"{STREET},?\s+{CITY},?\s+(?:{US_STATE_CODES}|{US_STATE_NAMES})\b,?(?:\s+{ZIP})?", 0.9),
+        _pattern("street + city + state + zip", rf"(?i:{STREET},?\s+{CITY},?\s+(?:{US_STATE_CODES}|{US_STATE_NAMES})\b,?(?:\s+{ZIP})?)", 0.9),
         _pattern("street + city + zip", rf"{STREET},\s+{CITY},?\s+{ZIP}\b", 0.85),
         _pattern("street + state + zip", rf"{STREET},?\s+(?:{US_STATE_CODES})\s+{ZIP}\b", 0.9),
         _pattern("street, city (comma)", rf"{STREET},\s+{CITY}\b", 0.6),
@@ -171,13 +284,14 @@ def build_recognizers():
     recs.append(CasePatternRecognizer(supported_entity="AUTH_TOKEN", name="JwtRecognizer", supported_language="en", context=["token", "bearer", "authorization", "jwt"], patterns=[
         _pattern("JWT", r"\beyJ[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\b", 0.95)]))
     recs.append(CasePatternRecognizer(supported_entity="PRIVATE_KEY", name="PrivateKeyRecognizer", supported_language="en", patterns=[
-        _pattern("PEM private key block", r"-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----", 0.99)]))
+        _pattern("PEM private key block", r"(?i:-----BEGIN (?P<kind>(?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY)-----)(?:[\s\S]*?(?i:-----END (?P=kind)-----)|(?=\s*$))", 0.99),
+        _pattern("truncated PEM body", r"(?i:-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----)(?:[ \t]*\r?\n[A-Za-z0-9+/=]+)+", 0.99),
+        _pattern("PEM private key header", r"(?i:-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----)", 0.98)]))
     recs.append(LabeledValueRecognizer("API_KEY", ["api key", "apikey", "api_key", "secret key", "secret", "access key", "access token", "auth token", "token", "bearer"],
-                                       r"[A-Za-z0-9_\-./+=]{16,200}", 0.8, name="LabeledApiKeyRecognizer", guard_filler=True))
-    recs.append(LabeledValueRecognizer("PASSWORD", ["password", "passwd", "pwd", "passcode", "passphrase", "pass phrase"],
-                                       r"""(?:(?=[^\s"',;]*[\d\W_])[^\s"',;]{4,64}|[^\s"',;]{10,64})""", 0.85, guard_filler=True))
+                                       r"[A-Za-z0-9_\-./+=]+(?![A-Za-z0-9_\-./+=])", 0.8, name="LabeledApiKeyRecognizer", guard_filler=True))
+    recs.append(CredentialRecognizer())
     recs.append(LabeledValueRecognizer("USERNAME", ["username", "user name", "login id", "login", "user id", "userid", "account name", "screen name", "handle"],
-                                       r"\w[\w._@\-]{2,39}", 0.85, name="LabeledUsernameRecognizer", guard_filler=True))
+                                       r"\w[\w._@\-]{0,255}(?![\w.@-])", 0.85, name="LabeledUsernameRecognizer", guard_filler=True))
     recs.append(LabeledValueRecognizer("USERNAME", ["user"], r"(?=[\w._@\-]*[\d._])\w[\w._@\-]{2,39}", 0.7,
                                        name="BareUserLabelRecognizer", guard_filler=True))
     recs.append(CasePatternRecognizer(supported_entity="SOCIAL_HANDLE", name="SocialHandleRecognizer", supported_language="en", context=["twitter", "instagram", "handle", "follow", "social"],
@@ -191,7 +305,7 @@ def build_recognizers():
     # US identifiers whose own Presidio patterns are too weak to pass 0.5 -------------------------
     recs.append(LabeledValueRecognizer("US_PASSPORT", ["passport"], r"(?:[A-Z]\d{8}|\d{9})(?![\dA-Za-z])", 0.85, name="LabeledUsPassportRecognizer"))
     recs.append(LabeledValueRecognizer("US_BANK_NUMBER", ["bank account", "account number", "acct", "checking account", "savings account", "account no", "account"],
-                                       r"\d{6,17}(?!\d)", 0.8, name="LabeledUsBankNumberRecognizer"))
+                                       r"\d(?:[ -]?\d){5,16}(?![ -]?\d)", 0.8, name="LabeledUsBankNumberRecognizer"))
     recs.append(LabeledValueRecognizer("US_EIN", ["ein", "employer identification", "federal tax id", "federal tax identification", "tax id", "fein"], r"\d{2}-\d{7}(?!\d)", 0.9))
     recs.append(CasePatternRecognizer(supported_entity="US_EIN", name="EinShapeRecognizer", supported_language="en", context=["ein", "employer", "tax", "irs", "federal"],
                                   patterns=[_pattern("EIN shape", r"(?<![\d-])\d{2}-\d{7}(?![\d-])", 0.3)]))
@@ -199,21 +313,26 @@ def build_recognizers():
                                       patterns=[_pattern("US phone, separated 3-3-4", r"(?<![\d\w])(?:\+?1[\s.\-]?)?\(?[2-9]\d{2}\)?[\s.\-][2-9]\d{2}[\s.\-]\d{4}(?!\d)", 0.6),
                                                 _pattern("US phone, bare ten digits", r"(?<![\d\w])(?:\+?1)?[2-9]\d{2}[2-9]\d{2}\d{4}(?!\d)", 0.15)]))
 
+    recs.append(LabeledValueRecognizer("ADDRESS", ["address", "lives at", "ship to", "street"], rf"(?i:{STREET}|[A-Za-z0-9]+,\s+(?:{NAME_WORD}\s+){{1,4}}(?:{STREET_SUFFIX})\b)", 0.85))
+
+    recs.append(ValidatedPatternRecognizer(supported_entity="PHONE_NUMBER", name="InternationalPhoneFormatRecognizer", supported_language="en", check=international_phone_ok,
+        patterns=[_pattern("validated +country-code phone", r"(?<![\w+])\+[1-9]\d{0,2}[ ().-]*\d(?:[ ().-]*\d){5,13}(?!\d)", 0.7)]))
+
     # personal attributes ----------------------------------------------------------------------------
     month = r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)"
-    date = (rf"(?:\d{{1,2}}[/.\-]\d{{1,2}}[/.\-]\d{{2,4}}|\d{{4}}[/.\-]\d{{1,2}}[/.\-]\d{{1,2}}|\d{{1,2}}(?:st|nd|rd|th)?\s+{month}\.?,?\s+\d{{4}}|{month}\.?\s+\d{{1,2}}(?:st|nd|rd|th)?,?\s+\d{{4}})")
+    date = (rf"(?:\d{{1,2}}[/.\-]\d{{1,2}}[/.\-]\d{{2,4}}|\d{{4}}[/.\-]\d{{1,2}}[/.\-]\d{{1,2}}|\d{{1,2}}(?:st|nd|rd|th)?\s+{month}\.?,?\s+\d{{4}}|{month}\.?\s+\d{{1,2}}(?:st|nd|rd|th)?(?:,?\s+\d{{4}})?)")
     recs.append(LabeledValueRecognizer("DATE_OF_BIRTH", ["date of birth", "birth date", "birthdate", "birthday", "d.o.b.", "dob", "born on", "born"], date, 0.9))
     recs.append(LabeledValueRecognizer("AGE", ["age", "aged"], r"\d{1,3}(?!\d|\s*%)", 0.6, name="LabeledAgeRecognizer",
-                                       validate=lambda v: 0 < int(v) < 120))
+                                       validate=lambda v: 0 <= int(v) < 120))
     recs.append(CasePatternRecognizer(supported_entity="AGE", name="YearsOldRecognizer", supported_language="en",
                                   patterns=[_pattern("N years old", r"\b\d{1,3}(?=[- ]years?[- ]old\b)", 0.8)]))
     recs.append(LabeledValueRecognizer("SALARY", ["salary", "annual salary", "income", "annual income", "earns", "compensation", "wage"],
-                                       r"[$€£₹]?\s?\d{1,3}(?:,\d{3})+(?:\.\d{2})?(?:\s?(?:USD|EUR|GBP|INR|dollars))?|[$€£₹]\s?\d{4,9}(?:\.\d{2})?", 0.7))
+                                       r"[$€£₹]?\s?\d+(?:,\d{2,3})*(?:\.\d{2})?(?:\s?(?:USD|EUR|GBP|INR|dollars))?(?![\d,])", 0.7))
     recs.append(LabeledValueRecognizer("GENDER", ["gender", "sex"], r"(?:female|male|non[- ]?binary|man|woman|transgender|other)\b", 0.7))
     recs.append(LabeledValueRecognizer("ETHNICITY", ["ethnicity", "ethnic group", "race", "ethnic origin"],
                                        r"(?:Hispanic|Latino|Latina|Latinx|Asian|Black|African[- ]American|White|Caucasian|Native American|Pacific Islander|Middle Eastern|South Asian|East Asian)\b", 0.75))
-    recs.append(LabeledValueRecognizer("EMPLOYEE_ID", ["employee id", "employee number", "employee no", "emp id", "staff id", "badge number", "badge id"], r"[A-Z]{0,4}-?\d{4,10}", 0.8))
-    recs.append(LabeledValueRecognizer("STUDENT_ID", ["student id", "student number", "student no"], r"[A-Z]{0,2}\d{6,10}", 0.8))
+    recs.append(LabeledValueRecognizer("EMPLOYEE_ID", ["employee id", "employee number", "employee no", "emp id", "staff id", "badge number", "badge id"], r"(?=[A-Z0-9_.-]*\d)[A-Z0-9][A-Z0-9_.-]{2,39}(?![A-Za-z0-9_.-])", 0.8, guard_filler=True))
+    recs.append(LabeledValueRecognizer("STUDENT_ID", ["student id", "student number", "student no"], r"(?=[A-Z0-9_.-]*\d)[A-Z0-9][A-Z0-9_.-]{2,39}(?![A-Za-z0-9_.-])", 0.8, guard_filler=True))
 
     # device, vehicle and location identifiers ------------------------------------------------------------
     recs.append(ValidatedPatternRecognizer(supported_entity="VIN", name="VinRecognizer", supported_language="en", context=["vin", "vehicle", "chassis", "car"], check=vin_ok,
@@ -221,11 +340,11 @@ def build_recognizers():
     recs.append(LabeledValueRecognizer("VIN", ["vin", "vehicle identification number", "chassis number"], r"[A-HJ-NPR-Z0-9]{17}(?![A-Za-z0-9])", 0.85, name="LabeledVinRecognizer"))
     recs.append(ValidatedPatternRecognizer(supported_entity="IMEI", name="ImeiRecognizer", supported_language="en", context=["imei", "device", "phone", "handset"], check=luhn_ok,
                                            patterns=[_pattern("IMEI", r"(?<!\d)\d{15}(?!\d)", 0.4)]))
-    recs.append(LabeledValueRecognizer("IMEI", ["imei", "meid"], r"\d{15}(?!\d)", 0.88, name="LabeledImeiRecognizer", validate=luhn_ok))
-    recs.append(CasePatternRecognizer(supported_entity="GPS_COORDINATES", name="GpsRecognizer", supported_language="en", context=["coordinates", "gps", "lat", "lon", "latitude", "longitude", "location", "geo"],
+    recs.append(LabeledValueRecognizer("IMEI", ["imei", "meid"], r"\d{15}(?!\d)", 0.88, name="LabeledImeiRecognizer"))
+    recs.append(ValidatedPatternRecognizer(check=coordinates_ok, supported_entity="GPS_COORDINATES", name="GpsRecognizer", supported_language="en", context=["coordinates", "gps", "lat", "lon", "latitude", "longitude", "location", "geo"],
                                   patterns=[_pattern("decimal lat, long", r"(?<![\d.])[-+]?(?:[1-8]?\d|90)\.\d{3,}\s*,\s*[-+]?(?:1[0-7]\d|[1-9]?\d)\.\d{3,}(?!\.?\d)", 0.7)]))
     recs.append(CasePatternRecognizer(supported_entity="UUID", name="UuidRecognizer", supported_language="en", context=["uuid", "guid", "device", "id", "session"],
-                                  patterns=[_pattern("UUID", r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\b", 0.7)]))
+                                  patterns=[_pattern("UUID", r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\b", 0.7)]))
     recs.append(LabeledValueRecognizer("SWIFT_BIC", ["swift bic", "swift code", "swift/bic", "bic/swift", "swift", "bic"], r"[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}(?:[A-Z0-9]{3})?\b", 0.85, name="LabeledSwiftRecognizer"))
 
     # ---- identifiers found only by their label (HIPAA / GDPR / online-identifier gaps found by gap_audit.py) ----------
@@ -238,7 +357,7 @@ def build_recognizers():
     recs.append(LabeledValueRecognizer("SERIAL_NUMBER", ["serial number", "serial no", "serial #", "serial", "s/n"], ident % (5, 24), 0.75))
     recs.append(LabeledValueRecognizer("BIOMETRIC_ID", ["fingerprint hash", "fingerprint template", "fingerprint id", "fingerprint", "face template id", "face template", "faceprint", "face id", "voiceprint", "voice print", "iris scan", "retina scan", "biometric id", "biometric template", "biometric hash"],
                                        r"[A-Za-z0-9_\-]{16,64}(?![A-Za-z0-9])", 0.8))
-    recs.append(LabeledValueRecognizer("SESSION_ID", ["session id", "session token", "session key", "session cookie", "cookie id", "jsessionid", "phpsessid", "sid"], r"[A-Za-z0-9_\-.%]{16,128}", 0.75, guard_filler=True))
+    recs.append(LabeledValueRecognizer("SESSION_ID", ["session id", "session token", "session key", "session cookie", "cookie id", "jsessionid", "phpsessid", "sid", "session"], r"[A-Za-z0-9_\-.%]+(?![A-Za-z0-9_\-.%])", 0.75, guard_filler=True))
     recs.append(LabeledValueRecognizer("PASSPORT_NUMBER", ["passport"], r"(?=[A-Z0-9]*\d)[A-Z0-9]{6,9}(?![A-Za-z0-9])", 0.85))
     recs.append(LabeledValueRecognizer("NATIONAL_ID_NUMBER", ["national identification", "national identity", "national id", "identity card", "id card", "citizen id", "citizen number"], ident % (5, 19), 0.8))
     recs.append(LabeledValueRecognizer("DRIVER_LICENSE_NUMBER", ["driver\u2019s license", "driver's license", "drivers license", "driver license", "driving licence", "driving license", "dl number", "dl no"], ident % (5, 19), 0.8))
@@ -261,6 +380,9 @@ def build_recognizers():
     recs.append(LabeledValueRecognizer("DATE_OF_DEATH", ["date of death", "death date", "deceased on", "passed away on", "died on", "died"], date, 0.85))
     recs.append(LabeledValueRecognizer("ADMISSION_DATE", ["date of admission", "admission date", "admitted on", "admitted"], date, 0.85))
     recs.append(LabeledValueRecognizer("DISCHARGE_DATE", ["date of discharge", "discharge date", "discharged on", "discharged"], date, 0.85))
+    recs.append(StructuredFieldRecognizer())
+    recs.append(LabeledValueRecognizer("PHONE_NUMBER", ["phone number", "phone", "mobile", "cell", "tel", "fax"], r"(?:\+?1[ .-]?)?\(?[2-9]\d{2}\)?[ .-]\d{3}[ .-]?\d{4}(?!\d)|\+?\d[\d(). -]{5,}\d(?!\d)", 0.8, validate=lambda v: 7 <= len(re.sub(r"\D", "", v)) <= 15))
+    recs.append(LabeledValueRecognizer("GPS_COORDINATES", ["coordinates", "gps"], r"[-+]?\d{1,3}(?:\.\d+)?\s*,\s*[-+]?\d{1,3}(?:\.\d+)?(?![\d.])", 0.85, validate=coordinates_ok))
     return recs
 
 

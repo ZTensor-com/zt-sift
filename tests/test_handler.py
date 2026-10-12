@@ -78,3 +78,12 @@ class HandlerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class InputGuardTests(unittest.TestCase):
+    def test_invalid_base64(self):
+        result = handler.handler({'body': '%%%!!', 'isBase64Encoded': True}, None)
+        self.assertEqual(result['statusCode'], 400)
+
+    def test_empty_filter(self):
+        with self.assertRaises(handler.BadRequest):
+            handler.parse(b'hello', 'text/plain', {'entities': ', , '})
