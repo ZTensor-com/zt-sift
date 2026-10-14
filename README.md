@@ -81,6 +81,20 @@ field delimiter: use quotes for multiword passphrases. Source escapes remain par
 of the sensitive span and must be masked too. Complete PEM blocks include their
 bodies; a header-only fragment is still reported as a warning signal.
 
+When the analyzed text is a valid JSON object or array of at most 100,000 characters, detection operates on its
+scalar values with their field names as context. Keys and JSON separators cannot
+be included in a result, and each result stays within one value. Escaped characters
+are decoded for recognition and mapped back to their original source intervals.
+Explicit first/last/full name fields and company-name fields use their labels;
+generic `name` fields use person-related parent context. Malformed JSON retains
+the ordinary text detection path. This does not change the HTTP contract: an
+`application/json` request still requires `{"text":"<serialized JSON or prose>"}`;
+raw business JSON can also be submitted as `text/plain`.
+Larger CLI documents use the existing text chunking path. Label aliases apply to
+primitive values (including array elements); a wrapper such as
+`{"passportNumber":{"number":"..."}}` needs a recognized leaf label or a
+recognizable value format. Recognition of unfamiliar schemas remains heuristic.
+
 Collapse removes redundant contained results but retains partial overlap and
 higher-confidence typed results when a larger spaCy span extends them. Consumers
 should redact the **union of all intervals**, not assume results never overlap.

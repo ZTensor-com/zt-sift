@@ -213,8 +213,24 @@ class StructuredFieldRecognizer(LocalRecognizer):
         "dateofbirth": "DATE_OF_BIRTH", "birthdate": "DATE_OF_BIRTH", "dob": "DATE_OF_BIRTH",
         "medicalrecordnumber": "MEDICAL_RECORD_NUMBER", "mrn": "MEDICAL_RECORD_NUMBER", "insurancepolicynumber": "INSURANCE_ID",
         "serialnumber": "SERIAL_NUMBER", "nationalidnumber": "NATIONAL_ID_NUMBER", "driverlicensenumber": "DRIVER_LICENSE_NUMBER",
+        "passportnumber": "US_PASSPORT", "idcardnumber": "NATIONAL_ID_NUMBER",
+        "nursinglicensenumber": "PROFESSIONAL_LICENSE", "deviceserialnumber": "SERIAL_NUMBER",
+        "contactnumber": "PHONE_NUMBER", "age": "AGE",
         "phone": "PHONE_NUMBER", "phonenumber": "PHONE_NUMBER", "mobile": "PHONE_NUMBER", "cell": "PHONE_NUMBER", "tel": "PHONE_NUMBER", "fax": "PHONE_NUMBER",
     }
+    # New aliases retain the shape constraints of the existing prose rules.
+    ALIAS_SHAPES = {
+        "passportnumber": r"(?:[A-Z]\d{8}|\d{9})",
+        "idcardnumber": r"(?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{5,19}",
+        "nursinglicensenumber": r"(?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{4,19}",
+        "deviceserialnumber": r"(?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{5,24}",
+    }
+
+    @classmethod
+    def valid_alias(cls, key, value):
+        pattern = cls.ALIAS_SHAPES.get(key)
+        return pattern is None or bool(re.fullmatch(pattern, str(value), re.I))
+
     FIELD = re.compile(r'(?P<key>"(?:\\.|[^"\\])*")\s*:\s*(?P<value>"(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?)(?=\s*[,}\]])')
 
     def __init__(self):
@@ -233,10 +249,14 @@ class StructuredFieldRecognizer(LocalRecognizer):
             except (ValueError, TypeError):
                 continue
             entity = self.FIELDS.get(key)
+            if not self.valid_alias(key, value):
+                continue
             if entity not in entities:
                 continue
             raw = m.group("value")
             if value is None or str(value).lower() in {"", "null", "unknown", "n/a", "none", "unavailable", "nil"}:
+                continue
+            if entity == "AGE" and not (str(value).isdigit() and 0 <= int(value) < 120):
                 continue
             if entity == "PHONE_NUMBER" and not (7 <= len(re.sub(r"\D", "", str(value))) <= 15 and re.fullmatch(r"\+?[\d ().-]+", str(value))):
                 continue
@@ -284,7 +304,7 @@ def build_recognizers():
     recs.append(CasePatternRecognizer(supported_entity="AUTH_TOKEN", name="JwtRecognizer", supported_language="en", context=["token", "bearer", "authorization", "jwt"], patterns=[
         _pattern("JWT", r"\beyJ[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{8,}\b", 0.95)]))
     recs.append(CasePatternRecognizer(supported_entity="PRIVATE_KEY", name="PrivateKeyRecognizer", supported_language="en", patterns=[
-        _pattern("PEM private key block", r"(?i:-----BEGIN (?P<kind>(?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY)-----)(?:[\s\S]*?(?i:-----END (?P=kind)-----)|(?=\s*$))", 0.99),
+        _pattern("PEM private key block", r"(?i:-----BEGIN (?P<kind>(?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY)-----)(?:[^\x00]*?(?i:-----END (?P=kind)-----)|(?=\s*$))", 0.99),
         _pattern("truncated PEM body", r"(?i:-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----)(?:[ \t]*\r?\n[A-Za-z0-9+/=]+)+", 0.99),
         _pattern("PEM private key header", r"(?i:-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----)", 0.98)]))
     recs.append(LabeledValueRecognizer("API_KEY", ["api key", "apikey", "api_key", "secret key", "secret", "access key", "access token", "auth token", "token", "bearer"],

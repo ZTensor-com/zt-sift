@@ -159,9 +159,11 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
     Inputs longer than CHUNK_CHARS use overlapping pieces (512 characters of context).
     Entities longer than that overlap can still straddle a cut; API requests are limited to 20 KB.
     """
-    found = []
+    from .structured import json_scalars, analyze_json
+    leaves = json_scalars(text) if len(text) <= CHUNK_CHARS else None
+    found = analyze_json(analyzer, text, leaves, threshold, entities) if leaves is not None else []
     start = 0
-    while start < len(text):
+    while leaves is None and start < len(text):
         end = min(start + CHUNK_CHARS, len(text))
         if end < len(text):
             cut = max(text.rfind(" ", start, end), text.rfind("\n", start, end))
