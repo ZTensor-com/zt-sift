@@ -1,7 +1,8 @@
 # Direct dependencies of the Presidio Lambda. requirements.lock (generated) pins everything else.
-# No PyTorch or GLiNER: spaCy's en_core_web_lg supplies names, places and organizations; Presidio's recognizers
+# No PyTorch or GLiNER: the selected spaCy model supplies names, places and organizations; Presidio's recognizers
 # and pii_detector/recognizers.py supply everything else.
 presidio-analyzer==2.2.364
 spacy==3.8.16
 tldextract==5.4.0
 en_core_web_lg==3.8.0
+en_core_web_sm==3.8.0

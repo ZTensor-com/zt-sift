@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: PII detection API on AWS Lambda (container image with Presidio, spaCy en_core_web_lg and custom recognizers), fronted by API Gateway with an API key
+Description: PII detection API on AWS Lambda (Presidio, selectable spaCy model and custom recognizers), fronted by API Gateway with an API key
 Parameters:
   ImageUri:
     Type: String
@@ -9,10 +9,15 @@ Parameters:
     Type: String
     Default: dev
     AllowedPattern: '[a-zA-Z0-9_-]+'
+  SpacyModel:
+    Type: String
+    Default: en_core_web_lg
+    AllowedValues: [en_core_web_lg, en_core_web_sm]
+    Description: Bundled NLP model; small is opt-in and needs accuracy/memory validation
   MemorySize:
     Type: Number
     Default: 3008
-    MinValue: 1024
+    MinValue: 512
     MaxValue: 10240
     Description: MiB. New AWS accounts are capped at 3008 until a limit increase; CPU share grows with memory
   TimeoutSeconds:
@@ -66,6 +71,7 @@ Resources:
       Environment:
         Variables:
           MAX_BYTES: '20000'
+          PII_SPACY_MODEL: !Ref SpacyModel
   LogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
@@ -77,7 +83,7 @@ Resources:
     Type: AWS::Lambda::Version
     Properties:
       FunctionName: !Ref DetectFunction
-      Description: !Sub '${ImageUri} memory=${MemorySize} timeout=${TimeoutSeconds}'
+      Description: !Sub '${ImageUri} model=${SpacyModel} memory=${MemorySize} timeout=${TimeoutSeconds}'
   FunctionAlias:
     Type: AWS::Lambda::Alias
     Properties:

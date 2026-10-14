@@ -1,0 +1,60 @@
+{
+  "model": "en_core_web_sm",
+  "init_ms": 54327.56,
+  "init_peak_rss_mib": 155.12,
+  "workloads": [
+    {
+      "name": "prose_sample",
+      "text_bytes": 1520,
+      "status": 200,
+      "count": 57,
+      "runs_ms": [
+        1315.32,
+        1188.08,
+        1345.74
+      ],
+      "median_ms": 1315.32,
+      "peak_rss_mib": 160.38
+    },
+    {
+      "name": "json_people",
+      "text_bytes": 15212,
+      "status": 200,
+      "count": 760,
+      "runs_ms": [
+        4120.73,
+        7907.87,
+        5089.29
+      ],
+      "median_ms": 5089.29,
+      "peak_rss_mib": 167.16
+    },
+    {
+      "name": "20k_plain",
+      "text_bytes": 20000,
+      "status": 200,
+      "count": 1000,
+      "runs_ms": [
+        13311.03,
+        12122.81,
+        5142.64
+      ],
+      "median_ms": 12122.81,
+      "peak_rss_mib": 167.16
+    },
+    {
+      "name": "20k_json_note",
+      "text_bytes": 19991,
+      "status": 200,
+      "count": 999,
+      "runs_ms": [
+        7734.26,
+        4914.86,
+        4612.89
+      ],
+      "median_ms": 4914.86,
+      "peak_rss_mib": 196.44
+    }
+  ],
+  "final_peak_rss_mib": 196.44
+}

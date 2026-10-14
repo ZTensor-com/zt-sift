@@ -1,0 +1,13 @@
+.git
+.venv
+.claude
+.codex
+.agents
+.aws
+analysis
+graphify-out
+__pycache__
+**/__pycache__
+*.pyc
+.env
+.DS_Store

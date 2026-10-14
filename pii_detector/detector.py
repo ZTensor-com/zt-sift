@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Presidio + spaCy en_core_web_lg only (no GLiNER): see what Presidio detects on its own.
+"""Presidio + spaCy (en_core_web_lg by default, opt-in en_core_web_sm; no GLiNER).
 
 By default every pattern recognizer in the installed Presidio is switched on (72 entity types plus a few
 extras): Presidio's default English registry covers only 23 of them, and the country-specific ones
@@ -25,6 +25,31 @@ import time
 from collections import Counter
 
 SPACY_MODEL = "en_core_web_lg"
+SPACY_MODELS = (SPACY_MODEL, "en_core_web_sm")
+
+
+def configured_spacy_model():
+    """Select a bundled model explicitly; never accept a path or download URL."""
+    model = os.environ.get("PII_SPACY_MODEL", SPACY_MODEL)
+    if model not in SPACY_MODELS:
+        raise ValueError("PII_SPACY_MODEL must be en_core_web_lg or en_core_web_sm")
+    return model
+
+
+def create_nlp_engine(model):
+    from presidio_analyzer.nlp_engine import SpacyNlpEngine
+
+    class CompactSpacyNlpEngine(SpacyNlpEngine):
+        def load(self):
+            import spacy
+            self._enable_gpu()
+            # Exclude at load time: disable would retain the unused weights in RAM.
+            # NER, tagger and lemmatizer remain for recognition/context enhancement.
+            self.nlp = {"en": spacy.load(model, exclude=["parser", "senter"])}
+
+    engine = CompactSpacyNlpEngine(models=[{"lang_code": "en", "model_name": model}])
+    engine.load()
+    return engine
 
 
 # Recognizers that need extra packages, a model download or an external service; they are not pattern rules.
@@ -32,15 +57,9 @@ SKIP_CLASSES = ("Azure", "Stanza", "Transformers", "GLiNER", "HuggingFace", "Lan
 
 
 def load_analyzer(everything=True, custom=True, phone_regions=None):
+    model = configured_spacy_model()
     from presidio_analyzer import AnalyzerEngine
-    from presidio_analyzer.nlp_engine import NlpEngineProvider
-    provider = NlpEngineProvider(nlp_configuration={
-        "nlp_engine_name": "spacy", "models": [{"lang_code": "en", "model_name": SPACY_MODEL}]})
-    analyzer = AnalyzerEngine(nlp_engine=provider.create_engine(), supported_languages=["en"])
-    # Lemmatization/context enhancement still uses tagger and lemmatizer.
-    nlp = analyzer.nlp_engine.nlp["en"]
-    if "parser" in nlp.pipe_names:
-        nlp.disable_pipe("parser")
+    analyzer = AnalyzerEngine(nlp_engine=create_nlp_engine(model), supported_languages=["en"])
     use_bundled_suffix_list(analyzer)
     configure_phone_regions(analyzer, phone_regions)
     if everything:
@@ -261,7 +280,7 @@ def main():
             print(f"{d['start']:5} {d['end']:5}  {d['entity']:26} {d['score']:5.2f}  {d['recognizer']:28} {d['text']!r}")
         counts = Counter(d["entity"] for d in found)
         print("\n" + ", ".join(f"{entity} x{n}" for entity, n in counts.most_common()))
-    print(f"\n{len(found)} detections in {seconds * 1000:.0f} ms ({len(text)} chars; model load {load_seconds:.1f} s, threshold {args.threshold})")
+    print(f"\n{len(found)} detections in {seconds * 1000:.0f} ms ({len(text)} chars; model {configured_spacy_model()}, load {load_seconds:.1f} s, threshold {args.threshold})")
     return 0
 
 

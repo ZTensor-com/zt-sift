@@ -1,7 +1,7 @@
 # PII detection
 
 Send a message in the request body; get back every detection with `text`, `entity`, `start`, `end` and `score`, plus a total `count` and per-entity `counts`.
-Presidio with spaCy `en_core_web_lg` and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
+Presidio with spaCy `en_core_web_lg` by default (opt-in `en_core_web_sm`) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
 
 ## Layout
 
@@ -10,9 +10,9 @@ pii_detector/    the code that ships: detector.py (load_analyzer, detect, collap
 handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
 template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, ap-south-1)
-requirements.txt direct dependencies of the image; requirements.lock pins all 52 packages
+requirements.txt direct dependencies of the image; requirements.lock pins all 53 packages
 requirements-dev.txt  extra packages for tools/ (web page)
-wheels/          offline cache of those 52 Linux / Python 3.12 wheels (gitignored)
+wheels/          offline cache of those 53 Linux / Python 3.12 wheels (gitignored)
 scripts/         deploy.sh (--validate | --build | --deploy); build_lock.py regenerates requirements.lock offline from wheels/
 tests/           unit and regression tests (recognizers, real analyzer, collapse logic, Lambda handler)
 tools/           dev only, never shipped: web test page, coverage and evaluation scripts, sample generators (see tools/README.md)
@@ -29,6 +29,7 @@ python -m unittest discover -s tests -t .                    # unit tests
 scripts/deploy.sh --validate    # tests + cfn-lint, no Docker or AWS
 scripts/deploy.sh --build       # local image pii-presidio-lambda:local
 scripts/deploy.sh --deploy      # creates or updates the billable AWS resources
+scripts/deploy.sh --deploy-existing-image  # upload an already-built image; no build or local detection
 ```
 
 ## API
@@ -57,7 +58,7 @@ Measured in the emulator at a 2,048 MB limit: 695 MB image, about 2.4 s init (La
 
 ## Notes
 
-- Published Lambda versions are frozen snapshots, so the template's version description includes the image, memory and timeout; changing any of them publishes a new version.
+- Published Lambda versions are frozen snapshots, so the template's version description includes the image, model, memory and timeout; changing any of them publishes a new version.
 - Every file in the image must be world-readable because Lambda runs as an unprivileged user; the Dockerfile checks this.
 - To refresh `wheels/`, see the `pip download` command at the top of `scripts/build_lock.py`.
 
@@ -69,8 +70,48 @@ International `+country-code` numbers still use libphonenumber validation.
 Explicit phone fields additionally detect plausible 7–15 digit numbers, even
 when a numbering plan rejects them. This protects malformed sensitive values;
 it does not assert that the phone is usable. More regions increase request time.
-The spaCy parser is disabled; NER, tagging and lemmatization remain enabled.
-No provisioned concurrency, periodic warming, memory or model changes are needed.
+The spaCy parser and sentence recognizer are excluded during loading; their unused
+weights are not retained in memory. NER, tagging and lemmatization remain enabled.
+No provisioned concurrency or periodic warming is needed.
+
+### Test the small spaCy model
+
+Both model packages are bundled in the image; only the selected model is loaded.
+`PII_SPACY_MODEL` accepts `en_core_web_lg` (default) or `en_core_web_sm`.
+The small model keeps the same recognizers/entities, but its NLP predictions can
+differ for names, organizations and locations in free-form text. Evaluate both
+missed values and false positives before adopting it.
+
+```bash
+PII_SPACY_MODEL=en_core_web_sm python -m pii_detector --file samples/sample_us.txt --collapse
+PII_SPACY_MODEL=en_core_web_sm python -m unittest discover -s tests -t . -v
+scripts/deploy.sh --build
+docker run --rm --platform linux/amd64 --user 1051:1051 --memory=512m \
+  -e PII_SPACY_MODEL=en_core_web_sm -p 9000:8080 pii-presidio-lambda:local
+```
+
+For isolated AWS testing, explicitly use a separate stack. This command creates
+billable test resources and prints a separate endpoint; it leaves the existing
+stack alone. Start at the existing memory allocation to compare accuracy and
+latency, then test 512 MB only after measuring startup and maximum-input peaks.
+The deployment script accepts `MEMORY_SIZE=512`, but it does not change the 3008 MB
+default. Container memory limits do not reproduce Lambda's reduced CPU allocation.
+
+```bash
+STACK_NAME=pii-detection-sm-test ECR_REPOSITORY_NAME=pii-detection-sm-test \
+  PII_SPACY_MODEL=en_core_web_sm \
+  MEMORY_SIZE=3008 PROVISIONED_CONCURRENCY=0 scripts/deploy.sh --deploy
+```
+
+Switching models on an existing stack publishes a new version and updates the live
+alias. AWS settings change when you explicitly run a deployment command.
+
+If `pii-presidio-lambda:model-test` has already been built, upload that image to
+test directly in Lambda. Docker Desktop only needs to be running for the upload;
+this mode does not build an image or execute detection locally. Use the same
+model/stack/memory variables with `--deploy-existing-image`. It uses the saved
+image's code, so later source changes require a new image. To avoid Docker on
+the Mac entirely, build and publish the image on a separate machine or CI runner.
 
 Known JSON field names are normalized for camelCase/snake_case recognition;
 values retain their original source spelling, escapes and offsets. Returned offsets
