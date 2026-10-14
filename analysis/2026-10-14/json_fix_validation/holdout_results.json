@@ -1,0 +1,322 @@
+[
+  {
+    "name": "unicode_names",
+    "ensure_ascii": false,
+    "text": "{\"firstName\":\"आरव\",\"lastName\":\"शर्मा\"}",
+    "detections": [
+      {
+        "text": "आरव",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 17,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "शर्मा",
+        "entity": "PERSON",
+        "start": 31,
+        "end": 36,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "unicode_names",
+    "ensure_ascii": true,
+    "text": "{\"firstName\":\"\\u0906\\u0930\\u0935\",\"lastName\":\"\\u0936\\u0930\\u094d\\u092e\\u093e\"}",
+    "detections": [
+      {
+        "text": "\\u0906\\u0930\\u0935",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 32,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "\\u0936\\u0930\\u094d\\u092e\\u093e",
+        "entity": "PERSON",
+        "start": 46,
+        "end": 76,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "escaped_letters",
+    "ensure_ascii": false,
+    "text": "{\"firstName\":\"\\u0053arah\",\"lastName\":\"Johnson\"}",
+    "detections": [
+      {
+        "text": "\\u0053arah",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 24,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "Johnson",
+        "entity": "PERSON",
+        "start": 38,
+        "end": 45,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "escaped_letters",
+    "ensure_ascii": true,
+    "text": "{\"firstName\":\"\\u0053arah\",\"lastName\":\"Johnson\"}",
+    "detections": [
+      {
+        "text": "\\u0053arah",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 24,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "Johnson",
+        "entity": "PERSON",
+        "start": 38,
+        "end": 45,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "punctuation_secrets",
+    "ensure_ascii": false,
+    "text": "{\"password\":\" ,{secret!}\\\"\\\\ 😀\",\"email\":\"jane@example.com\"}",
+    "detections": [
+      {
+        "text": " ,{secret!}\\\"\\\\ 😀",
+        "entity": "PASSWORD",
+        "start": 13,
+        "end": 30,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "jane@example.com",
+        "entity": "EMAIL_ADDRESS",
+        "start": 41,
+        "end": 57,
+        "score": 1.0,
+        "recognizer": "EmailRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "punctuation_secrets",
+    "ensure_ascii": true,
+    "text": "{\"password\":\" ,{secret!}\\\"\\\\ \\ud83d\\ude00\",\"email\":\"jane@example.com\"}",
+    "detections": [
+      {
+        "text": " ,{secret!}\\\"\\\\ \\ud83d\\ude00",
+        "entity": "PASSWORD",
+        "start": 13,
+        "end": 41,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "jane@example.com",
+        "entity": "EMAIL_ADDRESS",
+        "start": 52,
+        "end": 68,
+        "score": 1.0,
+        "recognizer": "EmailRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "duplicate_values",
+    "ensure_ascii": false,
+    "text": "[{\"firstName\":\"John\"},{\"firstName\":\"John\"}]",
+    "detections": [
+      {
+        "text": "John",
+        "entity": "PERSON",
+        "start": 15,
+        "end": 19,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "John",
+        "entity": "PERSON",
+        "start": 36,
+        "end": 40,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "duplicate_values",
+    "ensure_ascii": true,
+    "text": "[{\"firstName\":\"John\"},{\"firstName\":\"John\"}]",
+    "detections": [
+      {
+        "text": "John",
+        "entity": "PERSON",
+        "start": 15,
+        "end": 19,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      },
+      {
+        "text": "John",
+        "entity": "PERSON",
+        "start": 36,
+        "end": 40,
+        "score": 0.9,
+        "recognizer": "StructuredFieldRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "embedded_prose",
+    "ensure_ascii": false,
+    "text": "{\"note\":\"Call Sarah Johnson at jane@example.com.\"}",
+    "detections": [
+      {
+        "text": "Sarah Johnson",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 27,
+        "score": 0.85,
+        "recognizer": "SpacyRecognizer"
+      },
+      {
+        "text": "jane@example.com",
+        "entity": "EMAIL_ADDRESS",
+        "start": 31,
+        "end": 47,
+        "score": 1.0,
+        "recognizer": "EmailRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "embedded_prose",
+    "ensure_ascii": true,
+    "text": "{\"note\":\"Call Sarah Johnson at jane@example.com.\"}",
+    "detections": [
+      {
+        "text": "Sarah Johnson",
+        "entity": "PERSON",
+        "start": 14,
+        "end": 27,
+        "score": 0.85,
+        "recognizer": "SpacyRecognizer"
+      },
+      {
+        "text": "jane@example.com",
+        "entity": "EMAIL_ADDRESS",
+        "start": 31,
+        "end": 47,
+        "score": 1.0,
+        "recognizer": "EmailRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "contextual_prose",
+    "ensure_ascii": false,
+    "text": "{\"note\":\"Call (201) 555-0123. Ship to 12 Main Street\"}",
+    "detections": [
+      {
+        "text": "(201) 555-0123",
+        "entity": "PHONE_NUMBER",
+        "start": 14,
+        "end": 28,
+        "score": 0.6,
+        "recognizer": "UsPhoneFormatRecognizer"
+      },
+      {
+        "text": "12 Main Street",
+        "entity": "ADDRESS",
+        "start": 38,
+        "end": 52,
+        "score": 0.85,
+        "recognizer": "LabeledAddressRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "contextual_prose",
+    "ensure_ascii": true,
+    "text": "{\"note\":\"Call (201) 555-0123. Ship to 12 Main Street\"}",
+    "detections": [
+      {
+        "text": "(201) 555-0123",
+        "entity": "PHONE_NUMBER",
+        "start": 14,
+        "end": 28,
+        "score": 0.6,
+        "recognizer": "UsPhoneFormatRecognizer"
+      },
+      {
+        "text": "12 Main Street",
+        "entity": "ADDRESS",
+        "start": 38,
+        "end": 52,
+        "score": 0.85,
+        "recognizer": "LabeledAddressRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "nested_note",
+    "ensure_ascii": false,
+    "text": "{\"note\":\"{\\\"password\\\":\\\"secret123!\\\"}\"}",
+    "detections": [
+      {
+        "text": "secret123!",
+        "entity": "PASSWORD",
+        "start": 25,
+        "end": 35,
+        "score": 0.9,
+        "recognizer": "CredentialRecognizer"
+      }
+    ],
+    "additional": []
+  },
+  {
+    "name": "nested_note",
+    "ensure_ascii": true,
+    "text": "{\"note\":\"{\\\"password\\\":\\\"secret123!\\\"}\"}",
+    "detections": [
+      {
+        "text": "secret123!",
+        "entity": "PASSWORD",
+        "start": 25,
+        "end": 35,
+        "score": 0.9,
+        "recognizer": "CredentialRecognizer"
+      }
+    ],
+    "additional": []
+  }
+]

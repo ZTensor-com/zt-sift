@@ -1,0 +1,24 @@
+{
+  "person": {
+    "firstName": "Sarah",
+    "lastName": "Johnson",
+    "age": 34,
+    "email": "sarah.johnson@example.com",
+    "phoneNumber": "+1-202-555-0123"
+  },
+  "documents": {
+    "passportNumber": "075977035",
+    "idCardNumber": "98765432"
+  },
+  "work": {
+    "nursingLicenseNumber": "RN-445566"
+  },
+  "device": {
+    "deviceSerialNumber": "SN48210937"
+  },
+  "credentials": {
+    "username": "sarah_j89",
+    "password": ",{Sup3rSecret!}",
+    "sessionId": "3f2a9c1e7b4d8a6f0c2e5b1d9a7f4c3e"
+  }
+}
