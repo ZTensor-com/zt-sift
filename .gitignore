@@ -6,3 +6,4 @@ wheels/
 .DS_Store
 
 .claude/
+graphify-out/
