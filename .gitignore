@@ -7,3 +7,4 @@ wheels/
 
 .claude/
 graphify-out/
+samples/world_pii_*
