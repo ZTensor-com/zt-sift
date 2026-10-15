@@ -1,4 +1,6 @@
-# PII detection
+# zt-sift
+
+Find sensitive data. Know your exposure.
 
 Send a message in the request body; get back every detection with `text`, `entity`, `start`, `end` and `score`, plus a total `count` and per-entity `counts`.
 Presidio with spaCy `en_core_web_sm` by default (opt-in `en_core_web_lg`) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
