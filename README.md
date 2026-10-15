@@ -14,7 +14,7 @@ handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
 template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, us-west-2)
 requirements.txt direct dependencies of the image; requirements.lock pins all 53 packages
-requirements-dev.txt  extra packages for tools/ (web page)
+requirements-dev.txt  starlette and uvicorn for the manual test page (tools/web.py)
 wheels/          offline cache of those 53 Linux / Python 3.12 wheels (gitignored)
 scripts/         deploy.sh (--validate | --build | --deploy); build_lock.py regenerates requirements.lock offline from wheels/
 tests/           unit and regression tests (recognizers, real analyzer, collapse logic, Lambda handler)

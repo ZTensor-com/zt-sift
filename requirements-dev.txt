@@ -1,8 +1,7 @@
-# Only what the Presidio-only tester needs. The project's .venv already has all of it.
-presidio-analyzer==2.2.364
-spacy==3.8.16
-tldextract==5.4.0
-en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
-# only for web.py (the manual test page)
-starlette
-uvicorn
+# Extras for local tools only; nothing here goes into the Lambda image.
+# Install them on top of the project environment (presidio-analyzer, spaCy and the models come from requirements.txt):
+#   .venv/bin/python -m pip install -r requirements-dev.txt
+#
+# tools/web.py, the manual test page (python -m tools.web)
+starlette==1.7.0
+uvicorn==0.54.0
