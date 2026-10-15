@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Presidio + spaCy (en_core_web_lg by default, opt-in en_core_web_sm; no GLiNER).
+"""Presidio + spaCy (en_core_web_sm by default, opt-in en_core_web_lg; no GLiNER).
 
 By default every pattern recognizer in the installed Presidio is switched on (72 entity types plus a few
 extras): Presidio's default English registry covers only 23 of them, and the country-specific ones
@@ -24,15 +24,17 @@ import sys
 import time
 from collections import Counter
 
-SPACY_MODEL = "en_core_web_lg"
-SPACY_MODELS = (SPACY_MODEL, "en_core_web_sm")
+from . import policy
+
+SPACY_MODEL = "en_core_web_sm"
+SPACY_MODELS = (SPACY_MODEL, "en_core_web_lg")
 
 
 def configured_spacy_model():
     """Select a bundled model explicitly; never accept a path or download URL."""
     model = os.environ.get("PII_SPACY_MODEL", SPACY_MODEL)
     if model not in SPACY_MODELS:
-        raise ValueError("PII_SPACY_MODEL must be en_core_web_lg or en_core_web_sm")
+        raise ValueError("PII_SPACY_MODEL must be en_core_web_sm or en_core_web_lg")
     return model
 
 
@@ -61,13 +63,40 @@ def load_analyzer(everything=True, custom=True, phone_regions=None):
     from presidio_analyzer import AnalyzerEngine
     analyzer = AnalyzerEngine(nlp_engine=create_nlp_engine(model), supported_languages=["en"])
     use_bundled_suffix_list(analyzer)
+    use_issuer_aware_cards(analyzer)
     configure_phone_regions(analyzer, phone_regions)
     if everything:
         enable_all_pattern_recognizers(analyzer)
     if custom:
         from .recognizers import add_custom_recognizers
         add_custom_recognizers(analyzer)
+    analyzer.recognizer_kinds = recognizer_kinds(analyzer)
     return analyzer
+
+
+def recognizer_kinds(analyzer):
+    """Map each registered recognizer's name to how much its evidence is worth when results overlap.
+
+    label: found because a label sits right before the value (the strongest evidence for what the value is)
+    rule:  matched by a pattern, often with a checksum (built-in and project shape rules)
+    nlp:   spaCy's entity tagger (a flat 0.85 for everything it tags, so it ranks last)
+    """
+    from .recognizers import CredentialRecognizer, LabeledValueRecognizer, StructuredFieldRecognizer
+    labelled = (LabeledValueRecognizer, CredentialRecognizer, StructuredFieldRecognizer)
+    return {r.name: "nlp" if r.name == "SpacyRecognizer" else "label" if isinstance(r, labelled) else "rule"
+            for r in analyzer.registry.recognizers}
+
+
+def use_issuer_aware_cards(analyzer):
+    """Replace Presidio's card recognizer with one that also requires a known issuer range."""
+    from presidio_analyzer.predefined_recognizers import CreditCardRecognizer
+    from .recognizers import IssuerAwareCreditCardRecognizer
+    for original in list(analyzer.registry.recognizers):
+        if isinstance(original, CreditCardRecognizer):
+            analyzer.registry.remove_recognizer(original.name, language=original.supported_language)
+            analyzer.registry.add_recognizer(IssuerAwareCreditCardRecognizer(
+                patterns=original.patterns, context=original.context, supported_language=original.supported_language,
+                supported_entity=original.supported_entities[0], name=original.name))
 
 
 def configure_phone_regions(analyzer, regions=None):
@@ -142,43 +171,166 @@ def spacy_noise(item):
     return False
 
 
-def collapse_overlaps(found, custom_names=()):
-    """Prefer a typed result for equal/contained spans, retaining extensions for complete coverage.
+KIND_RANK = {"label": 2, "rule": 1, "nlp": 0}
+# How far a context word may sit from the value it supports and still count as that value's label (Presidio looks 5 tokens back).
+CONTEXT_REACH = 64
 
-    Ranking: the project's own recognizers beat Presidio's built-in rules, which beat spaCy's name/place/date tagging
-    (spaCy gives every tag a flat 0.85, so it used to win ties against precise rules). Within a tier the higher score,
-    then the longer span, then a US_-prefixed entity (the more specific name), then the entity name wins, so the outcome never depends on recognizer registration order.
-    spaCy-only results that look like noise are dropped first.
+
+def kind_of(item, kinds):
+    default = "nlp" if item["recognizer"] == "SpacyRecognizer" else "rule"
+    return kinds.get(item["recognizer"], default) if kinds else default
+
+
+def same_span(a, b):
+    return a["start"] == b["start"] and a["end"] == b["end"]
+
+
+def refine_generic(found, kinds):
+    """Let a validated country-specific result replace the generic type chosen by a label.
+
+    "passport: J36C20G26" yields PASSPORT_NUMBER from the label and DE_PASSPORT from a checksum-validated German
+    rule on exactly the same value. The label says it is a passport, so the German passport rule is the better
+    answer. The label also settles which family the value belongs to, so rival rules from other families on the
+    same value (here DE_ID_CARD, which has the same shape) are discarded whatever their score.
+
+    Only a validated specific result (score >= policy.REFINE_MIN_SCORE) is used. A weak shape match cannot name the
+    country, so the generic type stays.
     """
-    def tier(item):
-        if item["recognizer"] == "SpacyRecognizer":
-            return 0
-        return 2 if item["recognizer"] in custom_names else 1
+    dropped = set()
+    for generic in sorted((d for d in found if d["entity"] in policy.FAMILIES and kind_of(d, kinds) == "label"),
+                          key=lambda d: (d["start"], d["end"], d["entity"])):
+        family = policy.FAMILIES[generic["entity"]]
+        specifics = [d for d in found if d["entity"] in family and same_span(d, generic) and d["score"] >= policy.REFINE_MIN_SCORE]
+        if not specifics:
+            continue
+        dropped.add(id(generic))
+        for rival in found:
+            if same_span(rival, generic) and rival["entity"] not in family and kind_of(rival, kinds) != "label":
+                dropped.add(id(rival))
+    return [d for d in found if id(d) not in dropped]
 
+
+def drop_nlp_noise(found, kinds=None):
+    """Remove spaCy tags that only restate or decorate a typed result.
+
+    spaCy tags field labels and values as organizations, dates and places ("CVV 737", "employee ID EMP-016973",
+    "45 years old", the word "Bank" in "Bank account number", "VIN" in "VIN: 1HGCM..."). Three cases are certain noise:
+      * the tag lies inside a labelled phrase (from the start of the label to the end of its value),
+      * the tag contains a typed result, so the typed result already names the value, or
+      * the tag is exactly the context word that supported a typed result right beside it (CONTEXT_REACH characters).
+    PERSON is exempt: a name legitimately extends a typed fragment ("user=Sarah Johnson" types only "Sarah").
+    """
+    typed = [d for d in found if kind_of(d, kinds) != "nlp"]
+    phrases = [(d["label_start"], d["end"]) for d in typed if d.get("label_start") is not None]
     kept = []
-    candidates = [item for item in found if not (tier(item) == 0 and spacy_noise(item))]
-    for item in sorted(candidates, key=lambda d: (-tier(d), -d["score"], -(d["end"] - d["start"]), not d["entity"].startswith("US_"), d["entity"], d["start"])):
-        overlapping = [k for k in kept if item["start"] < k["end"] and item["end"] > k["start"]]
-        if not overlapping:
-            kept.append(item)
-        elif any(item["start"] < k["start"] or item["end"] > k["end"] for k in overlapping):
-            # Coverage takes precedence over tier for strict containment. Partial
-            # overlaps retain both results so masking can union their intervals.
-            contained = [k for k in overlapping if item["start"] <= k["start"] and item["end"] >= k["end"]]
-            if len(contained) == len(overlapping) and (tier(item) > 0 or all(tier(item) >= tier(k) for k in contained)):
-                for k in contained:
-                    kept.remove(k)
-            kept.append(item)
+    for d in found:
+        if kind_of(d, kinds) == "nlp" and d["entity"] != "PERSON":
+            if any(a <= d["start"] and d["end"] <= b for a, b in phrases):
+                continue
+            if any(d["start"] <= t["start"] and t["end"] <= d["end"] for t in typed):
+                continue
+            tag = d["text"].strip().lower()
+            if any(t.get("context_word") and t["context_word"].lower() == tag
+                   and max(t["start"] - d["end"], d["start"] - t["end"], 0) <= CONTEXT_REACH for t in typed):
+                continue
+        kept.append(d)
     return kept
 
 
+def collapse_overlaps(found, kinds=None):
+    """Keep one result per overlapping group, preferring the strongest evidence, and report extensions.
+
+    Ranking, strongest first: a value found after its label ("label"), then pattern/checksum rules ("rule"), then
+    spaCy's tagger ("nlp", which gives every tag a flat 0.85 and so used to win ties against precise rules).
+    Inside a rank a result whose own context word sits beside the value (and that is accepted on its own score) beats
+    one that matched by chance, e.g. "bsnr: 337700093" is a DE_BSNR even though the digits also satisfy the DE_LANR
+    checksum. After that the higher score wins, then the longer span, a US_-prefixed entity, and finally the entity
+    name, so the outcome never depends on recognizer registration order.
+
+    A generic label result first yields to a validated country-specific result (see refine_generic). A span that lies
+    inside a kept span is redundant. A span that extends beyond a kept one is kept as well, so a consumer masking the
+    union of intervals loses no sensitive character; a non-spaCy span that fully contains smaller kept spans replaces them.
+    Results are copied, never modified in place. Two results for the same entity and span merge, keeping the higher score.
+    """
+    found = refine_generic(found, kinds)
+    rank = lambda d: KIND_RANK[kind_of(d, kinds)]
+    kept = []
+    supported = lambda d: d.get("context", False) and d["score"] >= policy.DEFAULT_THRESHOLD
+    for item in sorted(found, key=lambda d: (-rank(d), -supported(d), -d["score"], -(d["end"] - d["start"]),
+                                             not d["entity"].startswith("US_"), d["entity"], d["start"])):
+        overlapping = [k for k in kept if item["start"] < k["end"] and item["end"] > k["start"]]
+        if not overlapping:
+            kept.append(dict(item))
+        elif any(item["start"] < k["start"] or item["end"] > k["end"] for k in overlapping):
+            contained = [k for k in overlapping if item["start"] <= k["start"] and item["end"] >= k["end"]]
+            if len(contained) == len(overlapping) and (rank(item) > 0 or all(rank(k) == 0 for k in contained)):
+                for k in contained:
+                    kept.remove(k)
+            kept.append(dict(item))
+        else:
+            # Redundant. If it names the same entity on the same value, two recognizers agree: keep the
+            # winner's evidence but never lose the stronger score (a checksum-validated 1.0 must not drop to a label's 0.85).
+            twin = next((k for k in overlapping if k["entity"] == item["entity"] and same_span(k, item)), None)
+            if twin:
+                twin["score"] = max(twin["score"], item["score"])
+                twin["context"] = twin.get("context", False) or item.get("context", False)
+    return kept
+
+
+def inside_identifier(text, start, end):
+    """True when the span is only a fragment of a hyphen/underscore-joined identifier: REQ-2026-10-15-000481, report_2024-03-01_final.
+
+    It must touch '-' or '_' on a side and the identifier must contain a letter, so date ranges ("2020-01-01-2020-12-31")
+    and ISO timestamps ("2024-03-01T10:22:31Z") are not mistaken for identifiers.
+    """
+    touches = re.search(r"[A-Za-z0-9][-_]\Z", text[max(0, start - 2):start]) or re.match(r"[-_][A-Za-z0-9]", text[end:end + 2])
+    if not touches:
+        return False
+    left, right = start, end
+    while left > 0 and re.match(r"[A-Za-z0-9_-]", text[left - 1]):
+        left -= 1
+    while right < len(text) and re.match(r"[A-Za-z0-9_-]", text[right]):
+        right += 1
+    return bool(re.search(r"[A-Za-z]", text[left:right].replace("-", " ").replace("_", " "))) and (left, right) != (start, end)
+
+
+_MONTH_OR_DAY = re.compile(r"(?i)\A(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|mon|tue|wed|thu|fri|sat|sun)")
+
+
+def identifier_shaped(text):
+    """True for a letters-first identifier with digits and at least two - or _ joints (REQ-2026-10-15-000481).
+
+    Month and weekday prefixes (Oct-15-2026, Mon-Fri) and digits-first timestamps (2024-03-01T10:22:31Z) are dates.
+    """
+    return bool(re.fullmatch(r"[A-Za-z]{2,}[-_][A-Za-z0-9_-]*\d[A-Za-z0-9_-]*", text) and len(re.findall(r"[-_]", text)) >= 2
+                and not _MONTH_OR_DAY.match(text))
+
+
+def candidate(piece, offset, r):
+    """One analyzer result as a dict with offsets into the whole text."""
+    explanation = r.analysis_explanation
+    metadata = r.recognition_metadata or {}
+    word = (explanation.supportive_context_word if explanation else "") or ""
+    item = {"text": piece[r.start:r.end], "entity": r.entity_type, "start": offset + r.start, "end": offset + r.end,
+            "score": round(float(r.score), 3), "recognizer": metadata.get("recognizer_name", ""),
+            "context": bool(word), "context_word": word}
+    if metadata.get("label_start") is not None:
+        item["label_start"] = offset + metadata["label_start"]
+    return item
+
+
 def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
-    """Return Presidio's detections as dicts sorted by position. collapse removes redundant spans while preserving extending coverage (see collapse_overlaps).
+    """Return Presidio's detections as dicts sorted by position.
+
+    A candidate is reported when its score reaches the threshold, or when it is a context-supported weak country
+    pattern (policy.accepts). collapse removes redundant candidates while preserving extending coverage (see
+    collapse_overlaps). `entities` may use the alias names in policy.ENTITY_ALIASES.
 
     Inputs longer than CHUNK_CHARS use overlapping pieces (512 characters of context).
     Entities longer than that overlap can still straddle a cut; API requests are limited to 20 KB.
     """
     from .structured import json_scalars, analyze_json
+    entities = policy.resolve_entities(entities)
     leaves = json_scalars(text) if len(text) <= CHUNK_CHARS else None
     found = analyze_json(analyzer, text, leaves, threshold, entities) if leaves is not None else []
     start = 0
@@ -188,10 +340,11 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
             cut = max(text.rfind(" ", start, end), text.rfind("\n", start, end))
             end = cut + 1 if cut > start else end
         piece = text[start:end]
-        for r in analyzer.analyze(text=piece, language="en", entities=entities or None, score_threshold=threshold):
-            found.append({"text": piece[r.start:r.end], "entity": r.entity_type, "start": start + r.start,
-                          "end": start + r.end, "score": round(float(r.score), 3),
-                          "recognizer": (r.recognition_metadata or {}).get("recognizer_name", "")})
+        for r in analyzer.analyze(text=piece, language="en", entities=entities or None, score_threshold=policy.candidate_floor(threshold),
+                                  return_decision_process=True):
+            item = candidate(piece, start, r)
+            if policy.accepts(item["entity"], item["score"], item["context"], threshold):
+                found.append(item)
         if end == len(text):
             break
         start = max(start + 1, end - min(512, CHUNK_CHARS // 4))
@@ -199,6 +352,10 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
     found = list(unique.values())
     cleaned = []
     for item in found:
+        if policy.is_placeholder(item["text"]):
+            continue
+        if item["entity"] == "DATE_TIME" and (identifier_shaped(item["text"]) or inside_identifier(text, item["start"], item["end"])):
+            continue
         if item["entity"] == "EMAIL_ADDRESS":
             assignment = re.match(r"(?i)(?:email|emailaddress|email_address|mail)=", item["text"])
             if assignment:
@@ -220,7 +377,8 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
         cleaned.append(item)
     found = cleaned
     if collapse:
-        found = collapse_overlaps(found, getattr(analyzer, "custom_recognizer_names", ()))
+        kinds = getattr(analyzer, "recognizer_kinds", None)
+        found = collapse_overlaps(drop_nlp_noise(found, kinds), kinds)
     return sorted(found, key=lambda d: (d["start"], d["end"], d["entity"]))
 
 
@@ -252,7 +410,9 @@ def main():
         scope += "" if args.no_custom else " plus the custom recognizers"
         print(f"{len(by_recognizer)} entity types in {scope}:\n")
         for entity in sorted(by_recognizer):
-            print(f"  {entity:28} {', '.join(sorted(by_recognizer[entity]))}")
+            owners = (f"alias of {policy.ENTITY_ALIASES[entity]} (no English model emits {entity})" if entity in policy.ENTITY_ALIASES
+                      else ", ".join(sorted(by_recognizer[entity])))
+            print(f"  {entity:28} {owners}")
         return 0
 
     if args.file:

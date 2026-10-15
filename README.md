@@ -1,12 +1,13 @@
 # PII detection
 
 Send a message in the request body; get back every detection with `text`, `entity`, `start`, `end` and `score`, plus a total `count` and per-entity `counts`.
-Presidio with spaCy `en_core_web_lg` by default (opt-in `en_core_web_sm`) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
+Presidio with spaCy `en_core_web_sm` by default (opt-in `en_core_web_lg`) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
 
 ## Layout
 
 ```
-pii_detector/    the code that ships: detector.py (load_analyzer, detect, collapse_overlaps), recognizers.py (custom recognizers)
+pii_detector/    the code that ships: detector.py (load_analyzer, detect, collapse_overlaps), recognizers.py (custom recognizers),
+                 policy.py (score acceptance, entity aliases, generic-to-specific families), structured.py (JSON values with source offsets)
 handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
 template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, ap-south-1)
@@ -35,7 +36,8 @@ scripts/deploy.sh --deploy-existing-image  # upload an already-built image; no b
 ## API
 
 `POST /detect` with header `x-api-key`. Body: plain text, or JSON `{"text": "..."}` (at most 20,000 bytes). Optional query parameters:
-`threshold` (default 0.5), `entities` (comma-separated, default all), `collapse` (default `true`: keep one result per overlapping group).
+`threshold` (default 0.5), `entities` (comma-separated, default all; `EMAIL` and `ID` are accepted as aliases for `EMAIL_ADDRESS` and `NATIONAL_ID_NUMBER`),
+`collapse` (default `true`: remove redundant candidates, see "How a value's type is chosen").
 
 ```json
 {"count": 2, "counts": {"EMAIL_ADDRESS": 1, "US_SSN": 1}, "detections": [{"text": "jane@example.com", "entity": "EMAIL_ADDRESS", "start": 14, "end": 30, "score": 1.0}, ...]}
@@ -43,6 +45,40 @@ scripts/deploy.sh --deploy-existing-image  # upload an already-built image; no b
 
 When results overlap, the project's own recognizers win over Presidio's built-in rules, which win over spaCy's name, place and date tags; spaCy-only acronyms and
 JSON-style keys are dropped. Entity names are Presidio's own (`EMAIL_ADDRESS`, `US_SSN`, `CREDIT_CARD`, `ADDRESS`, ...).
+
+## How a value's type is chosen
+
+Every recognizer proposes candidates; `detect(..., collapse=True)` then settles overlaps with these rules (`pii_detector/policy.py`, `detector.py`):
+
+1. **Evidence ranking.** A value found right after its label (`passport: ...`, `IMEI: ...`) outranks a pattern/checksum rule, which outranks spaCy's tagger.
+   Inside a rank the higher score wins, then a context-supported match, the longer span, and finally the entity name, so output never depends on registration order.
+2. **Specific over generic.** A label such as `passport` or `tax id` proves the kind of identifier but not the country, so the label-based recognizers report a generic type
+   (`PASSPORT_NUMBER`, `TAX_ID_NUMBER`, `NATIONAL_ID_NUMBER`, `LICENSE_PLATE`, ...). If a *validated* country-specific rule (score >= 0.8) fires on exactly the same value and belongs to that
+   family, the specific type is reported instead (`DE_PASSPORT`, `IN_GSTIN`, `NG_NIN`, ...), and rivals from other families on that value are discarded. A weak shape match never replaces the
+   generic type: `IN_PASSPORT`, `UK_PASSPORT` and `KR_PASSPORT` share one-or-two-letters-plus-digits shapes that cannot name the country, so those come back as `PASSPORT_NUMBER`.
+3. **Weak country patterns.** `DE_PLZ`, `ES_PASSPORT`, `IT_IDENTITY_CARD`, `IT_PASSPORT`, `PH_TIN` and `UK_POSTCODE` match only a shape, so alone they score 0.01-0.1. They are reported at the default
+   threshold only when a context word (`plz`, `pasaporte`, `postcode`, ...) sits next to the value. Raising `threshold` above 0.5 removes this allowance.
+4. **Credit cards need a real issuer range** (Visa, Mastercard, Amex, Discover, JCB, Diners, UnionPay, Maestro, Mir, Verve, InstaPayment) in addition to the Luhn check, so a 13-digit
+   national ID such as a South African ID is no longer called a card.
+5. **spaCy noise.** A spaCy tag is dropped when it lies inside a labelled phrase, contains a typed result, or is exactly the context word beside a typed value (`VIN` in `VIN: ...`).
+   `PERSON` is exempt, because a name can extend a typed fragment (`user=Sarah Johnson`).
+6. **Extensions are kept.** A span that extends beyond another is reported too, so a consumer masking the union of intervals hides every sensitive character. A non-spaCy span that fully
+   contains smaller ones replaces them.
+
+`EMAIL` and `ID` are advertised by Presidio but no English model emits them; they are accepted as `entities` filters and mapped to `EMAIL_ADDRESS` and `NATIONAL_ID_NUMBER`.
+
+## Test payloads
+
+Two payloads exercise every entity type the detector can report (120 of the 125 registered names: `EMAIL` and `ID` are aliases, and `IN_PASSPORT`, `UK_PASSPORT`, `KR_PASSPORT` are reported as `PASSPORT_NUMBER`).
+
+| File | Shape | Gate |
+|---|---|---|
+| `tests/fixtures/all_entities_payload.json` | one flat `{"ENTITY": {"label": "value"}}` pair per type, each value beside its own key | `tests/test_all_entities.py` |
+| `samples/complex_payload.json` | a nested CRM/KYC export: five levels, arrays of objects, mixed key styles, numbers, free-text notes with personal data in sentences, escapes and accents, plus decoys | `tests/test_complex_payload.py` |
+
+`samples/complex_payload.expected.json` lists what each value of the complex payload must be reported as and which values are decoys that must not be reported.
+Regenerate both with `python -m tools.build_complex_payload` (fixed seed; checksum-valid identifiers; every value is synthetic). POST the file as the raw body with `Content-Type: text/plain`.
+The label-rich payloads show that every recognizer is reachable and correctly ranked; they do not measure recall on text without labels.
 
 ## Try the image locally
 
@@ -74,19 +110,19 @@ The spaCy parser and sentence recognizer are excluded during loading; their unus
 weights are not retained in memory. NER, tagging and lemmatization remain enabled.
 No provisioned concurrency or periodic warming is needed.
 
-### Test the small spaCy model
+### Choosing the spaCy model
 
 Both model packages are bundled in the image; only the selected model is loaded.
-`PII_SPACY_MODEL` accepts `en_core_web_lg` (default) or `en_core_web_sm`.
-The small model keeps the same recognizers/entities, but its NLP predictions can
-differ for names, organizations and locations in free-form text. Evaluate both
-missed values and false positives before adopting it.
+`PII_SPACY_MODEL` accepts `en_core_web_sm` (default) or `en_core_web_lg`.
+The two share every recognizer and entity; they differ only in spaCy's tags for names, organizations
+and locations in free text. The small model tags more field labels as organizations; the noise rules
+below remove those. Measure missed values and false positives on your own text before relying on either.
 
 ```bash
-PII_SPACY_MODEL=en_core_web_sm python -m pii_detector --file samples/sample_us.txt --collapse
-PII_SPACY_MODEL=en_core_web_sm python -m unittest discover -s tests -t . -v
+python -m pii_detector --file samples/sample_us.txt --collapse                       # small model (default)
+PII_SPACY_MODEL=en_core_web_lg python -m unittest discover -s tests -t . -v           # run the tests with the large model
 scripts/deploy.sh --build
-docker run --rm --platform linux/amd64 --user 1051:1051 --memory=512m \
+docker run --rm --platform linux/amd64 --user 1051:1051 --memory=3008m \
   -e PII_SPACY_MODEL=en_core_web_sm -p 9000:8080 pii-presidio-lambda:local
 ```
 

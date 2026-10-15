@@ -9,6 +9,8 @@ import json
 import re
 from dataclasses import dataclass
 
+from . import policy
+
 
 @dataclass
 class Scalar:
@@ -203,7 +205,10 @@ def analyze_json(analyzer, text, leaves, threshold, entities):
         results = analyzer.context_aware_enhancer.enhance_using_context(
             text=piece, raw_results=results, nlp_artifacts=artifacts, recognizers=recognizers)
         for r in results:
-            if r.score < threshold:
+            explanation = r.analysis_explanation
+            context_word = (explanation.supportive_context_word if explanation else "") or ""
+            has_context = bool(context_word)
+            if not policy.accepts(r.entity_type, r.score, has_context, threshold):
                 continue
             if key == 'age' and r.entity_type == 'AGE' and (r.start != offset or r.end != len(piece) or not valid_age(leaf)):
                 continue
@@ -219,8 +224,8 @@ def analyze_json(analyzer, text, leaves, threshold, entities):
             if key in {'currency', 'currencycode'} and r.entity_type in {'LOCATION', 'ORGANIZATION', 'NRP'}:
                 continue
             sa, sb = leaf.spans[a][0], leaf.spans[b - 1][1]
-            found.append(dict(text=text[sa:sb], entity=r.entity_type, start=sa, end=sb,
-                              score=round(float(r.score), 3), recognizer=(r.recognition_metadata or {}).get('recognizer_name', '')))
+            found.append(dict(text=text[sa:sb], entity=r.entity_type, start=sa, end=sb, score=round(float(r.score), 3),
+                              recognizer=(r.recognition_metadata or {}).get('recognizer_name', ''), context=has_context, context_word=context_word))
         if custom:
             entity = StructuredFieldRecognizer.FIELDS.get(key)
             if key in NAME_FIELDS and (key != 'name' or any(normalize_key(p) in {'person', 'people', 'customer', 'customers', 'user', 'users', 'patient', 'patients', 'contact', 'contacts', 'profile'} for p in leaf.parents)) and any(c.isalpha() for c in leaf.value):
@@ -235,5 +240,5 @@ def analyze_json(analyzer, text, leaves, threshold, entities):
                 if entity == 'PHONE_NUMBER' and not (7 <= len(re.sub(r'\D', '', leaf.value)) <= 15 and re.fullmatch(r'\+?[\d ().-]+', leaf.value)):
                     continue
                 sa, sb = leaf.spans[0][0], leaf.spans[-1][1]
-                found.append(dict(text=text[sa:sb], entity=entity, start=sa, end=sb, score=.9, recognizer='StructuredFieldRecognizer'))
+                found.append(dict(text=text[sa:sb], entity=entity, start=sa, end=sb, score=.9, recognizer='StructuredFieldRecognizer', context=False))
     return found

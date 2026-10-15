@@ -13,7 +13,7 @@ TIMEOUT_SECONDS="${TIMEOUT_SECONDS:-60}"
 STAGE_NAME="${STAGE_NAME:-dev}"
 ALARM_EMAIL="${ALARM_EMAIL:-}"
 MEMORY_SIZE="${MEMORY_SIZE:-3008}"
-PII_SPACY_MODEL="${PII_SPACY_MODEL:-en_core_web_lg}"
+PII_SPACY_MODEL="${PII_SPACY_MODEL:-en_core_web_sm}"
 EXISTING_LOCAL_IMAGE="${EXISTING_LOCAL_IMAGE:-pii-presidio-lambda:model-test}"
 PROVISIONED_CONCURRENCY="${PROVISIONED_CONCURRENCY:-0}"
 export AWS_PAGER=""
@@ -26,7 +26,7 @@ Usage: scripts/deploy.sh --validate | --build | --deploy | --deploy-existing-ima
   --deploy    Create/reuse ECR, build and push the image, create/update the Lambda stack.
   --deploy-existing-image  Push EXISTING_LOCAL_IMAGE and update Lambda; no build or local detection.
 Environment: AWS_REGION (ap-south-1), STACK_NAME (pii-detection-presidio), ECR_REPOSITORY_NAME, STAGE_NAME (dev),
-             MEMORY_SIZE (3008), PII_SPACY_MODEL (en_core_web_lg; opt-in en_core_web_sm),
+             MEMORY_SIZE (3008), PII_SPACY_MODEL (en_core_web_sm; opt-in en_core_web_lg),
              PROVISIONED_CONCURRENCY (0; warm instances, billed continuously),
              EXISTING_LOCAL_IMAGE (pii-presidio-lambda:model-test), ALARM_EMAIL (optional), PYTHON_BIN.
 TXT

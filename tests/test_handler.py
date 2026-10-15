@@ -40,6 +40,14 @@ class HandlerTests(unittest.TestCase):
         self.assertEqual(body["count"], len(body["detections"]))
         self.assertEqual(body["counts"], {e: sum(d["entity"] == e for d in body["detections"]) for e in found})
 
+    def test_registered_names_no_english_model_emits_are_accepted_as_aliases(self):
+        text = "Contact jane@example.com about SSN 219-09-9999"
+        code, body = self.call(text, query={"entities": "email"})
+        self.assertEqual(code, 200)
+        self.assertEqual({d["entity"] for d in body["detections"]}, {"EMAIL_ADDRESS"})
+        code, body = self.call('{"nationalIdNumber": "TEST-78124563"}', query={"entities": "ID"})
+        self.assertEqual((code, {d["entity"] for d in body["detections"]}), (200, {"NATIONAL_ID_NUMBER"}))
+
     def test_json_and_base64_bodies(self):
         code, body = self.call(json.dumps({"text": "SSN 219-09-9999"}), "application/json", encoded=True)
         self.assertEqual(code, 200)

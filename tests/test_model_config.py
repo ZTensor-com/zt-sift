@@ -7,11 +7,11 @@ from pii_detector.detector import configured_spacy_model, create_nlp_engine, loa
 
 
 class ModelConfigTests(unittest.TestCase):
-    def test_default_and_opt_in_model(self):
+    def test_default_is_the_small_model_and_the_large_one_is_opt_in(self):
         with patch.dict(os.environ, {}, clear=True):
-            self.assertEqual(configured_spacy_model(), "en_core_web_lg")
-        with patch.dict(os.environ, {"PII_SPACY_MODEL": "en_core_web_sm"}):
             self.assertEqual(configured_spacy_model(), "en_core_web_sm")
+        with patch.dict(os.environ, {"PII_SPACY_MODEL": "en_core_web_lg"}):
+            self.assertEqual(configured_spacy_model(), "en_core_web_lg")
 
     def test_invalid_model_rejected_before_loading(self):
         for value in ("", "en_core_web_md", "/tmp/model", "https://example.com/model"):

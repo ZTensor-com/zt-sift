@@ -17,6 +17,7 @@ context words from the surrounding text can lift by about 0.35).
 import re
 
 from presidio_analyzer import AnalysisExplanation, LocalRecognizer, Pattern, PatternRecognizer, RecognizerResult
+from presidio_analyzer.predefined_recognizers import CreditCardRecognizer
 
 # ---------------------------------------------------------------------------- building blocks
 US_STATE_CODES = ("AL|AK|AZ|AR|CA|CO|CT|DE|DC|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|PR|GU|VI")
@@ -53,6 +54,11 @@ FILLER = (r"(?!(?:username|user|userid|password|passwd|pwd|passcode|passphrase|l
           r"your|my|our|their|his|her|its|new|old|current|please|when|where|which|who|what|how|why|if|then|than|as|so|but|also|only|just|none|null|nil|n/a|na|unknown)\b)")
 
 
+# Words that, before "passport", mean the document is not a US one. The US label rule must not claim it.
+NON_US_NATIONALITY = (r"(?:south\s+korean|north\s+korean|korean|german|indian|british|english|scottish|irish|italian|spanish|french|chinese|japanese|"
+                      r"canadian|australian|russian|brazilian|mexican|dutch|swedish|polish|turkish|nigerian|filipino|singaporean|thai|south\s+african|uk|u\.k\.)")
+
+
 class LabeledValueRecognizer(LocalRecognizer):
     """Finds VALUE when it follows one of LABELS, e.g. "password: hunter2!", "CVV 737", "passport number is 912803456".
 
@@ -62,10 +68,12 @@ class LabeledValueRecognizer(LocalRecognizer):
     """
     SEPARATOR = (r"""(?:[\s_\-]*(?:number|no\.?|num\.?|#|id|code|hash))?\s*["'`]?\s*[:=]?\s*["'`]?\s*(?:(?:is|was|are|=)\s+)?(?:actually\s+)?["'`]?""")
 
-    def __init__(self, entity, labels, value, score, name=None, validate=None, context=None, guard_filler=False):
+    def __init__(self, entity, labels, value, score, name=None, validate=None, context=None, guard_filler=False, reject_before=None):
         self.entity = entity
         self.score = score
         self.validate = validate
+        # Text that, directly before the label, changes what the label means ("Korean passport" is not a US passport).
+        self.reject_before = re.compile(rf"(?<![A-Za-z]){reject_before}[\s-]*$", re.IGNORECASE) if reject_before else None
         ordered = sorted(labels, key=len, reverse=True)
         label = "|".join(re.escape(item).replace(r"\ ", r"[\s_\-]+") for item in ordered)
         # Concatenated/camelCase labels are keys only when followed by an
@@ -91,9 +99,13 @@ class LabeledValueRecognizer(LocalRecognizer):
                 continue
             if self.validate and not self.validate(value):
                 continue
+            if self.reject_before and self.reject_before.search(text[max(0, match.start() - 32):match.start()]):
+                continue
             results.append(RecognizerResult(
                 entity_type=self.entity, start=match.start("value"), end=match.end("value"), score=self.score,
-                analysis_explanation=AnalysisExplanation(recognizer=self.name, original_score=self.score, textual_explanation="value after a label")))
+                analysis_explanation=AnalysisExplanation(recognizer=self.name, original_score=self.score, textual_explanation="value after a label"),
+                # Where the label phrase begins; lets the detector discard NLP tags that only cover the label.
+                recognition_metadata={"label_start": match.start()}))
         return results
 
 
@@ -128,6 +140,39 @@ def luhn_ok(value):
     return bool(digits) and total % 10 == 0
 
 
+# Major card networks: (prefix pattern, allowed lengths). A Luhn check alone accepts ANY 13-19 digit number with a valid
+# check digit, which includes national ID numbers (a South African ID is 13 digits and passes Luhn). Requiring a real
+# issuer range removes that collision. Numbers from networks missing here are not reported as cards.
+CARD_ISSUERS = (
+    (re.compile(r"4"), {13, 16, 19}),                                                               # Visa
+    (re.compile(r"5[1-5]|222[1-9]|22[3-9]\d|2[3-6]\d\d|27[01]\d|2720"), {16}),                         # Mastercard
+    (re.compile(r"3[47]"), {15}),                                                                    # American Express
+    (re.compile(r"6011|65|64[4-9]|622(?:12[6-9]|1[3-9]\d|[2-8]\d\d|9[01]\d|92[0-5])"), {16, 17, 18, 19}),  # Discover
+    (re.compile(r"35(?:2[89]|[3-8]\d)"), {16, 17, 18, 19}),                                          # JCB
+    (re.compile(r"30[0-5]|3095|36|3[89]"), {14, 15, 16, 17, 18, 19}),                                 # Diners Club
+    (re.compile(r"62"), {16, 17, 18, 19}),                                                           # UnionPay
+    (re.compile(r"5018|5020|5038|5893|6304|6759|676[1-3]|0604"), set(range(12, 20))),                # Maestro
+    (re.compile(r"220[0-4]"), {16, 17, 18, 19}),                                                     # Mir
+    (re.compile(r"506[01]|6500"), {16, 17, 18, 19}),                                                 # Verve
+    (re.compile(r"63[7-9]"), {16}),                                                                  # InstaPayment
+)
+
+
+def card_issuer_ok(value):
+    """True when the digits start with a known issuer range and have a length that issuer uses."""
+    digits = re.sub(r"[\s-]", "", value)
+    if not digits.isdigit():
+        return False
+    return any(len(digits) in lengths and prefix.match(digits) for prefix, lengths in CARD_ISSUERS)
+
+
+class IssuerAwareCreditCardRecognizer(CreditCardRecognizer):
+    """Presidio's card recognizer, additionally requiring a known issuer range (see CARD_ISSUERS)."""
+
+    def validate_result(self, pattern_text):
+        return bool(super().validate_result(pattern_text)) and card_issuer_ok(pattern_text)
+
+
 def vin_ok(value):
     """ISO 3779 check digit (position 9); North American VINs satisfy it."""
     if len(value) != 17 or any(c in "IOQ" for c in value.upper()):
@@ -158,7 +203,7 @@ class CredentialRecognizer(LocalRecognizer):
     """Quoted values keep their source escapes; prose passphrases require a quote or field separator."""
     def __init__(self):
         super().__init__(supported_entities=["PASSWORD", "USERNAME"], name="CredentialRecognizer", supported_language="en")
-        self.password = re.compile(r"(?<![A-Za-z0-9])(?:password|passwd|pwd|passcode|passphrase|pass[ _-]?phrase)\b[\"']?\s*(?:[:=]\s*|(?:is|was)\s+)?(?:actually\s+)?(?P<value>\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|[^\s\"',;]+)", re.I)
+        self.password = re.compile(r"(?<![A-Za-z0-9])(?:password|passwd|pwd|passcode|passphrase|pass[ _-]?phrase)\b[\"']?\s*(?:[:=]\s*|(?:is|was)\s+)?(?:actually\s+)?(?P<value>\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|\{\{[^{}]*\}\}|\$\{[^{}]*\}|<[^<>\s][^<>]*>|[^\s\"',;]+)", re.I)
         self.login = re.compile(r"\blogin\s*[:=]\s*(?P<user>[\w.@-]+)\s*/\s*(?P<value>[^\s,;]+)", re.I)
         self.user = re.compile(r"\buser\s*=\s*(?P<value>[\w.@-]+)", re.I)
 
@@ -220,6 +265,8 @@ class StructuredFieldRecognizer(LocalRecognizer):
     }
     # New aliases retain the shape constraints of the existing prose rules.
     ALIAS_SHAPES = {
+        # "address" also names wallets, IP addresses and e-mail fields; a postal address has at least two words or a comma.
+        "address": r"(?s)(?=.*[\s,]).*[A-Za-z0-9].*",
         "passportnumber": r"(?:[A-Z]\d{8}|\d{9})",
         "idcardnumber": r"(?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{5,19}",
         "nursinglicensenumber": r"(?=[A-Z0-9-]*\d)[A-Z0-9][A-Z0-9-]{4,19}",
@@ -323,7 +370,8 @@ def build_recognizers():
                                        r"(?:0[1-9]|1[0-2])\s*/\s*(?:\d{4}|\d{2})(?!\d)", 0.88))
 
     # US identifiers whose own Presidio patterns are too weak to pass 0.5 -------------------------
-    recs.append(LabeledValueRecognizer("US_PASSPORT", ["passport"], r"(?:[A-Z]\d{8}|\d{9})(?![\dA-Za-z])", 0.85, name="LabeledUsPassportRecognizer"))
+    recs.append(LabeledValueRecognizer("US_PASSPORT", ["passport"], r"(?:[A-Z]\d{8}|\d{9})(?![\dA-Za-z])", 0.85, name="LabeledUsPassportRecognizer",
+                                       reject_before=NON_US_NATIONALITY))
     recs.append(LabeledValueRecognizer("US_BANK_NUMBER", ["bank account", "account number", "acct", "checking account", "savings account", "account no", "account"],
                                        r"\d(?:[ -]?\d){5,16}(?![ -]?\d)", 0.8, name="LabeledUsBankNumberRecognizer"))
     recs.append(LabeledValueRecognizer("US_EIN", ["ein", "employer identification", "federal tax id", "federal tax identification", "tax id", "fein"], r"\d{2}-\d{7}(?!\d)", 0.9))

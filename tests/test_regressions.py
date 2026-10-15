@@ -80,9 +80,68 @@ class RegressionTests(unittest.TestCase):
             return dict(entity=entity, recognizer=rec, start=a, end=b, score=.9, text='x' * (b-a))
         full = item('EMAIL_ADDRESS', 'EmailRecognizer', 0, 30)
         short = item('USERNAME', 'Custom', 0, 12)
-        self.assertEqual(collapse_overlaps([full, short], {'Custom'}), [full])
+        kinds = {'Custom': 'label', 'EmailRecognizer': 'rule', 'SpacyRecognizer': 'nlp'}
+        self.assertEqual(collapse_overlaps([full, short], kinds), [full])
         wide = item('PERSON', 'SpacyRecognizer', 0, 40)
-        self.assertIn(short, collapse_overlaps([wide, short], {'Custom'}))
+        self.assertIn(short, collapse_overlaps([wide, short], kinds))
+
+    def test_card_numbers_need_an_issuer_range_not_just_a_luhn_check(self):
+        # A South African ID is 13 digits and Luhn-valid; with no issuer range it is not a card.
+        self.assertFalse(any(d['entity'] == 'CREDIT_CARD' for d in detect(self.analyzer, 'id: 6601089934086', collapse=True)))
+        for number in ('4111 1111 1111 1111', '4222222222222', '3782 822463 10005', '5555 5555 5555 4444'):
+            with self.subTest(number=number):
+                self.assert_span('card number ' + number, 'CREDIT_CARD', number)
+
+    def test_weak_country_patterns_need_their_label(self):
+        self.assert_span('plz: 98788', 'DE_PLZ', '98788')
+        self.assert_span('postcode: AB10 1XG', 'UK_POSTCODE', 'AB10 1XG')
+        for bare in ('98788', 'pages 98788 to 98799', 'AB10 1XG', 'DRS053415', 'CG21881CN'):
+            with self.subTest(bare=bare):
+                self.assertEqual([d for d in detect(self.analyzer, bare, collapse=True)
+                                  if d['entity'] in {'DE_PLZ', 'UK_POSTCODE', 'ES_PASSPORT', 'IT_IDENTITY_CARD'}], [])
+        # A caller asking for stricter output gets no allowance.
+        self.assertEqual(detect(self.analyzer, 'plz: 98788', threshold=0.7, entities=['DE_PLZ'], collapse=True), [])
+
+    def test_specific_types_follow_validated_rules_and_generic_types_remain_when_the_country_is_unknown(self):
+        for text, entity, value in [('passport number: J36C20G26', 'DE_PASSPORT', 'J36C20G26'), ('gstin: 20KLYFB2418R4Z0', 'IN_GSTIN', '20KLYFB2418R4Z0'),
+                                    ('national identity: 34588229486', 'NG_NIN', '34588229486'), ('plate number: BVR-414TM', 'NG_VEHICLE_REGISTRATION', 'BVR-414TM'),
+                                    ('Thai National ID: 2406156982089', 'TH_TNIN', '2406156982089'), ('national health service: 447 618 2143', 'UK_NHS', '447 618 2143'),
+                                    ('passport: R75075500', 'US_PASSPORT', 'R75075500'), ('Korean passport: R75075500', 'PASSPORT_NUMBER', 'R75075500'),
+                                    ('passport: WH8163042', 'PASSPORT_NUMBER', 'WH8163042'), ('bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r', 'AUTH_TOKEN',
+                                                                                              'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r')]:
+            with self.subTest(text=text):
+                self.assert_span(text, entity, value)
+                self.assertEqual(len([d for d in detect(self.analyzer, text, collapse=True) if d['text'] == value]), 1, text)
+
+    def test_spacy_tags_that_only_restate_a_labelled_value_are_dropped(self):
+        for text in ('Her car VIN is 1HGCM82633A004352.', 'IP address: 192.168.1.1', 'employee ID EMP-016973', 'My CVV 737 is secret', 'I am 45 years old'):
+            with self.subTest(text=text):
+                self.assertEqual([d for d in detect(self.analyzer, text, collapse=True)
+                                  if d['recognizer'] == 'SpacyRecognizer' and d['entity'] in {'ORGANIZATION', 'DATE_TIME', 'LOCATION', 'NRP'}], [])
+        self.assert_span('user=Sarah Johnson', 'PERSON', 'Sarah Johnson')
+
+    def test_a_key_named_address_is_a_postal_address_only_when_the_value_looks_like_one(self):
+        wallet = '0x4e8fdb77eebc993ca7611fb27733a3b29bf5c1d2'
+        found = detect(self.analyzer, json.dumps({'wallets': [{'chain': 'ethereum', 'address': wallet}]}), collapse=True)
+        self.assertEqual([(d['entity'], d['text']) for d in found], [('CRYPTO', wallet)])
+        self.assert_span(json.dumps({'address': '742 Evergreen Terrace, Springfield'}), 'ADDRESS', '742 Evergreen Terrace, Springfield')
+        self.assert_span(json.dumps({'address': '5A, Kadavill Court'}), 'ADDRESS', '5A, Kadavill Court')
+
+    def test_masks_and_template_variables_are_not_secrets(self):
+        for text in ('{"password": "********"}', 'password: ********', 'password: [REDACTED]', 'password=${DB_PASSWORD}', '{"password": "{{ secret }}"}',
+                     '{"apiKey": "<your-key-here>"}'):
+            with self.subTest(text=text):
+                self.assertEqual([d for d in detect(self.analyzer, text, collapse=True) if d['entity'] in {'PASSWORD', 'API_KEY'}], [])
+        self.assert_span('{"password": "Tr1ck$ter#2026"}', 'PASSWORD', 'Tr1ck$ter#2026')
+
+    def test_a_date_inside_an_identifier_is_not_a_date(self):
+        for text in ('{"requestId": "REQ-2026-10-15-000481"}', 'ticket REQ-2026-10-15-000481 failed', 'file report_2024-03-01_final.csv'):
+            with self.subTest(text=text):
+                self.assertEqual([d for d in detect(self.analyzer, text, collapse=True) if d['entity'] == 'DATE_TIME'], [])
+        for text in ('{"createdOn": "2026-10-15"}', 'created on 2026-10-15.', 'Due 2026-10-15, then', 'from 2020-01-01-2020-12-31', 'logged at 2024-03-01T10:22:31Z',
+                     'due Oct-15-2026'):
+            with self.subTest(text=text):
+                self.assertTrue(any(d['entity'] == 'DATE_TIME' for d in detect(self.analyzer, text, collapse=True)), text)
 
     def test_chunk_boundary_and_dedup(self):
         text = 'x ' * 20 + 'jane@example.com' + ' y' * 40

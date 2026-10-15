@@ -196,6 +196,44 @@ class GapFillerTests(unittest.TestCase):
                     self.assertEqual(found(text, entity), [])
 
 
+class CardIssuerTests(unittest.TestCase):
+    """Luhn alone accepts any 13-19 digit number with a valid check digit, including national ID numbers."""
+    ISSUED = {"Visa": "4111111111111111", "Visa (13 digits)": "4222222222222", "Mastercard": "5555555555554444",
+              "Mastercard 2-series": "2223003122003222", "Amex": "378282246310005", "Amex (other prefix)": "340000881360233",
+              "Discover": "6011111111111117", "JCB": "3530111333300000", "Diners": "30569309025904", "UnionPay": "6200000000000005"}
+
+    def test_numbers_from_real_issuer_ranges_are_cards(self):
+        for brand, number in self.ISSUED.items():
+            with self.subTest(brand=brand):
+                self.assertTrue(C.luhn_ok(number))
+                self.assertTrue(C.card_issuer_ok(number))
+
+    def test_a_luhn_valid_number_outside_every_issuer_range_is_not_a_card(self):
+        south_african_id = "6601089934086"
+        self.assertTrue(C.luhn_ok(south_african_id))
+        self.assertFalse(C.card_issuer_ok(south_african_id))
+
+    def test_length_must_suit_the_issuer(self):
+        self.assertFalse(C.card_issuer_ok("41111111111111"))        # Visa prefix, 14 digits
+        self.assertFalse(C.card_issuer_ok("37828224631000"))        # Amex prefix, 14 digits
+        self.assertFalse(C.card_issuer_ok("55555555555544"))        # Mastercard prefix, 14 digits
+
+    def test_separators_are_ignored(self):
+        self.assertTrue(C.card_issuer_ok("4111 1111 1111 1111"))
+        self.assertTrue(C.card_issuer_ok("3782-822463-10005"))
+
+
+class NationalityGuardTests(unittest.TestCase):
+    def test_a_us_passport_label_does_not_claim_another_countrys_passport(self):
+        self.assertEqual(found("passport: R75075500", "US_PASSPORT"), ["R75075500"])
+        for label in ("Korean passport", "German passport", "UK passport", "Indian passport", "south korean passport"):
+            with self.subTest(label=label):
+                self.assertEqual(found(f"{label}: R75075500", "US_PASSPORT"), [])
+
+    def test_a_nationality_word_elsewhere_in_the_sentence_does_not_block_the_label(self):
+        self.assertEqual(found("German tourist, passport: R75075500", "US_PASSPORT"), ["R75075500"])
+
+
 class CollapseTests(unittest.TestCase):
     def item(self, entity, recognizer, start=0, end=10, score=0.85, text="0123456789"):
         return {"text": text, "entity": entity, "start": start, "end": end, "score": score, "recognizer": recognizer}
@@ -204,7 +242,7 @@ class CollapseTests(unittest.TestCase):
         found = [self.item("DATE_TIME", "SpacyRecognizer"), self.item("DATE_TIME", "DateRecognizer", score=0.95),
                  self.item("US_ZIP_CODE", "LabeledUsZipCodeRecognizer")]
         for order in (found, found[::-1]):
-            kept = detector.collapse_overlaps(order, {"LabeledUsZipCodeRecognizer"})
+            kept = detector.collapse_overlaps(order, {"LabeledUsZipCodeRecognizer": "label", "DateRecognizer": "rule", "SpacyRecognizer": "nlp"})
             self.assertEqual([k["entity"] for k in kept], ["US_ZIP_CODE"])
 
     def test_builtin_rule_beats_spacy_and_disjoint_results_survive(self):
@@ -215,8 +253,8 @@ class CollapseTests(unittest.TestCase):
 
     def test_spacy_noise_is_dropped_but_real_organizations_stay(self):
         noisy = [self.item("ORGANIZATION", "SpacyRecognizer", text=t) for t in ("MRN", "API", "Ethereum", "date_of_birth", "A1B2")]
-        self.assertEqual(detector.collapse_overlaps(noisy), [])
-        self.assertEqual(len(detector.collapse_overlaps([self.item("ORGANIZATION", "SpacyRecognizer", text="Acme Corp")])), 1)
+        self.assertTrue(all(detector.spacy_noise(n) for n in noisy))
+        self.assertFalse(detector.spacy_noise(self.item("ORGANIZATION", "SpacyRecognizer", text="Acme Corp")))
 
 
 if __name__ == "__main__":

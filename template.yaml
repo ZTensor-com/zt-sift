@@ -11,8 +11,8 @@ Parameters:
     AllowedPattern: '[a-zA-Z0-9_-]+'
   SpacyModel:
     Type: String
-    Default: en_core_web_lg
-    AllowedValues: [en_core_web_lg, en_core_web_sm]
+    Default: en_core_web_sm
+    AllowedValues: [en_core_web_sm, en_core_web_lg]
     Description: Bundled NLP model; small is opt-in and needs accuracy/memory validation
   MemorySize:
     Type: Number
