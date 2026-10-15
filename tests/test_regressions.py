@@ -143,6 +143,18 @@ class RegressionTests(unittest.TestCase):
             with self.subTest(text=text):
                 self.assertTrue(any(d['entity'] == 'DATE_TIME' for d in detect(self.analyzer, text, collapse=True)), text)
 
+    def test_a_domain_must_end_at_its_suffix(self):
+        # Presidio's URL pattern lists top-level domains without a closing boundary, so the identifier user.signup
+        # matches as "user.si" (Slovenia), payment.authorized as "payment.au", app.settings as "app.se".
+        for text in ('{"event": "user.signup"}', 'event=payment.authorized', 'topic app.settings changed', 'Ask Dr.Smith', '{"type": "kyc.documents"}'):
+            with self.subTest(text=text):
+                self.assertEqual([d for d in detect(self.analyzer, text, collapse=True) if d['entity'] == 'URL'], [])
+        for text, expected in [('visit example.com today', 'example.com'), ('see mail.contoso.co.uk/inbox?id=4', 'mail.contoso.co.uk/inbox?id=4'),
+                               ('go to https://shop.example.org/cart.', 'https://shop.example.org/cart.'), ('{"site": "www.contoso.io"}', 'www.contoso.io'),
+                               ('link: docs.example.com, then', 'docs.example.com')]:
+            with self.subTest(text=text):
+                self.assertTrue(any(d['entity'] == 'URL' and d['text'].rstrip('.,') == expected.rstrip('.,') for d in detect(self.analyzer, text, collapse=True)), text)
+
     def test_chunk_boundary_and_dedup(self):
         text = 'x ' * 20 + 'jane@example.com' + ' y' * 40
         with patch('pii_detector.detector.CHUNK_CHARS', 60):

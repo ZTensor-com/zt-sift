@@ -294,7 +294,16 @@ def inside_identifier(text, start, end):
     return bool(re.search(r"[A-Za-z]", text[left:right].replace("-", " ").replace("_", " "))) and (left, right) != (start, end)
 
 
-_MONTH_OR_DAY = re.compile(r"(?i)\A(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|mon|tue|wed|thu|fri|sat|sun)")
+def cut_mid_word(text, end):
+    """True when a span stops in the middle of a word: the next character continues it (letter, digit, '_', or '-' + alphanumeric).
+
+    Presidio's URL pattern lists top-level domains without a closing boundary, so the identifier user.signup matches as
+    "user.si" (Slovenia). A genuine domain or URL is followed by whitespace, punctuation or the end of the text.
+    """
+    return bool(re.match(r"\w|-\w", text[end:end + 2]))
+
+
+_MONTH_OR_DAY =re.compile(r"(?i)\A(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|mon|tue|wed|thu|fri|sat|sun)")
 
 
 def identifier_shaped(text):
@@ -355,6 +364,8 @@ def detect(analyzer, text, threshold=0.5, entities=None, collapse=False):
         if policy.is_placeholder(item["text"]):
             continue
         if item["entity"] == "DATE_TIME" and (identifier_shaped(item["text"]) or inside_identifier(text, item["start"], item["end"])):
+            continue
+        if item["entity"] == "URL" and cut_mid_word(text, item["end"]):
             continue
         if item["entity"] == "EMAIL_ADDRESS":
             assignment = re.match(r"(?i)(?:email|emailaddress|email_address|mail)=", item["text"])
