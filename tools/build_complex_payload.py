@@ -15,142 +15,15 @@ A second file, samples/complex_payload.expected.json, lists what each value shou
     python -m tools.build_complex_payload            # writes both files
 """
 import base64
-import json
-import os
-import random
-import re
 
-from pii_detector.recognizers import luhn_ok, vin_ok
-from tools.world_pii import ENTITY_GENERATORS, digits, group, upper
+from tools.payload_kit import Kit
+from tools.world_pii import digits, group, upper
 
 SEED = 20261015
-OUT = os.path.join(os.path.dirname(__file__), "..", "samples")
-
-rng = random.Random(SEED)
-_draws = {}
-
-
-def entity_rng(entity):
-    """An independent stream per entity (and per use of it), so changing one value never shifts the others."""
-    _draws[entity] = _draws.get(entity, 0) + 1
-    return random.Random(f"{SEED}:{entity}:{_draws[entity]}")
-generators = ENTITY_GENERATORS()
-manifest = []
-
-
-_PREDEFINED = None
-
-
-def predefined():
-    """Presidio's own pattern recognizers by entity (not this project's detector, so validity is not circular)."""
-    global _PREDEFINED
-    if _PREDEFINED is None:
-        import inspect
-
-        import presidio_analyzer.predefined_recognizers as module
-        from presidio_analyzer import EntityRecognizer
-
-        _PREDEFINED = {}
-        for name, cls in inspect.getmembers(module, inspect.isclass):
-            if issubclass(cls, EntityRecognizer) and name.endswith("Recognizer") and not any(k in name for k in ("Azure", "Stanza", "Transformers", "GLiNER", "HuggingFace", "LangExtract", "MedicalNER", "Spacy")):
-                try:
-                    instance = cls(supported_language="en")
-                except Exception:
-                    continue
-                _PREDEFINED.setdefault(instance.supported_entities[0], instance)
-    return _PREDEFINED
-
-
-def score_for(recognizer, entity, value):
-    return max([r.score for r in recognizer.analyze(text=value, entities=[entity], nlp_artifacts=None)] or [0.0])
-
-
-def gen(entity, tries=60):
-    """A value the project's generator makes that Presidio's recognizer for `entity` accepts most strongly,
-    preferring one that no other Presidio recognizer also accepts strongly (so the type is unambiguous)."""
-    recognizers = predefined()
-    target = recognizers.get(entity)
-    stream = entity_rng(entity)
-    best, best_key = None, None
-    for _ in range(tries):
-        value = generators[entity](stream)
-        if target is None:
-            return value
-        strength = score_for(target, entity, value)
-        rivals = max([score_for(r, e, value) for e, r in recognizers.items() if e != entity] or [0.0])
-        key = (strength, -rivals)
-        if best_key is None or key > best_key:
-            best, best_key = value, key
-        if strength >= 0.85 and rivals < 0.5:
-            break
-    return best
-
-
-def expect(value, entity, where, note="", within=None):
-    """Record that `value` must be reported as `entity`; return it.
-
-    `within` is the full string when `value` is only a part of it (free text). Otherwise the whole leaf must equal `value`.
-    """
-    manifest.append({"entity": entity, "value": str(value), "where": where, "note": note, "within": within})
-    return value
-
-
-def decoy(value, where):
-    """Record a value that must NOT be reported at all; return it."""
-    manifest.append({"entity": None, "value": str(value), "where": where, "note": "decoy", "within": None})
-    return value
-
-
-def hexstr(n):
-    return "".join(rng.choice("0123456789abcdef") for _ in range(n))
-
-
-def luhn_number(prefix, length):
-    body = prefix + digits(rng, length - len(prefix) - 1)
-    for check in "0123456789":
-        if luhn_ok(body + check):
-            return body + check
-
-
-def vin():
-    alphabet = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789"
-    body = [rng.choice(alphabet) for _ in range(17)]
-    for check in "0123456789X":
-        body[8] = check
-        candidate = "".join(body)
-        if vin_ok(candidate):
-            return candidate
-
-
-def b64url(data):
-    return base64.urlsafe_b64encode(json.dumps(data, separators=(",", ":")).encode()).rstrip(b"=").decode()
-
-
-def jwt():
-    return ".".join([b64url({"alg": "HS256", "typ": "JWT"}),
-                     b64url({"sub": digits(rng, 10), "iss": "https://auth.contoso.example", "iat": 1790000000 + rng.randint(0, 99999)}),
-                     "".join(rng.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_") for _ in range(43))])
-
-
-def valid_for(recognizer_class, entity, make, tries=1500):
-    """The strongest value the Presidio recognizer itself accepts, for types without a generator.
-
-    A value that fails the recognizer's pattern or checksum yields no result at all; a checksum-valid one scores far higher
-    than a value that only matches the pattern, so keep sampling until a strong one turns up.
-    """
-    recognizer = recognizer_class(supported_language="en")
-    stream = entity_rng(entity)
-    best, best_score = None, 0.0
-    for _ in range(tries):
-        value = make(stream)
-        score = score_for(recognizer, entity, value)
-        if score > best_score:
-            best, best_score = value, score
-        if best_score >= 0.85:
-            break
-    if best is None:
-        raise RuntimeError(f"no valid {entity} found")
-    return best
+kit = Kit(SEED)
+rng, manifest = kit.rng, kit.manifest
+gen, expect, decoy, valid_for = kit.gen, kit.expect, kit.decoy, kit.valid_for
+hexstr, luhn_number, vin, jwt = kit.hexstr, kit.luhn_number, kit.vin, kit.jwt
 
 
 def build():
@@ -361,19 +234,7 @@ def build():
 
 
 def main():
-    doc = build()
-    text = json.dumps(doc, indent=2, ensure_ascii=False)
-    if len(text.encode()) > 20_000:
-        raise SystemExit(f"payload is {len(text.encode())} bytes; the API accepts at most 20,000")
-    os.makedirs(OUT, exist_ok=True)
-    with open(os.path.join(OUT, "complex_payload.json"), "w", encoding="utf-8") as handle:
-        handle.write(text + "\n")
-    with open(os.path.join(OUT, "complex_payload.expected.json"), "w", encoding="utf-8") as handle:
-        json.dump({"seed": SEED, "notice": "Synthetic values; checksum-valid where the identifier has a checksum, never issued to anyone.",
-                   "expected": manifest}, handle, ensure_ascii=False, indent=1)
-    entities = {m["entity"] for m in manifest if m["entity"]}
-    print(f"wrote samples/complex_payload.json ({len(text.encode())} bytes) and complex_payload.expected.json: "
-          f"{len(manifest)} expectations, {len(entities)} distinct entity types")
+    print(kit.write(build(), "complex_payload"))
 
 
 if __name__ == "__main__":
