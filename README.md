@@ -12,7 +12,7 @@ pii_detector/    the code that ships: detector.py (load_analyzer, detect, collap
                  policy.py (score acceptance, entity aliases, generic-to-specific families), structured.py (JSON values with source offsets)
 handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
-template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, ap-south-1)
+template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, us-west-2)
 requirements.txt direct dependencies of the image; requirements.lock pins all 53 packages
 requirements-dev.txt  extra packages for tools/ (web page)
 wheels/          offline cache of those 53 Linux / Python 3.12 wheels (gitignored)

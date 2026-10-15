@@ -24,7 +24,7 @@ if tool=='docker':
     if args[:2]==['image','inspect']:print('linux/amd64')
     if args and args[0]=='login':sys.stdin.read()
 elif args[:2]==['sts','get-caller-identity']:print('111122223333')
-elif args[:2]==['ecr','describe-repositories']:print('arn:aws:ecr:ap-south-1:111122223333:repository/test')
+elif args[:2]==['ecr','describe-repositories']:print('arn:aws:ecr:us-west-2:111122223333:repository/test')
 elif args[:2]==['ecr','get-login-password']:print('synthetic-test-password')
 elif args[:2]==['cloudformation','describe-stacks']:
     print('test-api' if any('RestApiId' in a for a in args) else '[]')

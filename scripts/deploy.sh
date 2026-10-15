@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-AWS_REGION="${AWS_REGION:-ap-south-1}"
+AWS_REGION="${AWS_REGION:-us-west-2}"
 DOCKERFILE=Dockerfile
 LOCK_FILE=requirements.lock
 LOCAL_TAG=pii-presidio-lambda:local
@@ -25,7 +25,7 @@ Usage: scripts/deploy.sh --validate | --build | --deploy | --deploy-existing-ima
   --build     Build the linux/amd64 image locally (tag pii-presidio-lambda:local); no AWS calls.
   --deploy    Create/reuse ECR, build and push the image, create/update the Lambda stack.
   --deploy-existing-image  Push EXISTING_LOCAL_IMAGE and update Lambda; no build or local detection.
-Environment: AWS_REGION (ap-south-1), STACK_NAME (pii-detection-presidio), ECR_REPOSITORY_NAME, STAGE_NAME (dev),
+Environment: AWS_REGION (us-west-2), STACK_NAME (pii-detection-presidio), ECR_REPOSITORY_NAME, STAGE_NAME (dev),
              MEMORY_SIZE (3008), PII_SPACY_MODEL (en_core_web_sm; opt-in en_core_web_lg),
              PROVISIONED_CONCURRENCY (0; warm instances, billed continuously),
              EXISTING_LOCAL_IMAGE (pii-presidio-lambda:model-test), ALARM_EMAIL (optional), PYTHON_BIN.
