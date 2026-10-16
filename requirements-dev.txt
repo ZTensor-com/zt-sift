@@ -1,7 +1,0 @@
-# Extras for local tools only; nothing here goes into the Lambda image.
-# Install them on top of the project environment (presidio-analyzer, spaCy and the models come from requirements.txt):
-#   .venv/bin/python -m pip install -r requirements-dev.txt
-#
-# tools/web.py, the manual test page (python -m tools.web)
-starlette==1.7.0
-uvicorn==0.54.0

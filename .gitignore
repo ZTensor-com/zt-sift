@@ -7,4 +7,10 @@ wheels/
 
 .claude/
 graphify-out/
-samples/world_pii_*
+
+# local testing and sample data: kept on disk, not in the repo
+samples/
+tools/
+tests/
+analysis/
+requirements-dev.txt

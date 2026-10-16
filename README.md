@@ -14,22 +14,16 @@ handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
 template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, us-west-2)
 requirements.txt direct dependencies of the image; requirements.lock pins all 53 packages
-requirements-dev.txt  starlette and uvicorn for the manual test page (tools/web.py)
 wheels/          offline cache of those 53 Linux / Python 3.12 wheels (gitignored)
 scripts/         deploy.sh (--validate | --build | --deploy); build_lock.py regenerates requirements.lock offline from wheels/
-tests/           unit and regression tests (recognizers, real analyzer, collapse logic, Lambda handler)
-tools/           dev only, never shipped: web test page, coverage and evaluation scripts, sample generators (see tools/README.md)
-samples/         test inputs, from small US samples to large generated files
 ```
 
 ## Use
 
 ```bash
 python -m pii_detector "Call Sarah on (415) 555-0132"       # the detector from the command line (--file, --json, --collapse, --threshold)
-python -m tools.web                                          # manual test page at http://127.0.0.1:8765
-python -m unittest discover -s tests -t .                    # unit tests
 
-scripts/deploy.sh --validate    # tests + cfn-lint, no Docker or AWS
+scripts/deploy.sh --validate    # compile check, tests (when a tests/ folder is present) and cfn-lint; no Docker or AWS
 scripts/deploy.sh --build       # local image pii-presidio-lambda:local
 scripts/deploy.sh --deploy      # creates or updates the billable AWS resources
 scripts/deploy.sh --deploy-existing-image  # upload an already-built image; no build or local detection
@@ -68,19 +62,6 @@ Every recognizer proposes candidates; `detect(..., collapse=True)` then settles 
    contains smaller ones replaces them.
 
 `EMAIL` and `ID` are advertised by Presidio but no English model emits them; they are accepted as `entities` filters and mapped to `EMAIL_ADDRESS` and `NATIONAL_ID_NUMBER`.
-
-## Test payloads
-
-Two payloads exercise every entity type the detector can report (120 of the 125 registered names: `EMAIL` and `ID` are aliases, and `IN_PASSPORT`, `UK_PASSPORT`, `KR_PASSPORT` are reported as `PASSPORT_NUMBER`).
-
-| File | Shape | Gate |
-|---|---|---|
-| `tests/fixtures/all_entities_payload.json` | one flat `{"ENTITY": {"label": "value"}}` pair per type, each value beside its own key | `tests/test_all_entities.py` |
-| `samples/complex_payload.json` | a nested CRM/KYC export: five levels, arrays of objects, mixed key styles, numbers, free-text notes with personal data in sentences, escapes and accents, plus decoys | `tests/test_complex_payload.py` |
-
-`samples/complex_payload.expected.json` lists what each value of the complex payload must be reported as and which values are decoys that must not be reported.
-Regenerate both with `python -m tools.build_complex_payload` (fixed seed; checksum-valid identifiers; every value is synthetic). POST the file as the raw body with `Content-Type: text/plain`.
-The label-rich payloads show that every recognizer is reachable and correctly ranked; they do not measure recall on text without labels.
 
 ## Try the image locally
 
@@ -121,8 +102,8 @@ and locations in free text. The small model tags more field labels as organizati
 below remove those. Measure missed values and false positives on your own text before relying on either.
 
 ```bash
-python -m pii_detector --file samples/sample_us.txt --collapse                       # small model (default)
-PII_SPACY_MODEL=en_core_web_lg python -m unittest discover -s tests -t . -v           # run the tests with the large model
+python -m pii_detector --file message.txt --collapse                                 # small model (default)
+PII_SPACY_MODEL=en_core_web_lg python -m pii_detector --file message.txt --collapse   # large model
 scripts/deploy.sh --build
 docker run --rm --platform linux/amd64 --user 1051:1051 --memory=3008m \
   -e PII_SPACY_MODEL=en_core_web_sm -p 9000:8080 pii-presidio-lambda:local
@@ -201,10 +182,6 @@ successful detection duration and detection failures. It defaults to disabled;
 enabling custom metrics can incur CloudWatch charges. Metrics never include text,
 entity values, request identifiers or exception messages. Existing privacy-safe
 failure logging remains enabled.
-
-Run `python -m unittest discover -v` in the project environment to exercise direct
-recognizers, real analyzer behavior, source offsets, negative controls and API
-validation. The immutable pre-change audit is under `analysis/2026-10-12/`.
 
 The existing API Gateway 5XX alarm now triggers on a single server error in its
 configured evaluation period, including handled Lambda failures. No new alarm or

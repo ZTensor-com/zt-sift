@@ -68,7 +68,11 @@ case "$1" in
     fi
     bash -n "$SCRIPT_DIR/deploy.sh"
     "$task_python" -m py_compile "$PROJECT_DIR/handler.py" "$PROJECT_DIR"/pii_detector/*.py "$SCRIPT_DIR/build_lock.py"
-    (cd "$PROJECT_DIR" && "$task_python" -m unittest discover -s tests -t . -v)
+    if [[ -d "$PROJECT_DIR/tests" ]]; then
+      (cd "$PROJECT_DIR" && "$task_python" -m unittest discover -s tests -t . -v)
+    else
+      printf '%s\n' 'No tests/ folder in this checkout (it is not tracked in the repo): unit tests NOT RUN.'
+    fi
     if command -v cfn-lint >/dev/null 2>&1; then
       cfn-lint "$PROJECT_DIR/template.yaml"
     else

@@ -12,7 +12,7 @@ email validation uses tldextract's bundled suffix list, and phone detection uses
 entities can score lower in English text.
 
     python -m pii_detector "Call Sarah on (415) 555-0132"       # text as an argument
-    python -m pii_detector --file samples/sample_us.txt         # a file
+    python -m pii_detector --file message.txt         # a file
     echo "..." | python -m pii_detector --json                  # stdin, JSON output
     python -m pii_detector --list-entities                      # everything Presidio can detect
 """
