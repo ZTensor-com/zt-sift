@@ -13,7 +13,6 @@ TIMEOUT_SECONDS="${TIMEOUT_SECONDS:-60}"
 STAGE_NAME="${STAGE_NAME:-dev}"
 ALARM_EMAIL="${ALARM_EMAIL:-}"
 MEMORY_SIZE="${MEMORY_SIZE:-3008}"
-PII_SPACY_MODEL="${PII_SPACY_MODEL:-en_core_web_sm}"
 EXISTING_LOCAL_IMAGE="${EXISTING_LOCAL_IMAGE:-pii-presidio-lambda:model-test}"
 PROVISIONED_CONCURRENCY="${PROVISIONED_CONCURRENCY:-0}"
 export AWS_PAGER=""
@@ -26,8 +25,7 @@ Usage: scripts/deploy.sh --validate | --build | --deploy | --deploy-existing-ima
   --deploy    Create/reuse ECR, build and push the image, create/update the Lambda stack.
   --deploy-existing-image  Push EXISTING_LOCAL_IMAGE and update Lambda; no build or local detection.
 Environment: AWS_REGION (us-west-2), STACK_NAME (pii-detection-presidio), ECR_REPOSITORY_NAME, STAGE_NAME (dev),
-             MEMORY_SIZE (3008), PII_SPACY_MODEL (en_core_web_sm; opt-in en_core_web_lg),
-             PROVISIONED_CONCURRENCY (0; warm instances, billed continuously),
+             MEMORY_SIZE (3008), PROVISIONED_CONCURRENCY (0; warm instances, billed continuously),
              EXISTING_LOCAL_IMAGE (pii-presidio-lambda:model-test), ALARM_EMAIL (optional), PYTHON_BIN.
 TXT
 }
@@ -91,7 +89,6 @@ case "$1" in
   *) usage; exit 2 ;;
 esac
 
-[[ "$PII_SPACY_MODEL" == en_core_web_lg || "$PII_SPACY_MODEL" == en_core_web_sm ]] || { printf '%s\n' 'PII_SPACY_MODEL must be en_core_web_lg or en_core_web_sm' >&2; exit 2; }
 [[ "$AWS_REGION" =~ ^[a-z0-9-]+$ ]] || { printf '%s\n' 'Invalid AWS_REGION' >&2; exit 2; }
 [[ "$STACK_NAME" =~ ^[A-Za-z][A-Za-z0-9-]{0,49}$ ]] || { printf '%s\n' 'Invalid STACK_NAME (maximum 50 characters)' >&2; exit 2; }
 [[ "$ECR_REPOSITORY_NAME" =~ ^[a-z0-9][a-z0-9._/-]*$ ]] || { printf '%s\n' 'Invalid ECR_REPOSITORY_NAME' >&2; exit 2; }
@@ -129,7 +126,7 @@ fi
 aws cloudformation deploy --region "$AWS_REGION" --stack-name "$STACK_NAME" \
   --template-file "$PROJECT_DIR/template.yaml" --capabilities CAPABILITY_IAM \
   --parameter-overrides "ImageUri=$image_uri" "StageName=$STAGE_NAME" "AlarmEmail=$ALARM_EMAIL" \
-    "MemorySize=$MEMORY_SIZE" "SpacyModel=$PII_SPACY_MODEL" "TimeoutSeconds=$TIMEOUT_SECONDS" "ProvisionedConcurrency=$PROVISIONED_CONCURRENCY" \
+    "MemorySize=$MEMORY_SIZE" "TimeoutSeconds=$TIMEOUT_SECONDS" "ProvisionedConcurrency=$PROVISIONED_CONCURRENCY" \
   --no-fail-on-empty-changeset
 # CloudFormation never republishes an API Gateway deployment after the first one,
 # so publish the current API definition to the stage explicitly.

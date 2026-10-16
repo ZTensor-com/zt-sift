@@ -3,7 +3,7 @@
 Find sensitive data. Know your exposure.
 
 Send a message in the request body; get back every detection with `text`, `entity`, `start`, `end` and `score`, plus a total `count` and per-entity `counts`.
-Presidio with spaCy `en_core_web_sm` by default (opt-in `en_core_web_lg`) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
+Presidio with spaCy `en_core_web_sm` (the only model in the image) and 61 custom recognizers covering 48 custom entity types. There is no additional neural span model.
 
 ## Layout
 
@@ -13,8 +13,8 @@ pii_detector/    the code that ships: detector.py (load_analyzer, detect, collap
 handler.py       Lambda entry point behind API Gateway
 Dockerfile       Lambda image, installed offline from wheels/
 template.yaml    CloudFormation: Lambda, API Gateway, API key, usage plan, alarms (stack pii-detection-presidio, us-west-2)
-requirements.txt direct dependencies of the image; requirements.lock pins all 53 packages
-wheels/          offline cache of those 53 Linux / Python 3.12 wheels (gitignored)
+requirements.txt direct dependencies of the image; requirements.lock pins all 52 packages
+wheels/          offline cache of those 52 Linux / Python 3.12 wheels (gitignored)
 scripts/         deploy.sh (--validate | --build | --deploy); build_lock.py regenerates requirements.lock offline from wheels/
 ```
 
@@ -93,20 +93,16 @@ The spaCy parser and sentence recognizer are excluded during loading; their unus
 weights are not retained in memory. NER, tagging and lemmatization remain enabled.
 No provisioned concurrency or periodic warming is needed.
 
-### Choosing the spaCy model
+### The spaCy model
 
-Both model packages are bundled in the image; only the selected model is loaded.
-`PII_SPACY_MODEL` accepts `en_core_web_sm` (default) or `en_core_web_lg`.
-The two share every recognizer and entity; they differ only in spaCy's tags for names, organizations
-and locations in free text. The small model tags more field labels as organizations; the noise rules
-below remove those. Measure missed values and false positives on your own text before relying on either.
+The image bundles only `en_core_web_sm`. It supplies spaCy's tags for names, organizations and locations in free text;
+every other entity comes from Presidio's and this project's recognizers. The small model tags more field labels as
+organizations; the noise rules below remove those. Measure missed values and false positives on your own text.
 
 ```bash
-python -m pii_detector --file message.txt --collapse                                 # small model (default)
-PII_SPACY_MODEL=en_core_web_lg python -m pii_detector --file message.txt --collapse   # large model
+python -m pii_detector --file message.txt --collapse
 scripts/deploy.sh --build
-docker run --rm --platform linux/amd64 --user 1051:1051 --memory=3008m \
-  -e PII_SPACY_MODEL=en_core_web_sm -p 9000:8080 pii-presidio-lambda:local
+docker run --rm --platform linux/amd64 --user 1051:1051 --memory=3008m -p 9000:8080 pii-presidio-lambda:local
 ```
 
 For isolated AWS testing, explicitly use a separate stack. This command creates
@@ -118,17 +114,15 @@ default. Container memory limits do not reproduce Lambda's reduced CPU allocatio
 
 ```bash
 STACK_NAME=pii-detection-sm-test ECR_REPOSITORY_NAME=pii-detection-sm-test \
-  PII_SPACY_MODEL=en_core_web_sm \
   MEMORY_SIZE=3008 PROVISIONED_CONCURRENCY=0 scripts/deploy.sh --deploy
 ```
 
-Switching models on an existing stack publishes a new version and updates the live
-alias. AWS settings change when you explicitly run a deployment command.
+A deployment publishes a new Lambda version and updates the live alias. AWS settings change only when you explicitly run a deployment command.
 
 If `pii-presidio-lambda:model-test` has already been built, upload that image to
 test directly in Lambda. Docker Desktop only needs to be running for the upload;
 this mode does not build an image or execute detection locally. Use the same
-model/stack/memory variables with `--deploy-existing-image`. It uses the saved
+stack/memory variables with `--deploy-existing-image`. It uses the saved
 image's code, so later source changes require a new image. To avoid Docker on
 the Mac entirely, build and publish the image on a separate machine or CI runner.
 
