@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Presidio + spaCy (en_core_web_sm by default, opt-in en_core_web_lg; no GLiNER).
+"""Presidio + spaCy (en_core_web_sm; en_core_web_lg only for local comparison; no GLiNER).
 
 By default every pattern recognizer in the installed Presidio is switched on (72 entity types plus a few
 extras): Presidio's default English registry covers only 23 of them, and the country-specific ones

@@ -5,7 +5,7 @@ Optional query parameters: threshold (default 0.5), entities (comma-separated Pr
 collapse (true/false; default true keeps the best of overlapping detections).
 Returns {"count": <total>, "counts": {<entity>: <number>, ...}, "detections": [{"text", "entity", "start", "end", "score"}, ...]}.
 
-Detection is Presidio with the selected spaCy model (en_core_web_lg by default) plus the project's custom recognizers
+Detection is Presidio with the spaCy model en_core_web_sm plus the project's custom recognizers
 (pii_detector/recognizers.py); there is no neural span model. The analyzer loads once per
 execution environment, when this module is imported. A Lambda environment handles one request at a time.
 """
